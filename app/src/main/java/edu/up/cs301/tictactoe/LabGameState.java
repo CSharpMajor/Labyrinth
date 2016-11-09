@@ -1,5 +1,7 @@
 package edu.up.cs301.tictactoe;
 
+import java.util.ArrayList;
+
 import edu.up.cs301.game.infoMsg.GameState;
 
 
@@ -13,6 +15,27 @@ import edu.up.cs301.game.infoMsg.GameState;
  */
 public class LabGameState extends GameState
 {
+    //this is the board with a buffer region on either side
+    private MazeTile[][] maze = new MazeTile[9][9];
 
+    //the current players id
+    int turnID;
+
+    //all the hands of all the player's cards to collect
+    private ArrayList<ArrayList<TCard>> cardsToCollect = new ArrayList<ArrayList<TCard>>(0);
+
+    //all the hands of all the player's cards they have collected
+    private ArrayList<ArrayList<TCard>> cardsCollected = new ArrayList<ArrayList<TCard>>(0);
+
+    //boolean to ensure the player has moved the maze first
+    private boolean hasMovedMaze;
+
+
+    /*
+    Welcome to the constructor this is where we create the game
+     */
+    public LabGameState(){
+
+    }
 
 }
