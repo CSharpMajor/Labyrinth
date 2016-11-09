@@ -1,3 +1,4 @@
+/*
 package edu.up.cs301.tictactoe;
 
 import android.app.Activity;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import edu.up.cs301.game.util.FlashSurfaceView;
 
+*/
 /**
  * A SurfaceView which allows which an animation to be drawn on it by a
  * Animator.
@@ -22,7 +24,8 @@ import edu.up.cs301.game.util.FlashSurfaceView;
  * @version 23 September 2016
  *
  *
- */
+ *//*
+
 public class TTTSurfaceView extends FlashSurfaceView {
 
     // some constants, which are percentages with respect to the minimum
@@ -42,9 +45,11 @@ public class TTTSurfaceView extends FlashSurfaceView {
     private final static float SQUARE_DELTA_PERCENT = SQUARE_SIZE_PERCENT
             + LINE_WIDTH_PERCENT; // distance from left (or top) edge of square to the next one
 
-    /*
+    */
+/*
 	 * Instance variables
-	 */
+	 *//*
+
 
     // the game's state
     protected TTTState state;
@@ -58,31 +63,37 @@ public class TTTSurfaceView extends FlashSurfaceView {
     // size
     protected float fullSquare;
 
-    /**
+    */
+/**
      * Constructor for the TTTSurfaceView class.
      *
      * @param context - a reference to the activity this animation is run under
-     */
+     *//*
+
     public TTTSurfaceView(Context context) {
         super(context);
         init();
     }// ctor
 
-    /**
+    */
+/**
      * An alternate constructor for use when a subclass is directly specified
      * in the layout.
      *
      * @param context - a reference to the activity this animation is run under
      * @param attrs   - set of attributes passed from system
-     */
+     *//*
+
     public TTTSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }// ctor
 
-    /**
+    */
+/**
      * Helper-method for the constructors
-     */
+     *//*
+
     private void init() {
         setBackgroundColor(backgroundColor());
     }// init
@@ -92,29 +103,35 @@ public class TTTSurfaceView extends FlashSurfaceView {
         this.state = state;
     }
 
-    /**
+    */
+/**
      * @return
      * 		the color to paint the tic-tac-toe lines, and the X's and O's
-     */
+     *//*
+
     public int foregroundColor() {
         return Color.YELLOW;
     }
 
-    /**
+    */
+/**
      * @return
      * 		the color to paint the tic-tac-toe lines, and the X's and O's
-     */
+     *//*
+
     public int backgroundColor() {
         return Color.BLUE;
     }
 
-    /**
+    */
+/**
      * callback method, called whenever it's time to redraw
      * frame
      *
      * @param g
      * 		the canvas to draw on
-     */
+     *//*
+
     public void onDraw(Canvas g) {
 
         // update the variables that relate
@@ -149,12 +166,14 @@ public class TTTSurfaceView extends FlashSurfaceView {
         }
     }
 
-    /**
+    */
+/**
      * update the instance variables that relate to the drawing surface
      *
      * @param g
      * 		an object that references the drawing surface
-     */
+     *//*
+
     private void updateDimensions(Canvas g) {
 
         // initially, set the height and width to be that of the
@@ -189,7 +208,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
     private static float[] xPoints2 = { 87.5f, 6.25f, 93.75f, 12.5f };
     private static float[] yPoints2 = { 6.25f, 87.5f, 12.5f, 93.75f };
 
-    /**
+    */
+/**
      * Draw a symbol (X or O) on the canvas in a particular location
      *
      * @param g
@@ -200,7 +220,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
      *            the column number of the square on which to draw (0, 1 or 2)
      * @param col
      *            the row number of the square on which to draw (0, 1 or 2)
-     */
+     *//*
+
     protected void drawSymbol(Canvas g, char sym, int col, int row) {
 
         // compute the pixel-location
@@ -251,7 +272,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
         }
     }
 
-    /**
+    */
+/**
      * helper-method to create a scaled polygon (Path) object from a list of points
      *
      * @param xPoints
@@ -261,7 +283,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
      * @param scale
      * 		factor by which to scale them
      * @return
-     */
+     *//*
+
     private Path createPoly(float[] xPoints, float[] yPoints, float scale) {
 
         // in case array-lengths are different, take the minimim length, to avoid
@@ -282,7 +305,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
         return rtnVal;
     }
 
-    /**
+    */
+/**
      * maps a point from the canvas' pixel coordinates to "square" coordinates
      *
      * @param x
@@ -293,7 +317,8 @@ public class TTTSurfaceView extends FlashSurfaceView {
      *		a Point whose components are in the range 0-2, indicating the
      *		column and row of the corresponding square on the tic-tac-toe
      * 		board, or null if the point does not correspond to a square
-     */
+     *//*
+
     public Point mapPixelToSquare(int x, int y) {
 
         // loop through each square and see if we get a "hit"; if so, return
@@ -316,29 +341,33 @@ public class TTTSurfaceView extends FlashSurfaceView {
         return null;
     }
 
-    /**
+    */
+/**
      * helper-method to convert from a percentage to a horizontal pixel location
      *
      * @param percent
      * 		the percentage across the drawing square
      * @return
      * 		the pixel location that corresponds to that percentage
-     */
+     *//*
+
     private float h(float percent) {
         return hBase + percent * fullSquare / 100;
     }
 
-    /**
+    */
+/**
      * helper-method to convert from a percentage to a vertical pixel location
      *
      * @param percent
      * 		the percentage down the drawing square
      * @return
      * 		the pixel location that corresponds to that percentage
-     */
+     *//*
+
     private float v(float percent) {
         return vBase + percent * fullSquare / 100;
     }
 
 
-}
+}*/
