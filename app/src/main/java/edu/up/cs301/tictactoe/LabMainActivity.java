@@ -28,6 +28,7 @@ public class LabMainActivity extends GameMainActivity {
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
+/*
 		// yellow-on-blue GUI
 		playerTypes.add(new GamePlayerType("Local Human Player (blue-yellow)") {
 			public GamePlayer createPlayer(String name) {
@@ -35,19 +36,15 @@ public class LabMainActivity extends GameMainActivity {
 			}
 		});
 		
-		// red-on-yellow GUI
-		playerTypes.add(new GamePlayerType("Local Human Player (yellow-red)") {
-			public GamePlayer createPlayer(String name) {
-				return new LabHumanPlayer(name, R.layout.ttt_human_player1_flipped);
-			}
-		});
+*/
+
 
 		// dumb computer player
-		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
-			public GamePlayer createPlayer(String name) {
-				return new LabComputerPlayer(name);
-			}
-		});
+		//playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
+		//	public GamePlayer createPlayer(String name) {
+		//		return new LabComputerPlayer(name);
+		//	}
+		//});
 		
 		// smarter computer player
 		playerTypes.add(new GamePlayerType("Computer Player (smart)") {

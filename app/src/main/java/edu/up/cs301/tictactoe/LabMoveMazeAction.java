@@ -12,19 +12,20 @@ import edu.up.cs301.game.actionMsg.GameAction;
  */
 public class LabMoveMazeAction extends GameAction
 {
-	private static final long serialVersionUID = -2242980258970485343L;
-	
 	// instance variables: the selected row and column
     private int row;
     private int col;
 
     /**
-     * Constructor for TTTMoveAction
+     * constructor for GameAction
      *
-     * @param source the player making the move
-     * @param row the row of the square selected (0-2)
-     * @param col the column of the square selected
+     * @param player the player who created the action
      */
+    public LabMoveMazeAction(GamePlayer player) {
+        super(player);
+    }
+
+/*
     public LabMoveMazeAction(GamePlayer player, int row, int col)
     {
         // invoke superclass constructor to set the player
@@ -34,19 +35,7 @@ public class LabMoveMazeAction extends GameAction
         this.row = Math.max(0, Math.min(2, row));
         this.col = Math.max(0, Math.min(2, col));
     }
+*/
 
-    /**
-     * get the object's row
-     *
-     * @return the row selected
-     */
-    public int getRow() { return row; }
-
-    /**
-     * get the object's column
-     *
-     * @return the column selected
-     */
-    public int getCol() { return col; }
 
 }
