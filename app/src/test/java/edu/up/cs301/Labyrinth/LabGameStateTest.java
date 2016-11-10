@@ -24,8 +24,11 @@ public class LabGameStateTest {
 
     }
 
+
+
     @Test
     public void testGetPlayerCollected() throws Exception {
+        LabGameState testState = new LabGameState();
 
     }
 

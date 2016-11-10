@@ -5,4 +5,5 @@ package edu.up.cs301.Labyrinth;
  */
 
 public class TCard {
+    public int num;
 }

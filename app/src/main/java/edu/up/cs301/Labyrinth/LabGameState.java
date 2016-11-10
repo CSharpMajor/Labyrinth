@@ -1,5 +1,6 @@
 package edu.up.cs301.Labyrinth;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.up.cs301.game.infoMsg.GameState;
@@ -35,7 +36,13 @@ public class LabGameState extends GameState
     Welcome to the constructor this is where we create the game
      */
     public LabGameState(){
-
+        ArrayList<TCard> hand = new ArrayList<TCard>(4);
+        for(int i = 0; i < 4; i++) {
+            TCard card = new TCard();
+            card.num = i;
+            hand.add(card);
+        }
+        cardsToCollect.add(hand);
     }
 
     public LabGameState( LabGameState copy )
