@@ -46,6 +46,14 @@ public class LabGameState extends GameState
             hand.add(card);
         }
         cardsToCollect.add(hand);
+
+        ArrayList<TCard> hand2 = new ArrayList<TCard>(4);
+        for(int i = 0; i < 4; i++) {
+            TCard card = new TCard();
+            card.num = i+4;
+            hand2.add(card);
+        }
+        cardsCollected.add(hand2);
     }
 
     public LabGameState( LabGameState copy )
@@ -86,7 +94,10 @@ public class LabGameState extends GameState
 
     public void collectTCard( int playerIndex )
     {
-
+        TCard toAdd = new TCard();
+        toAdd.num = cardsToCollect.get(playerIndex).get(0).num;
+        cardsCollected.get(playerIndex).add(toAdd);
+        cardsToCollect.get(playerIndex).remove(0);
     }
 
     public int[] getPlayerCurTile( int playerIndex )
