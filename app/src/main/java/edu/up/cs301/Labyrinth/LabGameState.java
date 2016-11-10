@@ -54,6 +54,16 @@ public class LabGameState extends GameState
             hand2.add(card);
         }
         cardsCollected.add(hand2);
+
+        //grosssssss
+        maze = new MazeTile[9][9];
+        for( int r = 0; r < 9; r++ )
+        {
+            for( int c = 0; c < 9; c++ )
+            {
+                maze[r][c] = new MazeTile(0);
+            }
+        }
     }
 
     public LabGameState( LabGameState copy )
@@ -63,7 +73,7 @@ public class LabGameState extends GameState
 
     public MazeTile[][] getMaze()
     {
-        return null;
+        return maze;
     }
 
     public int getTurnID()
