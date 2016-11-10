@@ -38,4 +38,43 @@ public class LabGameState extends GameState
 
     }
 
+    public LabGameState( LabGameState copy )
+    {
+
+    }
+
+    public MazeTile[][] getMaze()
+    {
+        return null;
+    }
+
+    public int getTurnID()
+    {
+        return -1;
+    }
+
+    public ArrayList<TCard> getPlayerHand( int playerIndex )
+    {
+        return null;
+    }
+
+    public ArrayList<TCard> getPlayerCollected( int playerIndex )
+    {
+        return null;
+    }
+
+    public void setMaze( MazeTile[][] newMaze )
+    {
+
+    }
+
+    public void collectTCard( int playerIndex )
+    {
+
+    }
+
+    public int[] getPlayerCurTile( int playerIndex )
+    {
+        return null;
+    }
 }
