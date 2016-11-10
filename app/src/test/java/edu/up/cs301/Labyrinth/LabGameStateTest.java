@@ -80,6 +80,23 @@ public class LabGameStateTest {
 
     @Test
     public void testSetMaze() throws Exception {
+        LabGameState testState = new LabGameState();
+        MazeTile[][] preSetMaze = new MazeTile[9][9];
+        for( int r = 0; r < 9; r++ )
+        {
+            for( int c = 0; c < 9; c++ )
+            {
+                preSetMaze[r][c] = new MazeTile(r+c);
+            }
+        }
+        testState.setMaze(preSetMaze);
+        for( int r = 0; r < 9; r++ )
+        {
+            for( int c = 0; c < 9; c++ )
+            {
+                assertTrue(testState.getMaze()[r][c].val == preSetMaze[r][c].val);
+            }
+        }
 
     }
 
@@ -96,6 +113,28 @@ public class LabGameStateTest {
 
     @Test
     public void testGetPlayerCurTile() throws Exception {
+        LabGameState testState = new LabGameState();
+        MazeTile[][] testMaze = testState.getMaze();
 
+        testMaze[2][2].occupiedBy.add(1);
+
+        testState.setMaze(testMaze);
+
+        MazeTile[][] compareMaze = testState.getMaze();
+        int[] coordsFound = new int[2];
+
+        for(int i = 0; i < compareMaze.length; i++)
+        {
+            for(int j = 0; j < compareMaze[i].length; j++)
+            {
+                if(compareMaze[i][j].occupiedBy.contains((Integer) 1)){
+                    coordsFound[0] = i;
+                    coordsFound[1] = j;
+                }
+            }
+        }
+
+        assertTrue(coordsFound[0] == 2);
+        assertTrue(coordsFound[1] == 2);
     }
 }

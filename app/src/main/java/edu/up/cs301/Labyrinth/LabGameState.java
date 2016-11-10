@@ -112,6 +112,19 @@ public class LabGameState extends GameState
 
     public int[] getPlayerCurTile( int playerIndex )
     {
-        return null;
+        int[] coords = new int[2];
+        for(int i = 0; i < maze.length; i++)
+        {
+            for(int j = 0; j < maze[i].length; j++)
+            {
+                if(maze[i][j].occupiedBy.get(0) == playerIndex)
+                {
+                    coords[0] = i;
+                    coords[1] = j;
+
+                }
+            }
+        }
+        return coords;
     }
 }
