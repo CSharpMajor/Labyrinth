@@ -36,6 +36,9 @@ public class LabGameState extends GameState
     Welcome to the constructor this is where we create the game
      */
     public LabGameState(){
+        //sets turn to player 0
+        turnID = 0;
+
         ArrayList<TCard> hand = new ArrayList<TCard>(4);
         for(int i = 0; i < 4; i++) {
             TCard card = new TCard();
@@ -57,12 +60,12 @@ public class LabGameState extends GameState
 
     public int getTurnID()
     {
-        return -1;
+        return turnID;
     }
 
     public ArrayList<TCard> getPlayerHand( int playerIndex )
     {
-        return null;
+        return cardsToCollect.get( playerIndex );
     }
 
     public ArrayList<TCard> getPlayerCollected( int playerIndex )

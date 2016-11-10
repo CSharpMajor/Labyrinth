@@ -3,6 +3,8 @@ package edu.up.cs301.Labyrinth;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -50,12 +52,19 @@ public class LabGameStateTest {
 
     @Test
     public void testGetTurnID() throws Exception {
+        LabGameState state = new LabGameState();
 
+        assertTrue( state.getTurnID() == 0 );
     }
 
     @Test
     public void testGetPlayerHand() throws Exception {
+        LabGameState state = new LabGameState();
+        ArrayList<TCard> cards = state.getPlayerHand(0);
 
+        for(int i = 0; i < 4; i++) {
+            assertTrue( cards.get(i).num == i );
+        }
     }
 
 
