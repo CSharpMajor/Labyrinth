@@ -5,4 +5,11 @@ package edu.up.cs301.Labyrinth;
  */
 
 public class MazeTile {
+
+    public int val;
+
+    public MazeTile( int i )
+    {
+        val = i;
+    }
 }

@@ -80,7 +80,13 @@ public class LabGameState extends GameState
 
     public void setMaze( MazeTile[][] newMaze )
     {
-
+        for( int r = 0; r < 9; r++ )
+        {
+            for( int c = 0; c < 9; c++ )
+            {
+                maze[r][c] = newMaze[r][c];
+            }
+        }
     }
 
     public void collectTCard( int playerIndex )
