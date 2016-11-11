@@ -8,7 +8,12 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * Created by kuhar19 on 11/9/2016.
+ * Testing the LabGameState class
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Nov 2016, preAlpha
  */
 public class LabGameStateTest {
 

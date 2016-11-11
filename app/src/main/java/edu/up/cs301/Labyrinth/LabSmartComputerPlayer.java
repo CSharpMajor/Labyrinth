@@ -9,9 +9,11 @@ import android.graphics.Point;
  * or loss, and plays appropriately.  If there is not an immediate win
  * (which it plays) or loss (which it blocks), it moves randomly.
  *
- * @author Steven R. Vegdahl 
- * @version September 2016
- *
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Nov 2016, preAlpha
  */
 public class LabSmartComputerPlayer extends GameComputerPlayer
 {

@@ -10,10 +10,13 @@ import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 
 /**
- * this is the primary activity for Counter game
+ * this is the primary activity for Labyrinth game
  * 
- * @author Steven R. Vegdahl
- * @version July 2013
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Nov 2016, preAlpha
  */
 public class LabMainActivity extends GameMainActivity {
 	
