@@ -15,10 +15,6 @@ import edu.up.cs301.game.actionMsg.GameAction;
  */
 public class LabMoveMazeAction extends GameAction
 {
-	// instance variables: the selected row and column
-    private int row;
-    private int col;
-
     /**
      * constructor for GameAction
      *
@@ -28,6 +24,7 @@ public class LabMoveMazeAction extends GameAction
         super(player);
     }
 
+    //The code below is for testing(?)
 /*
     public LabMoveMazeAction(GamePlayer player, int row, int col)
     {
