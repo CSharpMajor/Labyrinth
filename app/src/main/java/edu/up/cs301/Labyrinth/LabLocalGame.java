@@ -6,11 +6,14 @@ import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 
 /**
- * The TTTLocalGame class for a simple tic-tac-toe game.  Defines and enforces
+ * The LabyrinthLocalGame class for a Labyrinth game.  Defines and enforces
  * the game rules; handles interactions with players.
  * 
- * @author Steven R. Vegdahl 
- * @version July 2013
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Nov 2016, preAlpha
  */
 
 public class LabLocalGame extends LocalGame {

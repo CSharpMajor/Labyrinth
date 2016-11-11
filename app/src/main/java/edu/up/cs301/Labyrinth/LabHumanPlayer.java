@@ -22,11 +22,13 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 /**
- * A GUI that allows a human to play tic-tac-toe. Moves are made by clicking
- * regions on a canvas
+ * A GUI that allows a human to play Labyrinth.
  *
- * @author Steven R. Vegdahl
- * @version September 2016
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Nov 2016, preAlpha
  */
 public class LabHumanPlayer extends GameHumanPlayer implements View.OnTouchListener {
 
