@@ -22,7 +22,7 @@ public class LabLocalGame extends LocalGame {
 	private boolean[][] booleanMazeMap = new boolean[9][9];
 
 	/*
-	 * Welocome to the lovely loval game constructor
+	 * Welocome to the lovely local game constructor
 	 */
 	public LabLocalGame(){
 		masterGameState = new LabGameState();
