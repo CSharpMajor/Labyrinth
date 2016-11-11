@@ -6,7 +6,6 @@
     android:layout_height="match_parent" >
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
@@ -46,8 +45,9 @@
                 android:src="@android:drawable/ic_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton3"
-                android:layout_weight="1" />
+                android:id="@+id/top left col button"
+                android:layout_weight="1"
+                android:contentDescription="" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -84,7 +84,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/top buttons"></LinearLayout>
+            android:id="@+id/top buttons">
+
+            <ImageButton
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton4" />
+
+            <ImageButton
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton5" />
+        </LinearLayout>
 
         <SurfaceView
             android:layout_width="wrap_content"
