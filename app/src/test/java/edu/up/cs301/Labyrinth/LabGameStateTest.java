@@ -20,37 +20,28 @@ public class LabGameStateTest {
     @Test
     public void testGetMaze() throws Exception {
         LabGameState state = new LabGameState();
-        MazeTile ourMaze[][] = { { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}, { new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0), new MazeTile(0),
-                new MazeTile(0)}};
+        MazeTile ourMaze[][] = new MazeTile[9][9];
+
+        //TODO create the maze like we do in onCreate
+        for( int r = 0; r < ourMaze.length; r++)
+        {
+            for( int c = 0; c < ourMaze[r].length; c++)
+            {
+                ourMaze[r][c] = new MazeTile( 'S', LabTSymbol.COFFEE_MUG );
+            }
+        }
 
         state.setMaze(ourMaze);
         MazeTile[][] stateMaze = state.getMaze();
 
-        for( int r = 0; r < 9; r++ )
+        for( int r = 0; r < stateMaze.length; r++ )
         {
-            for( int c = 0; c < 9; c++ )
+            for( int c = 0; c < stateMaze[r].length; c++ )
             {
-                assertTrue( ourMaze[r][c].val == 0 );
-                assertTrue( ourMaze[r][c].val == stateMaze[r][c].val);
+                assertTrue( ourMaze[r][c].getLabTSymbol().
+                            getName().equals( stateMaze[r][c].getLabTSymbol().
+                            getName() ) );
+                assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
             }
         }
     }
@@ -99,7 +90,10 @@ public class LabGameStateTest {
         {
             for( int c = 0; c < 9; c++ )
             {
-                assertTrue(testState.getMaze()[r][c].val == preSetMaze[r][c].val);
+                assertTrue(testState.getMaze()[r][c].getLabTSymbol().
+                        getName().equals( preSetMaze[r][c].getLabTSymbol().getName()));
+                assertTrue(testState.getMaze()[r][c].getType() ==
+                        preSetMaze[r][c].getType());
             }
         }
 

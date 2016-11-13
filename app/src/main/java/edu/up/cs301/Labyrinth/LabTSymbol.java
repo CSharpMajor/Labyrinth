@@ -32,6 +32,9 @@ public enum LabTSymbol {
     MAP( "map" ),
     SCARAB( "scarab" ),
     HELMET( "knight's helmet" ),
+    EMPTY_S( "straight empty" ),
+    EMPTY_L( "L-shaped empty" ),
+    EMPTY_T( "T-shaped empty" ),
     CHEST( "treasure chest" );
 
     private String name;
@@ -48,5 +51,10 @@ public enum LabTSymbol {
     LabTSymbol( String str )
     {
         this.name = str;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }
