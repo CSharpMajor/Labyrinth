@@ -34,10 +34,7 @@ public class LabLocalGame extends LocalGame {
 	 * player’s turn whose index was passed to the method
 	 */
 	protected boolean canMove(int playerIdx) {
-		if(masterGameState.getTurnID() == playerIdx){
-			return true;
-		}
-		return false;
+		return playerIdx == masterGameState.getTurnID();
 	}
 
 
@@ -50,6 +47,31 @@ public class LabLocalGame extends LocalGame {
 	 * hand is empty and if they have returned to their home maze tile.
 	 */
 	protected String checkIfGameOver() {
+		//top left is green = 0 palyer Index
+		//top right is red = 1 palyer Index
+		//bottom left is blue = 2 palyer Index
+		//bottom right is yellow = 3 palyer Index
+		MazeTile[][] masterMaze = masterGameState.getMaze();
+		if(masterGameState.getTurnID() == 0){
+			if(masterMaze[1][1].occupiedBy.contains(0) && masterGameState.getPlayerHand(0).size()==0){
+				return "The Green Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 1){
+			if(masterMaze[7][1].occupiedBy.contains(1) && masterGameState.getPlayerHand(1).size()==0){
+				return "The Red Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 2){
+			if(masterMaze[1][7].occupiedBy.contains(2) && masterGameState.getPlayerHand(2).size()==0){
+				return "The Blue Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 3){
+			if(masterMaze[7][7].occupiedBy.contains(3) && masterGameState.getPlayerHand(3).size()==0){
+				return "The Green Player Has Won";
+			}
+		}
 		return null;
 	}
 
@@ -60,6 +82,15 @@ public class LabLocalGame extends LocalGame {
 	 * it is and then calls either of the helper makeMove methods listed below:
 	 */
 	protected boolean makeMove(GameAction action) {
+		if (canMove(this.getPlayerIdx(action.getPlayer()))) {
+			if(action instanceof LabMoveMazeAction){
+				return makeMazeMove(action);
+			}
+			else if(action instanceof LabMovePieceAction){
+				return makePlayerPieceMove(action);
+			}
+		}
+
 		return false;
 	}
 
@@ -68,7 +99,9 @@ public class LabLocalGame extends LocalGame {
 	 * helper methods for makeMove(). This will shift the maze row or column so that the extra maze tile is
 	 * in the maze and the tile on the opposing side is pushed out of the maze.
 	 */
-	private boolean makeMazeMove(LabMoveMazeAction action){
+	private boolean makeMazeMove(GameAction action){
+		action = (LabMoveMazeAction) action;
+		
 		return false;
 	}
 
@@ -78,7 +111,8 @@ public class LabLocalGame extends LocalGame {
 	 * it will remove the player from the occupiedBy arrayList of the current
 	 * tile and add the player to the occupiedBy ArrayList of the selected tile
 	 */
-	private boolean makePlayerPieceMove(LabMovePieceAction action){
+	private boolean makePlayerPieceMove(GameAction action){
+		action = (LabMovePieceAction) action;
 		return false;
 	}
 
