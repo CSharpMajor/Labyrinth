@@ -101,9 +101,10 @@ public class LabLocalGame extends LocalGame {
 	 */
 	private boolean makeMazeMove(GameAction action){
 		action = (LabMoveMazeAction) action;
-		
+
 		return false;
 	}
+
 
 	/*
 	 * makePlayerPeiceMove(action:LabMovePieceAction):boolean - this is the other helper method for makeMove() this method
