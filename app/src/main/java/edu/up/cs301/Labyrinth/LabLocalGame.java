@@ -47,10 +47,10 @@ public class LabLocalGame extends LocalGame {
 	 * hand is empty and if they have returned to their home maze tile.
 	 */
 	protected String checkIfGameOver() {
-		//top left is green = 0 palyer Index
-		//top right is red = 1 palyer Index
-		//bottom left is blue = 2 palyer Index
-		//bottom right is yellow = 3 palyer Index
+		//top left is green = 0 player Index
+		//top right is red = 1 player Index
+		//bottom left is blue = 2 player Index
+		//bottom right is yellow = 3 player Index
 		MazeTile[][] masterMaze = masterGameState.getMaze();
 		if(masterGameState.getTurnID() == 0){
 			if(masterMaze[1][1].occupiedBy.contains(0) && masterGameState.getPlayerHand(0).size()==0){
@@ -69,7 +69,7 @@ public class LabLocalGame extends LocalGame {
 		}
 		else if(masterGameState.getTurnID() == 3){
 			if(masterMaze[7][7].occupiedBy.contains(3) && masterGameState.getPlayerHand(3).size()==0){
-				return "The Green Player Has Won";
+				return "The Yellow Player Has Won";
 			}
 		}
 		return null;

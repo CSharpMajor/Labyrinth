@@ -18,8 +18,9 @@ public class LabLocalGameTest {
     @Test
     public void checkIfGameOver() throws Exception {
         LabLocalGame testLocal = new LabLocalGame();
-        assertTrue(testLocal.checkIfGameOver().equals("The Red Player Has Won") == true);
+        assertTrue(testLocal.checkIfGameOver().equals("The Red Player Has Won"));
     }
+
 
     @Test
     public void makeMove() throws Exception {
