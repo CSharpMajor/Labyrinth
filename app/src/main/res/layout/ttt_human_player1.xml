@@ -30,10 +30,10 @@
             <TextView
                 android:text="AREA FOR THE TURN INFO"
                 android:layout_width="match_parent"
-                android:id="@+id/textView"
                 tools:ignore="HardcodedText,Suspicious0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:id="@+id/@+id/turnInfo" />
 
             <Button
                 android:text="# of Blue Treasures"
