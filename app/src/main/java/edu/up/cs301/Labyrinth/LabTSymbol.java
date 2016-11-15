@@ -36,8 +36,13 @@ public enum LabTSymbol {
 
     private String name;
 
+    /*
+        PSA: All of the pictures for the LabTSymbols will go into the res/drawable folder
+     */
+
     /**
      * TODO: Assosiate with a picture for the GUI
+     * I know how to do this- I'll do it after we get the alpha code working - Nicole
      * @param str the text to be displayed on the tile
      */
     LabTSymbol( String str )

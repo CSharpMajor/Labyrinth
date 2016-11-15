@@ -9,5 +9,17 @@ package edu.up.cs301.Labyrinth;
  */
 
 public class TCard {
-    public int num;
+    //The symbol of this Treasure Card
+    private LabTSymbol symbol;
+
+    //Constructor for the Treasure Card
+    public void TCard(LabTSymbol treasure)
+    {
+        this.symbol = treasure;
+    }
+    //Getter for the treasure on the card
+    public LabTSymbol getTreasure()
+    {
+        return this.symbol;
+    }
 }

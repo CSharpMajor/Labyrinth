@@ -40,7 +40,7 @@ public class LabGameState extends GameState
      */
     public LabGameState(){
         //sets turn to player 0
-        turnID = 0;
+        turnID = 1;
 
         ArrayList<TCard> hand = new ArrayList<TCard>(4);
         for(int i = 0; i < 4; i++) {
@@ -58,6 +58,10 @@ public class LabGameState extends GameState
         }
         cardsCollected.add(hand2);
 
+        ArrayList<TCard> hand3 = new ArrayList<TCard>(0);
+        cardsToCollect.add(hand3);
+
+
         //grosssssss
         maze = new MazeTile[9][9];
         for( int r = 0; r < 9; r++ )
@@ -67,6 +71,9 @@ public class LabGameState extends GameState
                 maze[r][c] = new MazeTile(0);
             }
         }
+
+        //blue player is home
+        maze[1][7].occupiedBy.add(2);
     }
 
     public LabGameState( LabGameState copy )
@@ -83,6 +90,8 @@ public class LabGameState extends GameState
     {
         return turnID;
     }
+
+    public void setTurnID(int playerIndex) { turnID = playerIndex ; }
 
     public ArrayList<TCard> getPlayerHand( int playerIndex )
     {
