@@ -11,10 +11,10 @@
         android:weightSum="1"
         tools:ignore="UselessParent"
         android:id="@+id/GIANT BACKGROUND"
+        android:background="#67361E"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#67361E">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
@@ -25,11 +25,11 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="0.50" />
 
             <TextView
-                android:text="this is the game information"
-                android:layout_width="103dp"
+                android:text="AREA FOR THE TURN INFO"
+                android:layout_width="match_parent"
                 android:id="@+id/textView"
                 tools:ignore="HardcodedText,Suspicious0dp"
                 android:layout_weight="1"
@@ -70,6 +70,13 @@
                 android:id="@+id/@+id/yTreasures"
                 android:textAllCaps="true"
                 android:background="#F4C430" />
+
+            <TextView
+                android:text="THIS IS WHAT TREASURE YOU WANT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:id="@+id/@+id/treasureTG" />
         </LinearLayout>
 
         <Space
@@ -282,6 +289,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/@+id/moveButton">
+
+            <Space
+                android:layout_width="1019dp"
+                android:layout_height="224dp" />
+
+            <Button
+                android:text="MOVE"
+                android:layout_width="177dp"
+                android:layout_height="177dp"
+                android:id="@+id/button5"
+                android:layout_weight="0.01" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="224dp" />
 
         </LinearLayout>
 
