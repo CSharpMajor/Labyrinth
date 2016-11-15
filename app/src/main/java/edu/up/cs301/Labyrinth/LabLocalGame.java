@@ -120,8 +120,31 @@ public class LabLocalGame extends LocalGame {
 	/*
 	 * this is the helper method for makePlayerPeiceMove()
 	 */
-	private boolean checkPath(MazeTile[][] maze, int xDest, int yDest){
-		return false;
+	private boolean checkPath(int xDest, int yDest){
+		MazeTile[][] maze = masterGameState.getMaze();
+		int[] currentPos = new int[2];
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				booleanMazeMap[i][j] = false;
+				if(maze[i][j].getOccupiedBy().contains( (Integer) masterGameState.getTurnID() ) ){
+					booleanMazeMap[i][j] = true;
+					currentPos[0] = i;
+					currentPos[1] = j;
+				}
+			}
+		}
+		boolean changeFlag = true;
+		while(changeFlag){
+			// case 1: the current tile is S
+			if(maze[currentPos[0]][currentPos[1]].getType() == 'S'){
+
+			}
+
+			//case 2: the current tile is T
+
+			//case 3: the current tile is L
+		}
+		return booleanMazeMap[xDest][yDest];
 	}
 
 	/*

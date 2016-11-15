@@ -17,30 +17,53 @@ public class MazeTile {
     //the players currently on this tile
     public ArrayList<Integer> occupiedBy = new ArrayList<Integer>(4);
 
-    //S(straight) T or L
-    private char type;
+//    //S(straight) T or L
+//    private char type;
+//
+//    //n = 0-3 n*90 = the degrees from noraml
+//    private int orientation;
 
-    //n = 0-3 n*90 = the degrees from noraml
-    private int orientation;
+    //boolean array to represent each side of the tile.
+    // True if it has a path on it will be rotated by the rotate method
+    //the 0th index is the top of the tile it then progresses around clockwise
+    private boolean[] pathMap;
 
     //the treasure
     private LabTSymbol treasureSymbol;
 
     /*
      * Welcome to this wonderful constructor takes the type and Symbol
+     * the type can be S for straght or L or T
      */
-    public MazeTile(char theType, LabTSymbol symbol)
+    public MazeTile(char type, LabTSymbol symbol)
     {
-        type = theType;
+        pathMap = new boolean[4];
+        if(type == 'S'){
+            pathMap[0]=false;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=true;
+        }
+        if(type == 'L'){
+            pathMap[0]=true;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=false;
+        }
+        if(type == 'T'){
+            pathMap[0]=false;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=true;
+        }
         treasureSymbol = symbol;
-        orientation = 0;
     }
 
     //getters for all the attributtes
 
-    public char getType(){ return type; }
-
-    public int getOrientation(){ return orientation; }
+//    public char getType(){ return type; }
+//
+//    public int getOrientation(){ return orientation; }
 
     public LabTSymbol getTreasureSymbol(){ return treasureSymbol; }
 
@@ -54,6 +77,10 @@ public class MazeTile {
     }
 
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
+
+    public void rotate(int nDegs){
+
+    }
 
 
 
