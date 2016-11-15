@@ -3,10 +3,6 @@ package edu.up.cs301.Labyrinth;
 import java.util.ArrayList;
 
 /**
- * The maze tiles are what make up the game board. The type and orientation will be used to check
- * for connected maze paths. The maze tiles will also keep track of the players who occupy it and
- * if it has a treasure, what that treasure is.
- *
  * @author Chloe Kuhar
  * @author Liz Frick
  * @author Nicole Kister
@@ -15,64 +11,80 @@ import java.util.ArrayList;
  */
 
 public class MazeTile {
+    //this is for dummy data
+    public int val;
 
-    private ArrayList<Integer> occupiedBy = new ArrayList<Integer>(1);  //lists which players are on
-                                                                        // the tile by their integer
-                                                                        // value
-    private char type; //either T, L, or S value
+    //the players currently on this tile
+    public ArrayList<Integer> occupiedBy = new ArrayList<Integer>(4);
 
-    private LabTSymbol symbol; //symbol on the tile (if any)
+//    //S(straight) T or L
+//    private char type;
+//
+//    //n = 0-3 n*90 = the degrees from noraml
+//    private int orientation;
 
-    private int orientation;    //values 0-3, to denote the number of 90 degree clockwise
-                                // rotations from the normal
+    //boolean array to represent each side of the tile.
+    // True if it has a path on it will be rotated by the rotate method
+    //the 0th index is the top of the tile it then progresses around clockwise
+    private boolean[] pathMap;
 
-    public MazeTile( char c, LabTSymbol sym )
-    {
-        type = c;
-        symbol = sym;
-        orientation = 0;
-    }
+    //the treasure
+    private LabTSymbol treasureSymbol;
 
-    public MazeTile( char c, LabTSymbol sym, int or)
-    {
-        type = c;
-        symbol = sym;
-        orientation = or;
-    }
-
-    public LabTSymbol getLabTSymbol()
-    {
-        return symbol;
-    }
-
-    /**
-     * this method takes the index of a player and adds it to the occupiedBy arrayList.
-     * This method is used when a player moves to a new tile.
-     * @param player the index of the player (0-3)
+    /*
+     * Welcome to this wonderful constructor takes the type and Symbol
+     * the type can be S for straght or L or T
      */
-    public void addPlayer( int player )
+    public MazeTile(char type, LabTSymbol symbol)
+    {
+        pathMap = new boolean[4];
+        if(type == 'S'){
+            pathMap[0]=false;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=true;
+        }
+        if(type == 'L'){
+            pathMap[0]=true;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=false;
+        }
+        if(type == 'T'){
+            pathMap[0]=false;
+            pathMap[1]=true;
+            pathMap[2]=false;
+            pathMap[3]=true;
+        }
+        treasureSymbol = symbol;
+    }
+
+    //getters for all the attributtes
+
+//    public char getType(){ return type; }
+//
+//    public int getOrientation(){ return orientation; }
+
+    public boolean[] getPathMap(){ return pathMap; }
+
+    public LabTSymbol getTreasureSymbol(){ return treasureSymbol; }
+
+    public ArrayList<Integer> getOccupiedBy(){ return occupiedBy; }
+
+    //setters for occupiedBy
+
+    public void addPlayer(int player)
     {
         occupiedBy.add(player);
     }
 
-    /**
-     * This method takes the integer of the player
-     * and removes the player from the occupiedBy arrayList.
-     * This method is to be used when a player moves off of a a tile
-     * @param player the index of the player (0-3)
-     */
-    public void removePlayer( int player )
-    {
-        occupiedBy.remove(occupiedBy.indexOf(player));
+    public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
+
+    public void rotate(int nDegs){
+
     }
 
-    public ArrayList<Integer> getOccupiedBy()
-    {
-        return occupiedBy;
-    }
 
-    public char getType()
-    {
-        return type;
-    }
+
+
 }

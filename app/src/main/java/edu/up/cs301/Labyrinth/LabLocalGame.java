@@ -34,10 +34,7 @@ public class LabLocalGame extends LocalGame {
 	 * player’s turn whose index was passed to the method
 	 */
 	protected boolean canMove(int playerIdx) {
-		if(masterGameState.getTurnID() == playerIdx){
-			return true;
-		}
-		return false;
+		return playerIdx == masterGameState.getTurnID();
 	}
 
 
@@ -50,6 +47,31 @@ public class LabLocalGame extends LocalGame {
 	 * hand is empty and if they have returned to their home maze tile.
 	 */
 	protected String checkIfGameOver() {
+		//top left is green = 0 player Index
+		//top right is red = 1 player Index
+		//bottom left is blue = 2 player Index
+		//bottom right is yellow = 3 player Index
+		MazeTile[][] masterMaze = masterGameState.getMaze();
+		if(masterGameState.getTurnID() == 0){
+			if(masterMaze[1][1].occupiedBy.contains(0) && masterGameState.getPlayerHand(0).size()==0){
+				return "The Green Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 1){
+			if(masterMaze[7][1].occupiedBy.contains(1) && masterGameState.getPlayerHand(1).size()==0){
+				return "The Red Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 2){
+			if(masterMaze[1][7].occupiedBy.contains(2) && masterGameState.getPlayerHand(2).size()==0){
+				return "The Blue Player Has Won";
+			}
+		}
+		else if(masterGameState.getTurnID() == 3){
+			if(masterMaze[7][7].occupiedBy.contains(3) && masterGameState.getPlayerHand(3).size()==0){
+				return "The Yellow Player Has Won";
+			}
+		}
 		return null;
 	}
 
@@ -60,6 +82,15 @@ public class LabLocalGame extends LocalGame {
 	 * it is and then calls either of the helper makeMove methods listed below:
 	 */
 	protected boolean makeMove(GameAction action) {
+		if (canMove(this.getPlayerIdx(action.getPlayer()))) {
+			if(action instanceof LabMoveMazeAction){
+				return makeMazeMove(action);
+			}
+			else if(action instanceof LabMovePieceAction){
+				return makePlayerPieceMove(action);
+			}
+		}
+
 		return false;
 	}
 
@@ -68,9 +99,12 @@ public class LabLocalGame extends LocalGame {
 	 * helper methods for makeMove(). This will shift the maze row or column so that the extra maze tile is
 	 * in the maze and the tile on the opposing side is pushed out of the maze.
 	 */
-	private boolean makeMazeMove(LabMoveMazeAction action){
+	private boolean makeMazeMove(GameAction action){
+		action = (LabMoveMazeAction) action;
+
 		return false;
 	}
+
 
 	/*
 	 * makePlayerPeiceMove(action:LabMovePieceAction):boolean - this is the other helper method for makeMove() this method
@@ -78,15 +112,58 @@ public class LabLocalGame extends LocalGame {
 	 * it will remove the player from the occupiedBy arrayList of the current
 	 * tile and add the player to the occupiedBy ArrayList of the selected tile
 	 */
-	private boolean makePlayerPieceMove(LabMovePieceAction action){
+	private boolean makePlayerPieceMove(GameAction action){
+		action = (LabMovePieceAction) action;
 		return false;
 	}
 
 	/*
 	 * this is the helper method for makePlayerPeiceMove()
 	 */
-	private boolean checkPath(MazeTile[][] maze, int xDest, int yDest){
-		return false;
+	private boolean checkPath(int xDest, int yDest){
+		MazeTile[][] maze = masterGameState.getMaze();
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				booleanMazeMap[i][j] = false;
+				if(maze[i][j].getOccupiedBy().contains( (Integer) masterGameState.getTurnID() ) ){
+					booleanMazeMap[i][j] = true;
+				}
+			}
+		}
+		boolean changeFlag = true;
+		while(changeFlag){
+			for(int i=0; i<9; i++){
+				for(int j=0; j<9; j++){
+					if(booleanMazeMap[i][j]){
+						//top
+						if(maze[i][j].getPathMap()[0] && maze[i-1][j].getPathMap()[2]){
+							booleanMazeMap[i-1][i] =true;
+							changeFlag=true;
+						}
+						//right
+						else if(maze[i][j].getPathMap()[1] && maze[i][j+1].getPathMap()[3]){
+							booleanMazeMap[i][j+1] =true;
+							changeFlag=true;
+						}
+						//bottom
+						else if(maze[i][j].getPathMap()[2] && maze[i+1][j].getPathMap()[0]){
+							booleanMazeMap[i+1][j] =true;
+							changeFlag=true;
+						}
+						//left
+						else if(maze[i][j].getPathMap()[3] && maze[i][j-1].getPathMap()[1]){
+							booleanMazeMap[i][j-1] =true;
+							changeFlag=true;
+						}
+						else{
+							changeFlag=false;
+						}
+					}
+				}
+			}
+
+		}
+		return booleanMazeMap[xDest][yDest];
 	}
 
 	/*

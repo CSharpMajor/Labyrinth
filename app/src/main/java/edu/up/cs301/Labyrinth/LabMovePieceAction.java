@@ -1,6 +1,5 @@
 package edu.up.cs301.Labyrinth;
 
-import edu.up.cs301.game.Game;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
@@ -15,13 +14,21 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @version Nov 2016, preAlpha
  */
 
-public class LabMovePieceAction extends GameAction{
+public class LabMovePieceAction extends GameAction {
+
+    // instance variables: the selected row and column
+    private int[] coords;
+
     /**
      * constructor for GameAction
      *
      * @param player the player who created the action
      */
-    public LabMovePieceAction(GamePlayer player) {
+    public LabMovePieceAction(GamePlayer player, int row, int col) {
         super(player);
+        // set the row and column as passed to us
+        coords = new int[2];
+        this.coords[0] = row;
+        this.coords[1] = col;
     }
 }
