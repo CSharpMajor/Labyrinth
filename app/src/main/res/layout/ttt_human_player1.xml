@@ -13,22 +13,69 @@
         android:id="@+id/GIANT BACKGROUND"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="#67361E">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/left info">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <TextView
                 android:text="this is the game information"
                 android:layout_width="103dp"
-                android:layout_height="0dp"
                 android:id="@+id/textView"
                 tools:ignore="HardcodedText,Suspicious0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_height="50dp" />
+
+            <Button
+                android:text="# of Blue Treasures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/@+id/bTreasures"
+                android:textAllCaps="true"
+                android:background="#08457E" />
+
+            <Button
+                android:text="# of red treasures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/@+id/rTreasures"
+                android:background="#CE1620"
+                android:textAllCaps="true" />
+
+            <Button
+                android:text="# of green treasures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/@+id/gTreasures"
+                android:background="#177245"
+                android:textAllCaps="true" />
+
+            <Button
+                android:text="# of yellow treasures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/@+id/yTreasures"
+                android:textAllCaps="true"
+                android:background="#F4C430" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.13" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -78,6 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
+
         </LinearLayout>
 
         <LinearLayout
