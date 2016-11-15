@@ -122,27 +122,46 @@ public class LabLocalGame extends LocalGame {
 	 */
 	private boolean checkPath(int xDest, int yDest){
 		MazeTile[][] maze = masterGameState.getMaze();
-		int[] currentPos = new int[2];
 		for(int i=0; i<9; i++){
 			for(int j=0; j<9; j++){
 				booleanMazeMap[i][j] = false;
 				if(maze[i][j].getOccupiedBy().contains( (Integer) masterGameState.getTurnID() ) ){
 					booleanMazeMap[i][j] = true;
-					currentPos[0] = i;
-					currentPos[1] = j;
 				}
 			}
 		}
 		boolean changeFlag = true;
 		while(changeFlag){
-			// case 1: the current tile is S
-			if(maze[currentPos[0]][currentPos[1]].getType() == 'S'){
-
+			for(int i=0; i<9; i++){
+				for(int j=0; j<9; j++){
+					if(booleanMazeMap[i][j]){
+						//top
+						if(maze[i][j].getPathMap()[0] && maze[i-1][j].getPathMap()[2]){
+							booleanMazeMap[i-1][i] =true;
+							changeFlag=true;
+						}
+						//right
+						else if(maze[i][j].getPathMap()[1] && maze[i][j+1].getPathMap()[3]){
+							booleanMazeMap[i][j+1] =true;
+							changeFlag=true;
+						}
+						//bottom
+						else if(maze[i][j].getPathMap()[2] && maze[i+1][j].getPathMap()[0]){
+							booleanMazeMap[i+1][j] =true;
+							changeFlag=true;
+						}
+						//left
+						else if(maze[i][j].getPathMap()[3] && maze[i][j-1].getPathMap()[1]){
+							booleanMazeMap[i][j-1] =true;
+							changeFlag=true;
+						}
+						else{
+							changeFlag=false;
+						}
+					}
+				}
 			}
 
-			//case 2: the current tile is T
-
-			//case 3: the current tile is L
 		}
 		return booleanMazeMap[xDest][yDest];
 	}

@@ -65,6 +65,8 @@ public class MazeTile {
 //
 //    public int getOrientation(){ return orientation; }
 
+    public boolean[] getPathMap(){ return pathMap; }
+
     public LabTSymbol getTreasureSymbol(){ return treasureSymbol; }
 
     public ArrayList<Integer> getOccupiedBy(){ return occupiedBy; }
