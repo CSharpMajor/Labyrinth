@@ -31,7 +31,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/left most buttons">
@@ -45,9 +45,10 @@
                 android:src="@android:drawable/ic_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/top left col button"
+                android:id="@+id/leftColT"
                 android:layout_weight="1"
-                android:contentDescription="" />
+                android:contentDescription=""
+                tools:ignore="ContentDescription" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
                 android:src="@android:drawable/ic_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
+                android:id="@+id/lefetColM"
                 android:layout_weight="1" />
 
             <Space
@@ -70,7 +71,7 @@
                 android:src="@android:drawable/ic_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton2"
+                android:id="@+id/leftColB"
                 android:layout_weight="1" />
 
             <Space
@@ -81,43 +82,130 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/top buttons">
+            android:layout_width="530dp"
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:src="@android:drawable/arrow_down_float"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton4" />
+                android:id="@+id/top buttons">
 
-            <ImageButton
-                android:src="@android:drawable/arrow_down_float"
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_down_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/topRowL" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_down_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/topRowM" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_down_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/topRowR" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <SurfaceView
+                android:layout_height="wrap_content"
+                android:id="@+id/ACTUAL MAZE"
+                android:layout_weight="1"
+                android:layout_width="match_parent" />
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton5" />
+                android:id="@+id/buttom buttons">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_up_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/botRowL"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_up_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/botRowM"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/arrow_up_float"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/botRowR"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <SurfaceView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ACTUAL MAZE"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/buttom buttons"></LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/right most buttons"></LinearLayout>
+            android:layout_weight="0.63"
+            android:id="@+id/right most buttons">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:src="?android:attr/floatingToolbarCloseDrawable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton10"
+                android:layout_weight="1" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
