@@ -38,10 +38,10 @@ public class LabGameStateTest {
         {
             for( int c = 0; c < stateMaze[r].length; c++ )
             {
-                assertTrue( ourMaze[r][c].getLabTSymbol().
-                            getName().equals( stateMaze[r][c].getLabTSymbol().
+                assertTrue( ourMaze[r][c].getTreasureSymbol().
+                            getName().equals( stateMaze[r][c].getTreasureSymbol().
                             getName() ) );
-                assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
+                //assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
             }
         }
     }
@@ -90,10 +90,10 @@ public class LabGameStateTest {
         {
             for( int c = 0; c < 9; c++ )
             {
-                assertTrue(testState.getMaze()[r][c].getLabTSymbol().
-                        getName().equals( preSetMaze[r][c].getLabTSymbol().getName()));
-                assertTrue(testState.getMaze()[r][c].getType() ==
-                        preSetMaze[r][c].getType());
+                assertTrue(testState.getMaze()[r][c].getTreasureSymbol().
+                        getName().equals( preSetMaze[r][c].getTreasureSymbol().getName()));
+                //assertTrue(testState.getMaze()[r][c].getType() ==
+                        //preSetMaze[r][c].getType());
             }
         }
 
