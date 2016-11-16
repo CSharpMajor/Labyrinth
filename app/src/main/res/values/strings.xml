@@ -20,4 +20,8 @@
     <string name="dialog_quit_question">Do you really want to quit?</string>
     <string name="local_tab">Local Game</string>
     <string name="remote_tab">Remote Game</string>
+    <string name="of_red_treasures"># of red treasures</string>
+    <string name="of_green_treasures"># of green treasures</string>
+    <string name="of_yellow_treasures"># of yellow treasures</string>
+    <string name="move">MOVE</string>
 </resources>

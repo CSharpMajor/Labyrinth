@@ -2,6 +2,7 @@ package edu.up.cs301.Labyrinth;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.up.cs301.game.infoMsg.GameState;
 
@@ -43,25 +44,26 @@ public class LabGameState extends GameState
     public LabGameState(){
         //sets turn to player 0
         turnID = 1;
-
-        ArrayList<TCard> hand = new ArrayList<TCard>(4);
-        for(int i = 0; i < 4; i++) {
-            TCard card = new TCard();
-            card.num = i;
-            hand.add(card);
+        ArrayList<TCard> deck = new ArrayList<TCard>(24);
+        for (LabTSymbol sym : LabTSymbol.values()) {
+            deck.add(new TCard(sym));
         }
-        cardsToCollect.add(hand);
 
-        ArrayList<TCard> hand2 = new ArrayList<TCard>(4);
-        for(int i = 0; i < 4; i++) {
-            TCard card = new TCard();
-            card.num = i+4;
-            hand2.add(card);
+        for(int i=0; i<4; i++){
+            ArrayList<TCard> hand = new ArrayList<TCard>(4);
+            for(int j = 0; j < 6; j++) {
+                Random rand = new Random();
+                TCard temp = deck.get(rand.nextInt(deck.size()));
+                hand.add(temp);
+                deck.remove(temp);
+            }
+            cardsToCollect.add(hand);
         }
-        cardsCollected.add(hand2);
+        for(int i=0; i<4; i++){
+            ArrayList<TCard> hand = new ArrayList<TCard>(0);
+            cardsToCollect.add(hand);
+        }
 
-        ArrayList<TCard> hand3 = new ArrayList<TCard>(0);
-        cardsToCollect.add(hand3);
 
 
         //grosssssss
@@ -70,7 +72,7 @@ public class LabGameState extends GameState
         {
             for( int c = 0; c < 9; c++ )
             {
-                maze[r][c] = new MazeTile(0);
+                //maze[r][c] = new MazeTile(0);
             }
         }
 
@@ -78,8 +80,8 @@ public class LabGameState extends GameState
         maze[1][7].occupiedBy.add(2);
     }
 
-    public LabGameState( LabGameState copy )
-    {
+    public LabGameState( LabGameState copy ){
+
 
     }
 
@@ -110,27 +112,19 @@ public class LabGameState extends GameState
         return cardsToCollect.get( playerIndex );
     }
 
-    public ArrayList<TCard> getPlayerCollected( int playerIndex )
-    {
-        return null;
-    }
+    public ArrayList<TCard> getPlayerCollected( int playerIndex ) { return cardsCollected.get(playerIndex); }
 
-    public void setMaze( MazeTile[][] newMaze )
-    {
-        for( int r = 0; r < 9; r++ )
-        {
-            for( int c = 0; c < 9; c++ )
-            {
+    public void setMaze( MazeTile[][] newMaze ){
+        for( int r = 0; r < 9; r++ ){
+            for( int c = 0; c < 9; c++ ){
                 maze[r][c] = newMaze[r][c];
             }
         }
     }
 
-    public void collectTCard( int playerIndex )
-    {
-        TCard toAdd = new TCard();
-        toAdd.num = cardsToCollect.get(playerIndex).get(0).num;
-        cardsCollected.get(playerIndex).add(toAdd);
+    public void collectTCard( int playerIndex ){
+        TCard move = cardsToCollect.get(playerIndex).get(0);
+        cardsCollected.get(playerIndex).add(move);
         cardsToCollect.get(playerIndex).remove(0);
     }
 

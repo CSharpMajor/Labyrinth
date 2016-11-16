@@ -13,7 +13,7 @@ public class TCard {
     private LabTSymbol symbol;
 
     //Constructor for the Treasure Card
-    public void TCard(LabTSymbol treasure)
+    public TCard(LabTSymbol treasure)
     {
         this.symbol = treasure;
     }
