@@ -16,6 +16,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
+        <Space android:layout_height="match_parent"
+            android:layout_width="10dp" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -25,7 +28,7 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.50" />
+                android:layout_weight="0.28" />
 
             <TextView
                 android:text="AREA FOR THE TURN INFO"
@@ -35,54 +38,59 @@
                 android:layout_height="50dp"
                 android:id="@+id/turnInfo" />
 
-            <Button
-                android:text="# of Blue Treasures"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/bTreasures"
-                android:textAllCaps="true"
-                android:background="#08457E" />
-
-            <Button
-                android:text="# of red treasures"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/rTreasures"
-                android:background="#CE1620"
-                android:textAllCaps="true" />
-
-            <Button
-                android:text="# of green treasures"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/gTreasures"
-                android:background="#177245"
-                android:textAllCaps="true" />
-
-            <Button
-                android:text="# of yellow treasures"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/yTreasures"
-                android:textAllCaps="true"
-                android:background="#F4C430" />
-
-            <TextView
-                android:text="THIS IS WHAT TREASURE YOU WANT"
+            <SurfaceView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.50"
-                android:id="@+id/treasureTG" />
+                android:background="#08457E"
+                android:id="@+id/@+id/blueTreasures" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28" />
+
+            <SurfaceView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/@+id/redTreasures"
+                android:background="#CE1620"
+                android:layout_weight="0.49" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28" />
+
+            <SurfaceView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:id="@+id/@+id/greenTreasures"
+                android:background="#177245" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28" />
+
+            <SurfaceView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:background="#F4C430"
+                android:id="@+id/@+id/yellowTreasures" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28" />
+
         </LinearLayout>
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.13" />
+            android:layout_width="18dp"
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -192,7 +200,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ACTUALMAZE"
                 android:layout_weight="1"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:background="#9999CC" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -304,10 +313,9 @@
 
             <Button
                 android:text="MOVE"
-                android:layout_width="177dp"
+                android:layout_width="148dp"
                 android:layout_height="177dp"
-                android:id="@+id/button5"
-                android:layout_weight="0.01" />
+                android:id="@+id/button5" />
 
             <Space
                 android:layout_width="match_parent"
