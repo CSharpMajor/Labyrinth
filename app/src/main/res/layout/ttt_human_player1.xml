@@ -305,7 +305,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/moveButton">
+            android:id="@+id/moveButton"
+            android:weightSum="1">
 
             <Space
                 android:layout_width="1019dp"
@@ -313,9 +314,10 @@
 
             <Button
                 android:text="MOVE"
-                android:layout_width="148dp"
+                android:layout_width="match_parent"
                 android:layout_height="177dp"
-                android:id="@+id/@+id/moveButton" />
+                android:id="@+id/@+id/moveButton"
+                android:layout_weight="0.90" />
 
             <Space
                 android:layout_width="match_parent"
