@@ -17,11 +17,11 @@ public class MazeTile {
     //the players currently on this tile
     public ArrayList<Integer> occupiedBy = new ArrayList<Integer>(4);
 
-//    //S(straight) T or L
-//    private char type;
-//
-//    //n = 0-3 n*90 = the degrees from noraml
-//    private int orientation;
+    //S(straight) T or L
+    private char type;
+
+    //n = 0-3 n*90 = the degrees from noraml
+    private int orientation=0;
 
     //boolean array to represent each side of the tile.
     // True if it has a path on it will be rotated by the rotate method
@@ -35,8 +35,9 @@ public class MazeTile {
      * Welcome to this wonderful constructor takes the type and Symbol
      * the type can be S for straght or L or T
      */
-    public MazeTile(char type, LabTSymbol symbol)
+    public MazeTile(char thetype, LabTSymbol symbol)
     {
+        type = thetype;
         pathMap = new boolean[4];
         if(type == 'S'){
             pathMap[0]=false;
@@ -61,7 +62,7 @@ public class MazeTile {
 
     //getters for all the attributtes
 
-//    public char getType(){ return type; }
+    public char getType(){ return type; }
 //
 //    public int getOrientation(){ return orientation; }
 
@@ -81,7 +82,17 @@ public class MazeTile {
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
 
     public void rotate(int nDegs){
+        orientation = nDegs;
+        for(int i=1; i<=nDegs; i++) {
+            boolean last = pathMap[pathMap.length - 1];          // save off first element
 
+            // shift right
+            for (int index = pathMap.length - 2; index >= 0; index--)
+                pathMap[index + 1] = pathMap[index];
+
+            // wrap last element into first slot
+            pathMap[0] = last;
+        }
     }
 
 
