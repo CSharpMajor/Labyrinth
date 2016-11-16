@@ -83,14 +83,16 @@ public class MazeTile {
 
     public void rotate(int nDegs){
         orientation = nDegs;
-        boolean last = pathMap[pathMap.length-1];          // save off first element
+        for(int i=1; i<=nDegs; i++) {
+            boolean last = pathMap[pathMap.length - 1];          // save off first element
 
-        // shift right
-        for( int index = pathMap.length-2; index >= 0 ; index-- )
-            pathMap[index+1] = pathMap[index];
+            // shift right
+            for (int index = pathMap.length - 2; index >= 0; index--)
+                pathMap[index + 1] = pathMap[index];
 
-        // wrap last element into first slot
-        pathMap[0] = last;
+            // wrap last element into first slot
+            pathMap[0] = last;
+        }
     }
 
 

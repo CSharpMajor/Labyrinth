@@ -45,7 +45,7 @@ public class LabGameState extends GameState
         ArrayList<TCard> hand = new ArrayList<TCard>(4);
         for(int i = 0; i < 4; i++) {
             TCard card = new TCard();
-            card.num = i;
+            //card.num = i;
             hand.add(card);
         }
         cardsToCollect.add(hand);
@@ -53,7 +53,7 @@ public class LabGameState extends GameState
         ArrayList<TCard> hand2 = new ArrayList<TCard>(4);
         for(int i = 0; i < 4; i++) {
             TCard card = new TCard();
-            card.num = i+4;
+            //card.num = i+4;
             hand2.add(card);
         }
         cardsCollected.add(hand2);
@@ -68,7 +68,7 @@ public class LabGameState extends GameState
         {
             for( int c = 0; c < 9; c++ )
             {
-                maze[r][c] = new MazeTile(0);
+                //maze[r][c] = new MazeTile(0);
             }
         }
 
@@ -117,7 +117,7 @@ public class LabGameState extends GameState
     public void collectTCard( int playerIndex )
     {
         TCard toAdd = new TCard();
-        toAdd.num = cardsToCollect.get(playerIndex).get(0).num;
+        //toAdd.num = cardsToCollect.get(playerIndex).get(0).num;
         cardsCollected.get(playerIndex).add(toAdd);
         cardsToCollect.get(playerIndex).remove(0);
     }

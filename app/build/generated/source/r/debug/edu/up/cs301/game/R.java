@@ -30,16 +30,10 @@ public final class R {
         public static final int purple_delete_button=0x7f020002;
     }
     public static final class id {
-        public static final int bTreasures=0x7f09001b;
-        public static final int gTreasures=0x7f09001d;
-        public static final int moveButton=0x7f090030;
-        public static final int rTreasures=0x7f09001c;
-        public static final int treasureTG=0x7f09001f;
-        public static final int turnInfo=0x7f09001a;
-        public static final int yTreasures=0x7f09001e;
         public static final int ACTUALMAZE=0x7f090028;
         public static final int GIANTBACKGROUND=0x7f090018;
         public static final int addPlayerButton=0x7f09000d;
+        public static final int bTreasures=0x7f09001b;
         public static final int backButton3=0x7f090050;
         public static final int botRowL=0x7f09002a;
         public static final int botRowM=0x7f09002b;
@@ -57,15 +51,17 @@ public final class R {
         public static final int button9=0x7f09003b;
         public static final int configTableLayout=0x7f090007;
         public static final int delPlayerButton=0x7f090011;
+        public static final int gTreasures=0x7f09001d;
         public static final int ipCodeLabel=0x7f090009;
         public static final int lefetColM=0x7f090022;
-        public static final int leftinfo=0x7f090019;
-        public static final int leftMostButtons=0x7f090020;
         public static final int leftColB=0x7f090023;
         public static final int leftColT=0x7f090021;
+        public static final int leftInfo=0x7f090019;
+        public static final int leftMostButtons=0x7f090020;
         public static final int localGameTab=0x7f090003;
         public static final int localTabLayout=0x7f090004;
         public static final int menu_settings=0x7f090051;
+        public static final int moveButton=0x7f090030;
         public static final int opponentName=0x7f090033;
         public static final int padding10Bot=0x7f09003f;
         public static final int padding10Top=0x7f09003d;
@@ -90,14 +86,15 @@ public final class R {
         public static final int playerNameHeadingText=0x7f09000b;
         public static final int playerTypeHeadingText=0x7f09000c;
         public static final int playerTypeSpinner=0x7f090010;
+        public static final int rTreasures=0x7f09001c;
         public static final int remoteGameTab=0x7f090005;
         public static final int remoteIPCodeEditText=0x7f090016;
         public static final int remoteNameEditText=0x7f090013;
         public static final int remoteTabLayout=0x7f090006;
         public static final int remote_player_spinner=0x7f090014;
-        public static final int rightmostbuttons=0x7f09002d;
         public static final int rightColM=0x7f09002f;
         public static final int rightColT=0x7f09002e;
+        public static final int rightmostbuttons=0x7f09002d;
         public static final int saveConfigButton=0x7f090001;
         public static final int serverIPCode=0x7f090015;
         public static final int surfaceView=0x7f090032;
@@ -107,11 +104,14 @@ public final class R {
         public static final int textView1=0x7f090008;
         public static final int textView2=0x7f09000e;
         public static final int thisPlayerName=0x7f09004f;
-        public static final int topbuttons=0x7f090024;
         public static final int topRowL=0x7f090025;
         public static final int topRowM=0x7f090026;
         public static final int topRowR=0x7f090027;
         public static final int top_gui_layout=0x7f090017;
+        public static final int topbuttons=0x7f090024;
+        public static final int treasureTG=0x7f09001f;
+        public static final int turnInfo=0x7f09001a;
+        public static final int yTreasures=0x7f09001e;
     }
     public static final class layout {
         public static final int game_config_main=0x7f030000;
