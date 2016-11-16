@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:weightSum="1"
         tools:ignore="UselessParent"
-        android:id="@+id/GIANT BACKGROUND"
+        android:id="@+id/GIANTBACKGROUND"
         android:background="#67361E"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -20,7 +20,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/left info">
+            android:id="@+id/leftInfo">
 
             <Space
                 android:layout_width="match_parent"
@@ -33,14 +33,14 @@
                 tools:ignore="HardcodedText,Suspicious0dp"
                 android:layout_weight="1"
                 android:layout_height="50dp"
-                android:id="@+id/@+id/turnInfo" />
+                android:id="@+id/turnInfo" />
 
             <Button
                 android:text="# of Blue Treasures"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/@+id/bTreasures"
+                android:id="@+id/bTreasures"
                 android:textAllCaps="true"
                 android:background="#08457E" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/@+id/rTreasures"
+                android:id="@+id/rTreasures"
                 android:background="#CE1620"
                 android:textAllCaps="true" />
 
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/@+id/gTreasures"
+                android:id="@+id/gTreasures"
                 android:background="#177245"
                 android:textAllCaps="true" />
 
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:id="@+id/@+id/yTreasures"
+                android:id="@+id/yTreasures"
                 android:textAllCaps="true"
                 android:background="#F4C430" />
 
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.50"
-                android:id="@+id/@+id/treasureTG" />
+                android:id="@+id/treasureTG" />
         </LinearLayout>
 
         <Space
@@ -88,7 +88,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/left most buttons">
+            android:id="@+id/leftMostButtons">
 
             <Space
                 android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/top buttons">
+                android:id="@+id/topbuttons">
 
                 <Space
                     android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
 
             <SurfaceView
                 android:layout_height="wrap_content"
-                android:id="@+id/ACTUAL MAZE"
+                android:id="@+id/ACTUALMAZE"
                 android:layout_weight="1"
                 android:layout_width="match_parent" />
 
@@ -198,7 +198,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/buttom buttons">
+                android:id="@+id/buttombuttons">
 
                 <Space
                     android:layout_width="wrap_content"
@@ -248,7 +248,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/right most buttons">
+            android:id="@+id/rightmostbuttons">
 
             <Space
                 android:layout_width="wrap_content"
@@ -296,7 +296,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/@+id/moveButton">
+            android:id="@+id/moveButton">
 
             <Space
                 android:layout_width="1019dp"
