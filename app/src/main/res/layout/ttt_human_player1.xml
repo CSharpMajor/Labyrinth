@@ -301,33 +301,46 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="match_parent" />
+
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/moveButton"
-            android:weightSum="1">
+            android:id="@+id/moveButtonArea"
+            android:weightSum="1"
+            android:layout_weight="0.99">
 
             <Space
-                android:layout_width="1019dp"
-                android:layout_height="224dp" />
+                android:layout_width="match_parent"
+                android:layout_height="75dp" />
 
             <Button
                 android:text="MOVE"
                 android:layout_width="match_parent"
-                android:layout_height="177dp"
-                android:id="@+id/@+id/moveButton"
-                android:layout_weight="0.90" />
+                android:layout_height="140dp"
+                android:id="@+id/@+id/moveButton" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <SurfaceView
+                android:layout_width="match_parent"
+                android:layout_height="345dp"
+                android:id="@+id/surfaceView7"
+                android:background="#18391B" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="224dp" />
-
         </LinearLayout>
+
+        <Space android:layout_height="match_parent"
+            android:layout_width="10dp" />
 
     </LinearLayout>
 
