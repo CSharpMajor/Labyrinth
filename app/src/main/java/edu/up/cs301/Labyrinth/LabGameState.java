@@ -184,10 +184,10 @@ public class LabGameState extends GameState
             }
 
             //copy the new row to the game state
-            for( int i = 0; i < newRow.length; i++ )
-            {
-                maze[row][i] = newRow[i];
-            }
+            //for( int i = 0; i < newRow.length; i++ )
+            //{
+            //    maze[row][i] = newRow[i];
+            //}
         }
     }
 

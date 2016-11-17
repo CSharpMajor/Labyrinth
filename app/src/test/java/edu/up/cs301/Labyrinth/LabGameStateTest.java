@@ -55,18 +55,26 @@ public class LabGameStateTest {
 
     @Test
     public void testGetPlayerHand() throws Exception {
-        LabGameState state = new LabGameState();
-        ArrayList<TCard> cards = state.getPlayerHand(0);
+        //LabGameState state = new LabGameState();
+        //ArrayList<TCard> cards = state.getPlayerHand(0);
 
         for(int i = 0; i < 4; i++) {
             //assertTrue( cards.get(i).num == i );
         }
+        //for(int i = 0; i < 4; i++) {
+        //    assertTrue( cards.get(i).num == i );
+        //}
     }
 
 
 
     @Test
     public void testGetPlayerCollected() throws Exception {
+        //LabGameState testState = new LabGameState();
+        //ArrayList<TCard> handToTest = testState.getPlayerHand(0);
+        //assertTrue(handToTest.size() == 4);
+        //assertTrue(handToTest.get(0).num == 0);
+        //assertTrue(handToTest.get(3).num == 3);
         LabGameState testState = new LabGameState();
         ArrayList<TCard> handToTest = testState.getPlayerHand(0);
         assertTrue(handToTest.size() == 4);
@@ -96,11 +104,37 @@ public class LabGameStateTest {
                         //preSetMaze[r][c].getType());
             }
         }
+//        LabGameState testState = new LabGameState();
+//        MazeTile[][] preSetMaze = new MazeTile[9][9];
+//        for( int r = 0; r < 9; r++ )
+//        {
+//            for( int c = 0; c < 9; c++ )
+//            {
+//                preSetMaze[r][c] = new MazeTile(r+c);
+//            }
+//        }
+//        testState.setMaze(preSetMaze);
+//        for( int r = 0; r < 9; r++ )
+//        {
+//            for( int c = 0; c < 9; c++ )
+//            {
+//                assertTrue(testState.getMaze()[r][c].getTreasureSymbol().
+//                        getName().equals( preSetMaze[r][c].getTreasureSymbol().getName()));
+//                //assertTrue(testState.getMaze()[r][c].getType() ==
+//                        //preSetMaze[r][c].getType());
+//            }
+//        }
 
     }
 
     @Test
     public void testCollectTCard() throws Exception {
+//        LabGameState testState = new LabGameState();
+//        ArrayList<TCard> handtoTest = testState.getPlayerHand(0);
+//        testState.collectTCard(0);
+//        ArrayList<TCard> afterHand = testState.getPlayerHand(0);
+//        assertTrue(handtoTest.size() == afterHand.size());
+//        assertTrue(handtoTest.get(0).num == 1);
         LabGameState testState = new LabGameState();
         ArrayList<TCard> handtoTest = testState.getPlayerHand(0);
         testState.collectTCard(0);

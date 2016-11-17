@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
  * Created by mikayla on 11/10/2016.
  */
 public class LabLocalGameTest {
+
     @Test
     public void canMove() throws Exception {
         LabLocalGame testLocal = new LabLocalGame();
