@@ -34,7 +34,7 @@ public final class R {
         public static final int GIANTBACKGROUND=0x7f090018;
         public static final int addPlayerButton=0x7f09000d;
         public static final int backButton3=0x7f090051;
-        public static final int blueTreasures=0x7f09001b;
+        public static final int bluetreasures=0x7f09001b;
         public static final int botRowL=0x7f090029;
         public static final int botRowM=0x7f09002a;
         public static final int botRowR=0x7f09002b;

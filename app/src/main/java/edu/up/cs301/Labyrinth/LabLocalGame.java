@@ -212,6 +212,9 @@ public class LabLocalGame extends LocalGame {
 	 * check to see if the current maze tile has the same treasure symbol.
 	 */
 	private boolean checkTCollect(TCard topCard, MazeTile currTile){
+		if(currTile.getTreasureSymbol().getName().equals(  topCard.getTreasure().getName() )){
+			return true;
+		}
 		return false;
 	}
 
@@ -221,7 +224,8 @@ public class LabLocalGame extends LocalGame {
 	 * card to collect treasure. Then it sends all this info to the player.
 	 */
 	protected void sendUpdatedStateTo(GamePlayer p) {
-
+		LabGameState copy = new LabGameState(masterGameState);
+		p.sendInfo(copy);
 	}
 
 }

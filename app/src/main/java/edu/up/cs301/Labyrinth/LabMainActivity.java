@@ -31,15 +31,15 @@ public class LabMainActivity extends GameMainActivity {
 		// Define the allowed player types
 		ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 		
-/*
+
 		// yellow-on-blue GUI
-		playerTypes.add(new GamePlayerType("Local Human Player (blue-yellow)") {
+		playerTypes.add(new GamePlayerType("Local Human Player") {
 			public GamePlayer createPlayer(String name) {
-				return new LabHumanPlayer(name, R.layout.ttt_human_player1);
+				return new LabHumanPlayer(name);
+						//R.layout.ttt_human_player1);
 			}
 		});
-		
-*/
+
 
 
 		// dumb computer player

@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.50"
                 android:background="#08457E"
-                android:id="@+id/blueTreasures" />
+                android:id="@+id/bluetreasures" />
 
             <Space
                 android:layout_width="match_parent"
@@ -121,8 +121,8 @@
                 android:src="@android:drawable/ic_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/leftColM"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/leftColM" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -291,9 +291,9 @@
             <ImageButton
                 android:src="@android:drawable/ic_media_rew"
                 android:layout_width="wrap_content"
-                android:id="@+id/rightColB"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/rightColB" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -313,7 +313,6 @@
             android:id="@+id/moveButtonArea"
             android:weightSum="1"
             android:layout_weight="0.99">
-            android:weightSum="1">
 
             <Space
                 android:layout_width="match_parent"
@@ -324,9 +323,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:id="@+id/moveButton" />
-                android:layout_height="177dp"
-                android:id="@+id/moveButton"
-                android:layout_weight="0.90" />
 
             <Space
                 android:layout_width="match_parent"
