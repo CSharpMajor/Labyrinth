@@ -64,7 +64,7 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
 
-
+        cardsCollected = new ArrayList<ArrayList<TCard>>(4);
 
         //grosssssss
         maze = new MazeTile[9][9];
@@ -102,6 +102,7 @@ public class LabGameState extends GameState
 
         for(int i=0; i<4; i++){
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
+            if(copy.getPlayerCollected(i) == null || copy.getPlayerCollected(i).size() == 0){ continue; }
             for(int j = 0; j < 6; j++) {
                 LabTSymbol sym = copy.getPlayerCollected(i).get(j).getTreasure();
                 TCard temp = new TCard(sym);
@@ -141,7 +142,12 @@ public class LabGameState extends GameState
         return cardsToCollect.get( playerIndex );
     }
 
-    public ArrayList<TCard> getPlayerCollected( int playerIndex ) { return cardsCollected.get(playerIndex); }
+    public ArrayList<TCard> getPlayerCollected( int playerIndex ) {
+        if(cardsCollected.size() == 0 || cardsCollected.get(playerIndex).size() == 0){
+            return null;
+        }
+        return cardsCollected.get(playerIndex);
+    }
 
     public void setMaze( MazeTile[][] newMaze ){
         for( int r = 0; r < 9; r++ ){
