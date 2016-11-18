@@ -22,7 +22,6 @@ public class LabGameStateTest {
         LabGameState state = new LabGameState();
         MazeTile ourMaze[][] = new MazeTile[9][9];
 
-        //TODO create the maze like we do in onCreate
         for( int r = 0; r < ourMaze.length; r++)
         {
             for( int c = 0; c < ourMaze[r].length; c++)
@@ -41,7 +40,7 @@ public class LabGameStateTest {
                 assertTrue( ourMaze[r][c].getTreasureSymbol().
                             getName().equals( stateMaze[r][c].getTreasureSymbol().
                             getName() ) );
-                //assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
+                assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
             }
         }
     }
@@ -83,17 +82,23 @@ public class LabGameStateTest {
     }
 
     @Test
-    public void testSetMaze() throws Exception {
+    public void testMoveRow() throws Exception {
         LabGameState testState = new LabGameState();
-        MazeTile[][] preSetMaze = new MazeTile[9][9];
-        for( int r = 0; r < 9; r++ )
+        MazeTile[][] stateMaze = testState.getMaze();
+
+        MazeTile[][] targetMaze = new MazeTile[9][9];
+        for( int r = 0; r < 9; r ++ )
         {
             for( int c = 0; c < 9; c++ )
             {
-                //preSetMaze[r][c] = new MazeTile(r+c);
+                targetMaze[r][c] = stateMaze[r][c];
             }
         }
-        testState.setMaze(preSetMaze);
+
+        int[] extraTileCoor = testState.findExtraTile();
+
+        if( )
+
         for( int r = 0; r < 9; r++ )
         {
             for( int c = 0; c < 9; c++ )
@@ -104,27 +109,6 @@ public class LabGameStateTest {
                         //preSetMaze[r][c].getType());
             }
         }
-//        LabGameState testState = new LabGameState();
-//        MazeTile[][] preSetMaze = new MazeTile[9][9];
-//        for( int r = 0; r < 9; r++ )
-//        {
-//            for( int c = 0; c < 9; c++ )
-//            {
-//                preSetMaze[r][c] = new MazeTile(r+c);
-//            }
-//        }
-//        testState.setMaze(preSetMaze);
-//        for( int r = 0; r < 9; r++ )
-//        {
-//            for( int c = 0; c < 9; c++ )
-//            {
-//                assertTrue(testState.getMaze()[r][c].getTreasureSymbol().
-//                        getName().equals( preSetMaze[r][c].getTreasureSymbol().getName()));
-//                //assertTrue(testState.getMaze()[r][c].getType() ==
-//                        //preSetMaze[r][c].getType());
-//            }
-//        }
-
     }
 
     @Test

@@ -67,6 +67,7 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
 
+        cardsCollected = new ArrayList<ArrayList<TCard>>(4);
         //filling the arraylist of tiles
         getTiles();
 
@@ -144,6 +145,7 @@ public class LabGameState extends GameState
 
         for(int i=0; i<4; i++){
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
+            if(copy.getPlayerCollected(i) == null || copy.getPlayerCollected(i).size() == 0){ continue; }
             for(int j = 0; j < 6; j++) {
                 LabTSymbol sym = copy.getPlayerCollected(i).get(j).getTreasure();
                 TCard temp = new TCard(sym);
@@ -277,7 +279,12 @@ public class LabGameState extends GameState
         return cardsToCollect.get( playerIndex );
     }
 
-    public ArrayList<TCard> getPlayerCollected( int playerIndex ) { return cardsCollected.get(playerIndex); }
+    public ArrayList<TCard> getPlayerCollected( int playerIndex ) {
+        if(cardsCollected.size() == 0 || cardsCollected.get(playerIndex).size() == 0){
+            return null;
+        }
+        return cardsCollected.get(playerIndex);
+    }
 
     public void collectTCard( int playerIndex ){
         TCard move = cardsToCollect.get(playerIndex).get(0);
@@ -437,25 +444,3 @@ public class LabGameState extends GameState
         return coordinates;
     }
 
-    /**
-     * shuffles the maze (for use in initial setup of the game)
-     */
-    private void shuffleMaze()
-    {
-        Random r = new Random();
-
-        //should go through the 7x7 actual game board
-        for( int i = maze.length - 2; i > 1; i-- )
-        {
-            for( int j = maze[i].length - 2; j > 1; j-- )
-            {
-                int m = r.nextInt(i + 1);
-                int n = r.nextInt(j + 1);
-
-                MazeTile temp = maze[i][j];
-                maze[i][j] = maze[m][n];
-                maze[m][n] = temp;
-            }
-        }
-    }
-}
