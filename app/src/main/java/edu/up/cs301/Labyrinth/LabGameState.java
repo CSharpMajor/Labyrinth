@@ -115,6 +115,9 @@ public class LabGameState extends GameState
             }
         }
 
+        //place extra tile
+        placeExtraTile( rand.nextInt(12), allTiles.get(0) );
+
         //blue player is home
         //maze[1][7].occupiedBy.add(2);
 
@@ -275,14 +278,6 @@ public class LabGameState extends GameState
     }
 
     public ArrayList<TCard> getPlayerCollected( int playerIndex ) { return cardsCollected.get(playerIndex); }
-
-    public void setMaze( MazeTile[][] newMaze ){
-        for( int r = 0; r < 9; r++ ){
-            for( int c = 0; c < 9; c++ ){
-                maze[r][c] = newMaze[r][c];
-            }
-        }
-    }
 
     public void collectTCard( int playerIndex ){
         TCard move = cardsToCollect.get(playerIndex).get(0);
