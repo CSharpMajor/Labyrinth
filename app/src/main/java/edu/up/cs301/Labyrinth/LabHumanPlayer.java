@@ -52,7 +52,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
 
     private GameMainActivity myActivity;
 
-    public LabHumanPlayer()
+    public LabHumanPlayer(String name)
     {
         super("hi");
     }
@@ -76,6 +76,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
 
         //Setting the GUI
         activity.setContentView(R.layout.ttt_human_player1);
+
         //Buttons on the left side of the board
         this.leftColT = (ImageButton)activity.findViewById(R.id.leftColT);
         this.leftColB = (ImageButton)activity.findViewById(R.id.leftColB);
@@ -107,6 +108,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnTouchListe
         rightColB.setOnClickListener(this);
         rightColM.setOnClickListener(this);
     }
+
     public void onClick(View v) {
         if(v == leftColB) {
             Log.i("leftColB Button", "Operational");

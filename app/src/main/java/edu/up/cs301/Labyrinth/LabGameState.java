@@ -77,10 +77,39 @@ public class LabGameState extends GameState
         }
 
         //blue player is home
-        maze[1][7].occupiedBy.add(2);
+        //maze[1][7].occupiedBy.add(2);
+
+        hasMovedMaze = false;
     }
 
     public LabGameState( LabGameState copy ){
+        turnID = copy.getTurnID();
+        hasMovedMaze = copy.hasMovedMaze;
+
+        cardsToCollect = new ArrayList<ArrayList<TCard>>(0);
+
+        for(int i=0; i<4; i++){
+            ArrayList<TCard> hand = new ArrayList<TCard>(4);
+            for(int j = 0; j < 6; j++) {
+                LabTSymbol sym = copy.getPlayerHand(i).get(j).getTreasure();
+                TCard temp = new TCard(sym);
+                hand.add(temp);
+            }
+            cardsToCollect.add(hand);
+        }
+
+        cardsCollected = new ArrayList<ArrayList<TCard>>(4);
+
+        for(int i=0; i<4; i++){
+            ArrayList<TCard> hand = new ArrayList<TCard>(4);
+            for(int j = 0; j < 6; j++) {
+                LabTSymbol sym = copy.getPlayerCollected(i).get(j).getTreasure();
+                TCard temp = new TCard(sym);
+                hand.add(temp);
+            }
+            cardsToCollect.add(hand);
+        }
+
 
 
     }

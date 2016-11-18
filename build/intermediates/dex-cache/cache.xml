@@ -3,21 +3,30 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Liz Frick\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
+        jar="C:\Users\mikayla\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="C:\Users\mikayla\StudioProjects\Labyrinth\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0_1059c813d8830968b0c5bfab85d9d96c255a81eb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mikayla\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
         sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
-        <dex dex="C:\Users\Liz Frick\.android\Labyrinth\app\build\intermediates\pre-dexed\debug\hamcrest-core-1.3_fb76b5b3aeccf6621fd4c1b65c8d710312e4bfa4.jar" />
+        <dex dex="C:\Users\mikayla\StudioProjects\Labyrinth\app\build\intermediates\pre-dexed\debug\hamcrest-core-1.3_aa98edd6c3fa746adb8bf9c7938d5c89ab3df010.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Liz Frick\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
+        jar="C:\Users\mikayla\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
         jumboMode="false"
         optimize="true"
         revision="22.0.1"
         sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="C:\Users\Liz Frick\.android\Labyrinth\app\build\intermediates\pre-dexed\debug\junit-4.12_49c721f3c88b724e6225b5dfee9980fe7537533f.jar" />
+        <dex dex="C:\Users\mikayla\StudioProjects\Labyrinth\app\build\intermediates\pre-dexed\debug\junit-4.12_88829fdb68753bc7c6718387f3aa5a6d9e4a9d84.jar" />
     </item>
 
 </items>
