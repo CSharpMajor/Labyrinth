@@ -37,6 +37,9 @@ public class LabGameState extends GameState
     //boolean to ensure the player has moved the maze first
     private boolean hasMovedMaze;
 
+    //an array of all the tiles in the game to be used only when initializing the game
+    //first four are the four corner tiles
+    private static ArrayList<MazeTile> allTiles = new ArrayList<MazeTile>(50);
 
     /*
     Welcome to the constructor this is where we create the game
@@ -64,15 +67,51 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
 
+        //filling the arraylist of tiles
+        getTiles();
 
-
-        //grosssssss
-        maze = new MazeTile[9][9];
-        for( int r = 0; r < 9; r++ )
+        //fill top row with null
+        for( int i = 0; i < 9; i++ )
         {
-            for( int c = 0; c < 9; c++ )
+            maze[0][i] = null;
+        }
+
+        //fill left col with null
+        for( int i = 0; i < 9; i++ )
+        {
+            maze[i][0] = null;
+        }
+
+        //fill right col with null
+        for( int i = 0; i < 9; i++ )
+        {
+            maze[i][8] = null;
+        }
+
+        //fill bottom row with null
+        for( int i = 0; i < 9; i++ )
+        {
+            maze[8][i] = null;
+        }
+
+        //fill corner spots with L tiles
+        maze[1][1] = allTiles.get(0);
+        maze[1][7] = allTiles.get(0);
+        maze[7][1] = allTiles.get(0);
+        maze[7][7] = allTiles.get(0);
+
+        Random rand = new Random();
+        int ind;
+        //fill rest of maze with tiles
+        for( int r = 1; r < 8; r++ )
+        {
+            for( int c = 1; c < 8; c++ )
             {
-                //maze[r][c] = new MazeTile(0);
+                if( maze[r][c] == null )
+                {
+                    ind = rand.nextInt(allTiles.size()) + 4;
+                    maze[r][c] = allTiles.get(ind);
+                }
             }
         }
 
@@ -83,6 +122,100 @@ public class LabGameState extends GameState
     public LabGameState( LabGameState copy ){
 
 
+    }
+
+    /**
+     * fills the arraylist of tiles for purposes of filling the maze with tiles randomly
+     */
+    private static void getTiles()
+    {
+        //13 blank L shaped tiles
+        for( int i = 0; i < 13; i++ )
+        {
+            allTiles.add(new MazeTile('L', null ));
+        }
+
+        //13 blank S shaped tiles
+        for( int i = 0; i < 13; i++ )
+        {
+            allTiles.add(new MazeTile('S', null ));
+        }
+
+        //T-shaped treasure tiles
+        allTiles.add(new MazeTile('T', LabTSymbol.DRAGON ));
+        allTiles.add(new MazeTile('T', LabTSymbol.GHOST ));
+        allTiles.add(new MazeTile('T', LabTSymbol.TROLL ));
+        allTiles.add(new MazeTile('T', LabTSymbol.CANDELABRA ));
+        allTiles.add(new MazeTile('T', LabTSymbol.FLAMING_SWORD ));
+        allTiles.add(new MazeTile('T', LabTSymbol.ASTRONAUT ));
+        allTiles.add(new MazeTile('T', LabTSymbol.TREBLE_CLEF ));
+        allTiles.add(new MazeTile('T', LabTSymbol.HELMET ));
+        allTiles.add(new MazeTile('T', LabTSymbol.CHEST ));
+        allTiles.add(new MazeTile('T', LabTSymbol.COFFEE_MUG ));
+        allTiles.add(new MazeTile('T', LabTSymbol.KEYS ));
+        allTiles.add(new MazeTile('T', LabTSymbol.CROWN ));
+        allTiles.add(new MazeTile('T', LabTSymbol.BOOK ));
+        allTiles.add(new MazeTile('T', LabTSymbol.GEM ));
+        allTiles.add(new MazeTile('T', LabTSymbol.BAG_OF_GOLD ));
+        allTiles.add(new MazeTile('T', LabTSymbol.RING ));
+        allTiles.add(new MazeTile('T', LabTSymbol.SKULL ));
+        allTiles.add(new MazeTile('T', LabTSymbol.MAP ));
+
+        //L shaped treasure tiles
+        allTiles.add(new MazeTile('L', LabTSymbol.OWL ));
+        allTiles.add(new MazeTile('L', LabTSymbol.MOUSE ));
+        allTiles.add(new MazeTile('L', LabTSymbol.SCARAB ));
+        allTiles.add(new MazeTile('L', LabTSymbol.SPIDER ));
+        allTiles.add(new MazeTile('L', LabTSymbol.JIGGLYPUFF ));
+
+    }
+
+    /**
+     * will take a number from 0-11 that determines the placement of the extra tile
+     * @param i a value from 0-11
+     * @param extra the extra tile to be placed
+     */
+    private void placeExtraTile( int i, MazeTile extra)
+    {
+        switch ( i )
+        {
+            //Top of Board: Left
+            case 0: maze[0][1] = extra;
+                break;
+            //Top of Board: Middle
+            case 1: maze[0][3] = extra;
+                break;
+            //Top of Board: Right
+            case 2: maze[0][5] = extra;
+                break;
+            //Right of Board: Top
+            case 3: maze[2][8] = extra;
+                break;
+            //Right of Board: Middle
+            case 4: maze[4][8] = extra;
+                break;
+            //Right of Board: Bottom
+            case 5: maze[6][8] = extra;
+                break;
+            //Bottom of Board: Right
+            case 6: maze[8][5] = extra;
+                break;
+            //Bottom of Board: Middle
+            case 7: maze[8][3] = extra;
+                break;
+            //Bottom of Board: Left
+            case 8: maze[8][1] = extra;
+                break;
+            //Left of Board: Bottom
+            case 9: maze[6][0] = extra;
+                break;
+            //Left of Board: Middle
+            case 10: maze[4][0] = extra;
+                break;
+            //Left of Board: Top
+            case 11: maze[2][0] = extra;
+                break;
+        }
     }
 
     public boolean hasMovedMaze()
@@ -278,5 +411,27 @@ public class LabGameState extends GameState
 
         //somehow never found an extra tile
         return coordinates;
+    }
+
+    /**
+     * shuffles the maze (for use in initial setup of the game)
+     */
+    private void shuffleMaze()
+    {
+        Random r = new Random();
+
+        //should go through the 7x7 actual game board
+        for( int i = maze.length - 2; i > 1; i-- )
+        {
+            for( int j = maze[i].length - 2; j > 1; j-- )
+            {
+                int m = r.nextInt(i + 1);
+                int n = r.nextInt(j + 1);
+
+                MazeTile temp = maze[i][j];
+                maze[i][j] = maze[m][n];
+                maze[m][n] = temp;
+            }
+        }
     }
 }

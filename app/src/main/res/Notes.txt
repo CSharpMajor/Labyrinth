@@ -5,3 +5,40 @@
     2. Extra tile is where it needs to be
     3. Press confirm
     4. Row/Col moved
+
+----November 17th----
+
+All Tiles
+
+Blank 'L': 13
+Blank 'S': 13
+Blank 'T': 0
+
+DRAGON --> t shaped
+GHOST --> t shaped
+TROLL --> t shaped
+CANDELABRA --> t shaped
+FLAMING_SWORD --> t shaped
+--
+ASTRONAUT --> t shaped
+TREBLE_CLEF -> t shaped
+HELMET --> t shaped
+CHEST --> t shaped
+COFFEE_MUG --> t shaped
+--
+KEYS --> t shaped
+CROWN --> t shaped
+BOOK --> t shaped
+GEM --> t shaped
+BAG_OF_GOLD --> t shaped
+--
+RING --> t shaped
+SKULL --> t shaped
+MAP --> t shaped
+
+OWL --> l shaped
+MOUSE --> l shaped
+MOTH --> l shaped
+SCARAB --> l shaped
+SPIDER --> L shaped
+JIGGLYPUFF --> l shaped

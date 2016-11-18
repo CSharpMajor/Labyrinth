@@ -27,7 +27,7 @@ public enum LabTSymbol {
     MOTH( "moth" ),
     GEM( "gem" ),
     BAG_OF_GOLD( "bag o' gold" ),
-    RING( "the one ring" ),
+    RING( "the one ring" ), //got it
     SKULL( "skull" ),
     MAP( "map" ),
     SCARAB( "scarab" ),
