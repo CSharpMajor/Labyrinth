@@ -42,3 +42,9 @@ MOTH --> l shaped
 SCARAB --> l shaped
 SPIDER --> L shaped
 JIGGLYPUFF --> l shaped
+
+Displaying Tiles
+
+for( ... )
+for (.... )
+    displaytextat( MazeTile Name, i*space, j*space )
