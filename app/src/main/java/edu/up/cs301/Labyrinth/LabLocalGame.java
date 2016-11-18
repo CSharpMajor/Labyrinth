@@ -86,7 +86,7 @@ public class LabLocalGame extends LocalGame {
 			if(action instanceof LabMoveMazeAction){
 				return makeMazeMove(action);
 			}
-			else if(action instanceof LabMovePieceAction){
+			else if(action instanceof LabMovePieceAction && masterGameState.hasMovedMaze()){
 				return makePlayerPieceMove(action);
 			}
 		}
@@ -97,23 +97,62 @@ public class LabLocalGame extends LocalGame {
 	/*
 	 * makeMazeMove(action:LabMoveMazeAction):boolean - this is one of the
 	 * helper methods for makeMove(). This will shift the maze row or column so that the extra maze tile is
-	 * in the maze and the tile on the opposing side is pushed out of the maze.
+	 * in the maze and the tile on the opposing side is pushed out of the maze. Assumes that the extra tile
+	 * has been moved to the proper space for the movement
 	 */
 	private boolean makeMazeMove(GameAction action){
-		action = (LabMoveMazeAction) action;
+
+		if( ! ( action instanceof LabMoveMazeAction ) )
+		{
+			return false;
+		}
+
+		//finding the coordinates for where the extra tile is
+		int[] coordinates = masterGameState.findExtraTile();
+
+		//extra tile is in the top row
+		if( coordinates[0] == 0 )
+		{
+			masterGameState.moveCol( coordinates[1], true );
+			masterGameState.setHasMovedMaze( true );
+			return true;
+		}
+		//extra tile is on the left side
+		else if( coordinates[1] == 0 )
+		{
+			masterGameState.moveRow( coordinates[1], true );
+			masterGameState.setHasMovedMaze( true );
+			return true;
+		}
+		//extra tile is on the bottom
+		else if( coordinates[0] == masterGameState.getMaze().length - 1 )
+		{
+			masterGameState.moveCol( coordinates[1], false );
+			masterGameState.setHasMovedMaze( true );
+			return true;
+		}
+		//extra tile is on the right side
+		else if( coordinates[1] == masterGameState.getMaze().length - 1 )
+		{
+			masterGameState.moveRow( coordinates[1], false );
+			masterGameState.setHasMovedMaze( true );
+			return true;
+		}
 
 		return false;
 	}
 
 
 	/*
-	 * makePlayerPeiceMove(action:LabMovePieceAction):boolean - this is the other helper method for makeMove() this method
+	 * makePlayerPieceMove(action:LabMovePieceAction):boolean - this is the other helper method for makeMove() this method
 	  * will check there is a connected path via a helper method If there is,
 	 * it will remove the player from the occupiedBy arrayList of the current
 	 * tile and add the player to the occupiedBy ArrayList of the selected tile
 	 */
 	private boolean makePlayerPieceMove(GameAction action){
 		action = (LabMovePieceAction) action;
+
+		masterGameState.setHasMovedMaze( false );
 		return false;
 	}
 

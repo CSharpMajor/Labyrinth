@@ -23,25 +23,20 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/leftInfo"
-            android:layout_weight="0.62">
+            android:id="@+id/leftInfo">
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.28" />
 
-            <SurfaceView
+            <TextView
+                android:text="AREA FOR THE TURN INFO"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.28"
-                android:id="@+id/@+id/turnInfo"
-                android:background="#6C7B8B" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.28" />
+                tools:ignore="HardcodedText,Suspicious0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:id="@+id/turnInfo" />
 
             <SurfaceView
                 android:layout_width="match_parent"
@@ -316,7 +311,7 @@
             android:layout_height="match_parent"
             android:id="@+id/moveButtonArea"
             android:weightSum="1"
-            android:layout_weight="0.31">
+            android:layout_weight="0.99">
 
             <Space
                 android:layout_width="match_parent"
@@ -330,28 +325,13 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.62" />
-
-            <TextView
-                android:text="Treasure Card Objective"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tcardNeedLabel"
-                android:textStyle="normal|bold"
-                android:textColor="#FFFFFF" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.09" />
+                android:layout_height="21dp" />
 
             <SurfaceView
                 android:layout_width="match_parent"
-                android:layout_height="291dp"
+                android:layout_height="345dp"
                 android:id="@+id/surfaceView7"
-                android:background="#18391B"
-                android:layout_weight="0.22" />
+                android:background="#18391B" />
 
             <Space
                 android:layout_width="match_parent"

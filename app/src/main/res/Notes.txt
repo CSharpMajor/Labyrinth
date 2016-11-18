@@ -1,0 +1,7 @@
+----November 15th----
+
+-Make Maze Move algorithm:
+    1. Press Button
+    2. Extra tile is where it needs to be
+    3. Press confirm
+    4. Row/Col moved
