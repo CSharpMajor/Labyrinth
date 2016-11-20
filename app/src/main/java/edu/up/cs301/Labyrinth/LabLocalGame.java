@@ -1,9 +1,12 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
+
 
 /**
  * The LabyrinthLocalGame class for a Labyrinth game. Defines and enforces
@@ -100,7 +103,6 @@ public class LabLocalGame extends LocalGame
 				return makePlayerPieceMove(action);
 			}
 		}
-
 		return false;
 	}
 
@@ -251,6 +253,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	protected void sendUpdatedStateTo(GamePlayer p)
 	{
+		Log.i("LabLocalGame", p.toString());
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
 	}
