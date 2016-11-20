@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
@@ -251,6 +253,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	protected void sendUpdatedStateTo(GamePlayer p)
 	{
+		Log.i("LabLocalGame", p.toString());
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
 	}

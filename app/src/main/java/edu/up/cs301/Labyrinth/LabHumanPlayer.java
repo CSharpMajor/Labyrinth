@@ -74,6 +74,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     public void receiveInfo(GameInfo info) {
 
+        Log.i("human Player", "called reciveInfo");
+
+
+
+
         if(surfaceView == null) return;
 
 
@@ -93,9 +98,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //Set the surface view's state
             //Invalidate the surface view
-            //LabGameState myState = (LabGameState) info;
-            //surfaceView.setState(myState);
-            //surfaceView.invalidate();
+            LabGameState myState = (LabGameState) info;
+            surfaceView.setState(myState);
+            surfaceView.invalidate();
             Log.i("human player", "receiving");
         }
     }
@@ -140,9 +145,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         rightColM.setOnClickListener(this);
 
         // how do we get the canvas from the surface view to draw on?
-        //surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
+        surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
 
-        //surfaceView.setOnTouchListener(this);
+        surfaceView.setOnTouchListener(this);
 
     }//end of set as GUI
 
