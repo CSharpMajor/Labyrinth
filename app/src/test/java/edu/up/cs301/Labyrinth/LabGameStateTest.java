@@ -95,9 +95,38 @@ public class LabGameStateTest {
             }
         }
 
-        int[] extraTileCoor = testState.findExtraTile();
+        //find the extra tile
+        int[] coordinates = testState.findExtraTile();
+        MazeTile extraTile;
 
-        if( )
+        //extra tile is in the top row
+        if (coordinates[0] == 0)
+        {
+            testState.moveCol(coordinates[1], true);
+            testState.setHasMovedMaze(true);
+        }
+        //extra tile is on the left side
+        else if (coordinates[1] == 0)
+        {
+            masterGameState.moveRow(coordinates[1], true);
+            masterGameState.setHasMovedMaze(true);
+            return true;
+        }
+        //extra tile is on the bottom
+        else if (coordinates[0] == masterGameState.getMaze().length - 1)
+        {
+            masterGameState.moveCol(coordinates[1], false);
+            masterGameState.setHasMovedMaze(true);
+            return true;
+        }
+        //extra tile is on the right side
+        else if (coordinates[1] == masterGameState.getMaze().length - 1)
+        {
+            masterGameState.moveRow(coordinates[1], false);
+            masterGameState.setHasMovedMaze(true);
+            return true;
+        }
+
 
         for( int r = 0; r < 9; r++ )
         {
