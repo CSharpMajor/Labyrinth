@@ -6,7 +6,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 
 /**
- * The LabyrinthLocalGame class for a Labyrinth game.  Defines and enforces
+ * The LabyrinthLocalGame class for a Labyrinth game. Defines and enforces
  * the game rules; handles interactions with players.
  * 
  * @author Chloe Kuhar
@@ -23,7 +23,7 @@ public class LabLocalGame extends LocalGame
 	private boolean[][] booleanMazeMap = new boolean[9][9];
 
 	/*
-	 * Welocome to the lovely local game constructor
+	 * Welcome to the lovely local game constructor
 	 */
 	public LabLocalGame()
 	{
@@ -94,7 +94,8 @@ public class LabLocalGame extends LocalGame
 			if (action instanceof LabMoveMazeAction)
 			{
 				return makeMazeMove(action);
-			} else if (action instanceof LabMovePieceAction && masterGameState.hasMovedMaze())
+			}
+			else if (action instanceof LabMovePieceAction && masterGameState.hasMovedMaze())
 			{
 				return makePlayerPieceMove(action);
 			}
@@ -168,7 +169,7 @@ public class LabLocalGame extends LocalGame
 	}
 
 	/*
-	 * this is the helper method for makePlayerPeiceMove()
+	 * this is the helper method for makePlayerPieceMove()
 	 */
 	private boolean checkPath(int xDest, int yDest)
 	{
@@ -282,5 +283,4 @@ public class LabLocalGame extends LocalGame
 
 		return true;
 	}
-
 }
