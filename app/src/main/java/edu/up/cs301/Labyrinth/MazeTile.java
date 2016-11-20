@@ -1,6 +1,9 @@
 package edu.up.cs301.Labyrinth;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Chloe Kuhar
@@ -20,25 +23,24 @@ public class MazeTile {
     //S(straight) T or L
     private char type;
 
-    //n = 0-3 n*90 = the degrees from normal
+    //n = 0-3 n*90 = the degrees from noraml
     private int orientation=0;
 
     //boolean array to represent each side of the tile.
     // True if it has a path on it will be rotated by the rotate method
     //the 0th index is the top of the tile it then progresses around clockwise
-    private boolean[] pathMap;
+    private boolean[] pathMap = new boolean[4];
 
     //the treasure
     private LabTSymbol treasureSymbol;
 
     /*
      * Welcome to this wonderful constructor takes the type and Symbol
-     * the type can be S for straight or L or T
+     * the type can be S for straght or L or T
      */
     public MazeTile(char thetype, LabTSymbol symbol)
     {
         type = thetype;
-        pathMap = new boolean[4];
         if(type == 'S'){
             pathMap[0]=false;
             pathMap[1]=true;
@@ -60,7 +62,26 @@ public class MazeTile {
         treasureSymbol = symbol;
     }
 
-    //getters for all the attributes
+    /**
+     * copy constructor for MazeTile
+     * @param cp the tile we will copy
+     */
+    public MazeTile( MazeTile cp )
+    {
+        type = cp.getType();
+
+        boolean[] cpMap = cp.getPathMap();
+        for( int i = 0; i < cpMap.length; i++ )
+        {
+            pathMap[i] = cpMap[i];
+        }
+
+        treasureSymbol = cp.getTreasureSymbol();
+
+        Collections.copy( occupiedBy, cp.getOccupiedBy() );
+    }
+
+    //getters for all the attributtes
 
     public char getType(){ return type; }
 //

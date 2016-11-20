@@ -20,27 +20,14 @@ public class LabGameStateTest {
     @Test
     public void testGetMaze() throws Exception {
         LabGameState state = new LabGameState();
-        MazeTile ourMaze[][] = new MazeTile[9][9];
-
-        for( int r = 0; r < ourMaze.length; r++)
-        {
-            for( int c = 0; c < ourMaze[r].length; c++)
-            {
-                ourMaze[r][c] = new MazeTile( 'S', LabTSymbol.COFFEE_MUG );
-            }
-        }
-
-        state.setMaze(ourMaze);
         MazeTile[][] stateMaze = state.getMaze();
 
-        for( int r = 0; r < stateMaze.length; r++ )
+        //goes through all the maze tiles (not the buffer) and sees that they
+        for( int r = 1; r < stateMaze.length-1; r++ )
         {
-            for( int c = 0; c < stateMaze[r].length; c++ )
+            for( int c = 1; c < stateMaze[r].length-1; c++ )
             {
-                assertTrue( ourMaze[r][c].getTreasureSymbol().
-                            getName().equals( stateMaze[r][c].getTreasureSymbol().
-                            getName() ) );
-                assertTrue( ourMaze[r][c].getType() == stateMaze[r][c].getType() );
+                assertTrue( stateMaze[r][c] != null );
             }
         }
     }
@@ -97,45 +84,24 @@ public class LabGameStateTest {
 
         //find the extra tile
         int[] coordinates = testState.findExtraTile();
-        MazeTile extraTile;
+        MazeTile extraTile = stateMaze[coordinates[0]][coordinates[1]];
 
-        //extra tile is in the top row
-        if (coordinates[0] == 0)
-        {
-            testState.moveCol(coordinates[1], true);
-            testState.setHasMovedMaze(true);
-        }
-        //extra tile is on the left side
-        else if (coordinates[1] == 0)
-        {
-            masterGameState.moveRow(coordinates[1], true);
-            masterGameState.setHasMovedMaze(true);
-            return true;
-        }
-        //extra tile is on the bottom
-        else if (coordinates[0] == masterGameState.getMaze().length - 1)
-        {
-            masterGameState.moveCol(coordinates[1], false);
-            masterGameState.setHasMovedMaze(true);
-            return true;
-        }
-        //extra tile is on the right side
-        else if (coordinates[1] == masterGameState.getMaze().length - 1)
-        {
-            masterGameState.moveRow(coordinates[1], false);
-            masterGameState.setHasMovedMaze(true);
-            return true;
-        }
+        //move extraTile 2nd row left side for state maze
+        stateMaze[2][0] = extraTile;
+        stateMaze[coordinates[0]][coordinates[1]] = null;
 
+        //move the row and then move it back to original
+        testState.moveRow(2, true);
+        testState.moveRow(2, false);
 
         for( int r = 0; r < 9; r++ )
         {
             for( int c = 0; c < 9; c++ )
             {
                 assertTrue(testState.getMaze()[r][c].getTreasureSymbol().
-                        getName().equals( preSetMaze[r][c].getTreasureSymbol().getName()));
-                //assertTrue(testState.getMaze()[r][c].getType() ==
-                        //preSetMaze[r][c].getType());
+                        getName().equals( targetMaze[r][c].getTreasureSymbol().getName()));
+                assertTrue(testState.getMaze()[r][c].getType() ==
+                        targetMaze[r][c].getType());
             }
         }
     }
