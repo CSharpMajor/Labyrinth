@@ -11,10 +11,13 @@ import android.graphics.RectF;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.game.GameHumanPlayer;
@@ -33,7 +36,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Mikayla Whiteaker
  * @version Nov 2016, preAlpha
  */
-public class LabHumanPlayer extends GameHumanPlayer   {
+public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener {
 
     //Variables for the buttons on the GUI
     private ImageButton leftColT = null;
@@ -50,12 +53,14 @@ public class LabHumanPlayer extends GameHumanPlayer   {
     private ImageButton rightColB = null;
     private Button moveButtonArea = null;
 
-    private GameMainActivity myActivity;
+
+    private Activity myActivity;
+
+    private LabMazeSurfaveView surfaceView;
 
     //Set listener for the surface view
 
-    public LabHumanPlayer(String name)
-    {
+    public LabHumanPlayer(String name) {
         super("hi");
     }
 
@@ -69,9 +74,15 @@ public class LabHumanPlayer extends GameHumanPlayer   {
 
     public void receiveInfo(GameInfo info) {
 
+        if(surfaceView == null) return;
+
+
+
+
         if( info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
         {
             //The move was illegal, so let the user know using the surface view
+            //surfaceView.flash(Color.RED, 50);
         }
         else if(!(info instanceof LabGameState))
         {
@@ -82,6 +93,10 @@ public class LabHumanPlayer extends GameHumanPlayer   {
         {
             //Set the surface view's state
             //Invalidate the surface view
+            //LabGameState myState = (LabGameState) info;
+            //surfaceView.setState(myState);
+            //surfaceView.invalidate();
+            Log.i("human player", "receiving");
         }
     }
 
@@ -92,75 +107,71 @@ public class LabHumanPlayer extends GameHumanPlayer   {
 
         //Setting the GUI
         activity.setContentView(R.layout.ttt_human_player1);
+
+        //Buttons on the left side of the board
+        this.leftColT = (ImageButton) activity.findViewById(R.id.leftColT);
+        this.leftColB = (ImageButton) activity.findViewById(R.id.leftColB);
+        this.leftColM = (ImageButton) activity.findViewById(R.id.leftColM);
+        //Buttons on the top side of the board
+        this.topRowL = (ImageButton) activity.findViewById(R.id.topRowL);
+        this.topRowM = (ImageButton) activity.findViewById(R.id.topRowM);
+        this.topRowR = (ImageButton) activity.findViewById(R.id.topRowR);
+        //Buttons on the bottom side of the board
+        this.botRowL = (ImageButton) activity.findViewById(R.id.botRowL);
+        this.botRowM = (ImageButton) activity.findViewById(R.id.botRowM);
+        this.botRowR = (ImageButton) activity.findViewById(R.id.botRowR);
+        //Buttons on the right side of the board
+        this.rightColB = (ImageButton) activity.findViewById(R.id.rightColB);
+        this.rightColM = (ImageButton) activity.findViewById(R.id.rightColM);
+        this.rightColT = (ImageButton) activity.findViewById(R.id.rightColT);
+
+        //Setting the onclick listeners for the buttons
+        leftColM.setOnClickListener(this);
+        leftColB.setOnClickListener(this);
+        leftColT.setOnClickListener(this);
+        topRowM.setOnClickListener(this);
+        topRowR.setOnClickListener(this);
+        topRowL.setOnClickListener(this);
+        botRowR.setOnClickListener(this);
+        botRowM.setOnClickListener(this);
+        botRowL.setOnClickListener(this);
+        rightColT.setOnClickListener(this);
+        rightColB.setOnClickListener(this);
+        rightColM.setOnClickListener(this);
+
+        // how do we get the canvas from the surface view to draw on?
+        //surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
+
+        //surfaceView.setOnTouchListener(this);
+
+    }//end of set as GUI
+
+    public void onClick(View v) {
+        if (v == leftColB) {
+            Log.i("leftColB Button", "Operational");
+        } else if (v == leftColM) {
+            Log.i("leftColM Button", "Operational");
+        } else if (v == leftColT) {
+            Log.i("leftColT Button", "Operational");
+        } else if (v == topRowM) {
+            Log.i("topRowM Button", "Operational");
+        } else if (v == topRowL) {
+            Log.i("topRowL Button", "Operational");
+        } else if (v == topRowR) {
+            Log.i("topRowR Button", "Operational");
+        } else if (v == botRowL) {
+            Log.i("botRowL Button", "Operational");
+        } else if (v == botRowM) {
+            Log.i("botRowM Button", "Operational");
+        } else if (v == botRowR) {
+            Log.i("botRowR Button", "Operational");
+        } else if (v == rightColB) {
+            Log.i("rightColB Button", "Operational");
+        } else if (v == rightColM) {
+            Log.i("rightColM Button", "Operational");
+        } else if (v == rightColT) {
+            Log.i("rightColT Button", "Operational");
+        }
     }
-//        //Buttons on the left side of the board
-//        this.leftColT = (ImageButton)activity.findViewById(R.id.leftColT);
-//        this.leftColB = (ImageButton)activity.findViewById(R.id.leftColB);
-//        this.leftColM = (ImageButton)activity.findViewById(R.id.leftColM);
-//        //Buttons on the top side of the board
-//        this.topRowL = (ImageButton)activity.findViewById(R.id.topRowL);
-//        this.topRowM = (ImageButton)activity.findViewById(R.id.topRowM);
-//        this.topRowR = (ImageButton)activity.findViewById(R.id.topRowR);
-//        //Buttons on the bottom side of the board
-//        this.botRowL = (ImageButton)activity.findViewById(R.id.botRowL);
-//        this.botRowM = (ImageButton)activity.findViewById(R.id.botRowM);
-//        this.botRowR = (ImageButton)activity.findViewById(R.id.botRowR);
-//        //Buttons on the right side of the board
-//        this.rightColB = (ImageButton)activity.findViewById(R.id.rightColB);
-//        this.rightColM = (ImageButton)activity.findViewById(R.id.rightColM);
-//        this.rightColT = (ImageButton)activity.findViewById(R.id.rightColT);
-//
-//        //Setting the onclick listeners for the buttons
-//        leftColM.setOnClickListener(this);
-//        leftColB.setOnClickListener(this);
-//        leftColT.setOnClickListener(this);
-//        topRowM.setOnClickListener(this);
-//        topRowR.setOnClickListener(this);
-//        topRowL.setOnClickListener(this);
-//        botRowR.setOnClickListener(this);
-//        botRowM.setOnClickListener(this);
-//        botRowL.setOnClickListener(this);
-//        rightColT.setOnClickListener(this);
-//        rightColB.setOnClickListener(this);
-//        rightColM.setOnClickListener(this);
-//    }
-//
-//    public void onClick(View v) {
-//        if(v == leftColB) {
-//            Log.i("leftColB Button", "Operational");
-//        }
-//        else if(v == leftColM){
-//            Log.i("leftColM Button", "Operational");
-//        }
-//        else if(v == leftColT){
-//            Log.i("leftColT Button", "Operational");
-//        }
-//        else if(v == topRowM){
-//            Log.i("topRowM Button", "Operational");
-//        }
-//        else if(v == topRowL){
-//            Log.i("topRowL Button", "Operational");
-//        }
-//        else if(v == topRowR){
-//            Log.i("topRowR Button", "Operational");
-//        }
-//        else if (v == botRowL){
-//            Log.i("botRowL Button", "Operational");
-//        }
-//        else if(v == botRowM){
-//            Log.i("botRowM Button", "Operational");
-//        }
-//        else if(v == botRowR){
-//            Log.i("botRowR Button", "Operational");
-//        }
-//        else if(v == rightColB){
-//            Log.i("rightColB Button", "Operational");
-//        }
-//        else if(v == rightColM){
-//            Log.i("rightColM Button", "Operational");
-//        }
-//        else if(v == rightColT){
-//            Log.i("rightColT Button", "Operational");
-//        }
-//    }
+
 }
