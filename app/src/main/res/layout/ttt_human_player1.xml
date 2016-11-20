@@ -201,7 +201,7 @@
     android:layout_weight="1" />
     </LinearLayout>
 
-    <SurfaceView
+    <edu.up.cs301.Labyrinth.LabMazeSurfaveView
     android:layout_height="wrap_content"
     android:id="@+id/ACTUALMAZE"
     android:layout_weight="1"
