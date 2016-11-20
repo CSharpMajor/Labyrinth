@@ -12,7 +12,7 @@ import edu.up.cs301.game.infoMsg.GameState;
  * a player wants to enquire about the state of the game.  (E.g., to display
  * it, or to help figure out its next move.)
  *
- * TODO CODE THE MAZE CHLOE!!! Then do the deep copy for it
+ * TODO Then do the deep copy for it
  * 
  * @author Chloe Kuhar
  * @author Liz Frick
@@ -154,7 +154,15 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
 
-
+        //deeeeeeeeeeeeeep copy of maze
+        MazeTile[][] cp = copy.getMaze();
+        for( int r = 0; r < maze.length; r++ )
+        {
+            for( int c = 0; c < maze[r].length; c++ )
+            {
+                maze[r][c] = new MazeTile( cp[r][c] );
+            }
+        }
 
     }
 

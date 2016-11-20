@@ -1,6 +1,9 @@
 package edu.up.cs301.Labyrinth;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Chloe Kuhar
@@ -58,6 +61,25 @@ public class MazeTile {
             pathMap[3]=true;
         }
         treasureSymbol = symbol;
+    }
+
+    /**
+     * copy constructor for MazeTile
+     * @param cp the tile we will copy
+     */
+    public MazeTile( MazeTile cp )
+    {
+        type = cp.getType();
+
+        boolean[] cpMap = getPathMap();
+        for( int i = 0; i < cpMap.length; i++ )
+        {
+            pathMap[i] = cpMap[i];
+        }
+
+        treasureSymbol = cp.getTreasureSymbol();
+
+        Collections.copy( occupiedBy, cp.getOccupiedBy() );
     }
 
     //getters for all the attributtes
