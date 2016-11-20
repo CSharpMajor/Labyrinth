@@ -1,5 +1,9 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
+import java.util.Random;
+
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
@@ -22,6 +26,28 @@ public class LabComputerPlayer extends GameComputerPlayer
     }
 
     protected void receiveInfo(GameInfo info) {
+        if(info instanceof LabGameState){
+            LabGameState myGameState = (LabGameState) info;
+            if(this.playerNum != myGameState.getTurnID()){
+                return;
+            }
+            else{
+                if(myGameState.hasMovedMaze()){
+                    //move piece
+                    Random rand = new Random();
+                    Log.i("Computer", "moved piece");
+                    //random value between 1-8
+                    LabMovePieceAction action = new LabMovePieceAction(this, rand.nextInt(8)+1, rand.nextInt(8)+1);
+                }
+                else{
+                    //move maze
+                    Random rand = new Random();
+                    Log.i("Computer", "moved maze");
+                    //LabMoveMazeAction action = new LabMoveMazeAction(this, rand.nextInt());
+                    //game.sendAction(action);
+                }
 
+            }
+        }
     }
 }
