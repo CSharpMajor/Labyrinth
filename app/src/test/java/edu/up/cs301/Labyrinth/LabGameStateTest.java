@@ -96,56 +96,35 @@ public class LabGameStateTest {
         }
 
         //find the extra tile
-        int[] extraTileCoor = testState.findExtraTile();
+        int[] coordinates = testState.findExtraTile();
         MazeTile extraTile;
 
-        if( extraTileCoor[0] == 0 && extraTileCoor[1] == 2)
+        //extra tile is in the top row
+        if (coordinates[0] == 0)
         {
-
+            testState.moveCol(coordinates[1], true);
+            testState.setHasMovedMaze(true);
         }
-        else if( extraTileCoor[0] == 0 && extraTileCoor[1] == 4)
+        //extra tile is on the left side
+        else if (coordinates[1] == 0)
         {
-
+            masterGameState.moveRow(coordinates[1], true);
+            masterGameState.setHasMovedMaze(true);
+            return true;
         }
-        else if( extraTileCoor[0] == 0 && extraTileCoor[1] == 6)
+        //extra tile is on the bottom
+        else if (coordinates[0] == masterGameState.getMaze().length - 1)
         {
-
+            masterGameState.moveCol(coordinates[1], false);
+            masterGameState.setHasMovedMaze(true);
+            return true;
         }
-        else if( extraTileCoor[0] == 2 && extraTileCoor[1] == 8)
+        //extra tile is on the right side
+        else if (coordinates[1] == masterGameState.getMaze().length - 1)
         {
-
-        }
-        else if( extraTileCoor[0] == 4 && extraTileCoor[1] == 8)
-        {
-
-        }
-        else if( extraTileCoor[0] == 6 && extraTileCoor[1] == 8)
-        {
-
-        }
-        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 6)
-        {
-
-        }
-        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 4)
-        {
-
-        }
-        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 2)
-        {
-
-        }
-        else if( extraTileCoor[0] == 6 && extraTileCoor[1] == 0)
-        {
-
-        }
-        else if( extraTileCoor[0] == 4 && extraTileCoor[1] == 0)
-        {
-
-        }
-        else if( extraTileCoor[0] == 2 && extraTileCoor[1] == 0)
-        {
-
+            masterGameState.moveRow(coordinates[1], false);
+            masterGameState.setHasMovedMaze(true);
+            return true;
         }
 
 

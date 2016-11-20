@@ -112,7 +112,7 @@ public class LabLocalGame extends LocalGame
 	private boolean makeMazeMove(GameAction action)
 	{
 
-		if (!(action instanceof LabMoveMazeAction))
+		if (!(action instanceof LabMoveMazeAction) || ( ! checkExtraTile() ) )
 		{
 			return false;
 		}
@@ -254,10 +254,10 @@ public class LabLocalGame extends LocalGame
 		p.sendInfo(copy);
 	}
 
-	private boolean checkExtraTile(LabGameState theState)
+	private boolean checkExtraTile()
 	{
 		//find the extra tile
-		int[] extraTileCoor = theState.findExtraTile();
+		int[] extraTileCoor = masterGameState.findExtraTile();
 
 		if (extraTileCoor[0] % 2 != 0 && extraTileCoor[1] % 2 != 0)
 		{
