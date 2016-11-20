@@ -57,8 +57,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     //Set listener for the surface view
 
-    public LabHumanPlayer(String name)
-    {
     public LabHumanPlayer(String name) {
         super("hi");
     }
