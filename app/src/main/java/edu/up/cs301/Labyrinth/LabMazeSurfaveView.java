@@ -40,6 +40,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
     public void onDraw(Canvas g){
         Paint p = new Paint();
         p.setColor(Color.BLACK);
+
         for(int i = 0; i<myMaze.length; i++){
             for(int j = 0; j<myMaze[i].length; j++){
                 g.drawText("Testing", i*10, j*10, p);
