@@ -258,6 +258,10 @@ public class LabLocalGame extends LocalGame
 		p.sendInfo(copy);
 	}
 
+	/**
+	 *
+	 * @return
+     */
 	private boolean checkExtraTile()
 	{
 		//find the extra tile

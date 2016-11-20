@@ -29,10 +29,10 @@ public class LabGameState extends GameState
     int turnID;
 
     //all the hands of all the player's cards to collect
-    private ArrayList<ArrayList<TCard>> cardsToCollect = new ArrayList<ArrayList<TCard>>(0);
+    private ArrayList<ArrayList<TCard>> cardsToCollect = new ArrayList<ArrayList<TCard>>();
 
     //all the hands of all the player's cards they have collected
-    private ArrayList<ArrayList<TCard>> cardsCollected = new ArrayList<ArrayList<TCard>>(0);
+    private ArrayList<ArrayList<TCard>> cardsCollected = new ArrayList<ArrayList<TCard>>();
 
     //boolean to ensure the player has moved the maze first
     private boolean hasMovedMaze;
@@ -47,6 +47,7 @@ public class LabGameState extends GameState
     public LabGameState(){
         //sets turn to player 0
         turnID = 0;
+
         ArrayList<TCard> deck = new ArrayList<TCard>(24);
         for (LabTSymbol sym : LabTSymbol.values()) {
             deck.add(new TCard(sym));
@@ -63,7 +64,7 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
         for(int i=0; i<4; i++){
-            ArrayList<TCard> hand = new ArrayList<TCard>(0);
+            ArrayList<TCard> hand = new ArrayList<TCard>();
             cardsToCollect.add(hand);
         }
 
@@ -119,8 +120,6 @@ public class LabGameState extends GameState
         //place extra tile
         placeExtraTile( rand.nextInt(12), allTiles.get(0) );
 
-        //blue player is home
-        //maze[1][7].occupiedBy.add(2);
 
         hasMovedMaze = false;
     }
@@ -361,12 +360,11 @@ public class LabGameState extends GameState
                     newRow[i] = maze[row][i+1];
                 }
             }
-
-            //copy the new row to the game state
-            //for( int i = 0; i < newRow.length; i++ )
-            //{
-            //    maze[row][i] = newRow[i];
-            //}
+        }
+        //copy the new row to the game state
+        for( int i = 0; i < newRow.length; i++ )
+        {
+            maze[row][i] = newRow[i];
         }
     }
 
@@ -386,6 +384,18 @@ public class LabGameState extends GameState
             {
                 //tile coming from the top
                 if( i == 0 )
+                {
+                    newCol[i] = null;
+                }
+                else
+                {
+                    newCol[i] = maze[i-1][col];
+                }
+            }
+            else
+            {
+                //tile from bottom
+                if( i == newCol.length - 1 )
                 {
                     newCol[i] = null;
                 }

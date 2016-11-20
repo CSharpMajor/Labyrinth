@@ -22,7 +22,8 @@ public class LabGameStateTest {
         LabGameState state = new LabGameState();
         MazeTile[][] stateMaze = state.getMaze();
 
-        //goes through all the maze tiles (not the buffer) and sees that they
+        //goes through all the maze tiles (not the buffer) and sees that they have a maze tile in
+        //them
         for( int r = 1; r < stateMaze.length-1; r++ )
         {
             for( int c = 1; c < stateMaze[r].length-1; c++ )
@@ -41,27 +42,21 @@ public class LabGameStateTest {
 
     @Test
     public void testGetPlayerHand() throws Exception {
-        //LabGameState state = new LabGameState();
-        //ArrayList<TCard> cards = state.getPlayerHand(0);
+        LabGameState state = new LabGameState();
+        ArrayList<TCard> cards = state.getPlayerHand(0);
 
         for(int i = 0; i < 4; i++) {
-            //assertTrue( cards.get(i).num == i );
+            assertTrue( cards.get(i).getTreasure() != null );
         }
-        //for(int i = 0; i < 4; i++) {
-        //    assertTrue( cards.get(i).num == i );
-        //}
+
     }
-
-
 
     @Test
     public void testGetPlayerCollected() throws Exception {
-        //LabGameState testState = new LabGameState();
-        //ArrayList<TCard> handToTest = testState.getPlayerHand(0);
+        LabGameState testState = new LabGameState();
         //assertTrue(handToTest.size() == 4);
         //assertTrue(handToTest.get(0).num == 0);
         //assertTrue(handToTest.get(3).num == 3);
-        LabGameState testState = new LabGameState();
         ArrayList<TCard> handToTest = testState.getPlayerHand(0);
         assertTrue(handToTest.size() == 4);
         //assertTrue(handToTest.get(0).num == 0);
@@ -94,14 +89,59 @@ public class LabGameStateTest {
         testState.moveRow(2, true);
         testState.moveRow(2, false);
 
-        for( int r = 0; r < 9; r++ )
+        stateMaze = testState.getMaze();
+
+        //goes through all the maze tiles (not the buffer)
+        for( int r = 1; r < 8; r++ )
+        {
+            for( int c = 1; c < 8; c++ )
+            {
+                assertTrue( stateMaze[r][c] != null );
+                assertTrue( targetMaze[r][c] != null );
+                assertTrue(stateMaze[r][c].getTreasureSymbol() == targetMaze[r][c].getTreasureSymbol());
+                assertTrue(stateMaze[r][c].getType() == targetMaze[r][c].getType());
+            }
+        }
+    }
+
+    @Test
+    public void testMoveCol() throws Exception
+    {
+        LabGameState testState = new LabGameState();
+        MazeTile[][] stateMaze = testState.getMaze();
+
+        MazeTile[][] targetMaze = new MazeTile[9][9];
+        for( int r = 0; r < 9; r ++ )
         {
             for( int c = 0; c < 9; c++ )
             {
-                assertTrue(testState.getMaze()[r][c].getTreasureSymbol().
-                        getName().equals( targetMaze[r][c].getTreasureSymbol().getName()));
-                assertTrue(testState.getMaze()[r][c].getType() ==
-                        targetMaze[r][c].getType());
+                targetMaze[r][c] = stateMaze[r][c];
+            }
+        }
+
+        //find the extra tile
+        int[] coordinates = testState.findExtraTile();
+        MazeTile extraTile = stateMaze[coordinates[0]][coordinates[1]];
+
+        //move extraTile 2nd row left side for state maze
+        stateMaze[0][2] = extraTile;
+        stateMaze[coordinates[0]][coordinates[1]] = null;
+
+        //move the col and then move it back to original
+        testState.moveCol(2, true);
+        testState.moveCol(2, false);
+
+        stateMaze = testState.getMaze();
+
+        //goes through all the maze tiles (not the buffer)
+        for( int r = 1; r < 8; r++ )
+        {
+            for( int c = 1; c < 8; c++ )
+            {
+                assertTrue( stateMaze[r][c] != null );
+                assertTrue( targetMaze[r][c] != null );
+                assertTrue(stateMaze[r][c].getTreasureSymbol() == targetMaze[r][c].getTreasureSymbol());
+                assertTrue(stateMaze[r][c].getType() == targetMaze[r][c].getType());
             }
         }
     }
@@ -126,20 +166,18 @@ public class LabGameStateTest {
     @Test
     public void testGetPlayerCurTile() throws Exception {
         LabGameState testState = new LabGameState();
-        MazeTile[][] testMaze = testState.getMaze();
-
-        testMaze[2][2].occupiedBy.add(1);
-
-        testState.setMaze(testMaze);
 
         MazeTile[][] compareMaze = testState.getMaze();
+        compareMaze[2][2].occupiedBy.add(1);
+
         int[] coordsFound = new int[2];
 
-        for(int i = 0; i < compareMaze.length; i++)
+        //goes through the maze (excludes buffer and extra tile)
+        for(int i = 1; i < compareMaze.length - 1; i++)
         {
-            for(int j = 0; j < compareMaze[i].length; j++)
+            for(int j = 1; j < compareMaze[i].length - 1; j++)
             {
-                if(compareMaze[i][j].occupiedBy.contains((Integer) 1)){
+                if(compareMaze[i][j].occupiedBy.contains(1)){
                     coordsFound[0] = i;
                     coordsFound[1] = j;
                 }
