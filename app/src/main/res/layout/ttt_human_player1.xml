@@ -19,12 +19,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/playnicekids">
 
-    <LinearLayout
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
     android:orientation="vertical"
-    android:layout_width="100dp"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:id="@+id/leftInfo">
 
@@ -91,11 +95,11 @@
 
     </LinearLayout>
 
-    <Space
-    android:layout_width="18dp"
-    android:layout_height="match_parent" />
+        <Space
+        android:layout_width="18dp"
+        android:layout_height="match_parent" />
 
-    <LinearLayout
+        <LinearLayout
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -313,13 +317,13 @@
 
     <LinearLayout
     android:orientation="vertical"
-    android:layout_width="100dp"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:id="@+id/moveButtonArea"
     android:weightSum="1"
     android:layout_weight="0.99">
 
-    <Space
+        <Space
     android:layout_width="match_parent"
     android:layout_height="75dp" />
 
@@ -344,6 +348,10 @@
     android:layout_height="wrap_content" />
 
     </LinearLayout >
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent" />
 
 
     </LinearLayout ></LinearLayout >

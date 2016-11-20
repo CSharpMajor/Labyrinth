@@ -20,7 +20,7 @@ public class MazeTile {
     //S(straight) T or L
     private char type;
 
-    //n = 0-3 n*90 = the degrees from noraml
+    //n = 0-3 n*90 = the degrees from normal
     private int orientation=0;
 
     //boolean array to represent each side of the tile.
@@ -33,7 +33,7 @@ public class MazeTile {
 
     /*
      * Welcome to this wonderful constructor takes the type and Symbol
-     * the type can be S for straght or L or T
+     * the type can be S for straight or L or T
      */
     public MazeTile(char thetype, LabTSymbol symbol)
     {
@@ -60,7 +60,7 @@ public class MazeTile {
         treasureSymbol = symbol;
     }
 
-    //getters for all the attributtes
+    //getters for all the attributes
 
     public char getType(){ return type; }
 //
