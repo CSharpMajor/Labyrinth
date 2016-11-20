@@ -64,10 +64,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         super("hi");
     }
 
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
-
     public View getTopView() {
         return null;
     }
@@ -189,5 +185,20 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction(new LabMoveMazeAction(this,2,8));
             Log.i("rightColT Button", "Operational");
         }
+    }
+
+    public boolean onTouch(View v, MotionEvent event) {
+        //If the event is an "up" we need to ignore it
+        if(event.getAction() != MotionEvent.ACTION_UP)
+        {
+            return true;
+        }
+        //Getting the x and y position of the touch
+        int xCord = (int)event.getX();
+        int yCord = (int)event.getY();
+        //Sending these coordinates as a LabMovePieceAction
+        game.sendAction(new LabMovePieceAction(this, xCord, yCord));
+        //We have handled the event
+        return true;
     }
 }
