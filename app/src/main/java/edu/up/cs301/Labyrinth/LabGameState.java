@@ -68,7 +68,7 @@ public class LabGameState extends GameState
         }
 
         cardsCollected = new ArrayList<ArrayList<TCard>>(4);
-        //filling the arraylist of tiles
+        //filling the arrayList of tiles
         getTiles();
 
         //fill top row with null
