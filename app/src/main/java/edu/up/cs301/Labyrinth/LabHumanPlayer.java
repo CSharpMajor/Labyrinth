@@ -64,10 +64,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         super("hi");
     }
 
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
-
     public View getTopView() {
         return null;
     }
@@ -153,30 +149,56 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == leftColB) {
+            game.sendAction(new LabMoveMazeAction(this,6,0));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {
+            game.sendAction(new LabMoveMazeAction(this,4,0));
             Log.i("leftColM Button", "Operational");
         } else if (v == leftColT) {
+            game.sendAction(new LabMoveMazeAction(this,2,0));
             Log.i("leftColT Button", "Operational");
         } else if (v == topRowM) {
+            game.sendAction(new LabMoveMazeAction(this,0,4));
             Log.i("topRowM Button", "Operational");
         } else if (v == topRowL) {
+            game.sendAction(new LabMoveMazeAction(this,0,2));
             Log.i("topRowL Button", "Operational");
         } else if (v == topRowR) {
+            game.sendAction(new LabMoveMazeAction(this,0,6));
             Log.i("topRowR Button", "Operational");
         } else if (v == botRowL) {
+            game.sendAction(new LabMoveMazeAction(this,8,2));
             Log.i("botRowL Button", "Operational");
         } else if (v == botRowM) {
+            game.sendAction(new LabMoveMazeAction(this,8,4));
             Log.i("botRowM Button", "Operational");
         } else if (v == botRowR) {
+            game.sendAction(new LabMoveMazeAction(this,8,6));
             Log.i("botRowR Button", "Operational");
         } else if (v == rightColB) {
+            game.sendAction(new LabMoveMazeAction(this,6,8));
             Log.i("rightColB Button", "Operational");
         } else if (v == rightColM) {
+            game.sendAction(new LabMoveMazeAction(this,4,8));
             Log.i("rightColM Button", "Operational");
         } else if (v == rightColT) {
+            game.sendAction(new LabMoveMazeAction(this,2,8));
             Log.i("rightColT Button", "Operational");
         }
     }
 
+    public boolean onTouch(View v, MotionEvent event) {
+        //If the event is an "up" we need to ignore it
+        if(event.getAction() != MotionEvent.ACTION_UP)
+        {
+            return true;
+        }
+        //Getting the x and y position of the touch
+        int xCord = (int)event.getX();
+        int yCord = (int)event.getY();
+        //Sending these coordinates as a LabMovePieceAction
+        game.sendAction(new LabMovePieceAction(this, xCord, yCord));
+        //We have handled the event
+        return true;
+    }
 }
