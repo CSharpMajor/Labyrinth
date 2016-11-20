@@ -46,7 +46,7 @@ public class LabGameState extends GameState
      */
     public LabGameState(){
         //sets turn to player 0
-        turnID = 1;
+        turnID = 0;
         ArrayList<TCard> deck = new ArrayList<TCard>(24);
         for (LabTSymbol sym : LabTSymbol.values()) {
             deck.add(new TCard(sym));
@@ -68,7 +68,7 @@ public class LabGameState extends GameState
         }
 
         cardsCollected = new ArrayList<ArrayList<TCard>>(4);
-        //filling the arraylist of tiles
+        //filling the arrayList of tiles
         getTiles();
 
         //fill top row with null
