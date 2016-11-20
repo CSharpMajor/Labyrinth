@@ -214,13 +214,13 @@ public class LabGameState extends GameState
         switch ( i )
         {
             //Top of Board: Left
-            case 0: maze[0][1] = extra;
+            case 0: maze[0][2] = extra;
                 break;
             //Top of Board: Middle
-            case 1: maze[0][3] = extra;
+            case 1: maze[0][4] = extra;
                 break;
             //Top of Board: Right
-            case 2: maze[0][5] = extra;
+            case 2: maze[0][6] = extra;
                 break;
             //Right of Board: Top
             case 3: maze[2][8] = extra;
@@ -232,13 +232,13 @@ public class LabGameState extends GameState
             case 5: maze[6][8] = extra;
                 break;
             //Bottom of Board: Right
-            case 6: maze[8][5] = extra;
+            case 6: maze[8][6] = extra;
                 break;
             //Bottom of Board: Middle
-            case 7: maze[8][3] = extra;
+            case 7: maze[8][4] = extra;
                 break;
             //Bottom of Board: Left
-            case 8: maze[8][1] = extra;
+            case 8: maze[8][2] = extra;
                 break;
             //Left of Board: Bottom
             case 9: maze[6][0] = extra;

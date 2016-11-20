@@ -97,7 +97,10 @@ public class LabGameStateTest {
 
         int[] extraTileCoor = testState.findExtraTile();
 
-        if( )
+        if( extraTileCoor[0] == 1 && extraTileCoor[1] == 0)
+        {
+
+        }
 
         for( int r = 0; r < 9; r++ )
         {
