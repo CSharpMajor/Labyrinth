@@ -443,4 +443,5 @@ public class LabGameState extends GameState
         //somehow never found an extra tile
         return coordinates;
     }
+}
 

@@ -95,12 +95,59 @@ public class LabGameStateTest {
             }
         }
 
+        //find the extra tile
         int[] extraTileCoor = testState.findExtraTile();
+        MazeTile extraTile;
 
-        if( extraTileCoor[0] == 1 && extraTileCoor[1] == 0)
+        if( extraTileCoor[0] == 0 && extraTileCoor[1] == 2)
         {
 
         }
+        else if( extraTileCoor[0] == 0 && extraTileCoor[1] == 4)
+        {
+
+        }
+        else if( extraTileCoor[0] == 0 && extraTileCoor[1] == 6)
+        {
+
+        }
+        else if( extraTileCoor[0] == 2 && extraTileCoor[1] == 8)
+        {
+
+        }
+        else if( extraTileCoor[0] == 4 && extraTileCoor[1] == 8)
+        {
+
+        }
+        else if( extraTileCoor[0] == 6 && extraTileCoor[1] == 8)
+        {
+
+        }
+        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 6)
+        {
+
+        }
+        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 4)
+        {
+
+        }
+        else if( extraTileCoor[0] == 8 && extraTileCoor[1] == 2)
+        {
+
+        }
+        else if( extraTileCoor[0] == 6 && extraTileCoor[1] == 0)
+        {
+
+        }
+        else if( extraTileCoor[0] == 4 && extraTileCoor[1] == 0)
+        {
+
+        }
+        else if( extraTileCoor[0] == 2 && extraTileCoor[1] == 0)
+        {
+
+        }
+
 
         for( int r = 0; r < 9; r++ )
         {
