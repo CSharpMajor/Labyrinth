@@ -82,7 +82,7 @@ public class MazeTile {
         Collections.copy( occupiedBy, cp.getOccupiedBy() );
     }
 
-    //getters for all the attributtes
+    //getters for all the attributes
 
     public char getType(){ return type; }
 //

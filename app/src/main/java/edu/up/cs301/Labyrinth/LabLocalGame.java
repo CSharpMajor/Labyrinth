@@ -5,6 +5,7 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 
+
 /**
  * The LabyrinthLocalGame class for a Labyrinth game. Defines and enforces
  * the game rules; handles interactions with players.
@@ -100,7 +101,6 @@ public class LabLocalGame extends LocalGame
 				return makePlayerPieceMove(action);
 			}
 		}
-
 		return false;
 	}
 
