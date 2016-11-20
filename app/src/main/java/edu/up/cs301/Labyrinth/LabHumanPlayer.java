@@ -58,6 +58,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private LabMazeSurfaveView surfaceView;
 
+    private LabGameState myState;
+
+    private MazeTile[][] myMaze;
+
     //Set listener for the surface view
 
     public LabHumanPlayer(String name) {
@@ -98,9 +102,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //Set the surface view's state
             //Invalidate the surface view
-            LabGameState myState = (LabGameState) info;
+            myState = (LabGameState) info;
+            myMaze = myState.getMaze();
             surfaceView.setState(myState);
             surfaceView.invalidate();
+            placeExtraTile();
             Log.i("human player", "receiving");
         }
     }
@@ -149,6 +155,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         surfaceView.setOnTouchListener(this);
 
+
     }//end of set as GUI
 
     public void onClick(View v) {
@@ -179,4 +186,59 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
+    private void placeExtraTile(){
+        if(myState != null) {
+            int[] coords = myState.findExtraTile();
+            Log.i("placeExtra", ""+coords[0]+coords[1]);
+            if (coords[0] == 0) {
+                switch (coords[1]) {
+                    case 2:
+                        topRowR.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        topRowM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        topRowL.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[0] == 8) {
+                switch (coords[1]) {
+                    case 2:
+                        rightColT.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        rightColM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        rightColB.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[1] == 0) {
+                switch (coords[0]) {
+                    case 2:
+                        leftColT.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        leftColM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        leftColB.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[1] == 8) {
+                switch (coords[0]) {
+                    case 2:
+                        botRowL.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        botRowM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        botRowR.setBackgroundColor(Color.RED);
+                        break;
+                }
+            }
+        }
+    }
 }
