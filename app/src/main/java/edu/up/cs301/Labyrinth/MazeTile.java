@@ -71,7 +71,7 @@ public class MazeTile {
     {
         type = cp.getType();
 
-        boolean[] cpMap = getPathMap();
+        boolean[] cpMap = cp.getPathMap();
         for( int i = 0; i < cpMap.length; i++ )
         {
             pathMap[i] = cpMap[i];

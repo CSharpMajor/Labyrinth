@@ -22,12 +22,12 @@ public class LabGameStateTest {
         LabGameState state = new LabGameState();
         MazeTile[][] stateMaze = state.getMaze();
 
-        //goes through all the
+        //goes through all the maze tiles (not the buffer
         for( int r = 1; r < stateMaze.length-1; r++ )
         {
             for( int c = 1; c < stateMaze[r].length-1; c++ )
             {
-
+                assertTrue( );
             }
         }
     }
