@@ -404,13 +404,13 @@
     android:layout_width="match_parent"
     android:layout_height="21dp" />
 
-    <SurfaceView
-    android:layout_width="match_parent"
-    android:layout_height="345dp"
-    android:id="@+id/surfaceView7"
-    android:background="#18391B" />
+        <ImageView
+            android:src="@mipmap/thejiggdude"
+            android:layout_width="match_parent"
+            android:layout_height="345dp"
+            android:id="@+id/imageView9" />
 
-    <Space
+        <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
