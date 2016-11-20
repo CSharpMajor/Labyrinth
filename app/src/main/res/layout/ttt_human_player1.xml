@@ -37,13 +37,23 @@
     android:layout_height="10dp"
     android:layout_weight="0.28" />
 
-    <TextView
-    android:text="AREA FOR THE TURN INFO"
-    android:layout_width="match_parent"
-    tools:ignore="HardcodedText,Suspicious0dp"
-    android:layout_weight="1"
-    android:layout_height="50dp"
-    android:id="@+id/turnInfo" />
+            <TextView
+            android:text="AREA FOR THE TURN INFO"
+            android:layout_width="match_parent"
+            tools:ignore="HardcodedText,Suspicious0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:id="@+id/turnInfo" />
+
+            <TextView
+                android:text="Treasure Cards collected per player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.28"
+                android:id="@+id/@+id/cardplayerinfo"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="25sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -59,7 +69,7 @@
                     android:id="@+id/blueIcon" />
 
                 <ImageView
-                    android:src="@android:drawable/btn_dialog"
+                    android:src="@mipmap/nocards"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/blueTreasures"
@@ -69,7 +79,7 @@
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
+    android:layout_weight="0.16" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -86,7 +96,7 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:src="@android:drawable/button_onoff_indicator_on"
+                    android:src="@mipmap/nocards"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/redTreasures"
@@ -96,7 +106,7 @@
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
+    android:layout_weight="0.13" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -112,17 +122,17 @@
                     android:layout_width="95dp" />
 
                 <ImageView
-                    android:src="@android:drawable/checkbox_off_background"
+                    android:src="@mipmap/nocards"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView4"
-                    android:layout_weight="1" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/greenTreasures" />
             </LinearLayout>
 
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
+    android:layout_weight="0.14" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -138,19 +148,19 @@
                     android:id="@+id/imageView8" />
 
                 <ImageView
-                    android:src="@android:drawable/editbox_dropdown_dark_frame"
+                    android:src="@mipmap/nocards"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView7"
+                    android:layout_height="match_parent"
+                    android:id="@+id/yellowTreasures"
                     android:layout_weight="1" />
             </LinearLayout>
 
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
+    android:layout_weight="0.13" />
 
-    </LinearLayout>
+        </LinearLayout>
 
         <Space
         android:layout_width="18dp"
