@@ -53,7 +53,7 @@
                 android:id="@+id/blueInfo">
 
                 <ImageView
-                    android:src="@mipmap/blueIcon"
+                    android:src="@mipmap/iconblue"
                     android:layout_width="95dp"
                     android:layout_height="match_parent"
                     android:id="@+id/blueIcon" />
@@ -79,7 +79,7 @@
                 android:id="@+id/redInfo">
 
                 <ImageView
-                    android:src="@mipmap/redIcon"
+                    android:src="@mipmap/iconred"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView6"
@@ -106,7 +106,7 @@
                 android:id="@+id/greenInfo">
 
                 <ImageView
-                    android:src="@mipmap/greenIcon"
+                    android:src="@mipmap/icongreen"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView5"
                     android:layout_width="95dp" />
@@ -132,7 +132,7 @@
                 android:id="@+id/yellowInfo">
 
                 <ImageView
-                    android:src="@mipmap/yellowIcon"
+                    android:src="@mipmap/iconyellow"
                     android:layout_width="95dp"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView8" />
