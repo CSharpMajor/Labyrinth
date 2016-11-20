@@ -12,6 +12,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -35,7 +36,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Mikayla Whiteaker
  * @version Nov 2016, preAlpha
  */
-public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
+public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener {
 
     //Variables for the buttons on the GUI
     private ImageButton leftColT = null;
@@ -51,9 +52,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColM = null;
     private ImageButton rightColB = null;
     private Button moveButtonArea = null;
-    private MazeTile[][] myMaze;
 
-    private GameMainActivity myActivity;
+
+    private Activity myActivity;
+
+    private LabMazeSurfaveView surfaceView;
 
     //Set listener for the surface view
 
@@ -70,12 +73,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     public void receiveInfo(GameInfo info) {
-        LabGameState myState = (LabGameState) info;
-        myMaze = myState.getMaze();
+
+        if(surfaceView == null) return;
+
+
+
 
         if( info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
         {
             //The move was illegal, so let the user know using the surface view
+            //surfaceView.flash(Color.RED, 50);
         }
         else if(!(info instanceof LabGameState))
         {
@@ -86,6 +93,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //Set the surface view's state
             //Invalidate the surface view
+            //LabGameState myState = (LabGameState) info;
+            //surfaceView.setState(myState);
+            //surfaceView.invalidate();
+            Log.i("human player", "receiving");
         }
     }
 
@@ -129,7 +140,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         rightColM.setOnClickListener(this);
 
         // how do we get the canvas from the surface view to draw on?
-        //drawMaze(myMaze, );
+        //surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
+
+        //surfaceView.setOnTouchListener(this);
 
     }//end of set as GUI
 
@@ -161,18 +174,4 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
-    private void drawMaze(MazeTile[][] maze, Canvas c) {
-
-
-        c.drawColor(Color.WHITE);
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[i].length; j++) {
-                c.drawText("XXXX", 200, 100, paint);
-            }
-        }
-
-
-    }
 }
