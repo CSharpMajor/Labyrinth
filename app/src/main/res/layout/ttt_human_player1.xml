@@ -28,9 +28,9 @@
 
         <LinearLayout
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/leftInfo">
+            android:layout_height="match_parent"
+    android:id="@+id/leftInfo"
+            android:layout_width="180dp">
 
     <Space
     android:layout_width="match_parent"
@@ -45,50 +45,107 @@
     android:layout_height="50dp"
     android:id="@+id/turnInfo" />
 
-    <SurfaceView
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:layout_weight="0.50"
-    android:background="#08457E"
-    android:id="@+id/bluetreasures" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="0.28"
+                android:id="@+id/blueInfo">
 
-    <Space
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
+                <ImageView
+                    android:src="@mipmap/blueIcon"
+                    android:layout_width="95dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/blueIcon" />
 
-    <SurfaceView
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:id="@+id/redTreasures"
-    android:background="#CE1620"
-    android:layout_weight="0.49" />
+                <ImageView
+                    android:src="@android:drawable/btn_dialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/blueTreasures"
+                    android:layout_weight="0.28" />
+            </LinearLayout>
 
-    <Space
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="0.28" />
-
-    <SurfaceView
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:layout_weight="0.50"
-    android:id="@+id/greenTreasures"
-    android:background="#177245" />
-
-    <Space
+            <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="0.28" />
 
-    <SurfaceView
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:layout_weight="0.50"
-    android:background="#F4C430"
-    android:id="@+id/yellowTreasures" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="0.28"
+                android:id="@+id/redInfo">
 
-    <Space
+                <ImageView
+                    android:src="@mipmap/redIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView6"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:src="@android:drawable/button_onoff_indicator_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/redTreasures"
+                    android:layout_weight="0.90" />
+            </LinearLayout>
+
+            <Space
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.28" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="0.28"
+                android:id="@+id/greenInfo">
+
+                <ImageView
+                    android:src="@mipmap/greenIcon"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView5"
+                    android:layout_width="95dp" />
+
+                <ImageView
+                    android:src="@android:drawable/checkbox_off_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView4"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.28" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="0.28"
+                android:id="@+id/yellowInfo">
+
+                <ImageView
+                    android:src="@mipmap/yellowIcon"
+                    android:layout_width="95dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView8" />
+
+                <ImageView
+                    android:src="@android:drawable/editbox_dropdown_dark_frame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView7"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="0.28" />
