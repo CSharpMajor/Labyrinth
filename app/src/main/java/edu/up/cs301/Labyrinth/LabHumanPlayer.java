@@ -55,6 +55,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private GameMainActivity myActivity;
 
+    //Set listener for the surface view
+
+    public LabHumanPlayer(String name)
+    {
     public LabHumanPlayer(String name) {
         super("hi");
     }
@@ -70,6 +74,21 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void receiveInfo(GameInfo info) {
         LabGameState myState = (LabGameState) info;
         myMaze = myState.getMaze();
+
+        if( info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
+        {
+            //The move was illegal, so let the user know using the surface view
+        }
+        else if(!(info instanceof LabGameState))
+        {
+            //If the state is not a game state, ignore it
+            return;
+        }
+        else
+        {
+            //Set the surface view's state
+            //Invalidate the surface view
+        }
     }
 
     public void setAsGui(GameMainActivity activity) {
