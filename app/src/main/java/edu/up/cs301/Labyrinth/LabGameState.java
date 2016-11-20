@@ -110,7 +110,7 @@ public class LabGameState extends GameState
             {
                 if( maze[r][c] == null )
                 {
-                    ind = rand.nextInt(allTiles.size()) + 4;
+                    ind = rand.nextInt(allTiles.size());
                     maze[r][c] = allTiles.get(ind);
                 }
             }
@@ -160,9 +160,16 @@ public class LabGameState extends GameState
         {
             for( int c = 0; c < maze[r].length; c++ )
             {
-                maze[r][c] = new MazeTile( cp[r][c] );
+                if( r > 0 && c > 0 && r < 8 && c < 8 )
+                {
+                    maze[r][c] = new MazeTile( cp[r][c] );
+                }
             }
         }
+
+        //placing extra tile
+        int[] coordinates = copy.findExtraTile();
+        maze[coordinates[0]][coordinates[1]] = new MazeTile(cp[coordinates[0]][coordinates[1]]);
 
     }
 

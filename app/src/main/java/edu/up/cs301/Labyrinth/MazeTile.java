@@ -29,7 +29,7 @@ public class MazeTile {
     //boolean array to represent each side of the tile.
     // True if it has a path on it will be rotated by the rotate method
     //the 0th index is the top of the tile it then progresses around clockwise
-    private boolean[] pathMap;
+    private boolean[] pathMap = new boolean[4];
 
     //the treasure
     private LabTSymbol treasureSymbol;
@@ -41,7 +41,6 @@ public class MazeTile {
     public MazeTile(char thetype, LabTSymbol symbol)
     {
         type = thetype;
-        pathMap = new boolean[4];
         if(type == 'S'){
             pathMap[0]=false;
             pathMap[1]=true;
@@ -71,7 +70,7 @@ public class MazeTile {
     {
         type = cp.getType();
 
-        boolean[] cpMap = getPathMap();
+        boolean[] cpMap = cp.getPathMap();
         for( int i = 0; i < cpMap.length; i++ )
         {
             pathMap[i] = cpMap[i];
