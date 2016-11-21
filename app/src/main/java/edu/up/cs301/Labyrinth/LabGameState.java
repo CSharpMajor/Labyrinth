@@ -67,6 +67,11 @@ public class LabGameState extends GameState
         }
 
         cardsCollected = new ArrayList<ArrayList<TCard>>(4);
+
+        for( int i = 0; i < 4; i++ )
+        {
+             cardsCollected.add(new ArrayList<TCard>() );
+        }
         //filling the arrayList of tiles
         getTiles();
 
@@ -315,7 +320,7 @@ public class LabGameState extends GameState
     }
 
     public ArrayList<TCard> getPlayerCollected( int playerIndex ) {
-        if(cardsCollected.size() == 0 || cardsCollected.get(playerIndex).size() == 0){
+        if(cardsCollected.size() == 0 ){
             return null;
         }
         return cardsCollected.get(playerIndex);
@@ -330,9 +335,10 @@ public class LabGameState extends GameState
     public void collectTCard( int playerIndex ){
         TCard move = cardsToCollect.get(playerIndex).get(0);
 
-        ArrayList<TCard> hand = cardsCollected.get(playerIndex);
-        hand.add(move);
-        cardsToCollect.get(playerIndex).remove(0);
+        //ArrayList<TCard> hand = cardsCollected.get(playerIndex);
+        cardsCollected.get(playerIndex).add(move);
+        ArrayList<TCard> hand = cardsToCollect.get(playerIndex);
+        hand.remove(0);
     }
 
     public int[] getPlayerCurTile( int playerIndex )
