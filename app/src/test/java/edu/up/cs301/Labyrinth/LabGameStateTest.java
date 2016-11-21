@@ -82,10 +82,15 @@ public class LabGameStateTest {
         }
 
         //finds the extra tile and moves it to (0,2)
-        testState.moveExtraTile(0, 2);
+        testState.moveExtraTile(2, 0);
 
         //move the row and then move it back to original
         testState.moveRow(2, true);
+
+        //test that extra tile is on other end
+        assertTrue( stateMaze[2][8] != null );
+
+        //move the row back
         testState.moveRow(2, false);
 
         stateMaze = testState.getMaze();
@@ -128,6 +133,11 @@ public class LabGameStateTest {
 
         //move the col and then move it back to original
         testState.moveCol(2, true);
+
+        //test that tile got on other side
+        assertTrue( stateMaze[8][2] != null );
+
+        //move the column back
         testState.moveCol(2, false);
 
         stateMaze = testState.getMaze();

@@ -133,7 +133,7 @@ public class LabLocalGame extends LocalGame
 		//extra tile is on the left side
 		else if (coordinates[1] == 0)
 		{
-			masterGameState.moveRow(coordinates[1], true);
+			masterGameState.moveRow(coordinates[0], true);
 			masterGameState.setHasMovedMaze(true);
 			return true;
 		}
@@ -147,7 +147,7 @@ public class LabLocalGame extends LocalGame
 		//extra tile is on the right side
 		else if (coordinates[1] == masterGameState.getMaze().length - 1)
 		{
-			masterGameState.moveRow(coordinates[1], false);
+			masterGameState.moveRow(coordinates[0], false);
 			masterGameState.setHasMovedMaze(true);
 			return true;
 		}
