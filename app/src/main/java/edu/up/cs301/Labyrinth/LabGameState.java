@@ -11,8 +11,6 @@ import edu.up.cs301.game.infoMsg.GameState;
  * Contains the state of a Labyrinth game.  Sent by the game when
  * a player wants to enquire about the state of the game.  (E.g., to display
  * it, or to help figure out its next move.)
- *
- * TODO Then do the deep copy for it
  * 
  * @author Chloe Kuhar
  * @author Liz Frick
@@ -219,6 +217,29 @@ public class LabGameState extends GameState
     }
 
     /**
+     * moves the extra tile to where it needs to be
+     * @param x the new location for the extra tile
+     * @param y
+     */
+    public void moveExtraTile( int x, int y )
+    {
+        if( x < 0 || x > 8 || y < 0 || y > 8 )
+        {
+            return;
+        }
+
+        //get the extra maze tile
+        int[] coordinates = findExtraTile();
+        MazeTile extra = maze[coordinates[0]][coordinates[1]];
+
+        //make old spot null
+        maze[coordinates[0]][coordinates[1]] = null;
+
+        //put tile in new spot
+        maze[x][y] = extra;
+    }
+
+    /**
      * will take a number from 0-11 that determines the placement of the extra tile
      * @param i a value from 0-11
      * @param extra the extra tile to be placed
@@ -300,9 +321,17 @@ public class LabGameState extends GameState
         return cardsCollected.get(playerIndex);
     }
 
+    /**
+     * When a player collects a card it will move the card from cardsToCollect to cardsCollected
+     *
+     * TODO this method keeps getting null pointer at line 303
+     * @param playerIndex the player who has collected the card
+     */
     public void collectTCard( int playerIndex ){
         TCard move = cardsToCollect.get(playerIndex).get(0);
-        cardsCollected.get(playerIndex).add(move);
+
+        ArrayList<TCard> hand = cardsCollected.get(playerIndex);
+        hand.add(move);
         cardsToCollect.get(playerIndex).remove(0);
     }
 
@@ -423,7 +452,7 @@ public class LabGameState extends GameState
         int[] coordinates = { -1, -1 };
 
         //search top row
-        for( int i = 0; i < maze[0].length; i++ )
+        for( int i = 0; i < 8; i++ )
         {
             if( maze[0][i] != null )
             {
@@ -434,7 +463,7 @@ public class LabGameState extends GameState
         }
 
         //search left side
-        for( int i = 0; i < maze.length; i++ )
+        for( int i = 0; i < 8; i++ )
         {
             if( maze[i][0] != null )
             {
@@ -445,22 +474,23 @@ public class LabGameState extends GameState
         }
 
         //search bottom row
-        for( int i = 0; i < maze[maze.length - 1].length; i++ )
+        for( int i = 0; i < 8; i++ )
         {
-            if( maze[maze.length - 1][i] != null )
+            if( maze[8][i] != null )
             {
-                coordinates[0] = maze.length - 1;
+                coordinates[0] = 8;
                 coordinates[1] = i;
                 return coordinates;
             }
         }
 
-        for ( int i = 0; i < maze.length; i++ )
+        //right side
+        for ( int i = 0; i < 8; i++ )
         {
-            if( maze[i][maze.length - 1] != null )
+            if( maze[i][8] != null )
             {
                 coordinates[0] = i;
-                coordinates[1] = maze.length - 1;
+                coordinates[1] = 8;
                 return coordinates;
             }
         }
@@ -468,5 +498,6 @@ public class LabGameState extends GameState
         //somehow never found an extra tile
         return coordinates;
     }
+
 }
 

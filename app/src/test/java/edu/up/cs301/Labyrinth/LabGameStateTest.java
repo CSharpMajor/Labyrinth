@@ -45,6 +45,8 @@ public class LabGameStateTest {
         LabGameState state = new LabGameState();
         ArrayList<TCard> cards = state.getPlayerHand(0);
 
+        assertTrue( cards.size() > 0 );
+
         for(int i = 0; i < 4; i++) {
             assertTrue( cards.get(i).getTreasure() != null );
         }
@@ -54,13 +56,15 @@ public class LabGameStateTest {
     @Test
     public void testGetPlayerCollected() throws Exception {
         LabGameState testState = new LabGameState();
-        //assertTrue(handToTest.size() == 4);
-        //assertTrue(handToTest.get(0).num == 0);
-        //assertTrue(handToTest.get(3).num == 3);
-        ArrayList<TCard> handToTest = testState.getPlayerHand(0);
-        assertTrue(handToTest.size() == 4);
-        //assertTrue(handToTest.get(0).num == 0);
-        //assertTrue(handToTest.get(3).num == 3);
+
+        //make sure there is a card collected
+        testState.collectTCard(0);
+
+        ArrayList<TCard> handToTest = testState.getPlayerCollected(0);
+
+        //test that it has a card now
+        assertTrue( handToTest != null );
+
     }
 
     @Test
