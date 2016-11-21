@@ -38,12 +38,26 @@
     android:layout_weight="0.28" />
 
             <TextView
-            android:text="AREA FOR THE TURN INFO"
+            android:text="Player&apos;s turn:"
             android:layout_width="match_parent"
             tools:ignore="HardcodedText,Suspicious0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:id="@+id/turnInfo" />
+                android:layout_height="wrap_content"
+            android:id="@+id/turnInfo"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BLUE/RED/YELLOW/GREEN"
+                android:id="@+id/TurnInfoChanging"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <TextView
                 android:text="Treasure Cards collected per player"
@@ -404,11 +418,13 @@
     android:layout_width="match_parent"
     android:layout_height="21dp" />
 
-        <ImageView
-            android:src="@mipmap/thejiggdude"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="345dp"
-            android:id="@+id/imageView9" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Get this treasure card: "
+            android:id="@+id/treasureCardToGet"
+            android:textSize="40dp" />
 
         <Space
     android:layout_width="match_parent"
