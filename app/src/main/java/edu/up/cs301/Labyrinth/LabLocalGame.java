@@ -21,6 +21,13 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 
 public class LabLocalGame extends LocalGame
 {
+	/**
+	 * PSA:
+	 * Player 0 is Red
+	 * Player 1 is Green
+	 * Player 2 is Blue
+	 * Player 3 is Yellow
+	 */
 
 	private LabGameState masterGameState;
 	private boolean[][] booleanMazeMap = new boolean[9][9];
