@@ -45,6 +45,8 @@ public class LabGameStateTest {
         LabGameState state = new LabGameState();
         ArrayList<TCard> cards = state.getPlayerHand(0);
 
+        assertTrue( cards.size() > 0 );
+
         for(int i = 0; i < 4; i++) {
             assertTrue( cards.get(i).getTreasure() != null );
         }
@@ -54,13 +56,15 @@ public class LabGameStateTest {
     @Test
     public void testGetPlayerCollected() throws Exception {
         LabGameState testState = new LabGameState();
-        //assertTrue(handToTest.size() == 4);
-        //assertTrue(handToTest.get(0).num == 0);
-        //assertTrue(handToTest.get(3).num == 3);
-        ArrayList<TCard> handToTest = testState.getPlayerHand(0);
-        assertTrue(handToTest.size() == 4);
-        //assertTrue(handToTest.get(0).num == 0);
-        //assertTrue(handToTest.get(3).num == 3);
+
+        //make sure there is a card collected
+        testState.collectTCard(0);
+
+        ArrayList<TCard> handToTest = testState.getPlayerCollected(0);
+
+        //test that it has a card now
+        assertTrue( handToTest != null );
+
     }
 
     @Test
@@ -77,16 +81,16 @@ public class LabGameStateTest {
             }
         }
 
-        //find the extra tile
-        int[] coordinates = testState.findExtraTile();
-        MazeTile extraTile = stateMaze[coordinates[0]][coordinates[1]];
-
-        //move extraTile 2nd row left side for state maze
-        stateMaze[2][0] = extraTile;
-        stateMaze[coordinates[0]][coordinates[1]] = null;
+        //finds the extra tile and moves it to (0,2)
+        testState.moveExtraTile(2, 0);
 
         //move the row and then move it back to original
         testState.moveRow(2, true);
+
+        //test that extra tile is on other end
+        assertTrue( stateMaze[2][8] != null );
+
+        //move the row back
         testState.moveRow(2, false);
 
         stateMaze = testState.getMaze();
@@ -129,6 +133,11 @@ public class LabGameStateTest {
 
         //move the col and then move it back to original
         testState.moveCol(2, true);
+
+        //test that tile got on other side
+        assertTrue( stateMaze[8][2] != null );
+
+        //move the column back
         testState.moveCol(2, false);
 
         stateMaze = testState.getMaze();
@@ -148,19 +157,11 @@ public class LabGameStateTest {
 
     @Test
     public void testCollectTCard() throws Exception {
-//        LabGameState testState = new LabGameState();
-//        ArrayList<TCard> handtoTest = testState.getPlayerHand(0);
-//        testState.collectTCard(0);
-//        ArrayList<TCard> afterHand = testState.getPlayerHand(0);
-//        assertTrue(handtoTest.size() == afterHand.size());
-//        assertTrue(handtoTest.get(0).num == 1);
         LabGameState testState = new LabGameState();
+        int handSizeToTest = testState.getPlayerHand(0).size();
         ArrayList<TCard> handtoTest = testState.getPlayerHand(0);
         testState.collectTCard(0);
-        ArrayList<TCard> afterHand = testState.getPlayerHand(0);
-        assertTrue(handtoTest.size() == afterHand.size());
-        //assertTrue(handtoTest.get(0).num == 1);
-
+        assertTrue(handtoTest.size() == handSizeToTest-1);
     }
 
     @Test
