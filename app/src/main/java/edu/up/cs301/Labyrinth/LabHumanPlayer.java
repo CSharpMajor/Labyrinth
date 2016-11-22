@@ -19,6 +19,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import edu.up.cs301.animation.AnimationSurface;
 import edu.up.cs301.animation.Animator;
 import edu.up.cs301.game.GameHumanPlayer;
@@ -58,7 +60,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     //Text view for the treasure card
     private TextView cardToGet = null;
     //Treasures of the blue player
-    private ImageView blueTreasure = null;
+    private ImageView blueTreasures = null;
+    private ImageView greenTreasures = null;
+    private ImageView yellowTreasures = null;
+    private ImageView redTreasures = null;
 
     private Activity myActivity;
 
@@ -102,15 +107,228 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             LabGameState myState = (LabGameState) info;
             surfaceView.setState(myState);
 
-            int blueTreasure = ((LabGameState) info).getPlayerCollected(2).size();
-            int greenTreasure = ((LabGameState) info).getPlayerCollected(1).size();
-            int yellowTreasure = ((LabGameState) info).getPlayerCollected(3).size();
-            int redTreasure = ((LabGameState) info).getPlayerCollected(0).size();
+            ArrayList<TCard> blueTreasure = ((LabGameState) info).getPlayerCollected(2);
+            ArrayList<TCard> greenTreasure = ((LabGameState) info).getPlayerCollected(1);
+            ArrayList<TCard> yellowTreasure = ((LabGameState) info).getPlayerCollected(3);
+            ArrayList<TCard> redTreasure = ((LabGameState) info).getPlayerCollected(0);
 
-            Log.i("Blue Player", "" + blueTreasure);
-            Log.i("Green Player", "" + greenTreasure);
-            Log.i("Yellow Player", "" + yellowTreasure);
-            Log.i("Red Player", "" + redTreasure);
+            int blueTreasureNum = 0;
+            int greenTreasureNum = 0;
+            int yellowTreasureNum = 0;
+            int redTreasureNum = 0;
+
+           if(blueTreasure == null)
+           {
+               blueTreasureNum = 0;
+           }
+            if(greenTreasure == null)
+            {
+                greenTreasureNum = 0;
+            }
+            if(yellowTreasure == null)
+            {
+                yellowTreasureNum = 0;
+            }
+            if(redTreasure == null)
+            {
+                redTreasureNum = 0;
+            }
+            else
+            {
+                blueTreasureNum = blueTreasure.size();
+                greenTreasureNum = greenTreasure.size();
+                yellowTreasureNum = yellowTreasure.size();
+                redTreasureNum = redTreasure.size();
+            }
+
+            switch(blueTreasureNum){
+                case 0:
+                    blueTreasures.setImageResource(R.mipmap.nocards);
+                    break;
+                case 1:
+                    blueTreasures.setImageResource(R.mipmap.cardsone);
+                    break;
+                case 2:
+                    blueTreasures.setImageResource(R.mipmap.cardtwo);
+                    break;
+                case 3:
+                    blueTreasures.setImageResource(R.mipmap.cardthree);
+                    break;
+                case 4:
+                    blueTreasures.setImageResource(R.mipmap.cardfour);
+                    break;
+                case 5:
+                    blueTreasures.setImageResource(R.mipmap.cardfive);
+                    break;
+                case 6:
+                    blueTreasures.setImageResource(R.mipmap.cardsix);
+                    break;
+                case 7:
+                    blueTreasures.setImageResource(R.mipmap.cardseven);
+                    break;
+                case 8:
+                    blueTreasures.setImageResource(R.mipmap.cardeight);
+                    break;
+                case 9:
+                    blueTreasures.setImageResource(R.mipmap.cardnine);
+                    break;
+                case 10:
+                    blueTreasures.setImageResource(R.mipmap.cardten);
+                    break;
+                case 11:
+                    blueTreasures.setImageResource(R.mipmap.cardeleven);
+                    break;
+                case 12:
+                    blueTreasures.setImageResource(R.mipmap.cardtwelve);
+                    break;
+            }
+
+            switch(redTreasureNum){
+                case 0:
+                    redTreasures.setImageResource(R.mipmap.nocards);
+                    break;
+                case 1:
+                    redTreasures.setImageResource(R.mipmap.cardsone);
+                    break;
+                case 2:
+                    redTreasures.setImageResource(R.mipmap.cardtwo);
+                    break;
+                case 3:
+                    redTreasures.setImageResource(R.mipmap.cardthree);
+                    break;
+                case 4:
+                    redTreasures.setImageResource(R.mipmap.cardfour);
+                    break;
+                case 5:
+                    redTreasures.setImageResource(R.mipmap.cardfive);
+                    break;
+                case 6:
+                    redTreasures.setImageResource(R.mipmap.cardsix);
+                    break;
+                case 7:
+                    redTreasures.setImageResource(R.mipmap.cardseven);
+                    break;
+                case 8:
+                    redTreasures.setImageResource(R.mipmap.cardeight);
+                    break;
+                case 9:
+                    redTreasures.setImageResource(R.mipmap.cardnine);
+                    break;
+                case 10:
+                    redTreasures.setImageResource(R.mipmap.cardten);
+                    break;
+                case 11:
+                    redTreasures.setImageResource(R.mipmap.cardeleven);
+                    break;
+                case 12:
+                    redTreasures.setImageResource(R.mipmap.cardtwelve);
+                    break;
+            }
+
+            switch(greenTreasureNum){
+                case 0:
+                    greenTreasures.setImageResource(R.mipmap.nocards);
+                    break;
+                case 1:
+                    greenTreasures.setImageResource(R.mipmap.cardsone);
+                    break;
+                case 2:
+                    greenTreasures.setImageResource(R.mipmap.cardtwo);
+                    break;
+                case 3:
+                    greenTreasures.setImageResource(R.mipmap.cardthree);
+                    break;
+                case 4:
+                    greenTreasures.setImageResource(R.mipmap.cardfour);
+                    break;
+                case 5:
+                    greenTreasures.setImageResource(R.mipmap.cardfive);
+                    break;
+                case 6:
+                    greenTreasures.setImageResource(R.mipmap.cardsix);
+                    break;
+                case 7:
+                    greenTreasures.setImageResource(R.mipmap.cardseven);
+                    break;
+                case 8:
+                    greenTreasures.setImageResource(R.mipmap.cardeight);
+                    break;
+                case 9:
+                    greenTreasures.setImageResource(R.mipmap.cardnine);
+                    break;
+                case 10:
+                    greenTreasures.setImageResource(R.mipmap.cardten);
+                    break;
+                case 11:
+                    greenTreasures.setImageResource(R.mipmap.cardeleven);
+                    break;
+                case 12:
+                    greenTreasures.setImageResource(R.mipmap.cardtwelve);
+                    break;
+            }
+
+            switch(yellowTreasureNum){
+                case 0:
+                    yellowTreasures.setImageResource(R.mipmap.nocards);
+                    break;
+                case 1:
+                    yellowTreasures.setImageResource(R.mipmap.cardsone);
+                    break;
+                case 2:
+                    yellowTreasures.setImageResource(R.mipmap.cardtwo);
+                    break;
+                case 3:
+                    yellowTreasures.setImageResource(R.mipmap.cardthree);
+                    break;
+                case 4:
+                    yellowTreasures.setImageResource(R.mipmap.cardfour);
+                    break;
+                case 5:
+                    yellowTreasures.setImageResource(R.mipmap.cardfive);
+                    break;
+                case 6:
+                    yellowTreasures.setImageResource(R.mipmap.cardsix);
+                    break;
+                case 7:
+                    yellowTreasures.setImageResource(R.mipmap.cardseven);
+                    break;
+                case 8:
+                    yellowTreasures.setImageResource(R.mipmap.cardeight);
+                    break;
+                case 9:
+                    yellowTreasures.setImageResource(R.mipmap.cardnine);
+                    break;
+                case 10:
+                    yellowTreasures.setImageResource(R.mipmap.cardten);
+                    break;
+                case 11:
+                    yellowTreasures.setImageResource(R.mipmap.cardeleven);
+                    break;
+                case 12:
+                    yellowTreasures.setImageResource(R.mipmap.cardtwelve);
+                    break;
+            }
+
+            if(playerNum == 0){
+                ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
+                String cardName = temp.get(0).getTreasure().getName();
+                cardToGet.setText("Current Goal:\n" + cardName);
+            }
+            else if(playerNum == 1){
+                ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
+                String cardName = temp.get(0).getTreasure().getName();
+                cardToGet.setText("Current Goal:\n" + cardName);
+            }
+            else if(playerNum == 2){
+                ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
+                String cardName = temp.get(0).getTreasure().getName();
+                cardToGet.setText("Current Goal:\n" + cardName);
+            }
+            else if(playerNum == 3){
+                ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
+                String cardName = temp.get(0).getTreasure().getName();
+                cardToGet.setText("Current Goal:\n" + cardName);
+            }
 
             surfaceView.invalidate();
             Log.i("human player", "receiving");
@@ -145,7 +363,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Card to get
         this.cardToGet = (TextView) activity.findViewById(R.id.treasureCardToGet);
         //Blue player's treasure
-        this.blueTreasure = (ImageView) activity.findViewById(R.id.blueTreasures);
+        this.blueTreasures = (ImageView) activity.findViewById(R.id.blueTreasures);
+        this.redTreasures = (ImageView) activity.findViewById(R.id.redTreasures);
+        this.greenTreasures = (ImageView) activity.findViewById(R.id.greenTreasures);
+        this.yellowTreasures = (ImageView) activity.findViewById(R.id.yellowTreasures);
 
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
