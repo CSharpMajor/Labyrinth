@@ -17,7 +17,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextClock;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -64,6 +67,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView greenTreasures = null;
     private ImageView yellowTreasures = null;
     private ImageView redTreasures = null;
+
+    private TextView turnInfo = null;
 
     private Activity myActivity;
 
@@ -313,7 +318,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowTreasures.setImageResource(R.mipmap.cardtwelve);
                     break;
             }
-            //For the push!
 
             if(playerNum == 0){
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
@@ -334,6 +338,19 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
                 String cardName = temp.get(0).getTreasure().getName();
                 cardToGet.setText("Current Goal:\n" + cardName);
+            }
+
+            if (((LabGameState) info).getTurnID() == 0){
+                turnInfo.setText("Red");
+            }
+            else if(((LabGameState) info).getTurnID() == 1 ){
+                turnInfo.setText("Green");
+            }
+            else if(((LabGameState) info).getTurnID() == 2){
+                turnInfo.setText("Blue");
+            }
+            else if(((LabGameState) info).getTurnID() == 3){
+                turnInfo.setText("Yellow");
             }
 
             surfaceView.invalidate();
@@ -374,6 +391,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.redTreasures = (ImageView) activity.findViewById(R.id.redTreasures);
         this.greenTreasures = (ImageView) activity.findViewById(R.id.greenTreasures);
         this.yellowTreasures = (ImageView) activity.findViewById(R.id.yellowTreasures);
+
+        this.turnInfo = (TextView)activity.findViewById(R.id.TurnInfoChanging);
 
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
