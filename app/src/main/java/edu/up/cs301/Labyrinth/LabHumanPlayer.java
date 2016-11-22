@@ -156,6 +156,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == leftColB) {
+
             game.sendAction(new LabMoveMazeAction(this,6,0));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {
