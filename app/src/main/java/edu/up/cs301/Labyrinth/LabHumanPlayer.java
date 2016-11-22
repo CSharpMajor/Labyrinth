@@ -69,6 +69,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private LabMazeSurfaveView surfaceView;
 
+    private LabGameState myState;
+
+    private MazeTile[][] myMaze;
+
     //Set listener for the surface view
 
     public LabHumanPlayer(String name) {
@@ -104,7 +108,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //Set the surface view's state
             //Invalidate the surface view
-            LabGameState myState = (LabGameState) info;
+            myState = (LabGameState) info;
+            myMaze = myState.getMaze();
             surfaceView.setState(myState);
 
             ArrayList<TCard> blueTreasure = ((LabGameState) info).getPlayerCollected(2);
@@ -331,6 +336,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
 
             surfaceView.invalidate();
+            drawExtraTile();
             Log.i("human player", "receiving");
         }
     }
@@ -387,43 +393,56 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         surfaceView.setOnTouchListener(this);
 
+
     }//end of set as GUI
 
     public void onClick(View v) {
         if (v == leftColB) {
+            game.sendAction(new LabMoveExtraTile(this, 6, 0));
             game.sendAction(new LabMoveMazeAction(this,6,0));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {
+            game.sendAction(new LabMoveExtraTile(this, 4, 0));
             game.sendAction(new LabMoveMazeAction(this,4,0));
             Log.i("leftColM Button", "Operational");
         } else if (v == leftColT) {
+            game.sendAction(new LabMoveExtraTile(this, 2, 0));
             game.sendAction(new LabMoveMazeAction(this,2,0));
             Log.i("leftColT Button", "Operational");
         } else if (v == topRowM) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 4));
             game.sendAction(new LabMoveMazeAction(this,0,4));
             Log.i("topRowM Button", "Operational");
         } else if (v == topRowL) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 2));
             game.sendAction(new LabMoveMazeAction(this,0,2));
             Log.i("topRowL Button", "Operational");
         } else if (v == topRowR) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 6));
             game.sendAction(new LabMoveMazeAction(this,0,6));
             Log.i("topRowR Button", "Operational");
         } else if (v == botRowL) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 2));
             game.sendAction(new LabMoveMazeAction(this,8,2));
             Log.i("botRowL Button", "Operational");
         } else if (v == botRowM) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 4));
             game.sendAction(new LabMoveMazeAction(this,8,4));
             Log.i("botRowM Button", "Operational");
         } else if (v == botRowR) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 6));
             game.sendAction(new LabMoveMazeAction(this,8,6));
             Log.i("botRowR Button", "Operational");
         } else if (v == rightColB) {
+            game.sendAction(new LabMoveExtraTile(this, 6, 8));
             game.sendAction(new LabMoveMazeAction(this,6,8));
             Log.i("rightColB Button", "Operational");
         } else if (v == rightColM) {
+            game.sendAction(new LabMoveExtraTile(this, 4, 8));
             game.sendAction(new LabMoveMazeAction(this,4,8));
             Log.i("rightColM Button", "Operational");
         } else if (v == rightColT) {
+            game.sendAction(new LabMoveExtraTile(this, 2, 8));
             game.sendAction(new LabMoveMazeAction(this,2,8));
             Log.i("rightColT Button", "Operational");
         }
@@ -442,5 +461,75 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         game.sendAction(new LabMovePieceAction(this, xCord, yCord));
         //We have handled the event
         return true;
+    }
+
+    private void drawExtraTile(){
+        if(myState != null) {
+            int[] coords = myState.findExtraTile();
+            Log.i("placeExtra", ""+coords[0]+coords[1]);
+            topRowR.setBackgroundColor(Color.WHITE);
+            topRowM.setBackgroundColor(Color.WHITE);
+            topRowL.setBackgroundColor(Color.WHITE);
+            rightColT.setBackgroundColor(Color.WHITE);
+            rightColM.setBackgroundColor(Color.WHITE);
+            rightColB.setBackgroundColor(Color.WHITE);
+            leftColT.setBackgroundColor(Color.WHITE);
+            leftColM.setBackgroundColor(Color.WHITE);
+            leftColB.setBackgroundColor(Color.WHITE);
+            botRowL.setBackgroundColor(Color.WHITE);
+            botRowM.setBackgroundColor(Color.WHITE);
+            botRowR.setBackgroundColor(Color.WHITE);
+
+
+            if (coords[0] == 0) {
+                switch (coords[1]) {
+                    case 2:
+                        topRowR.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        topRowM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        topRowL.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[0] == 8) {
+                switch (coords[1]) {
+                    case 2:
+                        rightColT.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        rightColM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        rightColB.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[1] == 0) {
+                switch (coords[0]) {
+                    case 2:
+                        leftColT.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        leftColM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        leftColB.setBackgroundColor(Color.RED);
+                        break;
+                }
+            } else if (coords[1] == 8) {
+                switch (coords[0]) {
+                    case 2:
+                        botRowL.setBackgroundColor(Color.RED);
+                        break;
+                    case 4:
+                        botRowM.setBackgroundColor(Color.RED);
+                        break;
+                    case 6:
+                        botRowR.setBackgroundColor(Color.RED);
+                        break;
+                }
+            }
+        }
     }
 }

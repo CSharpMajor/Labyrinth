@@ -47,11 +47,17 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
         for(int i = 0; i<myMaze.length; i++){
             for(int j = 0; j<myMaze[i].length; j++){
                 if(myMaze[i][j] == null) continue;
+                p.setStyle(Paint.Style.STROKE);
 
-                g.drawText(String.valueOf(myMaze[i][j].getType()), i*100, j*100, p);
+
+
+                g.drawRect(i*125, j*125, 125, 125, p);
+                g.drawText(String.valueOf(myMaze[i][j].getType()), i*125, j*125, p);
            }
         }
     }
+
+
 
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
 
