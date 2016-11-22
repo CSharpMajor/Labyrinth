@@ -16,6 +16,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.up.cs301.animation.AnimationSurface;
@@ -39,6 +40,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener {
 
     //Variables for the buttons on the GUI
+    //Buttons that surround the maze area
     private ImageButton leftColT = null;
     private ImageButton leftColM = null;
     private ImageButton leftColB = null;
@@ -51,8 +53,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColT = null;
     private ImageButton rightColM = null;
     private ImageButton rightColB = null;
+    //Move button
     private Button moveButtonArea = null;
-
+    //Text view for the treasure card
+    private TextView cardToGet = null;
+    //Treasures of the blue player
+    private ImageView blueTreasure = null;
 
     private Activity myActivity;
 
@@ -72,13 +78,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         Log.i("human Player", "called reciveInfo");
 
-
-
-
         if(surfaceView == null) return;
 
-
-
+        /**
+         * TO DO: Change the number of the cards collected based on the cards collected by each
+         * player
+         */
 
         if( info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
         {
@@ -96,6 +101,17 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //Invalidate the surface view
             LabGameState myState = (LabGameState) info;
             surfaceView.setState(myState);
+
+            int blueTreasure = ((LabGameState) info).getPlayerCollected(2).size();
+            int greenTreasure = ((LabGameState) info).getPlayerCollected(1).size();
+            int yellowTreasure = ((LabGameState) info).getPlayerCollected(3).size();
+            int redTreasure = ((LabGameState) info).getPlayerCollected(0).size();
+
+            Log.i("Blue Player", "" + blueTreasure);
+            Log.i("Green Player", "" + greenTreasure);
+            Log.i("Yellow Player", "" + yellowTreasure);
+            Log.i("Red Player", "" + redTreasure);
+
             surfaceView.invalidate();
             Log.i("human player", "receiving");
         }
@@ -125,6 +141,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.rightColB = (ImageButton) activity.findViewById(R.id.rightColB);
         this.rightColM = (ImageButton) activity.findViewById(R.id.rightColM);
         this.rightColT = (ImageButton) activity.findViewById(R.id.rightColT);
+
+        //Card to get
+        this.cardToGet = (TextView) activity.findViewById(R.id.treasureCardToGet);
+        //Blue player's treasure
+        this.blueTreasure = (ImageView) activity.findViewById(R.id.blueTreasures);
 
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
