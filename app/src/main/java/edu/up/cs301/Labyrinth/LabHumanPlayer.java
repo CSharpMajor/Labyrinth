@@ -313,6 +313,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowTreasures.setImageResource(R.mipmap.cardtwelve);
                     break;
             }
+            //For the push!
 
             if(playerNum == 0){
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
