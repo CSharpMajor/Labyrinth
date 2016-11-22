@@ -98,6 +98,10 @@ public class LabLocalGame extends LocalGame
 			{
 				return makeMazeMove(action);
 			}
+			else if(action instanceof LabMoveExtraTile){
+				masterGameState.moveExtraTile(((LabMoveExtraTile) action).getCoords()[0], ((LabMoveExtraTile) action).getCoords()[1]);
+				return true;
+			}
 			else if (action instanceof LabMovePieceAction && masterGameState.hasMovedMaze())
 			{
 				return makePlayerPieceMove(action);

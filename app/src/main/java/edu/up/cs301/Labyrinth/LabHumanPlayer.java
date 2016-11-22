@@ -102,7 +102,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             myMaze = myState.getMaze();
             surfaceView.setState(myState);
             surfaceView.invalidate();
-            placeExtraTile();
+            drawExtraTile();
             Log.i("human player", "receiving");
         }
     }
@@ -156,40 +156,51 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == leftColB) {
-
+            game.sendAction(new LabMoveExtraTile(this, 6, 0));
             game.sendAction(new LabMoveMazeAction(this,6,0));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {
+            game.sendAction(new LabMoveExtraTile(this, 4, 0));
             game.sendAction(new LabMoveMazeAction(this,4,0));
             Log.i("leftColM Button", "Operational");
         } else if (v == leftColT) {
+            game.sendAction(new LabMoveExtraTile(this, 2, 0));
             game.sendAction(new LabMoveMazeAction(this,2,0));
             Log.i("leftColT Button", "Operational");
         } else if (v == topRowM) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 4));
             game.sendAction(new LabMoveMazeAction(this,0,4));
             Log.i("topRowM Button", "Operational");
         } else if (v == topRowL) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 2));
             game.sendAction(new LabMoveMazeAction(this,0,2));
             Log.i("topRowL Button", "Operational");
         } else if (v == topRowR) {
+            game.sendAction(new LabMoveExtraTile(this, 0, 6));
             game.sendAction(new LabMoveMazeAction(this,0,6));
             Log.i("topRowR Button", "Operational");
         } else if (v == botRowL) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 2));
             game.sendAction(new LabMoveMazeAction(this,8,2));
             Log.i("botRowL Button", "Operational");
         } else if (v == botRowM) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 4));
             game.sendAction(new LabMoveMazeAction(this,8,4));
             Log.i("botRowM Button", "Operational");
         } else if (v == botRowR) {
+            game.sendAction(new LabMoveExtraTile(this, 8, 6));
             game.sendAction(new LabMoveMazeAction(this,8,6));
             Log.i("botRowR Button", "Operational");
         } else if (v == rightColB) {
+            game.sendAction(new LabMoveExtraTile(this, 6, 8));
             game.sendAction(new LabMoveMazeAction(this,6,8));
             Log.i("rightColB Button", "Operational");
         } else if (v == rightColM) {
+            game.sendAction(new LabMoveExtraTile(this, 4, 8));
             game.sendAction(new LabMoveMazeAction(this,4,8));
             Log.i("rightColM Button", "Operational");
         } else if (v == rightColT) {
+            game.sendAction(new LabMoveExtraTile(this, 2, 8));
             game.sendAction(new LabMoveMazeAction(this,2,8));
             Log.i("rightColT Button", "Operational");
         }
@@ -209,10 +220,25 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //We have handled the event
         return true;
     }
-    private void placeExtraTile(){
+
+    private void drawExtraTile(){
         if(myState != null) {
             int[] coords = myState.findExtraTile();
             Log.i("placeExtra", ""+coords[0]+coords[1]);
+            topRowR.setBackgroundColor(Color.WHITE);
+            topRowM.setBackgroundColor(Color.WHITE);
+            topRowL.setBackgroundColor(Color.WHITE);
+            rightColT.setBackgroundColor(Color.WHITE);
+            rightColM.setBackgroundColor(Color.WHITE);
+            rightColB.setBackgroundColor(Color.WHITE);
+            leftColT.setBackgroundColor(Color.WHITE);
+            leftColM.setBackgroundColor(Color.WHITE);
+            leftColB.setBackgroundColor(Color.WHITE);
+            botRowL.setBackgroundColor(Color.WHITE);
+            botRowM.setBackgroundColor(Color.WHITE);
+            botRowR.setBackgroundColor(Color.WHITE);
+
+
             if (coords[0] == 0) {
                 switch (coords[1]) {
                     case 2:
