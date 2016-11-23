@@ -165,12 +165,11 @@ public class LabGameState extends GameState
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
             if(copy.getPlayerCollected(i) == null || copy.getPlayerCollected(i).size() == 0){ continue; }
             for(int j = 0; j < copy.getPlayerCollected(i).size(); j++) {
-
                 LabTSymbol sym = copy.getPlayerCollected(i).get(j).getTreasure();
                 TCard temp = new TCard(sym);
                 hand.add(temp);
             }
-            cardsToCollect.add(hand);
+            cardsCollected.add(hand);
         }
 
         //deeeeeeeeeeeeeep copy of maze
