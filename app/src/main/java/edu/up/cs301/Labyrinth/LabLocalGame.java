@@ -179,6 +179,7 @@ public class LabLocalGame extends LocalGame
 			return false;
 		}
 		MazeTile[][] newMaze = masterGameState.getMaze();
+		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]] == null) { return false; }
 		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
 			if(masterGameState.getTurnID() == 3){
 				masterGameState.setTurnID(0);
