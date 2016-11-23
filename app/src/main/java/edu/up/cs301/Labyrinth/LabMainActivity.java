@@ -40,6 +40,8 @@ public class LabMainActivity extends GameMainActivity {
 			}
 		});
 
+		//For the push!
+
 		// dumb computer player
 		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
 			public GamePlayer createPlayer(String name) {
