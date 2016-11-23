@@ -274,6 +274,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	private boolean checkTCollect(TCard topCard, MazeTile currTile)
 	{
+		if(currTile.getTreasureSymbol() == null){return false;}
 		if (currTile.getTreasureSymbol().getName().equals(topCard.getTreasure().getName()))
 		{
 			masterGameState.collectTCard(masterGameState.getTurnID());
