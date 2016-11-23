@@ -67,13 +67,13 @@ public class LabLocalGame extends LocalGame
 		{
 			if (masterMaze[1][1].occupiedBy.contains(0) && masterGameState.getPlayerHand(0).size() == 0)
 			{
-				return "The Green Player Has Won";
+				return "The Red Player Has Won";
 			}
 		} else if (masterGameState.getTurnID() == 1)
 		{
 			if (masterMaze[7][1].occupiedBy.contains(1) && masterGameState.getPlayerHand(1).size() == 0)
 			{
-				return "The Red Player Has Won";
+				return "The Green Player Has Won";
 			}
 		} else if (masterGameState.getTurnID() == 2)
 		{

@@ -44,21 +44,25 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
         if(myMaze == null) return;
         Paint p = new Paint();
         p.setColor(Color.BLACK);
+        int testIter = 0;
         for(int i = 0; i<myMaze.length; i++){
             for(int j = 0; j<myMaze[i].length; j++){
                 if(myMaze[i][j] == null) continue;
 
                 p.setStyle(Paint.Style.STROKE);
                 g.drawRect(i*125, j*125, 125, 125, p);
-                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+62, j*125+5, p);
+                //g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+62, j*125+5, p);
+                testIter++;
+                g.drawText(""+ testIter,i*125+62,j*125+5, p);
+
+
                 //g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+120, j*125+62, p);
                 if(myMaze[i][j].getTreasureSymbol() != null){
-                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+62, j*125+62, p);
+                    //g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+62, j*125+62, p);
                 }
                 for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
-                    g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().get(k)), i*125+70, j*125+62+(j*5), p);
+                    g.drawText("hi", i*125+70, j*125+62+(j*5), p);
                 }
-
            }
         }
     }

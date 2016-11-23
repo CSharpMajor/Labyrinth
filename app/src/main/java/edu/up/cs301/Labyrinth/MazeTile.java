@@ -23,7 +23,7 @@ public class MazeTile {
     //S(straight) T or L
     private char type;
 
-    //n = 0-3 n*90 = the degrees from noraml
+    //n = 0-3 n*90 = the degrees from normal
     private int orientation=0;
 
     //boolean array to represent each side of the tile.
@@ -78,7 +78,13 @@ public class MazeTile {
 
         treasureSymbol = cp.getTreasureSymbol();
 
-        Collections.copy( occupiedBy, cp.getOccupiedBy() );
+        occupiedBy.ensureCapacity(4);
+
+        //Collections.copy( occupiedBy, cp.getOccupiedBy() );
+
+        for(int i=0; i < occupiedBy.size(); i++){
+          occupiedBy.add(cp.occupiedBy.get(i));
+        }
     }
 
     //getters for all the attributes
