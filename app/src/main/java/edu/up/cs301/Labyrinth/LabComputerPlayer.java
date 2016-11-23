@@ -21,8 +21,8 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @version Nov 2016, preAlpha
  */
 public class LabComputerPlayer extends GameComputerPlayer {
-    public LabComputerPlayer() {
-        super("hi");
+    public LabComputerPlayer(String name) {
+        super(name);
     }
 
     protected void receiveInfo(GameInfo info) {

@@ -43,11 +43,11 @@ public class LabMainActivity extends GameMainActivity {
 
 
 		// dumb computer player
-		//playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
-		//	public GamePlayer createPlayer(String name) {
-		//		return new LabComputerPlayer(name);
-		//	}
-		//});
+		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
+			public GamePlayer createPlayer(String name) {
+				return new LabComputerPlayer(name);
+			}
+		});
 		
 		// smarter computer player
 //		playerTypes.add(new GamePlayerType("Computer Player (smart)") {
@@ -57,7 +57,7 @@ public class LabMainActivity extends GameMainActivity {
 //		});
 
 		// Create a game configuration class for Tic-tac-toe
-		GameConfig defaultConfig = new GameConfig(playerTypes, 1,1, "The Amazing Labyrinth", PORT_NUMBER);
+		GameConfig defaultConfig = new GameConfig(playerTypes, 4,4, "The Amazing Labyrinth", PORT_NUMBER);
 
 		// Add the default players
 		defaultConfig.addPlayer("Human", 0); // yellow-on-blue GUI

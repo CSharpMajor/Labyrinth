@@ -162,7 +162,7 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setHasMovedMaze(true);
 			return true;
 		}
-
+		sendAllUpdatedState();
 		return false;
 	}
 
@@ -180,6 +180,12 @@ public class LabLocalGame extends LocalGame
 		}
 		MazeTile[][] newMaze = masterGameState.getMaze();
 		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
+			if(masterGameState.getTurnID() == 3){
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+			}
 			return true;
 		}
 		else if(checkPath(((LabMovePieceAction) action).getCoords()[0], ((LabMovePieceAction) action).getCoords()[1])){
@@ -196,9 +202,16 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setMaze(newMaze);
 			masterGameState.setHasMovedMaze(false);
 			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
+			if(masterGameState.getTurnID() == 3){
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+			}
 			return true;
 		}
 
+		sendAllUpdatedState();
 		return false;
 	}
 
