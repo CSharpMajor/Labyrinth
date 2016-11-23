@@ -477,6 +477,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Getting the x and y position of the touch
         int xCord = (int)event.getX();
         int yCord = (int)event.getY();
+
+        Log.i("onTouch", String.valueOf(xCord) + "   " + String.valueOf(yCord));
         //Sending these coordinates as a LabMovePieceAction
         game.sendAction(new LabMovePieceAction(this, xCord, yCord));
         //We have handled the event
