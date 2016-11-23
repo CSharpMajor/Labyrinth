@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -253,5 +255,34 @@ public class LabGameStateTest {
         testState.moveExtraTile(2,0);
         coordinates = testState.findExtraTile();
         assertTrue( coordinates[0] == 2 && coordinates[1] == 0 );
+    }
+
+    @Test
+    public void setUpMazeTest() throws Exception {
+        LabGameState testSate = new LabGameState();
+
+        //makes sure no LabTSymbols are repeated
+        String sym1, sym2;
+        for( MazeTile[] row : testSate.getMaze() )
+        {
+            for( MazeTile tile : row )
+            {
+                for( MazeTile[] r2 : testSate.getMaze() )
+                {
+                    for( MazeTile t2 : r2 )
+                    {
+                        if( tile != null && t2 != null && tile != t2 )
+                        {
+                            if( tile.getTreasureSymbol() != null && t2.getTreasureSymbol() != null )
+                            {
+                                sym1 = tile.getTreasureSymbol().getName();
+                                sym2 = t2.getTreasureSymbol().getName();
+                                assertTrue(!sym1.equals(sym2));
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

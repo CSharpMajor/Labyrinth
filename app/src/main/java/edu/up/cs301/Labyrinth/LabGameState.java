@@ -118,6 +118,7 @@ public class LabGameState extends GameState
                 {
                     ind = rand.nextInt(allTiles.size());
                     maze[r][c] = allTiles.get(ind);
+                    allTiles.remove(ind);
                 }
             }
         }
