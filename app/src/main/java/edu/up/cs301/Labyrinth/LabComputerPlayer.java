@@ -46,7 +46,7 @@ public class LabComputerPlayer extends GameComputerPlayer {
                     //Delay to make it look like the player is thinking
                     sleep(3000);
                     //Then send the move piece action to the local game
-                    game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece));
+                    game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece, this.playerNum));
                 }
                 else {
                     xCordMaze = rand.nextInt(8);
