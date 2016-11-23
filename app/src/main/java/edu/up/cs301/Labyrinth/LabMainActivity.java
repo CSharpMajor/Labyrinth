@@ -40,15 +40,24 @@ public class LabMainActivity extends GameMainActivity {
 			}
 		});
 
-
-
 		// dumb computer player
 		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
 			public GamePlayer createPlayer(String name) {
 				return new LabComputerPlayer(name);
 			}
 		});
-		
+
+		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
+			public GamePlayer createPlayer(String name) {
+				return new LabComputerPlayer(name);
+			}
+		});
+
+		playerTypes.add(new GamePlayerType("Computer Player (dumb)") {
+			public GamePlayer createPlayer(String name) {
+				return new LabComputerPlayer(name);
+			}
+		});
 		// smarter computer player
 //		playerTypes.add(new GamePlayerType("Computer Player (smart)") {
 //			public GamePlayer createPlayer(String name) {
@@ -60,8 +69,10 @@ public class LabMainActivity extends GameMainActivity {
 		GameConfig defaultConfig = new GameConfig(playerTypes, 4,4, "The Amazing Labyrinth", PORT_NUMBER);
 
 		// Add the default players
-		defaultConfig.addPlayer("Human", 0); // yellow-on-blue GUI
-		defaultConfig.addPlayer("Computer", 3); // dumb computer player
+		defaultConfig.addPlayer("Human", 0); // GUI player
+		defaultConfig.addPlayer("Computer", 1); // dumb computer player
+		defaultConfig.addPlayer("Computer", 2); //dumb computer player
+		defaultConfig.addPlayer("Computer", 3);	//dumb computer player
 
 		// Set the initial information for the remote player
 		defaultConfig.setRemoteData("Remote Player", "", 1); // red-on-yellow GUI
