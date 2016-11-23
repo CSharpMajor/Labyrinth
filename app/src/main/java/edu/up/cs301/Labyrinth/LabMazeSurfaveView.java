@@ -54,7 +54,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                 //Drawing the true/false path data to the surface view
                 g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+15, j*125+60, p);
 
-
+                //For the push!
 
                 g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+100, j*125+62, p);
                 g.drawText(String.valueOf(myMaze[i][j].getPathMap()[2]), i*125+62, j*125+110, p);
