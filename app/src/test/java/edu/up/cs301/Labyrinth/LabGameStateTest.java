@@ -260,6 +260,7 @@ public class LabGameStateTest {
     @Test
     public void setUpMazeTest() throws Exception {
         LabGameState testSate = new LabGameState();
+        int count = 0;
 
         //makes sure no LabTSymbols are repeated
         String sym1, sym2;
@@ -267,6 +268,10 @@ public class LabGameStateTest {
         {
             for( MazeTile tile : row )
             {
+                if( tile != null && tile.getTreasureSymbol() != null )
+                {
+                    count++;
+                }
                 for( MazeTile[] r2 : testSate.getMaze() )
                 {
                     for( MazeTile t2 : r2 )
@@ -285,7 +290,6 @@ public class LabGameStateTest {
             }
         }
 
-       // int count = 0;
-        //for( MazeTile[] row : testSate)
+        assertTrue( count == 23 );
     }
 }

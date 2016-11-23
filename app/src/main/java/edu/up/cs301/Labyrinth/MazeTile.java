@@ -107,7 +107,7 @@ public class MazeTile {
     public void addPlayer(int player)
     {
         occupiedBy.add(player);
-        Log.i("addPlayer", "added player "+player);
+        //Log.i("addPlayer", "added player "+player);
     }
 
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }

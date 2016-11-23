@@ -101,11 +101,18 @@ public class LabGameState extends GameState
             maze[8][i] = null;
         }
 
+        int count = 4;
+        String str;
+
         //fill corner spots with L tiles
         maze[1][1] = allTiles.get(0);
+        allTiles.remove(0);
         maze[1][7] = allTiles.get(0);
+        allTiles.remove(0);
         maze[7][1] = allTiles.get(0);
+        allTiles.remove(0);
         maze[7][7] = allTiles.get(0);
+        allTiles.remove(0);
 
         Random rand = new Random();
         int ind;
@@ -202,13 +209,13 @@ public class LabGameState extends GameState
         //13 blank L shaped tiles
         for( int i = 0; i < 13; i++ )
         {
-            allTiles.add(new MazeTile('L', null ));
+            allTiles.add(new MazeTile('L', LabTSymbol.EMPTY ));
         }
 
         //13 blank S shaped tiles
         for( int i = 0; i < 13; i++ )
         {
-            allTiles.add(new MazeTile('S', null ));
+            allTiles.add(new MazeTile('S', LabTSymbol.EMPTY ));
         }
 
         //T-shaped treasure tiles
