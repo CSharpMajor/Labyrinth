@@ -412,7 +412,8 @@
     android:text="MOVE"
     android:layout_width="match_parent"
     android:layout_height="140dp"
-    android:id="@+id/moveButton" />
+    android:id="@+id/moveButton"
+        android:textColor="#FFFFFF" />
 
     <Space
     android:layout_width="match_parent"
@@ -424,7 +425,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Get this treasure card: "
             android:id="@+id/treasureCardToGet"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:textColor="#FFFFFF" />
 
         <Space
     android:layout_width="match_parent"
