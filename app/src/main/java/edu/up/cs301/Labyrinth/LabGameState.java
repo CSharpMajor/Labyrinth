@@ -159,6 +159,7 @@ public class LabGameState extends GameState
             cardsToCollect.add(hand);
         }
 
+
         cardsCollected = new ArrayList<ArrayList<TCard>>(4);
 
         for(int i=0; i<4; i++){
