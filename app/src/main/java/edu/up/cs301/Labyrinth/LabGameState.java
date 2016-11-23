@@ -125,7 +125,20 @@ public class LabGameState extends GameState
         //place extra tile
         placeExtraTile( rand.nextInt(12), allTiles.get(0) );
 
+        //Place players at their home squares
+        /**
+         * Player index numbers with their corresponding array index
+         * Player index 0: Red Player
+         * Player index 1: Green Player
+         * Player index 2: Blue Player
+         * Player index 3: Yellow Player
+         */
+        maze[1][1].addPlayer(0);
+        maze[1][7].addPlayer(2);
+        maze[7][1].addPlayer(1);
+        maze[7][7].addPlayer(3);
 
+        //Set the moved maze variable to false
         hasMovedMaze = false;
     }
 
