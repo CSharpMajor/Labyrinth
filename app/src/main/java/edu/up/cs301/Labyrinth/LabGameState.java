@@ -151,7 +151,7 @@ public class LabGameState extends GameState
 
         for(int i=0; i<4; i++){
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
-            for(int j = 0; j < 6; j++) {
+            for(int j = 0; j < copy.getPlayerHand(i).size(); j++) {
                 LabTSymbol sym = copy.getPlayerHand(i).get(j).getTreasure();
                 TCard temp = new TCard(sym);
                 hand.add(temp);
@@ -164,7 +164,8 @@ public class LabGameState extends GameState
         for(int i=0; i<4; i++){
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
             if(copy.getPlayerCollected(i) == null || copy.getPlayerCollected(i).size() == 0){ continue; }
-            for(int j = 0; j < 6; j++) {
+            for(int j = 0; j < copy.getPlayerCollected(i).size(); j++) {
+
                 LabTSymbol sym = copy.getPlayerCollected(i).get(j).getTreasure();
                 TCard temp = new TCard(sym);
                 hand.add(temp);

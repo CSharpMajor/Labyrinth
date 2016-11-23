@@ -243,7 +243,7 @@
     <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="30dp"
     android:id="@+id/topbuttons">
 
     <Space
@@ -254,7 +254,7 @@
     <ImageButton
     android:src="@android:drawable/arrow_down_float"
     android:layout_width="wrap_content"
-    android:layout_height="27dp"
+    android:layout_height="match_parent"
     android:id="@+id/topRowL"
     android:layout_weight="0.77"
         android:background="#CDC9C9" />
@@ -298,57 +298,57 @@
     android:layout_width="match_parent"
     android:background="#EEE9E9" />
 
-    <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/buttombuttons"
-        android:layout_weight="0.06">
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/buttombuttons"
+            android:layout_weight="0.05">
 
-    <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
-
-    <ImageButton
-    android:src="@android:drawable/arrow_up_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/botRowL"
-    android:layout_weight="1.00"
-        android:background="#CDC9C9" />
-
-    <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
+        <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
         <ImageButton
         android:src="@android:drawable/arrow_up_float"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/botRowM"
+        android:id="@+id/botRowL"
         android:layout_weight="1.00"
             android:background="#CDC9C9" />
 
         <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/arrow_up_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/botRowR"
-    android:layout_weight="1.00"
-        android:background="#CDC9C9" />
+            <ImageButton
+            android:src="@android:drawable/arrow_up_float"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/botRowM"
+            android:layout_weight="1.00"
+                android:background="#CDC9C9" />
 
-    <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
-    </LinearLayout>
+            <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+        <ImageButton
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/botRowR"
+        android:layout_weight="1.00"
+            android:background="#CDC9C9" />
+
+        <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 
