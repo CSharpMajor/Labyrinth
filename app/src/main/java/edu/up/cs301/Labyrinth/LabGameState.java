@@ -356,6 +356,21 @@ public class LabGameState extends GameState
         hand.remove(0);
     }
 
+    /**
+     * for when we move the player on the maze
+     * @param newMaze The new maze reflecting the new player position
+     */
+    public void setMaze( MazeTile[][] newMaze )
+    {
+        for( int r = 0; r < 9; r++ )
+        {
+            for( int c = 0; c < 9; c++ )
+            {
+                maze[r][c] = newMaze[r][c];
+            }
+        }
+    }
+
     public int[] getPlayerCurTile( int playerIndex )
     {
         int[] coords = new int[2];

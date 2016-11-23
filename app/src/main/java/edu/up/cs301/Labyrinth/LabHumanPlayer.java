@@ -474,12 +474,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             return true;
         }
-        //Getting the x and y position of the touch
-        int xCord = (int)event.getX();
-        int yCord = (int)event.getY();
+        //Getting the x and y position of the touch 125 is the current width of the tile
+        int xCord = (int)event.getX() / 125;
+        int yCord = (int)event.getY() / 125;
+
+        Log.i("onTouch", String.valueOf(xCord) + "   " + String.valueOf(yCord));
+
         //Sending these coordinates as a LabMovePieceAction
-        game.sendAction(new LabMovePieceAction(this, xCord, yCord));
+        game.sendAction(new LabMovePieceAction(this, xCord, yCord, this.playerNum));
         //We have handled the event
+        surfaceView.invalidate();
         return true;
     }
 

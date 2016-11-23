@@ -175,9 +175,20 @@ public class LabLocalGame extends LocalGame
 	 */
 	private boolean makePlayerPieceMove(GameAction action)
 	{
-		action = (LabMovePieceAction) action;
+		if(!masterGameState.hasMovedMaze()){
+			return false;
+		}
+		MazeTile[][] newMaze = masterGameState.getMaze();
+		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
+			return true;
+		}
+		else if(checkPath(((LabMovePieceAction) action).getCoords()[0], ((LabMovePieceAction) action).getCoords()[1])){
+			newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].addPlayer(((LabMovePieceAction) action).getPlayerNum());
+			masterGameState.setMaze(newMaze);
+			masterGameState.setHasMovedMaze(false);
+			return true;
+		}
 
-		masterGameState.setHasMovedMaze(false);
 		return false;
 	}
 
@@ -187,11 +198,12 @@ public class LabLocalGame extends LocalGame
 	private boolean checkPath(int xDest, int yDest)
 	{
 		MazeTile[][] maze = masterGameState.getMaze();
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < maze.length; i++)
 		{
-			for (int j = 0; j < 9; j++)
+			for (int j = 0; j < maze[i].length; j++)
 			{
 				booleanMazeMap[i][j] = false;
+				if(maze[i][j] == null){continue;}
 				if (maze[i][j].getOccupiedBy().contains((Integer) masterGameState.getTurnID()))
 				{
 					booleanMazeMap[i][j] = true;
@@ -201,10 +213,11 @@ public class LabLocalGame extends LocalGame
 		boolean changeFlag = true;
 		while (changeFlag)
 		{
-			for (int i = 0; i < 9; i++)
+			for (int i = 1; i < maze.length-1; i++)
 			{
-				for (int j = 0; j < 9; j++)
+				for (int j = 1; j < maze[i].length-1; j++)
 				{
+
 					if (booleanMazeMap[i][j])
 					{
 						//top

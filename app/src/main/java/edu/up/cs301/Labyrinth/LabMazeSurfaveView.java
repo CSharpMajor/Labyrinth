@@ -61,8 +61,9 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     //g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+62, j*125+62, p);
                 }
                 for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
-                    g.drawText("hi", i*125+70, j*125+62+(j*5), p);
+                    g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().get(k)), i*125+70, j*125+62+(j*5), p);
                 }
+
            }
         }
     }
