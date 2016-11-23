@@ -284,5 +284,8 @@ public class LabGameStateTest {
                 }
             }
         }
+
+       // int count = 0;
+        //for( MazeTile[] row : testSate)
     }
 }

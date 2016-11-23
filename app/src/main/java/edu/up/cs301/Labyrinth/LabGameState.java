@@ -237,6 +237,7 @@ public class LabGameState extends GameState
         allTiles.add(new MazeTile('L', LabTSymbol.SCARAB ));
         allTiles.add(new MazeTile('L', LabTSymbol.SPIDER ));
         allTiles.add(new MazeTile('L', LabTSymbol.JIGGLYPUFF ));
+        allTiles.add(new MazeTile('L', LabTSymbol.MOTH ));
 
     }
 
