@@ -19,16 +19,25 @@ public class LabMovePieceAction extends GameAction {
     // instance variables: the selected row and column
     private int[] coords;
 
+    private int playerNum;
+
     /**
      * constructor for GameAction
      *
      * @param player the player who created the action
      */
-    public LabMovePieceAction(GamePlayer player, int row, int col) {
+    public LabMovePieceAction(GamePlayer player, int row, int col, int num) {
         super(player);
         // set the row and column as passed to us
         coords = new int[2];
         this.coords[0] = row;
         this.coords[1] = col;
+        this.playerNum = num;
+    }
+     public int[] getCoords(){
+         return coords;
+     }
+    public int getPlayerNum(){
+        return playerNum;
     }
 }
