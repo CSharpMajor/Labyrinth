@@ -44,6 +44,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
         if(myMaze == null) return;
         Paint p = new Paint();
         p.setColor(Color.BLACK);
+        int testIter = 0;
         for(int i = 0; i<myMaze.length; i++){
             for(int j = 0; j<myMaze[i].length; j++){
                 if(myMaze[i][j] == null) continue;
@@ -55,13 +56,17 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
 
 
 
-                //g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+120, j*125+62, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+100, j*125+62, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[2]), i*125+62, j*125+110, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[2]), i*125+5, j*125+62, p);
                 if(myMaze[i][j].getTreasureSymbol() != null){
-                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+15, j*125+75, p);
+                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+62, j*125+62, p);
                 }
-                for(int k=0; k< myMaze[i][j].getOccupiedBy().size(); k++){
-                      g.drawText("100", i*125+70, j*125+62+(j*5), p);
+                g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().size()), i*125+70, j*125+62+(j*5), p);
+                for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
+                    g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().get(k)), i*125+70, j*125+62+(j*5), p);
                 }
+
            }
         }
     }
