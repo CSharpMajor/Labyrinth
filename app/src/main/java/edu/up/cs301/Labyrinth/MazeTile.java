@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -81,9 +83,10 @@ public class MazeTile {
         occupiedBy.ensureCapacity(4);
 
         //Collections.copy( occupiedBy, cp.getOccupiedBy() );
-
-        for(int i=0; i < occupiedBy.size(); i++){
-          occupiedBy.add(cp.occupiedBy.get(i));
+        //Log.i("copyMazeTile", "size "+cp.occupiedBy.size());
+        for(int i=0; i < cp.occupiedBy.size(); i++){
+            this.occupiedBy.add(cp.occupiedBy.get(i));
+            //Log.i("copyMazeTile", "copied player"+cp.occupiedBy.get(i));
         }
     }
 
@@ -104,6 +107,7 @@ public class MazeTile {
     public void addPlayer(int player)
     {
         occupiedBy.add(player);
+        Log.i("addPlayer", "added player "+player);
     }
 
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
