@@ -394,6 +394,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         this.turnInfo = (TextView)activity.findViewById(R.id.TurnInfoChanging);
 
+        //confirm move button
+        this.moveButtonArea = (Button) activity.findViewById(R.id.moveButton) ;
+
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
         leftColB.setOnClickListener(this);
@@ -407,6 +410,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         rightColT.setOnClickListener(this);
         rightColB.setOnClickListener(this);
         rightColM.setOnClickListener(this);
+        moveButtonArea.setOnClickListener(this);
 
         // how do we get the canvas from the surface view to draw on?
         surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
@@ -420,52 +424,45 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
             game.sendAction(new LabMoveExtraTile(this, 0, 6));
-            game.sendAction(new LabMoveMazeAction(this,0,6));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
-            game.sendAction(new LabMoveMazeAction(this,0,4));
             Log.i("leftColM Button", "Operational");
         } else if (v == leftColT) {
             game.sendAction(new LabMoveExtraTile(this, 0, 2));
-            game.sendAction(new LabMoveMazeAction(this,2,0));
             Log.i("leftColT Button", "Operational");
         } else if (v == topRowM) {
             game.sendAction(new LabMoveExtraTile(this, 4, 0));
-            game.sendAction(new LabMoveMazeAction(this,4,0));
             Log.i("topRowM Button", "Operational");
         } else if (v == topRowL) {
             game.sendAction(new LabMoveExtraTile(this, 2, 0));
-            game.sendAction(new LabMoveMazeAction(this,2,0));
             Log.i("topRowL Button", "Operational");
         } else if (v == topRowR) {
             game.sendAction(new LabMoveExtraTile(this, 6, 0));
-            game.sendAction(new LabMoveMazeAction(this,6,0));
             Log.i("topRowR Button", "Operational");
         } else if (v == botRowL) {
             game.sendAction(new LabMoveExtraTile(this, 2, 8));
-            game.sendAction(new LabMoveMazeAction(this,2,8));
             Log.i("botRowL Button", "Operational");
         } else if (v == botRowM) {
             game.sendAction(new LabMoveExtraTile(this, 4, 8));
-            game.sendAction(new LabMoveMazeAction(this,4,8));
             Log.i("botRowM Button", "Operational");
         } else if (v == botRowR) {
             game.sendAction(new LabMoveExtraTile(this, 6, 8));
-            game.sendAction(new LabMoveMazeAction(this,6,8));
             Log.i("botRowR Button", "Operational");
         } else if (v == rightColB) {
             game.sendAction(new LabMoveExtraTile(this, 8, 6));
-            game.sendAction(new LabMoveMazeAction(this,8,6));
             Log.i("rightColB Button", "Operational");
         } else if (v == rightColM) {
             game.sendAction(new LabMoveExtraTile(this, 8, 4));
-            game.sendAction(new LabMoveMazeAction(this,8,4));
             Log.i("rightColM Button", "Operational");
         } else if (v == rightColT) {
             game.sendAction(new LabMoveExtraTile(this, 8, 2));
-            game.sendAction(new LabMoveMazeAction(this,8,2));
             Log.i("rightColT Button", "Operational");
+        }
+        else if (v == moveButtonArea )
+        {
+            int[] coordinates = myState.findExtraTile();
+            game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
         }
     }
 
@@ -509,13 +506,13 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if (coords[0] == 0) {
                 switch (coords[1]) {
                     case 2:
-                        topRowR.setBackgroundColor(Color.RED);
+                        leftColT.setBackgroundColor(Color.RED);
                         break;
                     case 4:
-                        topRowM.setBackgroundColor(Color.RED);
+                        leftColM.setBackgroundColor(Color.RED);
                         break;
                     case 6:
-                        topRowL.setBackgroundColor(Color.RED);
+                        leftColB.setBackgroundColor(Color.RED);
                         break;
                 }
             } else if (coords[0] == 8) {
@@ -533,13 +530,13 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             } else if (coords[1] == 0) {
                 switch (coords[0]) {
                     case 2:
-                        leftColT.setBackgroundColor(Color.RED);
+                        topRowL.setBackgroundColor(Color.RED);
                         break;
                     case 4:
-                        leftColM.setBackgroundColor(Color.RED);
+                        topRowM.setBackgroundColor(Color.RED);
                         break;
                     case 6:
-                        leftColB.setBackgroundColor(Color.RED);
+                        topRowR.setBackgroundColor(Color.RED);
                         break;
                 }
             } else if (coords[1] == 8) {
