@@ -199,7 +199,7 @@
             android:layout_weight="1"
             android:contentDescription=""
             tools:ignore="ContentDescription"
-                android:background="#EEE9E9" />
+                android:background="#CDC9C9" />
 
 
             <Space
@@ -213,7 +213,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1.00"
     android:id="@+id/leftColM"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
@@ -226,7 +226,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/leftColB"
     android:layout_weight="1"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
@@ -256,8 +256,8 @@
     android:layout_width="wrap_content"
     android:layout_height="27dp"
     android:id="@+id/topRowL"
-    android:layout_weight="0.63"
-        android:background="#EEE9E9" />
+    android:layout_weight="0.77"
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
@@ -269,23 +269,23 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:id="@+id/topRowM"
-    android:layout_weight="0.46"
-        android:background="#EEE9E9" />
+    android:layout_weight="0.68"
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/arrow_down_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/topRowR"
-    android:layout_weight="0.47"
-        android:background="#EEE9E9" />
+        <ImageButton
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/topRowR"
+        android:layout_weight="0.71"
+            android:background="#CDC9C9" />
 
-    <Space
+        <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
@@ -294,9 +294,9 @@
     <edu.up.cs301.Labyrinth.LabMazeSurfaveView
     android:layout_height="wrap_content"
     android:id="@+id/ACTUALMAZE"
-    android:layout_weight="0.96"
+    android:layout_weight="0.94"
     android:layout_width="match_parent"
-    android:background="#FFFAFA" />
+    android:background="#EEE9E9" />
 
     <LinearLayout
     android:orientation="horizontal"
@@ -316,22 +316,22 @@
     android:layout_height="match_parent"
     android:id="@+id/botRowL"
     android:layout_weight="1.00"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/arrow_up_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/botRowM"
-    android:layout_weight="1.00"
-        android:background="#EEE9E9" />
+        <ImageButton
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/botRowM"
+        android:layout_weight="1.00"
+            android:background="#CDC9C9" />
 
-    <Space
+        <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
@@ -342,7 +342,7 @@
     android:layout_height="match_parent"
     android:id="@+id/botRowR"
     android:layout_weight="1.00"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
@@ -369,7 +369,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rightColT"
         android:layout_weight="1"
-            android:background="#EEE9E9" />
+            android:background="#CDC9C9" />
 
         <Space
     android:layout_width="wrap_content"
@@ -382,7 +382,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/rightColM"
     android:layout_weight="1"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
@@ -395,7 +395,7 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:id="@+id/rightColB"
-        android:background="#EEE9E9" />
+        android:background="#CDC9C9" />
 
     <Space
     android:layout_width="wrap_content"
