@@ -43,14 +43,15 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
         Log.i("LabMazeSurfaveView", "called on draw");
         if(myMaze == null) return;
         Paint p = new Paint();
-        p.setColor(Color.BLACK);
         int testIter = 0;
         for(int i = 0; i<myMaze.length; i++){
             for(int j = 0; j<myMaze[i].length; j++){
+                p.setColor(Color.BLUE);
                 if(myMaze[i][j] == null) continue;
 
                 p.setStyle(Paint.Style.STROKE);
-                g.drawRect(i*125, j*125, 125, 125, p);
+                g.drawRect(i*125, j*125, (i*125)+100, (j*125)+100, p);
+                p.setColor(Color.BLACK);
                 //Drawing the true/false path data to the surface view
                 g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+62, j*125+10, p);
                 g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+100, j*125+62, p);
@@ -63,7 +64,6 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                 for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
                     g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().get(k)), i*125+15+(k*5), j*125+95, p);
                 }
-
            }
         }
     }
