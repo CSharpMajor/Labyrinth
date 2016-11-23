@@ -291,7 +291,7 @@
     android:id="@+id/ACTUALMAZE"
     android:layout_weight="1"
     android:layout_width="match_parent"
-    android:background="#9999CC" />
+    android:background="#FFFAFA" />
 
     <LinearLayout
     android:orientation="horizontal"

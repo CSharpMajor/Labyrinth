@@ -417,8 +417,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }//end of set as GUI
 
     public void onClick(View v) {
+        //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
-            game.sendAction(new LabMoveExtraTile(this, 0, 6)); //orig x and y are flopped
+            game.sendAction(new LabMoveExtraTile(this, 0, 6));
             game.sendAction(new LabMoveMazeAction(this,0,6));
             Log.i("leftColB Button", "Operational");
         } else if (v == leftColM) {

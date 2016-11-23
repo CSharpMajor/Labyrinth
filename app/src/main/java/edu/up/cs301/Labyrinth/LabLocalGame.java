@@ -197,62 +197,63 @@ public class LabLocalGame extends LocalGame
 	 */
 	private boolean checkPath(int xDest, int yDest)
 	{
-		MazeTile[][] maze = masterGameState.getMaze();
-		for (int i = 0; i < maze.length; i++)
-		{
-			for (int j = 0; j < maze[i].length; j++)
-			{
-				booleanMazeMap[i][j] = false;
-				if(maze[i][j] == null){continue;}
-				if (maze[i][j].getOccupiedBy().contains((Integer) masterGameState.getTurnID()))
-				{
-					booleanMazeMap[i][j] = true;
-				}
-			}
-		}
-		boolean changeFlag = true;
-		while (changeFlag)
-		{
-			for (int i = 1; i < maze.length-1; i++)
-			{
-				for (int j = 1; j < maze[i].length-1; j++)
-				{
-
-					if (booleanMazeMap[i][j])
-					{
-						//top
-						if (maze[i][j].getPathMap()[0] && maze[i - 1][j].getPathMap()[2])
-						{
-							booleanMazeMap[i - 1][i] = true;
-							changeFlag = true;
-						}
-						//right
-						else if (maze[i][j].getPathMap()[1] && maze[i][j + 1].getPathMap()[3])
-						{
-							booleanMazeMap[i][j + 1] = true;
-							changeFlag = true;
-						}
-						//bottom
-						else if (maze[i][j].getPathMap()[2] && maze[i + 1][j].getPathMap()[0])
-						{
-							booleanMazeMap[i + 1][j] = true;
-							changeFlag = true;
-						}
-						//left
-						else if (maze[i][j].getPathMap()[3] && maze[i][j - 1].getPathMap()[1])
-						{
-							booleanMazeMap[i][j - 1] = true;
-							changeFlag = true;
-						} else
-						{
-							changeFlag = false;
-						}
-					}
-				}
-			}
-
-		}
-		return booleanMazeMap[xDest][yDest];
+		return true;
+//		MazeTile[][] maze = masterGameState.getMaze();
+//		for (int i = 0; i < maze.length; i++)
+//		{
+//			for (int j = 0; j < maze[i].length; j++)
+//			{
+//				booleanMazeMap[i][j] = false;
+//				if(maze[i][j] == null){continue;}
+//				if (maze[i][j].getOccupiedBy().contains((Integer) masterGameState.getTurnID()))
+//				{
+//					booleanMazeMap[i][j] = true;
+//				}
+//			}
+//		}
+//		boolean changeFlag = true;
+//		while (changeFlag)
+//		{
+//			for (int i = 1; i < maze.length-1; i++)
+//			{
+//				for (int j = 1; j < maze[i].length-1; j++)
+//				{
+//
+//					if (booleanMazeMap[i][j])
+//					{
+//						//top
+//						if (maze[i][j].getPathMap()[0] && maze[i - 1][j].getPathMap()[2])
+//						{
+//							booleanMazeMap[i - 1][i] = true;
+//							changeFlag = true;
+//						}
+//						//right
+//						else if (maze[i][j].getPathMap()[1] && maze[i][j + 1].getPathMap()[3])
+//						{
+//							booleanMazeMap[i][j + 1] = true;
+//							changeFlag = true;
+//						}
+//						//bottom
+//						else if (maze[i][j].getPathMap()[2] && maze[i + 1][j].getPathMap()[0])
+//						{
+//							booleanMazeMap[i + 1][j] = true;
+//							changeFlag = true;
+//						}
+//						//left
+//						else if (maze[i][j].getPathMap()[3] && maze[i][j - 1].getPathMap()[1])
+//						{
+//							booleanMazeMap[i][j - 1] = true;
+//							changeFlag = true;
+//						} else
+//						{
+//							changeFlag = false;
+//						}
+//					}
+//				}
+//			}
+//
+//		}
+//		return booleanMazeMap[xDest][yDest];
 	}
 
 	/*
