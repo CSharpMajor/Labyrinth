@@ -272,8 +272,8 @@ public class LabLocalGame extends LocalGame
 	}
 
 	/**
-	 *
-	 * @return
+	 * checks that extra tile is in valid location
+	 * @return true is extra tile is in valid location
      */
 	private boolean checkExtraTile()
 	{

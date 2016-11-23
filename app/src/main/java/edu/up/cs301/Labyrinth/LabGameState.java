@@ -331,7 +331,6 @@ public class LabGameState extends GameState
     /**
      * When a player collects a card it will move the card from cardsToCollect to cardsCollected
      *
-     * TODO this method keeps getting null pointer at line 303
      * @param playerIndex the player who has collected the card
      */
     public void collectTCard( int playerIndex ){

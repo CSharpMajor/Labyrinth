@@ -188,4 +188,70 @@ public class LabGameStateTest {
         assertTrue(coordsFound[0] == 2);
         assertTrue(coordsFound[1] == 2);
     }
+
+    @Test
+    public void testMoveExtraTile() throws Exception {
+        LabGameState testState = new LabGameState();
+        int[] coordinates = new int[2];
+
+        //move tile to TRL
+        testState.moveExtraTile(0,2);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 0 && coordinates[1] == 2 );
+
+        //move tile to TRM
+        testState.moveExtraTile(0,4);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 0 && coordinates[1] == 4 );
+
+        //move tile to TRR
+        testState.moveExtraTile(0,6);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 0 && coordinates[1] == 6 );
+
+        //move tile to RCT
+        testState.moveExtraTile(2,8);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 2 && coordinates[1] == 8 );
+
+        //move tile to RCM
+        testState.moveExtraTile(4,8);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 4 && coordinates[1] == 8 );
+
+        //move tile to RCB
+        testState.moveExtraTile(6,8);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 6 && coordinates[1] == 8 );
+
+        //move tile to BRR
+        testState.moveExtraTile(8,6);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 8 && coordinates[1] == 6 );
+
+        //move tile to BRM
+        testState.moveExtraTile(8,4);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 8 && coordinates[1] == 4 );
+
+        //move tile to BRL
+        testState.moveExtraTile(8,2);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 8 && coordinates[1] == 2 );
+
+        //move tile to LCB
+        testState.moveExtraTile(6,0);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 6 && coordinates[1] == 0 );
+
+        //move tile to LCM
+        testState.moveExtraTile(4,0);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 4 && coordinates[1] == 0 );
+
+        //move tile to LCT
+        testState.moveExtraTile(2,0);
+        coordinates = testState.findExtraTile();
+        assertTrue( coordinates[0] == 2 && coordinates[1] == 0 );
+    }
 }
