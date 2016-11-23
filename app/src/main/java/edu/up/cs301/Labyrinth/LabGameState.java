@@ -188,6 +188,8 @@ public class LabGameState extends GameState
         int[] coordinates = copy.findExtraTile();
         maze[coordinates[0]][coordinates[1]] = new MazeTile(cp[coordinates[0]][coordinates[1]]);
 
+
+
     }
 
     /**
