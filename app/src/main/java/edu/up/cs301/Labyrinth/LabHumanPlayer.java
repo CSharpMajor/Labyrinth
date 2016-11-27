@@ -67,6 +67,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView greenTreasures = null;
     private ImageView yellowTreasures = null;
     private ImageView redTreasures = null;
+    //image view for the turn info
+    private ImageView changingTurnInfo = null;
 
     private TextView turnInfo = null;
 
@@ -322,7 +324,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if(playerNum == 0){
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
                 String cardName = temp.get(0).getTreasure().getName();
-                cardToGet.setText("Current Goal:\n" + cardName);
+                0cardToGet.setText("Current Goal:\n" + cardName);
             }
             else if(playerNum == 1){
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
@@ -341,16 +343,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
 
             if (((LabGameState) info).getTurnID() == 0){
-                turnInfo.setText("Red");
+                changingTurnInfo.setImageResource(R.mipmap.iconred)
             }
             else if(((LabGameState) info).getTurnID() == 1 ){
-                turnInfo.setText("Green");
+                changingTurnInfo.setImageResource(R.mipmap.icongreen)
             }
             else if(((LabGameState) info).getTurnID() == 2){
-                turnInfo.setText("Blue");
+                changingTurnInfo.setImageResource(R.mipmap.iconblue)
             }
             else if(((LabGameState) info).getTurnID() == 3){
-                turnInfo.setText("Yellow");
+                changingTurnInfo.setImageResource(R.mipmap.iconyellow)
             }
 
             surfaceView.invalidate();
