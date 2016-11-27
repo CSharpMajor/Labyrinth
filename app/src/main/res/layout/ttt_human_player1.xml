@@ -192,14 +192,14 @@
     android:layout_weight="1" />
 
             <ImageButton
-            android:src="@android:drawable/ic_media_play"
+            android:src="@mipmap/pointingrightarrow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/leftColT"
             android:layout_weight="1"
             android:contentDescription=""
             tools:ignore="ContentDescription"
-                android:background="#CDC9C9" />
+                android:background="#FFFFFF" />
 
 
             <Space
@@ -207,28 +207,28 @@
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/ic_media_play"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1.00"
-    android:id="@+id/leftColM"
-        android:background="#CDC9C9" />
+            <ImageButton
+            android:src="@mipmap/pointingrightarrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.00"
+            android:id="@+id/leftColM"
+                android:background="#FFFFFF" />
 
-    <Space
+            <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/ic_media_play"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/leftColB"
-    android:layout_weight="1"
-        android:background="#CDC9C9" />
+            <ImageButton
+            android:src="@mipmap/pointingrightarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/leftColB"
+            android:layout_weight="1"
+                android:background="#FFFFFF" />
 
-    <Space
+            <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
@@ -251,28 +251,14 @@
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/arrow_down_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/topRowL"
-    android:layout_weight="0.77"
-        android:background="#CDC9C9" />
+        <ImageButton
+        android:src="@mipmap/downarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/topRowL"
+            android:background="#FFFFFF" />
 
-    <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
-
-    <ImageButton
-    android:src="@android:drawable/arrow_down_float"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/topRowM"
-    android:layout_weight="0.68"
-        android:background="#CDC9C9" />
-
-    <Space
+        <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
@@ -281,9 +267,22 @@
         android:src="@android:drawable/arrow_down_float"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:id="@+id/topRowM"
+        android:layout_weight="0.68"
+            android:background="#FFFFFF" />
+
+        <Space
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1" />
+
+        <ImageButton
+        android:src="@mipmap/downarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/topRowR"
         android:layout_weight="0.71"
-            android:background="#CDC9C9" />
+            android:background="#FFFFFF" />
 
         <Space
     android:layout_width="wrap_content"
@@ -310,41 +309,41 @@
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-        <ImageButton
-        android:src="@android:drawable/arrow_up_float"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/botRowL"
-        android:layout_weight="1.00"
-            android:background="#CDC9C9" />
-
-        <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
             <ImageButton
-            android:src="@android:drawable/arrow_up_float"
+            android:src="@mipmap/uparrow"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/botRowM"
+            android:id="@+id/botRowL"
             android:layout_weight="1.00"
-                android:background="#CDC9C9" />
+                android:background="#FFFFFF" />
 
             <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-        <ImageButton
-        android:src="@android:drawable/arrow_up_float"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/botRowR"
-        android:layout_weight="1.00"
-            android:background="#CDC9C9" />
+            <ImageButton
+            android:src="@mipmap/uparrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/botRowM"
+            android:layout_weight="1.00"
+                android:background="#FFFFFF" />
 
-        <Space
+            <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+            <ImageButton
+            android:src="@mipmap/uparrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/botRowR"
+            android:layout_weight="1.00"
+                android:background="#FFFFFF" />
+
+            <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
@@ -364,40 +363,40 @@
     android:layout_weight="1" />
 
         <ImageButton
-        android:src="@android:drawable/ic_media_rew"
+        android:src="@mipmap/pointingleftarrow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rightColT"
         android:layout_weight="1"
-            android:background="#CDC9C9" />
+            android:background="#FFFFFF" />
 
         <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/ic_media_rew"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/rightColM"
-    android:layout_weight="1"
-        android:background="#CDC9C9" />
+        <ImageButton
+        android:src="@mipmap/pointingleftarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rightColM"
+        android:layout_weight="1"
+            android:background="#FFFFFF" />
 
-    <Space
+        <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
 
-    <ImageButton
-    android:src="@android:drawable/ic_media_rew"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:id="@+id/rightColB"
-        android:background="#CDC9C9" />
+        <ImageButton
+        android:src="@mipmap/pointingleftarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/rightColB"
+            android:background="#FFFFFF" />
 
-    <Space
+        <Space
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_weight="1" />
