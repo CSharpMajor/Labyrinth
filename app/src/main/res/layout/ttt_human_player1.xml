@@ -44,16 +44,16 @@
                 android:layout_height="wrap_content"
             android:id="@+id/turnInfo"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="normal|bold"
+                android:textAlignment="center" />
 
-            <TextView
+            <ImageView
+                android:src="@mipmap/iconblue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="BLUE/RED/YELLOW/GREEN"
-                android:id="@+id/TurnInfoChanging"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:id="@+id/changingTurnInfo"
+                android:layout_weight="0.28" />
 
             <Space
                 android:layout_width="20px"
@@ -252,7 +252,7 @@
     android:layout_weight="1" />
 
         <ImageButton
-        android:src="@mipmap/downarrow"
+        android:src="@mipmap/correctdownarrow"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/topRowL"
@@ -264,7 +264,7 @@
     android:layout_weight="1" />
 
         <ImageButton
-        android:src="@android:drawable/arrow_down_float"
+        android:src="@mipmap/correctdownarrow"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/topRowM"
@@ -277,7 +277,7 @@
     android:layout_weight="1" />
 
         <ImageButton
-        android:src="@mipmap/downarrow"
+        android:src="@mipmap/correctdownarrow"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/topRowR"
@@ -290,12 +290,12 @@
     android:layout_weight="1" />
     </LinearLayout>
 
-    <edu.up.cs301.Labyrinth.LabMazeSurfaveView
-    android:layout_height="wrap_content"
-    android:id="@+id/ACTUALMAZE"
-    android:layout_weight="0.98"
-    android:layout_width="match_parent"
-    android:background="#EEE9E9" />
+        <edu.up.cs301.Labyrinth.LabMazeSurfaveView
+        android:layout_height="wrap_content"
+        android:id="@+id/ACTUALMAZE"
+        android:layout_weight="0.98"
+        android:layout_width="match_parent"
+        android:background="#EEE9E9" />
 
         <LinearLayout
         android:orientation="horizontal"
@@ -407,7 +407,7 @@
     android:layout_width="15dp"
     android:layout_height="match_parent" />
 
-    <LinearLayout
+        <LinearLayout
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -417,20 +417,139 @@
 
         <Space
     android:layout_width="match_parent"
-    android:layout_height="75dp" />
+    android:layout_height="28dp" />
 
-    <Button
+        <TextView
+            android:text="Who Is Who:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerInfo"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/redandBlueinfo">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="87dp"
+                android:layout_height="match_parent"
+                android:id="@+id/bluePlayerInfo">
+
+                <ImageView
+                    android:src="@mipmap/iconblue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blueIconPlayerInfo"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/BlueInfo"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/redPlayerInfo">
+
+                <ImageView
+                    android:src="@mipmap/iconred"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/redIconPlayerInfo"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="YOU!!!! :-)"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/redInfo"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/yellowandgreeninfo">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="87dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/greenPlayerInfo">
+
+                <ImageView
+                    android:src="@mipmap/icongreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/greenIconPlayerInfo"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/greenInfo"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/yellowPlayerInfo">
+
+                <ImageView
+                    android:src="@mipmap/iconyellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/yellowIconPlayerInfo"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/yellowInfo"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <Button
     android:text="MOVE"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:id="@+id/moveButton"
         android:textColor="#FFFFFF" />
 
-    <Space
-    android:layout_width="match_parent"
-    android:layout_height="21dp" />
+            <Space
+            android:layout_width="match_parent"
+            android:layout_height="21dp" />
 
-        <TextView
+            <TextView
             android:layout_width="match_parent"
             android:layout_height="345dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
