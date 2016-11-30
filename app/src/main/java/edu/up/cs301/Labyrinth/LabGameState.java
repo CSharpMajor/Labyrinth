@@ -390,7 +390,8 @@ public class LabGameState extends GameState
         {
             for(int j = 0; j < maze[i].length; j++)
             {
-                if(maze[i][j].occupiedBy.get(0) == playerIndex)
+                if(maze[i][j] == null){ continue; }
+                if(maze[i][j].occupiedBy.contains(playerIndex))
                 {
                     coords[0] = i;
                     coords[1] = j;
@@ -573,7 +574,7 @@ public class LabGameState extends GameState
             {
                 for (int j = 1; j < maze[i].length-1; j++)
                 {
-                    Log.i("checkPath", maze[i][j].toString());
+                    //Log.i("checkPath", maze[i][j].toString());
                     changeFlag = false;
                     if (booleanMazeMap[i][j])
                     {
