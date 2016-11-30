@@ -41,6 +41,8 @@ public class LabGameState extends GameState
     //first four are the four corner tiles
     private static ArrayList<MazeTile> allTiles = new ArrayList<MazeTile>(50);
 
+    private boolean[][] booleanMazeMap = new boolean[9][9];
+
     /*
     Welcome to the constructor this is where we create the game
      */
@@ -543,6 +545,214 @@ public class LabGameState extends GameState
 
         //somehow never found an extra tile
         return coordinates;
+    }
+
+
+    /*
+	 * this is the helper method for makePlayerPieceMove()
+	 */
+    private boolean checkPath(int xDest, int yDest)
+    {
+        //MazeTile[][] maze = masterGameState.getMaze();
+        for (int i = 0; i < maze.length; i++)
+        {
+            for (int j = 0; j < maze[i].length; j++)
+            {
+                booleanMazeMap[i][j] = false;
+                if(maze[i][j] == null){continue;}
+                if (maze[i][j].getOccupiedBy().contains((Integer) this.getTurnID()))
+                {
+                    booleanMazeMap[i][j] = true;
+                }
+            }
+        }
+        boolean changeFlag = true;
+        while (changeFlag)
+        {
+            for (int i = 1; i < maze.length-1; i++)
+            {
+                for (int j = 1; j < maze[i].length-1; j++)
+                {
+                    Log.i("checkPath", maze[i][j].toString());
+                    changeFlag = false;
+                    if (booleanMazeMap[i][j])
+                    {
+                        //////////////////
+                        //coners of maze//
+                        //////////////////
+                        if(i==1 && j==1){
+                            //right
+                            if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
+                            {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                            //bottom
+                            if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
+                            {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(i==1 && j==maze[i].length-2){
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
+                            {
+                                booleanMazeMap[i][j-1] = true;
+                                changeFlag = true;
+                            }
+                            //right
+                            if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
+                            {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(j==1 && i==maze[i].length-2){
+                            //bottom
+                            if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
+                            {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
+                            {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(j==maze[i].length-2 && i==maze[i].length-2){
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
+                            {
+                                booleanMazeMap[i][j-1] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
+                            {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+
+                        //////////////////
+                        //edges  of maze//
+                        //////////////////
+
+                        else if(i==1){
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
+                            {
+                                booleanMazeMap[i][j-1] = true;
+                                changeFlag = true;
+                            }
+                            //right
+                            if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
+                            {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                            //bottom
+                            if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
+                            {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(j==1){
+                            //right
+                            if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
+                            {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                            //bottom
+                            if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
+                            {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
+                            {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(i==maze[i].length-2){
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
+                            {
+                                booleanMazeMap[i][j-1] = true;
+                                changeFlag = true;
+                            }
+                            //bottom
+                            else if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
+                            {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            else if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
+                            {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+                        else if(j==maze[i].length-2){
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
+                            {
+                                booleanMazeMap[i][j-1] = true;
+                                changeFlag = true;
+                            }
+                            //right
+                            else if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
+                            {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            else if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
+                            {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+
+                        //////////////////
+                        //middle of maze//
+                        //////////////////
+                        else {
+                            //top
+                            if (maze[i][j].getPathMap()[0] && maze[i][j - 1].getPathMap()[2]) {
+                                booleanMazeMap[i][j - 1] = true;
+                                changeFlag = true;
+                            }
+                            //right
+                            if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3]) {
+                                booleanMazeMap[i + 1][j] = true;
+                                changeFlag = true;
+                            }
+                            //bottom
+                            if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0]) {
+                                booleanMazeMap[i][j + 1] = true;
+                                changeFlag = true;
+                            }
+                            //left
+                            if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1]) {
+                                booleanMazeMap[i - 1][j] = true;
+                                changeFlag = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        return booleanMazeMap[xDest][yDest];
     }
 
 }
