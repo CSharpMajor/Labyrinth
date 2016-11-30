@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import edu.up.cs301.game.GameMainActivity;
@@ -93,7 +95,9 @@ public class LabMainActivity extends GameMainActivity {
 	 */
 	@Override
 	public LocalGame createLocalGame() {
+		//Log.i("main", "hello");
 		return new LabLocalGame();
+
 	}
 
 }
