@@ -62,24 +62,31 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button moveButtonArea = null;
     //Text view for the treasure card
     private TextView cardToGet = null;
-    //Treasures of the blue player
+    //Display for the treasures of the blue player
     private ImageView blueTreasures = null;
+    //Display for the treasures of the green player
     private ImageView greenTreasures = null;
+    //Display for the treasures of the yellow player
     private ImageView yellowTreasures = null;
+    //Display for the treasures of the red player
     private ImageView redTreasures = null;
+    //Display for the turn information
+    //image view for the turn info
+    private ImageView changingTurnInfo = null;
 
     private TextView turnInfo = null;
-
+    //Variable for the activity
     private Activity myActivity;
-
+    //Variable for the surface view
     private LabMazeSurfaveView surfaceView;
-
+    //Variable for the state of the game
     private LabGameState myState;
-
+    //The maze of the game
     private MazeTile[][] myMaze;
 
-    //Set listener for the surface view
+    private int coords[];
 
+    //Constructor for the human player
     public LabHumanPlayer(String name) {
         super("hi");
     }
@@ -88,61 +95,83 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         return null;
     }
 
+    /**
+     * Receive info takes the game state that is sent to the player and updates the GUI according
+     * to the new state of the game.
+     *
+     * @param info
+     */
     public void receiveInfo(GameInfo info) {
 
+        //Test to see if the player has received any info
         Log.i("human Player", "called reciveInfo");
-
+        //If the surface view is null then just return
         if(surfaceView == null) return;
 
-        /**
-         * TO DO: Change the number of the cards collected based on the cards collected by each
-         * player
-         */
-
+        //If the instance of the game we have received is illegal or not our turn, then we don't
+        //want to do anything.
         if( info instanceof IllegalMoveInfo || info instanceof NotYourTurnInfo)
         {
-            //The move was illegal, so let the user know using the surface view
-            //surfaceView.flash(Color.RED, 50);
         }
+        //If the instance of the game we have received is not the game state we don't
+        //want to do anything
         else if(!(info instanceof LabGameState))
         {
             //If the state is not a game state, ignore it
-            return;
         }
+        //If the instance of the game is the game state then we want to update the GUI with
+        //the most current information from the state
         else
         {
-            //Set the surface view's state
-            //Invalidate the surface view
+            //If it is our turn we want to enable the move button
+            if(((LabGameState) info).getTurnID() == playerNum){
+                moveButtonArea.setEnabled(true);
+            }
+            //Set the state to be from the game state
             myState = (LabGameState) info;
+            //Get the maze from the game state
             myMaze = myState.getMaze();
+            //Set the state of the surface view
             surfaceView.setState(myState);
 
+            //The following arrays are the arrays of collected treasure cards from each player
             ArrayList<TCard> blueTreasure = ((LabGameState) info).getPlayerCollected(2);
             ArrayList<TCard> greenTreasure = ((LabGameState) info).getPlayerCollected(1);
             ArrayList<TCard> yellowTreasure = ((LabGameState) info).getPlayerCollected(3);
             ArrayList<TCard> redTreasure = ((LabGameState) info).getPlayerCollected(0);
 
+            //The number of treasures each player has collected
             int blueTreasureNum = 0;
             int greenTreasureNum = 0;
             int yellowTreasureNum = 0;
             int redTreasureNum = 0;
 
+            //If the blueTreasure array has no cards, the blue player has collected 0 treasures
            if(blueTreasure == null)
            {
+               //Set the number of treasures the blue player has collected to 0
                blueTreasureNum = 0;
            }
+            //If the greenTreasure array has no cards, the green player has collected 0 treasures
             if(greenTreasure == null)
             {
+                //Set the number of treasures the green player has collected to 0
                 greenTreasureNum = 0;
             }
+            //If the yellowTreasure array has no cards, the yellow player has collected 0 treasures
             if(yellowTreasure == null)
             {
+                //Set the number of treasures the yellow player has collected to 0
                 yellowTreasureNum = 0;
             }
+            //If the redTreasure array has no cards, the red player has collected 9 treasures
             if(redTreasure == null)
             {
+                //Set the number of treasures the red player has collected to 0
                 redTreasureNum = 0;
             }
+            //If the treasure array isn't null, then it must have cards so get the size of the array
+            //to see how many cards the player has collected
             else
             {
                 blueTreasureNum = blueTreasure.size();
@@ -150,7 +179,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 yellowTreasureNum = yellowTreasure.size();
                 redTreasureNum = redTreasure.size();
             }
-
+            /**
+             * The following switch statement sets the number of treasures the blue player has
+             * to the screen. It looks at the variable blueTreasureNum and correctly displays the
+             * number of treasures. Each case is for all of the number of treasure cards
+             * a player could possibly have.
+             */
             switch(blueTreasureNum){
                 case 0:
                     blueTreasures.setImageResource(R.mipmap.nocards);
@@ -193,6 +227,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     break;
             }
 
+            /**
+             * The following switch statement sets the number of treasures the red player has
+             * to the screen. It looks at the variable redTreasureNum and correctly displays the
+             * number of treasures. Each case is for all of the number of treasure cards
+             * a player could possibly have.
+             */
             switch(redTreasureNum){
                 case 0:
                     redTreasures.setImageResource(R.mipmap.nocards);
@@ -235,6 +275,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     break;
             }
 
+            /**
+             * The following switch statement sets the number of treasures the green player has
+             * to the screen. It looks at the variable greenTreasureNum and correctly displays the
+             * number of treasures. Each case is for all of the number of treasure cards
+             * a player could possibly have.
+             */
             switch(greenTreasureNum){
                 case 0:
                     greenTreasures.setImageResource(R.mipmap.nocards);
@@ -277,6 +323,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     break;
             }
 
+            /**
+             * The following switch statement sets the number of treasures the yellow player has
+             * to the screen. It looks at the variable yellowTreasureNum and correctly displays the
+             * number of treasures. Each case is for all of the number of treasure cards
+             * a player could possibly have.
+             */
             switch(yellowTreasureNum){
                 case 0:
                     yellowTreasures.setImageResource(R.mipmap.nocards);
@@ -319,46 +371,80 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     break;
             }
 
+            //If the human player's number is 0, display player 0's top card to collect
             if(playerNum == 0){
+                //Get player 0's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
+                //Get the name of the treasure of the first card in the list
                 String cardName = temp.get(0).getTreasure().getName();
                 cardToGet.setText("Current Goal:\n" + cardName);
+                //Set the GUI text to let the user know what their current goal is
+                cardToGet.setText("Current Goal:\n" + cardName);
             }
+            //If the human player's number is 1, display player 1's top card to collect
             else if(playerNum == 1){
+                //Get player 1's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
+                //Get the name of the treasure of the first card in the list
                 String cardName = temp.get(0).getTreasure().getName();
+                //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
             }
+            //If the human player's number is 2, display player 2's top card to collect
             else if(playerNum == 2){
+                //Get player 2's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
+                //Get the name of the treasure of the first card in the list
                 String cardName = temp.get(0).getTreasure().getName();
+                //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
             }
+            //If the human player's number is 3, display player 3's top card to collect
             else if(playerNum == 3){
+                //Get player 3's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
+                //Get the name of the treasure of the first card in the list
                 String cardName = temp.get(0).getTreasure().getName();
+                //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
             }
 
+            /**
+             * The following set of statements change the turn counter to accurately display which
+             * user's turn it is
+             */
+            //If it is player 0's turn, set the text to "Red"
             if (((LabGameState) info).getTurnID() == 0){
-                turnInfo.setText("Red");
+                changingTurnInfo.setImageResource(R.mipmap.iconred);
             }
+            //If it is player 1's turn, set the text to "Green"
             else if(((LabGameState) info).getTurnID() == 1 ){
-                turnInfo.setText("Green");
+                changingTurnInfo.setImageResource(R.mipmap.icongreen);
             }
+            //If it is player 2's turn, set the text to "Blue"
             else if(((LabGameState) info).getTurnID() == 2){
-                turnInfo.setText("Blue");
+                changingTurnInfo.setImageResource(R.mipmap.iconblue);
             }
+            //If it is player 3's turn, set the text to "Yellow"
             else if(((LabGameState) info).getTurnID() == 3){
-                turnInfo.setText("Yellow");
+                changingTurnInfo.setImageResource(R.mipmap.iconyellow);
             }
 
+            coords =((LabGameState) info).findExtraTile();
+
+            //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
+            //Log for testing purposes
             Log.i("human player", "receiving");
         }
     }
 
+    /**
+     * setAsGui sets the listeners for the buttons and surface view
+     *
+     * @param activity
+     */
     public void setAsGui(GameMainActivity activity) {
 
         //Seting the activity
@@ -384,14 +470,17 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.rightColM = (ImageButton) activity.findViewById(R.id.rightColM);
         this.rightColT = (ImageButton) activity.findViewById(R.id.rightColT);
 
-        //Card to get
+        //Setting the text view for the current treasure card
         this.cardToGet = (TextView) activity.findViewById(R.id.treasureCardToGet);
-        //Blue player's treasure
+        //Image for the number of treasures the blue player has
         this.blueTreasures = (ImageView) activity.findViewById(R.id.blueTreasures);
+        //Image for the number of treasures the red player has
         this.redTreasures = (ImageView) activity.findViewById(R.id.redTreasures);
+        //Image for the number of treasures the green player has
         this.greenTreasures = (ImageView) activity.findViewById(R.id.greenTreasures);
+        //Image for the number of treasures the yellow player has
         this.yellowTreasures = (ImageView) activity.findViewById(R.id.yellowTreasures);
-
+        //Setting the listener for the turn info text area
         this.turnInfo = (TextView)activity.findViewById(R.id.TurnInfoChanging);
 
         //confirm move button
@@ -412,19 +501,29 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         rightColM.setOnClickListener(this);
         moveButtonArea.setOnClickListener(this);
 
-        // how do we get the canvas from the surface view to draw on?
+        //Setting up the surface view
         surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
-
+        //Setting the listener for the surface view
         surfaceView.setOnTouchListener(this);
 
 
     }//end of set as GUI
 
+    /**
+     *
+     * @param v
+     */
     public void onClick(View v) {
         //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
-            game.sendAction(new LabMoveExtraTile(this, 0, 6));
-            Log.i("leftColB Button", "Operational");
+            Log.i("Coords are:", "" + coords[0] + coords[1]);
+            if(coords[0] == 0 && coords[1] == 6)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else{
+                game.sendAction(new LabMoveExtraTile(this, 0, 6));
+            }
         } else if (v == leftColM) {
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
             Log.i("leftColM Button", "Operational");
@@ -463,6 +562,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
+            moveButtonArea.setEnabled(false);
         }
     }
 
