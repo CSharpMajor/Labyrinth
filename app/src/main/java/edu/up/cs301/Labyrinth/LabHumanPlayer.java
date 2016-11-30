@@ -204,6 +204,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             int yellowTreasureNum = 0;
             int redTreasureNum = 0;
 
+            //For the push!
             //If the blueTreasure array has no cards, the blue player has collected 0 treasures
            if(blueTreasure == null)
            {
