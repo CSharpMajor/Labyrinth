@@ -30,12 +30,12 @@
     android:orientation="vertical"
             android:layout_height="match_parent"
     android:id="@+id/leftInfo"
-            android:layout_width="180dp">
+            android:layout_width="160dp">
 
-    <Space
-    android:layout_width="match_parent"
-    android:layout_height="10dp"
-    android:layout_weight="0.28" />
+            <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="0.28" />
 
             <TextView
             android:text="Player&apos;s turn:"
@@ -176,15 +176,14 @@
 
         </LinearLayout>
 
-        <Space
-        android:layout_width="18dp"
-        android:layout_height="match_parent" />
+        <Space android:layout_height="match_parent"
+            android:layout_width="10dp" />
 
         <LinearLayout
     android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:id="@+id/leftMostButtons">
+            android:layout_height="match_parent"
+    android:id="@+id/leftMostButtons"
+            android:layout_width="30dp">
 
     <Space
     android:layout_width="wrap_content"
@@ -291,11 +290,10 @@
     </LinearLayout>
 
         <edu.up.cs301.Labyrinth.LabMazeSurfaveView
-        android:layout_height="wrap_content"
-        android:id="@+id/ACTUALMAZE"
-        android:layout_weight="0.98"
-        android:layout_width="match_parent"
-        android:background="#EEE9E9" />
+            android:id="@+id/ACTUALMAZE"
+            android:background="#EEE9E9"
+            android:layout_height="588dp"
+            android:layout_width="1701dp" />
 
         <LinearLayout
         android:orientation="horizontal"
@@ -353,7 +351,7 @@
 
     <LinearLayout
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="30dp"
     android:layout_height="match_parent"
     android:id="@+id/rightmostbuttons">
 
@@ -403,20 +401,19 @@
 
     </LinearLayout>
 
-    <Space
-    android:layout_width="15dp"
-    android:layout_height="match_parent" />
+    <Space android:layout_height="match_parent"
+        android:layout_width="10dp" />
 
         <LinearLayout
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="160dp"
     android:layout_height="match_parent"
     android:id="@+id/moveButtonArea"
     android:weightSum="1"
     android:layout_weight="0.99">
 
         <Space
-    android:layout_width="match_parent"
+    android:layout_width="160dp"
     android:layout_height="28dp" />
 
         <TextView
