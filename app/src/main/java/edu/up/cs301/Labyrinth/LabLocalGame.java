@@ -210,6 +210,27 @@ public class LabLocalGame extends LocalGame
 			}
 			return true;
 		}
+		else{
+			for (int i = 0; i < newMaze.length; i++) {
+				for (int j = 0; j < newMaze[i].length; j++) {
+
+					if(newMaze[i][j] == null){continue;}
+					if (newMaze[i][j].getOccupiedBy().contains((Integer) masterGameState.getTurnID())) {
+						newMaze[i][j].removePlayer(masterGameState.getTurnID());
+					}
+				}
+			}
+			newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].addPlayer(((LabMovePieceAction) action).getPlayerNum());
+			masterGameState.setMaze(newMaze);
+			masterGameState.setHasMovedMaze(false);
+			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
+			if(masterGameState.getTurnID() == 3){
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+			}
+		}
 
 		sendAllUpdatedState();
 		return false;

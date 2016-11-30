@@ -481,7 +481,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Image for the number of treasures the yellow player has
         this.yellowTreasures = (ImageView) activity.findViewById(R.id.yellowTreasures);
         //Setting the listener for the turn info text area
-        this.turnInfo = (TextView)activity.findViewById(R.id.TurnInfoChanging);
+        this.changingTurnInfo = (ImageView) activity.findViewById(R.id.changingTurnInfo);
 
         //confirm move button
         this.moveButtonArea = (Button) activity.findViewById(R.id.moveButton) ;
