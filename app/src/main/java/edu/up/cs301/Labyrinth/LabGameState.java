@@ -551,8 +551,7 @@ public class LabGameState extends GameState
     /*
 	 * this is the helper method for makePlayerPieceMove()
 	 */
-    private boolean checkPath(int xDest, int yDest)
-
+    public boolean checkPath(int xDest, int yDest)
     {
         //MazeTile[][] maze = masterGameState.getMaze();
         for (int i = 0; i < maze.length; i++)
