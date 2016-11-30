@@ -474,7 +474,7 @@
                     android:text="YOU!!!! :-)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/redInfo"
+                    android:id="@+id/redInfo2"
                     android:layout_weight="1"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -503,7 +503,7 @@
                     android:text="TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/greenInfo"
+                    android:id="@+id/greenInfo2"
                     android:layout_weight="1"
                     android:textColor="#FFFFFF" />
 
@@ -526,7 +526,7 @@
                     android:text="TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/yellowInfo"
+                    android:id="@+id/yellowInfo2"
                     android:layout_weight="1"
                     android:textColor="#FFFFFF" />
 
