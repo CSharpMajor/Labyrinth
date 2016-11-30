@@ -73,6 +73,15 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     //Display for the turn information
     //image view for the turn info
     private ImageView changingTurnInfo = null;
+    //Player 0's Information (red)
+    private TextView redPlayerInfo = null;
+    //Player 1's information (green)
+    private TextView greenPlayerInfo = null;
+    //Player 2's information (blue)
+    private TextView bluePlayerInfo = null;
+    //Player 3's information (yellow)
+    private TextView yellowPlayerInfo = null;
+
 
     private TextView turnInfo = null;
     //Variable for the activity
@@ -83,12 +92,13 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private LabGameState myState;
     //The maze of the game
     private MazeTile[][] myMaze;
-
-    private int coords[];
+    private int coords[] = null;
+    //Flag that keeps track of whether the player is to move their piece or to move the maze
+    private boolean flag = false;
 
     //Constructor for the human player
     public LabHumanPlayer(String name) {
-        super("hi");
+        super(name);
     }
 
     public View getTopView() {
@@ -123,9 +133,57 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //the most current information from the state
         else
         {
+            Log.i("Flag value", "" + flag);
             //If it is our turn we want to enable the move button
             if(((LabGameState) info).getTurnID() == playerNum){
-                moveButtonArea.setEnabled(true);
+                //moveButtonArea.setEnabled(true);
+                if(flag)
+                {
+                    leftColM.setEnabled(false);
+                    leftColB.setEnabled(false);
+                    leftColT.setEnabled(false);
+                    rightColB.setEnabled(false);
+                    rightColM.setEnabled(false);
+                    rightColT.setEnabled(false);
+                    topRowM.setEnabled(false);
+                    topRowR.setEnabled(false);
+                    topRowL.setEnabled(false);
+                    botRowR.setEnabled(false);
+                    botRowL.setEnabled(false);
+                    botRowM.setEnabled(false);
+                    flag = false;
+                }
+                else
+                {
+                    leftColM.setEnabled(true);
+                    leftColB.setEnabled(true);
+                    leftColT.setEnabled(true);
+                    rightColB.setEnabled(true);
+                    rightColM.setEnabled(true);
+                    rightColT.setEnabled(true);
+                    topRowM.setEnabled(true);
+                    topRowR.setEnabled(true);
+                    topRowL.setEnabled(true);
+                    botRowR.setEnabled(true);
+                    botRowL.setEnabled(true);
+                    botRowM.setEnabled(true);
+                    moveButtonArea.setEnabled(true);
+                }
+            }
+            else{
+                leftColM.setEnabled(false);
+                leftColB.setEnabled(false);
+                leftColT.setEnabled(false);
+                rightColB.setEnabled(false);
+                rightColM.setEnabled(false);
+                rightColT.setEnabled(false);
+                topRowM.setEnabled(false);
+                topRowR.setEnabled(false);
+                topRowL.setEnabled(false);
+                botRowR.setEnabled(false);
+                botRowL.setEnabled(false);
+                botRowM.setEnabled(false);
+                moveButtonArea.setEnabled(false);
             }
             //Set the state to be from the game state
             myState = (LabGameState) info;
@@ -380,6 +438,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 cardToGet.setText("Current Goal:\n" + cardName);
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
+
+                //Set the player's date to the correct text area
+                redPlayerInfo.setText(name);
             }
             //If the human player's number is 1, display player 1's top card to collect
             else if(playerNum == 1){
@@ -389,6 +450,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
+
+                //Set the player's date to the correct text area
+                greenPlayerInfo.setText(name);
             }
             //If the human player's number is 2, display player 2's top card to collect
             else if(playerNum == 2){
@@ -398,6 +462,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
+
+                //Set the player's date to the correct text area
+                bluePlayerInfo.setText(name);
             }
             //If the human player's number is 3, display player 3's top card to collect
             else if(playerNum == 3){
@@ -407,6 +474,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n" + cardName);
+
+                //Set the player's date to the correct text area
+                yellowPlayerInfo.setText(name);
             }
 
             /**
@@ -482,9 +552,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.yellowTreasures = (ImageView) activity.findViewById(R.id.yellowTreasures);
         //Setting the listener for the turn info text area
         this.changingTurnInfo = (ImageView) activity.findViewById(R.id.changingTurnInfo);
+        this.changingTurnInfo = (ImageView)activity.findViewById(R.id.changingTurnInfo);
 
         //confirm move button
         this.moveButtonArea = (Button) activity.findViewById(R.id.moveButton) ;
+
+        //Setting the text views for player information
+        this.bluePlayerInfo = (TextView)activity.findViewById(R.id.BlueInfo);
+        this.greenPlayerInfo = (TextView)activity.findViewById(R.id.greenInfo2);
+        this.yellowPlayerInfo = (TextView)activity.findViewById(R.id.yellowInfo2);
+        this.redPlayerInfo = (TextView)activity.findViewById(R.id.redInfo2);
 
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
@@ -505,8 +582,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
         //Setting the listener for the surface view
         surfaceView.setOnTouchListener(this);
-
-
     }//end of set as GUI
 
     /**
@@ -516,14 +591,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void onClick(View v) {
         //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
-            Log.i("Coords are:", "" + coords[0] + coords[1]);
-            if(coords[0] == 0 && coords[1] == 6)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else{
-                game.sendAction(new LabMoveExtraTile(this, 0, 6));
-            }
+            game.sendAction(new LabMoveExtraTile(this, 0, 6));
         } else if (v == leftColM) {
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
             Log.i("leftColM Button", "Operational");
@@ -560,9 +628,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         else if (v == moveButtonArea )
         {
+            if(flag){
+                flag = false;
+            }
+            else if(!flag){
+                flag = true;
+            }
+            Log.i("Flag value", "" + flag);
+            moveButtonArea.setEnabled(false);
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
-            moveButtonArea.setEnabled(false);
         }
     }
 
