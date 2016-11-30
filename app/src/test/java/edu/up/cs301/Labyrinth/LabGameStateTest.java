@@ -292,4 +292,11 @@ public class LabGameStateTest {
 
         assertTrue( count == 23 );
     }
+
+    public void testCheckPath() throws Exception{
+        LabGameState testState = new LabGameState();
+
+    }
+
+
 }
