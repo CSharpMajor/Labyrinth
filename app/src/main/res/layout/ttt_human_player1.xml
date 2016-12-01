@@ -535,12 +535,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="21dp" />
 
-            <Button
-    android:text="MOVE"
-    android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:id="@+id/moveButton"
-        android:textColor="#FFFFFF" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/move/rotatebutton">
+
+                <Button
+        android:text="MOVE"
+        android:layout_width="105dp"
+        android:layout_height="140dp"
+        android:id="@+id/moveButton"
+            android:textColor="#FFFFFF"
+                    android:layout_weight="0.46" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:text="Rotate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rotatebutton"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="true" />
+            </LinearLayout>
 
             <Space
             android:layout_width="match_parent"
@@ -548,14 +570,20 @@
 
             <TextView
             android:layout_width="match_parent"
-            android:layout_height="345dp"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Get this treasure card: "
+            android:text="Goal: "
             android:id="@+id/treasureCardToGet"
             android:textSize="40dp"
             android:textColor="#FFFFFF" />
 
-        <Space
+            <ImageView
+                android:src="@mipmap/batcard"
+                android:layout_width="match_parent"
+                android:id="@+id/imageView2"
+                android:layout_height="260dp" />
+
+            <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
