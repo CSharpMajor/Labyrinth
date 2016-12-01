@@ -95,6 +95,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private int coords[] = null;
     //Flag that keeps track of whether the player is to move their piece or to move the maze
     private boolean flag = false;
+    //Flag that shows if the coordinates have been set or not
+    private boolean coordsFlag = false;
 
     //Constructor for the human player
     public LabHumanPlayer(String name) {
@@ -135,7 +137,17 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //If it is our turn we want to enable the move button
             if(((LabGameState) info).getTurnID() == playerNum){
-                coords = ((LabGameState) info).findExtraTile();
+                /**
+                 * THE COORDINATES ARE GETTING OVERRIDDEN EVERY TIME THE USER CLICKS A BUTTON
+                 * NEED TO BE ABLE TO SET THE COORDINATES ONCE AT THE BEGINNING OF THE TURN AND THEN
+                 * THAT'S IT.
+                 */
+                if(!coordsFlag)
+                {
+                    moveButtonArea.setEnabled(true);
+                    coords = ((LabGameState) info).findExtraTile();
+                    coordsFlag = true;
+                }
                 Log.i("Coords: ","" + coords[0] + coords[1]);
                 if(flag)
                 {
@@ -167,7 +179,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowR.setEnabled(true);
                     botRowL.setEnabled(true);
                     botRowM.setEnabled(true);
-                    moveButtonArea.setEnabled(true);
                 }
             }
             else{
@@ -596,28 +607,124 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void onClick(View v) {
         //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
+            if(coords[0] == 8 && coords[1] == 6)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 0, 6));
         } else if (v == leftColM) {
+            if(coords[0] == 8 && coords[1] == 4)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
         } else if (v == leftColT) {
+            if(coords[0] == 8 && coords[1] == 2)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 0, 2));
         } else if (v == topRowM) {
+            if(coords[0] == 4 && coords[1] == 8)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 4, 0));
         } else if (v == topRowL) {
+            if(coords[0] == 2 && coords[1] == 8)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 2, 0));
         } else if (v == topRowR) {
+            if(coords[0] == 6 && coords[1] == 8)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 6, 0));
         } else if (v == botRowL) {
+            if(coords[0] == 2 && coords[1] == 0)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 2, 8));
         } else if (v == botRowM) {
+            if(coords[0] == 4 && coords[1] == 0)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 4, 8));
         } else if (v == botRowR) {
+            if(coords[0] == 6 && coords[1] == 0)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 6, 8));
         } else if (v == rightColB) {
+            if(coords[0] == 0 && coords[1] == 6)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 8, 6));
         } else if (v == rightColM) {
+            if(coords[0] == 0 && coords[1] == 4)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 8, 4));
         } else if (v == rightColT) {
+            if(coords[0] == 0 && coords[1] == 2)
+            {
+                moveButtonArea.setEnabled(false);
+            }
+            else
+            {
+                moveButtonArea.setEnabled(true);
+            }
             game.sendAction(new LabMoveExtraTile(this, 8, 2));
         }
         else if (v == moveButtonArea )
@@ -628,6 +735,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(!flag){
                 flag = true;
             }
+            coordsFlag = false;
             moveButtonArea.setEnabled(false);
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
