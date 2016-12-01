@@ -54,7 +54,6 @@ public class LabGameState extends GameState
         for (LabTSymbol sym : LabTSymbol.values()) {
             deck.add(new TCard(sym));
         }
-
         for(int i=0; i<4; i++){
             ArrayList<TCard> hand = new ArrayList<TCard>(4);
             for(int j = 0; j < 6; j++) {
