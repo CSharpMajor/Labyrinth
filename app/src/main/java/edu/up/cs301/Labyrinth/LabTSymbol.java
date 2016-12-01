@@ -17,7 +17,7 @@ public enum LabTSymbol {
     JIGGLYPUFF( "jigglypuff" ),
     ASTRONAUT( "benny" ),
     TREBLE_CLEF( "treble clef" ),
-    SPIDER( "spider" ),
+    SPIDER( "bat" ),
     COFFEE_MUG( "coffee mug" ),
     KEYS( "keys" ),
     CROWN( "crown" ),
