@@ -84,7 +84,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     //Player 3's information (yellow)
     private TextView yellowPlayerInfo = null;
 
-
     private TextView turnInfo = null;
     //Variable for the activity
     private Activity myActivity;
@@ -94,6 +93,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private LabGameState myState;
     //The maze of the game
     private MazeTile[][] myMaze;
+    //Variable that holds the coordinates of the extra tile
     private int coords[] = null;
     //Flag that keeps track of whether the player is to move their piece or to move the maze
     private boolean flag = false;
@@ -139,18 +139,16 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //If it is our turn we want to enable the move button
             if(((LabGameState) info).getTurnID() == playerNum){
-                /**
-                 * THE COORDINATES ARE GETTING OVERRIDDEN EVERY TIME THE USER CLICKS A BUTTON
-                 * NEED TO BE ABLE TO SET THE COORDINATES ONCE AT THE BEGINNING OF THE TURN AND THEN
-                 * THAT'S IT.
-                 */
+                //If the coordinates have not been set (the beginning of our turn) we need
+                //to set the coordinates as well as set the move button to be enabled at the start
                 if(!coordsFlag)
                 {
                     moveButtonArea.setEnabled(true);
                     coords = ((LabGameState) info).findExtraTile();
                     coordsFlag = true;
                 }
-                Log.i("Coords: ","" + coords[0] + coords[1]);
+                //If the flag has been set the human player has moved the maze so we need to
+                //disable the maze move buttons
                 if(flag)
                 {
                     leftColM.setEnabled(false);
@@ -167,6 +165,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowM.setEnabled(false);
                     flag = false;
                 }
+                //If the flag has not been set we want to have the buttons to move the maze enabled
                 else
                 {
                     leftColM.setEnabled(true);
@@ -183,6 +182,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowM.setEnabled(true);
                 }
             }
+            //If it is not our turn we need to make sure the buttons on the GUI are not enabled
             else{
                 leftColM.setEnabled(false);
                 leftColB.setEnabled(false);
@@ -198,6 +198,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 botRowM.setEnabled(false);
                 moveButtonArea.setEnabled(false);
             }
+            /**
+             * The following code updates the GUI from the game state given to us
+             */
             //Set the state to be from the game state
             myState = (LabGameState) info;
             //Get the maze from the game state
@@ -501,7 +504,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 changingTurnInfo.setImageResource(R.mipmap.iconyellow);
             }
 
-            //Setting the player's names on the GUI
+            //Setting the player's names on the GUI. It only sets the number of names based on
+            //how many players are in the game. This also allows the human player to be another color
             for(int i = 0; i < allPlayerNames.length; i++)
             {
                 if(i == 0)
@@ -735,17 +739,26 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         else if (v == moveButtonArea )
         {
+            /**
+             * Once the user presses the move button we need to keep track of which part of the turn
+             * it is. If the flag has not been set we know the player is ending their maze move turn
+             * so we need to set the flag. If the flag is true then the player is ending their
+             * move piece turn and so we need to reset the flag for the next turn
+             */
             if(flag){
                 flag = false;
             }
             else if(!flag){
                 flag = true;
             }
+            //Also need to reset the flag for the coordinates
             coordsFlag = false;
+            //Make the move button disabled to keep the user from pressing it when they shouldn't be
             moveButtonArea.setEnabled(false);
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
         }
+        //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
             game.sendAction(new LabRotateExtraTileAction(this));
         }
