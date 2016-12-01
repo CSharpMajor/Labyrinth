@@ -539,13 +539,13 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/move/rotatebutton">
+                >
 
                 <Button
-        android:text="MOVE"
-        android:layout_width="105dp"
-        android:layout_height="140dp"
-        android:id="@+id/moveButton"
+                  android:text="MOVE"
+                    android:layout_width="105dp"
+                 android:layout_height="140dp"
+            android:id="@+id/moveButton"
             android:textColor="#FFFFFF"
                     android:layout_weight="0.46" />
 
