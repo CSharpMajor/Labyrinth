@@ -113,6 +113,13 @@ public class LabLocalGame extends LocalGame
 			{
 				return makePlayerPieceMove(action);
 			}
+			else if(action instanceof LabRotateExtraTileAction){
+				int[] extra = masterGameState.findExtraTile();
+				MazeTile[][] newMaze = masterGameState.getMaze();
+				newMaze[extra[0]][extra[1]].rotate(1);
+				masterGameState.setMaze(newMaze);
+				sendAllUpdatedState();
+			}
 		}
 		return false;
 	}
