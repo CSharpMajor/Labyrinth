@@ -263,6 +263,7 @@ public class LabLocalGame extends LocalGame
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
 
+
 	}
 
 	/**
