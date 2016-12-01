@@ -135,7 +135,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         {
             //If it is our turn we want to enable the move button
             if(((LabGameState) info).getTurnID() == playerNum){
-                //moveButtonArea.setEnabled(true);
+                coords = ((LabGameState) info).findExtraTile();
+                Log.i("Coords: ","" + coords[0] + coords[1]);
                 if(flag)
                 {
                     leftColM.setEnabled(false);
@@ -154,7 +155,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 }
                 else
                 {
-                    coords = ((LabGameState) info).findExtraTile();
                     leftColM.setEnabled(true);
                     leftColB.setEnabled(true);
                     leftColT.setEnabled(true);
@@ -489,11 +489,24 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
 
             //Setting the player's names on the GUI
-            redPlayerInfo.setText(allPlayerNames[0]);
-            greenPlayerInfo.setText(allPlayerNames[1]);
-            bluePlayerInfo.setText(allPlayerNames[2]);
-            yellowPlayerInfo.setText(allPlayerNames[3]);
-
+            for(int i = 0; i < allPlayerNames.length; i++)
+            {
+                if(i == 0)
+                {
+                    redPlayerInfo.setText(allPlayerNames[0]);
+                }
+                else if(i==1)
+                {
+                    greenPlayerInfo.setText(allPlayerNames[1]);
+                }
+                else if(i==2){
+                    bluePlayerInfo.setText(allPlayerNames[2]);
+                }
+                else if(i==3)
+                {
+                    yellowPlayerInfo.setText(allPlayerNames[3]);
+                }
+            }
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
@@ -584,10 +597,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //so all coordinates are y,x on the SurfaceView...oops
         if (v == leftColB) {
             game.sendAction(new LabMoveExtraTile(this, 0, 6));
-
         } else if (v == leftColM) {
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
-
         } else if (v == leftColT) {
             game.sendAction(new LabMoveExtraTile(this, 0, 2));
         } else if (v == topRowM) {

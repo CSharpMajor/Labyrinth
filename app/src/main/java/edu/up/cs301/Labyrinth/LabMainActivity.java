@@ -35,7 +35,7 @@ public class LabMainActivity extends GameMainActivity {
 		
 
 		// Human player
-		playerTypes.add(new GamePlayerType("Local Human Player (Red Color)") {
+		playerTypes.add(new GamePlayerType("Local Human Player") {
 			public GamePlayer createPlayer(String name) {
 				return new LabHumanPlayer(name);
 						//R.layout.ttt_human_player1);
