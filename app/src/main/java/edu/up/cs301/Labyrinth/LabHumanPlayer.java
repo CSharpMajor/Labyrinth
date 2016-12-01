@@ -680,6 +680,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             {
                 moveButtonArea.setEnabled(true);
             }
+            //For the push!
             game.sendAction(new LabMoveExtraTile(this, 2, 8));
         } else if (v == botRowM) {
             if(coords[0] == 4 && coords[1] == 0)
