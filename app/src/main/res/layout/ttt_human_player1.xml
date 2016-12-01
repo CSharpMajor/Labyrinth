@@ -542,10 +542,10 @@
                 android:id="@+id/rotatebutton2">
 
                 <Button
-        android:text="MOVE"
-        android:layout_width="105dp"
-        android:layout_height="140dp"
-        android:id="@+id/moveButton"
+                  android:text="MOVE"
+                    android:layout_width="105dp"
+                 android:layout_height="140dp"
+            android:id="@+id/moveButton"
             android:textColor="#FFFFFF"
                     android:layout_weight="0.46" />
 

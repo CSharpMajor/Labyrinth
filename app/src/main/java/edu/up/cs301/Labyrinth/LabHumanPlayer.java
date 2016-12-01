@@ -60,6 +60,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColB = null;
     //Move button
     private Button moveButtonArea = null;
+    //rotate button
+    private Button rotateButton = null;
     //Text view for the treasure card
     private TextView cardToGet = null;
     //Display for the treasures of the blue player
@@ -572,6 +574,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         //confirm move button
         this.moveButtonArea = (Button) activity.findViewById(R.id.moveButton) ;
+        //rotate button
+        this.rotateButton = (Button) activity.findViewById(R.id.rotatebutton);
 
         //Setting the text views for player information
         this.bluePlayerInfo = (TextView)activity.findViewById(R.id.BlueInfo);
@@ -593,6 +597,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         rightColB.setOnClickListener(this);
         rightColM.setOnClickListener(this);
         moveButtonArea.setOnClickListener(this);
+        rotateButton.setOnClickListener(this);
 
         //Setting up the surface view
         surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
@@ -739,6 +744,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             moveButtonArea.setEnabled(false);
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
+        }
+        else if(v == rotateButton) {
+            game.sendAction(new LabRotateExtraTileAction(this));
         }
     }
 
