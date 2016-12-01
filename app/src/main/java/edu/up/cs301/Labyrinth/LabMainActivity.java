@@ -35,7 +35,7 @@ public class LabMainActivity extends GameMainActivity {
 		
 
 		// Human player
-		playerTypes.add(new GamePlayerType("Local Human Player (Red Color)") {
+		playerTypes.add(new GamePlayerType("Local Human Player") {
 			public GamePlayer createPlayer(String name) {
 				return new LabHumanPlayer(name);
 						//R.layout.ttt_human_player1);
@@ -68,7 +68,7 @@ public class LabMainActivity extends GameMainActivity {
 //		});
 
 		// Create a game configuration class for Tic-tac-toe
-		GameConfig defaultConfig = new GameConfig(playerTypes, 4,4, "The Amazing Labyrinth", PORT_NUMBER);
+		GameConfig defaultConfig = new GameConfig(playerTypes, 2,4, "The Amazing Labyrinth", PORT_NUMBER);
 
 		// Add the default players
 		defaultConfig.addPlayer("Human", 0); // GUI player
