@@ -119,6 +119,7 @@ public class LabLocalGame extends LocalGame
 				newMaze[extra[0]][extra[1]].rotate(1);
 				masterGameState.setMaze(newMaze);
 				sendAllUpdatedState();
+
 			}
 		}
 		return false;
