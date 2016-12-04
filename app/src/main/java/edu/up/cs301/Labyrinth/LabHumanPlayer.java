@@ -746,9 +746,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
              * so we need to set the flag. If the flag is true then the player is ending their
              * move piece turn and so we need to reset the flag for the next turn
              */
-            if(!flag){
-                flag = true;
-            }
             //Also need to reset the flag for the coordinates
             if(coordsFlag){
                 coordsFlag = false;
@@ -757,6 +754,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
             //Make the move button disabled to keep the user from pressing it when they shouldn't be
             moveButtonArea.setEnabled(false);
+            //rotateButton.setEnabled(false);
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
