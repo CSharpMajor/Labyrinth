@@ -107,12 +107,16 @@ public class LabGameState extends GameState
 
         //fill corner spots with L tiles
         maze[1][1] = allTiles.get(0);
+        maze[1][1].rotate(3);
         allTiles.remove(0);
         maze[1][7] = allTiles.get(0);
+        maze[1][7].rotate(2);
         allTiles.remove(0);
         maze[7][1] = allTiles.get(0);
+        maze[7][1].rotate(0);
         allTiles.remove(0);
         maze[7][7] = allTiles.get(0);
+        maze[7][7].rotate(1);
         allTiles.remove(0);
 
         Random rand = new Random();
