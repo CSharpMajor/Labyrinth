@@ -48,6 +48,7 @@ public class LabComputerPlayer extends GameComputerPlayer {
                     //Then send the move piece action to the local game
                     game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece, this.playerNum));
                 }
+                //For the push!
                 else {
                     xCordMaze = rand.nextInt(8);
                     yCordMaze = rand.nextInt(8);
