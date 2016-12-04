@@ -551,7 +551,7 @@ public class LabGameState extends GameState
     /*
 	 * this is the helper method for makePlayerPieceMove()
 	 */
-    public boolean checkPath(int xDest, int yDest)
+    public boolean checkPath(int xDest, int yDest) throws ArrayIndexOutOfBoundsException
     {
         //MazeTile[][] maze = masterGameState.getMaze();
         for (int i = 0; i < maze.length; i++)
