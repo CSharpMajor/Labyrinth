@@ -144,8 +144,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 if(!coordsFlag)
                 {
                     moveButtonArea.setEnabled(true);
+                    rotateButton.setEnabled(true);
                     coords = ((LabGameState) info).findExtraTile();
                     coordsFlag = true;
+                    flag = false;
                 }
                 //If the flag has been set the human player has moved the maze so we need to
                 //disable the maze move buttons
@@ -165,6 +167,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowM.setEnabled(false);
                     flag = false;
                 }
+                //For the push!
                 //If the flag has not been set we want to have the buttons to move the maze enabled
                 else
                 {
@@ -745,18 +748,15 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
              * so we need to set the flag. If the flag is true then the player is ending their
              * move piece turn and so we need to reset the flag for the next turn
              */
-            if(flag){
-                flag = false;
-            }
-            else if(!flag){
-                flag = true;
-            }
             //Also need to reset the flag for the coordinates
-            coordsFlag = false;
-            //Make the move button disabled to keep the user from pressing it when they shouldn't be
-            moveButtonArea.setEnabled(false);
+            if(coordsFlag){
+                coordsFlag = false;
+            }
             int[] coordinates = myState.findExtraTile();
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
+            //Make the move button disabled to keep the user from pressing it when they shouldn't be
+            moveButtonArea.setEnabled(false);
+            rotateButton.setEnabled(false);
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
