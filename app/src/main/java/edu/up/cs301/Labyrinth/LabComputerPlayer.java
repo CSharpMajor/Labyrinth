@@ -52,16 +52,18 @@ public class LabComputerPlayer extends GameComputerPlayer {
                     xCordMaze = rand.nextInt(8);
                     yCordMaze = rand.nextInt(8);
                     //If the random spot is not even, pick again
-                    while (xCordMaze % 2 != 0) {
-                        xCordMaze = rand.nextInt(8);
-                    }
-                    while (yCordMaze % 2 != 0) {
-                        yCordMaze = rand.nextInt(8);
-                    }
+                    //while (xCordMaze % 2 != 0) {
+                    //    xCordMaze = rand.nextInt(8);
+                    //}
+                    //while (yCordMaze % 2 != 0) {
+                    //    yCordMaze = rand.nextInt(8);
+                    //}
                     //Delay to make it look like the player is thinking
                     sleep(3000);
                     //Then send the move maze action to the local game
-                    game.sendAction(new LabMoveMazeAction(this, xCordMaze, yCordMaze));
+                    //game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
+                    //int[] coordinates = myGameState.findExtraTile();
+                    game.sendAction( new LabMoveMazeAction(this, xCordMaze, yCordMaze));
                 }
             }
         }
