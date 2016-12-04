@@ -144,6 +144,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 if(!coordsFlag)
                 {
                     moveButtonArea.setEnabled(true);
+                    rotateButton.setEnabled(true);
                     coords = ((LabGameState) info).findExtraTile();
                     coordsFlag = true;
                     flag = false;
@@ -755,7 +756,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
             //Make the move button disabled to keep the user from pressing it when they shouldn't be
             moveButtonArea.setEnabled(false);
-            //rotateButton.setEnabled(false);
+            rotateButton.setEnabled(false);
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
