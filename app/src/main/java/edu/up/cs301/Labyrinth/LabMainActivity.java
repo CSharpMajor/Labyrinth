@@ -23,7 +23,7 @@ import edu.up.cs301.game.config.GamePlayerType;
 public class LabMainActivity extends GameMainActivity {
 	
 	public static final int PORT_NUMBER = 5213;
-
+	public static String PACKAGE_NAME;
 	/**
 	 * a tic-tac-toe game is for two players. The default is human vs. computer
 	 */
@@ -91,6 +91,8 @@ public class LabMainActivity extends GameMainActivity {
 	@Override
 	public LocalGame createLocalGame() {
 		//Log.i("main", "hello");
+		PACKAGE_NAME = getApplicationContext().getPackageName();
+		Log.i("main", PACKAGE_NAME);
 		return new LabLocalGame();
 
 	}

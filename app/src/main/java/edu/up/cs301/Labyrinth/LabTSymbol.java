@@ -55,4 +55,58 @@ public enum LabTSymbol {
     {
         return name;
     }
+    public String getFileId(){
+        switch (this) {
+            case DRAGON:
+                return "dragoncard";
+            case GHOST:
+                return "ghostcard";
+            case TROLL:
+                return "goblincard";
+            case CANDELABRA:
+                return "candlecard";
+            case FLAMING_SWORD:
+                return "swordcard";
+            case JIGGLYPUFF:
+                return "jiggpufcard";
+            case ASTRONAUT:
+                return "bennycard";
+            case TREBLE_CLEF:
+                return "treblecard";
+            case SPIDER:
+                return "batcard";
+            case COFFEE_MUG:
+                return "coffeecard";
+            case KEYS:
+                return "keyscard";
+            case CROWN:
+                return "crowncard";
+            case OWL:
+                return "owlcard";
+            case MOUSE:
+                return "mousecard";
+            case BOOK:
+                return "bookcard";
+            case MOTH:
+                return "mothcard";
+            case GEM:
+                return "gemcard";
+            case BAG_OF_GOLD:
+                return "bagofgoldcard";
+            case RING:
+                return "ringcard";
+            case SKULL:
+                return "skullcard";
+            case MAP:
+                return "mapcard";
+            case SCARAB:
+                return "scarabcard";
+            case HELMET:
+                return "helmetcard";
+            case CHEST:
+                return "tboxcard";
+
+        }
+        return null;
+    }
 }

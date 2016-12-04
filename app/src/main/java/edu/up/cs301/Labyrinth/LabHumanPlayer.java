@@ -145,11 +145,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 //to set the coordinates as well as set the move button to be enabled at the start
                 if(!coordsFlag)
                 {
-                    moveButtonArea.setEnabled(true);
-                    rotateButton.setEnabled(true);
                     coords = ((LabGameState) info).findExtraTile();
                     coordsFlag = true;
                     flag = false;
+                    rotateButton.setEnabled(false);
                 }
                 //If the flag has been set the human player has moved the maze so we need to
                 //disable the maze move buttons
@@ -167,6 +166,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowR.setEnabled(false);
                     botRowL.setEnabled(false);
                     botRowM.setEnabled(false);
+                    rotateButton.setEnabled(false);
+                    moveButtonArea.setEnabled(false);
                     flag = false;
                 }
                 //For the push!
@@ -185,6 +186,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowR.setEnabled(true);
                     botRowL.setEnabled(true);
                     botRowM.setEnabled(true);
+                    rotateButton.setEnabled(true);
                 }
             }
             //If it is not our turn we need to make sure the buttons on the GUI are not enabled
@@ -202,6 +204,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 botRowL.setEnabled(false);
                 botRowM.setEnabled(false);
                 moveButtonArea.setEnabled(false);
+                rotateButton.setEnabled(false);
             }
             /**
              * The following code updates the GUI from the game state given to us
@@ -745,14 +748,13 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
              * move piece turn and so we need to reset the flag for the next turn
              */
             //Also need to reset the flag for the coordinates
-            if(coordsFlag){
-                coordsFlag = false;
-            }
+            flag = true;
+            coordsFlag = false;
             int[] coordinates = myState.findExtraTile();
-            game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
-            //Make the move button disabled to keep the user from pressing it when they shouldn't be
             moveButtonArea.setEnabled(false);
             rotateButton.setEnabled(false);
+            game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
+            //Make the move button disabled to keep the user from pressing it when they shouldn't be
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
