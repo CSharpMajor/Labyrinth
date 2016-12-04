@@ -166,6 +166,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowM.setEnabled(false);
                     flag = false;
                 }
+                //For the push!
                 //If the flag has not been set we want to have the buttons to move the maze enabled
                 else
                 {
