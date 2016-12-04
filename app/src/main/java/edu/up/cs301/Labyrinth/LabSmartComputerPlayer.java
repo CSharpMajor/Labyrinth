@@ -6,6 +6,7 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.GameState;
 
 import android.graphics.Point;
+import android.util.Log;
 
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -81,8 +82,10 @@ public class LabSmartComputerPlayer extends GameComputerPlayer
 					yCordMaze = coords[1];
 
 					//Delay to make it look like the player is thinking
-					sleep(3000);
+					sleep(2000);
 					//Then send the move maze action to the local game
+					Log.i("Sent Action", "move maze");
+					game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
 					game.sendAction(new LabMoveMazeAction(this, xCordMaze, yCordMaze));
 				}
 			}
@@ -394,7 +397,9 @@ public class LabSmartComputerPlayer extends GameComputerPlayer
 			}
 		}
 
-		//we need type of tile
+		Log.i("X coord", ""+bestMatch[0]);
+		Log.i("Y coord", ""+bestMatch[1]);
+
 		return bestMatch;
 	}
 
