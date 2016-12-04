@@ -59,7 +59,7 @@ public class MazeTile {
         if(type == 'T'){
             pathMap[0]=false;
             pathMap[1]=true;
-            pathMap[2]=false;
+            pathMap[2]=true;
             pathMap[3]=true;
         }
         treasureSymbol = symbol;
