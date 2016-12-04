@@ -34,8 +34,8 @@
 
             <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_weight="0.28" />
+                android:layout_weight="0.06"
+                android:layout_height="5dp" />
 
             <TextView
             android:text="Player&apos;s turn:"
@@ -53,28 +53,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/changingTurnInfo"
-                android:layout_weight="0.28" />
+                android:layout_weight="0.20" />
 
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px" />
 
-            <TextView
-                android:text="Treasure Cards collected per player"
+            <Button
+                android:text="Rotate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.28"
+                android:id="@+id/rotatebutton"
+                android:layout_weight="0.41"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="25sp"
+                android:textStyle="normal|bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.13" />
+
+            <TextView
+                android:text="Cards collected:"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
                 android:id="@+id/cardplayerinfo"
                 android:textColor="#FFFFFF"
                 android:textAllCaps="true"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:textStyle="normal|bold" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_weight="0.28"
-                android:id="@+id/blueInfo">
+                android:id="@+id/blueInfo"
+                android:layout_height="50dp"
+                android:layout_weight="0.11">
 
                 <ImageView
                     android:src="@mipmap/iconblue"
@@ -86,21 +102,20 @@
                     android:src="@mipmap/nocards"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/blueTreasures"
-                    android:layout_weight="0.28" />
+                    android:id="@+id/blueTreasures" />
             </LinearLayout>
 
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.16" />
+    android:layout_weight="0.07" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_weight="0.28"
-                android:id="@+id/redInfo">
+                android:layout_weight="0.09"
+                android:id="@+id/redInfo"
+                android:layout_height="50dp">
 
                 <ImageView
                     android:src="@mipmap/iconred"
@@ -111,23 +126,22 @@
 
                 <ImageView
                     android:src="@mipmap/nocards"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/redTreasures"
-                    android:layout_weight="0.90" />
+                    android:id="@+id/redTreasures" />
             </LinearLayout>
 
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.13" />
+    android:layout_weight="0.09" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_weight="0.28"
-                android:id="@+id/greenInfo">
+                android:id="@+id/greenInfo"
+                android:layout_height="50dp"
+                android:layout_weight="0.09">
 
                 <ImageView
                     android:src="@mipmap/icongreen"
@@ -145,15 +159,15 @@
 
             <Space
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="0.14" />
+                android:layout_weight="0.05"
+                android:layout_height="5dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_weight="0.28"
-                android:id="@+id/yellowInfo">
+                android:layout_weight="0.12"
+                android:id="@+id/yellowInfo"
+                android:layout_height="50dp">
 
                 <ImageView
                     android:src="@mipmap/iconyellow"
@@ -172,7 +186,7 @@
             <Space
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="0.13" />
+    android:layout_weight="0.07" />
 
         </LinearLayout>
 
@@ -255,7 +269,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/topRowL"
-            android:background="#FFFFFF" />
+            android:background="#FFFFFF"
+            android:layout_weight="0.86" />
 
         <Space
     android:layout_width="wrap_content"
@@ -428,13 +443,13 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/redandBlueinfo">
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="87dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/bluePlayerInfo">
 
@@ -464,8 +479,7 @@
                     android:src="@mipmap/iconred"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/redIconPlayerInfo"
-                    android:layout_weight="1" />
+                    android:id="@+id/redIconPlayerInfo" />
 
                 <TextView
                     android:text="YOU!!!! :-)"
@@ -479,13 +493,13 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/yellowandgreeninfo">
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="87dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/greenPlayerInfo">
 
@@ -547,26 +561,15 @@
                  android:layout_height="140dp"
             android:id="@+id/moveButton"
             android:textColor="#FFFFFF"
-                    android:layout_weight="0.46" />
+                    android:layout_weight="0.46"
+                    android:textSize="50sp"
+                    android:textStyle="normal|bold" />
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:text="Rotate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rotatebutton"
-                    android:layout_weight="1"
-                    android:textColor="#FFFFFF"
-                    android:textAllCaps="true" />
             </LinearLayout>
 
             <Space
             android:layout_width="match_parent"
-            android:layout_height="21dp" />
+                android:layout_height="10dp" />
 
             <TextView
             android:layout_width="match_parent"
@@ -578,10 +581,10 @@
             android:textColor="#FFFFFF" />
 
             <ImageView
-                android:src="@mipmap/batcard"
+                android:src="@mipmap/batdeck"
                 android:layout_width="match_parent"
-                android:id="@+id/imageView2"
-                android:layout_height="260dp" />
+                android:id="@+id/deckCard"
+                android:layout_height="match_parent" />
 
             <Space
     android:layout_width="match_parent"

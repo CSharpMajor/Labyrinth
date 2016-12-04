@@ -70,6 +70,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView greenTreasures = null;
     //Display for the treasures of the yellow player
     private ImageView yellowTreasures = null;
+    //yellowTreasures.setImageResource(R.mipmap.brownicon);
+
     //Display for the treasures of the red player
     private ImageView redTreasures = null;
     //Display for the turn information
@@ -452,38 +454,30 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if(playerNum == 0){
                 //Get player 0's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
-                //Get the name of the treasure of the first card in the list
-                String cardName = temp.get(0).getTreasure().getName();
-                cardToGet.setText("Current Goal:\n" + cardName);
+                cardToGet.setText("Current Goal:\n");
                 //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n" + cardName);
+                cardToGet.setText("Current Goal:\n");
             }
             //If the human player's number is 1, display player 1's top card to collect
             else if(playerNum == 1){
                 //Get player 1's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
-                //Get the name of the treasure of the first card in the list
-                String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n" + cardName);
+                cardToGet.setText("Current Goal:\n");
             }
             //If the human player's number is 2, display player 2's top card to collect
             else if(playerNum == 2){
                 //Get player 2's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
-                //Get the name of the treasure of the first card in the list
-                String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n" + cardName);
+                cardToGet.setText("Current Goal:\n");
             }
             //If the human player's number is 3, display player 3's top card to collect
             else if(playerNum == 3){
                 //Get player 3's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
-                //Get the name of the treasure of the first card in the list
-                String cardName = temp.get(0).getTreasure().getName();
                 //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n" + cardName);
+                cardToGet.setText("Current Goal:\n");
             }
 
             /**
@@ -514,6 +508,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 if(i == 0)
                 {
                     redPlayerInfo.setText(allPlayerNames[0]);
+                    //greenTreasures.setImageResource(R.mipmap.brownicon);
+                    //blueTreasures.setImageResource(R.mipmap.brownicon);
                 }
                 else if(i==1)
                 {
