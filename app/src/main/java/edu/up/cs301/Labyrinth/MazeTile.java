@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Chloe Kuhar
@@ -62,6 +63,8 @@ public class MazeTile {
             pathMap[3]=true;
         }
         treasureSymbol = symbol;
+        Random rand = new Random();
+        orientation = rand.nextInt(4);
     }
 
     /**
@@ -79,6 +82,8 @@ public class MazeTile {
         }
 
         treasureSymbol = cp.getTreasureSymbol();
+
+        orientation = cp.getOrientation();
 
         occupiedBy.ensureCapacity(4);
 
@@ -124,6 +129,10 @@ public class MazeTile {
             // wrap last element into first slot
             pathMap[0] = last;
         }
+    }
+
+    public int getOrientation(){
+        return orientation;
     }
 
 }
