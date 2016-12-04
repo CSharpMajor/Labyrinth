@@ -85,6 +85,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private TextView bluePlayerInfo = null;
     //Player 3's information (yellow)
     private TextView yellowPlayerInfo = null;
+    //Icon for the blue player
+    private ImageView bluePlayerIcon = null;
+    //Icon for the yellow player
+    private ImageView yellowPlayerIcon = null;
 
     private TextView turnInfo = null;
     //Variable for the activity
@@ -506,7 +510,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             //Setting the player's names on the GUI. It only sets the number of names based on
             //how many players are in the game. This also allows the human player to be another color
-            for(int i = 0; i < allPlayerNames.length; i++)
+            int i;
+            for(i = 0; i < allPlayerNames.length; i++)
             {
                 if(i == 0)
                 {
@@ -526,6 +531,21 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowPlayerInfo.setText(allPlayerNames[3]);
                 }
             }
+            Log.i("i is:", "" + i);
+            if(i == 2){
+                bluePlayerInfo.setText("No Player");
+                yellowPlayerInfo.setText("No Player");
+                bluePlayerIcon.setImageResource(R.mipmap.brownicon);
+                yellowPlayerIcon.setImageResource(R.mipmap.brownicon);
+                yellowTreasures.setImageResource(R.mipmap.brownicon);
+                blueTreasures.setImageResource(R.mipmap.brownicon);
+            }
+            else if(i == 3){
+                yellowPlayerInfo.setText("No Player");
+                yellowPlayerIcon.setImageResource(R.mipmap.brownicon);
+                yellowTreasures.setImageResource(R.mipmap.brownicon);
+            }
+
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
@@ -589,6 +609,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.yellowPlayerInfo = (TextView)activity.findViewById(R.id.yellowInfo2);
         this.redPlayerInfo = (TextView)activity.findViewById(R.id.redInfo2);
 
+        //Setting the icon pictures for the blue and yellow players
+        this.bluePlayerIcon = (ImageView)activity.findViewById(R.id.blueIcon);
+        this.yellowPlayerIcon = (ImageView)activity.findViewById(R.id.imageView8);
         //Setting the onclick listeners for the buttons
         leftColM.setOnClickListener(this);
         leftColB.setOnClickListener(this);
@@ -747,7 +770,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
              * so we need to set the flag. If the flag is true then the player is ending their
              * move piece turn and so we need to reset the flag for the next turn
              */
-            //Also need to reset the flag for the coordinates
+            //Also need to reset the flag for the coordinates and the mazeMove flag
             flag = true;
             coordsFlag = false;
             int[] coordinates = myState.findExtraTile();
@@ -757,7 +780,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //Make the move button disabled to keep the user from pressing it when they shouldn't be
         }
         //If the user has clicked the rotate button then we need to rotate the tile
+        /**
+         * TODO: The rotate button only allows for one rotate per turn, it needs to able to rotate
+         * as many times as the user wants
+         */
         else if(v == rotateButton) {
+            Log.i("Rotate","RoTATE");
             game.sendAction(new LabRotateExtraTileAction(this));
         }
     }
@@ -773,7 +801,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         int yCord = (int)event.getY() / 125;
 
         Log.i("onTouch", String.valueOf(xCord) + "   " + String.valueOf(yCord));
-
         //Sending these coordinates as a LabMovePieceAction
         game.sendAction(new LabMovePieceAction(this, xCord, yCord, this.playerNum));
         //We have handled the event

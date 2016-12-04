@@ -54,7 +54,6 @@ public class LabMainActivity extends GameMainActivity {
 				return new LabComputerPlayer(name);
 			}
 		});
-
 		// smarter computer player
 		playerTypes.add(new GamePlayerType("Computer Player (smart)") {
 			public GamePlayer createPlayer(String name) {
