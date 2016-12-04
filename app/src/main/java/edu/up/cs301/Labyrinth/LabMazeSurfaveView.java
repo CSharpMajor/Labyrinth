@@ -85,7 +85,26 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     }
                 }
 
+                for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
+                    Bitmap icon;
+                    if(myMaze[i][j].getOccupiedBy().get(k) == 0){
+                        icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconred","mipmap","edu.up.cs301.game"));
+                        g.drawBitmap(icon, 125*i, 125*j, p);
+                    }
+                    else if(myMaze[i][j].getOccupiedBy().get(k) == 1){
+                        icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("icongreen","mipmap","edu.up.cs301.game"));
+                        g.drawBitmap(icon, 125*i, 125*j, p);
+                    }
+                    else if(myMaze[i][j].getOccupiedBy().get(k) == 2){
+                        icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconblue","mipmap","edu.up.cs301.game"));
+                        g.drawBitmap(icon, 125*i, 125*j, p);
+                    }
+                    else if(myMaze[i][j].getOccupiedBy().get(k) == 3){
+                        icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconyellow","mipmap","edu.up.cs301.game"));
+                        g.drawBitmap(icon, 125*i, 125*j+(k*25), p);
+                    }
 
+                }
 
 
 
@@ -103,9 +122,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
 //                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+15, j*125+75, p);
 //                }
 //                //g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().size()), i*125+15, j*125+85, p);
-//                for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
-//                    g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().get(k)), i*125+15+(k*5), j*125+95, p);
-//                }
+
            }
         }
     }
