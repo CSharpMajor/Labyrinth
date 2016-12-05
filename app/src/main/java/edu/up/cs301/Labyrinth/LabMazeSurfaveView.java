@@ -114,18 +114,18 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
 
 
 
-//                p.setStyle(Paint.Style.STROKE);
-//                g.drawRect(i*125, j*125, (i*125)+100, (j*125)+100, p);
-//                p.setColor(Color.BLACK);
-//                //Drawing the true/false path data to the surface view
-//                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+62, j*125+10, p);
-//                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+100, j*125+62, p);
-//                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[2]), i*125+62, j*125+110, p);
-//                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[3]), i*125+5, j*125+62, p);
-//                if(myMaze[i][j].getTreasureSymbol() != null){
-//                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+15, j*125+75, p);
-//                }
-//                //g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().size()), i*125+15, j*125+85, p);
+                p.setStyle(Paint.Style.STROKE);
+                g.drawRect(i*125, j*125, (i*125)+100, (j*125)+100, p);
+                p.setColor(Color.BLACK);
+                //Drawing the true/false path data to the surface view
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[0]), i*125+62, j*125+10, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[1]), i*125+100, j*125+62, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[2]), i*125+62, j*125+110, p);
+                g.drawText(String.valueOf(myMaze[i][j].getPathMap()[3]), i*125+5, j*125+62, p);
+                if(myMaze[i][j].getTreasureSymbol() != null){
+                    g.drawText(String.valueOf(myMaze[i][j].getTreasureSymbol().getName()), i*125+15, j*125+75, p);
+                }
+                //g.drawText(String.valueOf(myMaze[i][j].getOccupiedBy().size()), i*125+15, j*125+85, p);
 
            }
         }
