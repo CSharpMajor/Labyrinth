@@ -41,11 +41,11 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
     public void setState(LabGameState s){
         this.state = s;
         myMaze = state.getMaze();
-        Log.i("LabMazeSurfaveView", ""+myMaze.length);
+        //Log.i("LabMazeSurfaveView", ""+myMaze.length);
     }
 
     public void onDraw(Canvas g){
-        Log.i("LabMazeSurfaveView", "called on draw");
+        //Log.i("LabMazeSurfaveView", "called on draw");
         if(myMaze == null) return;
         Paint p = new Paint();
         int testIter = 0;
@@ -65,7 +65,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     //Log.i("SurfaceView", ""+myMaze[i][j].getType());
                     if(myMaze[i][j].getType() == 'S'){
                         int rotation = myMaze[i][j].getOrientation();
-                        Log.i("SurfaceView", ""+rotation);
+                        //Log.i("SurfaceView", ""+rotation);
                         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.mipmap.straightcard);
                         icon = RotateBitmap(icon, 90*rotation);
                         g.drawBitmap(icon, 125*i, 125*j, p);
