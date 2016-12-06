@@ -58,6 +58,8 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     String name = myMaze[i][j].getTreasureSymbol().getFileId();
                     //Log.i("SurfaceView", ""+getResources().getIdentifier(name,"mipmap","edu.up.cs301.game"));
                     Bitmap icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(name,"mipmap","edu.up.cs301.game"));
+                    icon = RotateBitmap(icon, 90*myMaze[i][j].getTreasureSymbol().getRotationCorrection());
+                    icon = RotateBitmap(icon, 90*myMaze[i][j].getOrientation());
                     //g.drawColor(Color.BLACK);
                     g.drawBitmap(icon, 125*i, 125*j, p);
                 }
@@ -77,6 +79,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                         //}
                         //else{
                             int rotation = myMaze[i][j].getOrientation();
+                            //Log.i("SurfaceView", "rotation: "+rotation);
                             icon = BitmapFactory.decodeResource(getResources(), R.mipmap.blankcornercard);
                             icon = RotateBitmap(icon, 90*rotation);
                         //}

@@ -787,6 +787,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else if(v == rotateButton) {
             Log.i("Rotate","RoTATE");
             game.sendAction(new LabRotateExtraTileAction(this));
+            surfaceView.invalidate();
         }
     }
 

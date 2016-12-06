@@ -51,10 +51,10 @@ public class MazeTile {
             pathMap[3]=true;
         }
         if(type == 'L'){
-            pathMap[0]=true;
-            pathMap[1]=true;
-            pathMap[2]=false;
-            pathMap[3]=false;
+            pathMap[0]=false;
+            pathMap[1]=false;
+            pathMap[2]=true;
+            pathMap[3]=true;
         }
         if(type == 'T'){
             pathMap[0]=false;
@@ -63,8 +63,8 @@ public class MazeTile {
             pathMap[3]=true;
         }
         treasureSymbol = symbol;
-        Random rand = new Random();
-        orientation = rand.nextInt(4);
+//        Random rand = new Random();
+//        this.rotate(rand.nextInt(4));
     }
 
     /**
@@ -118,7 +118,7 @@ public class MazeTile {
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
 
     public void rotate(int nDegs){
-        orientation = nDegs;
+        orientation += nDegs;
         for(int i=1; i<=nDegs; i++) {
             boolean last = pathMap[pathMap.length - 1];          // save off first element
 

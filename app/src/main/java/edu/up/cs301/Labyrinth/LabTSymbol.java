@@ -109,4 +109,48 @@ public enum LabTSymbol {
         }
         return null;
     }
+    public int getRotationCorrection(){
+        switch (this) {
+            case DRAGON:
+                return 2;
+            case TROLL:
+                return 3;
+            case CANDELABRA:
+                return 2;
+            case FLAMING_SWORD:
+                return 2;
+            case JIGGLYPUFF:
+                return 3;
+            case ASTRONAUT:
+                return 3;
+            case TREBLE_CLEF:
+                return 3;
+            case SPIDER:
+                return 3;
+            case COFFEE_MUG:
+                return 3;
+            case CROWN:
+                return 1;
+            case OWL:
+                return 3;
+            case MOUSE:
+                return 2;
+            case BOOK:
+                return 2;
+            case GEM:
+                return 3;
+            case RING:
+                return 2;
+            case SKULL:
+                return 2;
+            case MAP:
+                return 1;
+            case HELMET:
+                return 2;
+            case CHEST:
+                return 2;
+
+        }
+        return 0;
+    }
 }
