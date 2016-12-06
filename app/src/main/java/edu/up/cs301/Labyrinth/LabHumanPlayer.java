@@ -124,7 +124,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void receiveInfo(GameInfo info) {
 
         //Test to see if the player has received any info
-        Log.i("human Player", "called reciveInfo");
+        //.i("human Player", "called reciveInfo");
         //If the surface view is null then just return
         if(surfaceView == null) return;
 
@@ -531,7 +531,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowPlayerInfo.setText(allPlayerNames[3]);
                 }
             }
-            Log.i("i is:", "" + i);
+            //Log.i("i is:", "" + i);
             if(i == 2){
                 bluePlayerInfo.setText("No Player");
                 yellowPlayerInfo.setText("No Player");
@@ -550,7 +550,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             surfaceView.invalidate();
             drawExtraTile();
             //Log for testing purposes
-            Log.i("human player", "receiving");
+            //Log.i("human player", "receiving");
         }
     }
 
@@ -785,7 +785,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
          * as many times as the user wants
          */
         else if(v == rotateButton) {
-            Log.i("Rotate","RoTATE");
+            //Log.i("Rotate","RoTATE");
             game.sendAction(new LabRotateExtraTileAction(this));
             surfaceView.invalidate();
         }
@@ -801,7 +801,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         int xCord = (int)event.getX() / 125;
         int yCord = (int)event.getY() / 125;
 
-        Log.i("onTouch", String.valueOf(xCord) + "   " + String.valueOf(yCord));
+        //.i("onTouch", String.valueOf(xCord) + "   " + String.valueOf(yCord));
         //Sending these coordinates as a LabMovePieceAction
         game.sendAction(new LabMovePieceAction(this, xCord, yCord, this.playerNum));
         //We have handled the event
@@ -812,7 +812,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private void drawExtraTile(){
         if(myState != null) {
             int[] coords = myState.findExtraTile();
-            Log.i("placeExtra", ""+coords[0]+coords[1]);
+            //Log.i("placeExtra", ""+coords[0]+coords[1]);
             topRowR.setBackgroundColor(Color.WHITE);
             topRowM.setBackgroundColor(Color.WHITE);
             topRowL.setBackgroundColor(Color.WHITE);

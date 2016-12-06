@@ -190,19 +190,44 @@ public class LabLocalGame extends LocalGame
 		if(!masterGameState.hasMovedMaze()){
 			return false;
 		}
+		Log.i("movelayePeice", "made it past first if");
 		MazeTile[][] newMaze = masterGameState.getMaze();
 
 		//the coordinates are off the board
-		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){ return false; }
-		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){ return false; }
-
-		//the player stayed on the same tile do nothing but incriment the turn
-		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
-			if(masterGameState.getTurnID() == 3){
+		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){
+			if(masterGameState.getTurnID() == players.length-1){
+				Log.i("movelayePeice", "incrimented max");
 				masterGameState.setTurnID(0);
 			}
 			else{
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				Log.i("movelayePeice", "incrimented turn");
+			}
+			return false;
+		}
+		Log.i("movelayePeice", "made it past 2 if");
+		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){
+			if(masterGameState.getTurnID() == players.length-1){
+				Log.i("movelayePeice", "incrimented max");
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				Log.i("movelayePeice", "incrimented turn");
+			}
+			return false;
+		}
+		Log.i("movelayePeice", "made it past 3 if");
+		//the player stayed on the same tile do nothing but incriment the turn
+		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
+			Log.i("movelayePeice", "made it in the 4 if");
+			if(masterGameState.getTurnID() == players.length-1){
+				Log.i("movelayePeice", "incrimented max");
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				Log.i("movelayePeice", "incrimented turn");
 			}
 			return true;
 		}
@@ -218,11 +243,13 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setMaze(newMaze);
 			masterGameState.setHasMovedMaze(false);
 			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
-			if(masterGameState.getTurnID() == 3){
+			if(masterGameState.getTurnID() == players.length-1){
+				Log.i("movelayePeice", "incrimented max");
 				masterGameState.setTurnID(0);
 			}
 			else{
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				Log.i("movelayePeice", "incrimented turn");
 			}
 			return true;
 		}
@@ -231,10 +258,12 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setHasMovedMaze(false);
 			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			if(masterGameState.getTurnID() == players.length-1){
+				Log.i("movelayePeice", "incrimented max");
 				masterGameState.setTurnID(0);
 			}
 			else{
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				Log.i("movelayePeice", "incrimented turn");
 			}
 		}
 
@@ -267,7 +296,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	protected void sendUpdatedStateTo(GamePlayer p)
 	{
-		Log.i("LabLocalGame", p.toString());
+		//Log.i("LabLocalGame", p.toString());
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
 
@@ -312,7 +341,7 @@ public class LabLocalGame extends LocalGame
 		MazeTile[][] newMaze = masterGameState.getMaze();
 		for(int i=0; i<playerNames.length; i++){
 			int[] coords = masterGameState.getPlayerCurTile(i);
-			Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
+			//Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
 			if(coords[0] == 0){
 
 				newMaze[coords[0]][coords[1]].removePlayer(i);

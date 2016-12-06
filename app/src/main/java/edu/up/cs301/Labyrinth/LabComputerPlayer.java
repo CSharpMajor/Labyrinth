@@ -34,11 +34,13 @@ public class LabComputerPlayer extends GameComputerPlayer {
         Random rand = new Random();
 
         if (info instanceof LabGameState) {
+            Log.i("Coputer", "recived info");
             LabGameState myGameState = (LabGameState) info;
             if (this.playerNum != myGameState.getTurnID()) {
                 return;
             }
             else {
+                Log.i("Computer", "is my turn");
                 if (myGameState.hasMovedMaze()) {
                     //Pick a random spot to move the player
                     xCordPiece = rand.nextInt(6) + 1;
@@ -46,6 +48,7 @@ public class LabComputerPlayer extends GameComputerPlayer {
                     //Delay to make it look like the player is thinking
                     sleep(3000);
                     //Then send the move piece action to the local game
+                    Log.i("computer", "sending move peice action");
                     game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece, this.playerNum));
                 }
                 //For the push!
@@ -64,6 +67,7 @@ public class LabComputerPlayer extends GameComputerPlayer {
                     //Then send the move maze action to the local game
                     //game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
                     //int[] coordinates = myGameState.findExtraTile();
+                    Log.i("computer", "sending move maze action");
                     game.sendAction( new LabMoveMazeAction(this, xCordMaze, yCordMaze));
                 }
             }
