@@ -110,6 +110,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     //Flag that shows if the coordinates have been set or not
     private boolean coordsFlag = false;
 
+    private ImageView blueIconRightGUI = null;
+    private ImageView yellowIconRightGUI = null;
+
     //Constructor for the human player
     public LabHumanPlayer(String name) {
         super(name);
@@ -483,7 +486,14 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 }
 
                 //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n");
+                if(temp.size() == 0)
+                {
+                    Log.i("Card to get:", "Home Square");
+                }
+                else {
+                    String tCardname = temp.get(0).getTreasure().getName();
+                    Log.i("Card to get:", "" + tCardname);
+                }
             }
             //If the human player's number is 2, display player 2's top card to collect
             else if(playerNum == 2){
@@ -554,17 +564,20 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
             //Log.i("i is:", "" + i);
             if(i == 2){
-                bluePlayerInfo.setText("No Player");
-                yellowPlayerInfo.setText("No Player");
+                bluePlayerInfo.setText("");
+                yellowPlayerInfo.setText("");
                 bluePlayerIcon.setImageResource(R.mipmap.brownicon);
                 yellowPlayerIcon.setImageResource(R.mipmap.brownicon);
                 yellowTreasures.setImageResource(R.mipmap.brownicon);
                 blueTreasures.setImageResource(R.mipmap.brownicon);
+                blueIconRightGUI.setImageResource(R.mipmap.brownicon);
+                yellowIconRightGUI.setImageResource(R.mipmap.brownicon);
             }
             else if(i == 3){
-                yellowPlayerInfo.setText("No Player");
+                yellowPlayerInfo.setText("");
                 yellowPlayerIcon.setImageResource(R.mipmap.brownicon);
                 yellowTreasures.setImageResource(R.mipmap.brownicon);
+                yellowIconRightGUI.setImageResource(R.mipmap.brownicon);
             }
 
             //Invalidate the surface view to draw all of the extra changes
@@ -683,6 +696,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         surfaceView = (LabMazeSurfaveView) myActivity.findViewById(R.id.ACTUALMAZE);
         //Setting the listener for the surface view
         surfaceView.setOnTouchListener(this);
+
+        this.blueIconRightGUI = (ImageView)activity.findViewById(R.id.blueIconPlayerInfo);
+        this.yellowIconRightGUI = (ImageView)activity.findViewById(R.id.yellowIconPlayerInfo);
     }//end of set as GUI
 
     /**
@@ -831,12 +847,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //Make the move button disabled to keep the user from pressing it when they shouldn't be
         }
         //If the user has clicked the rotate button then we need to rotate the tile
-        /**
-         * TODO: The rotate button only allows for one rotate per turn, it needs to able to rotate
-         * as many times as the user wants
-         */
         else if(v == rotateButton) {
-            //Log.i("Rotate","RoTATE");
             game.sendAction(new LabRotateExtraTileAction(this));
             surfaceView.invalidate();
         }
