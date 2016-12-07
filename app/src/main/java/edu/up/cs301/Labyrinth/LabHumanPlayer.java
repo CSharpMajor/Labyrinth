@@ -1,6 +1,8 @@
 package edu.up.cs301.Labyrinth;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.up.cs301.animation.AnimationSurface;
@@ -42,7 +45,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Mikayla Whiteaker
  * @version Nov 2016, preAlpha
  */
-public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener {
+public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener, Serializable {
 
     //Variables for the buttons on the GUI
     //Buttons that surround the maze area
@@ -58,6 +61,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColT = null;
     private ImageButton rightColM = null;
     private ImageButton rightColB = null;
+    private ImageView deckcard = null;
     //Move button
     private Button moveButtonArea = null;
     //rotate button
@@ -461,6 +465,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if(playerNum == 0){
                 //Get player 0's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
+                if(temp.get(0) != null){
+                    String name = temp.get(0).getTreasure().getName();
+                    setGoalCard(name);
+                }
                 cardToGet.setText("Current Goal:\n");
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
@@ -469,6 +477,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 1){
                 //Get player 1's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
+                if(temp.get(0) != null){
+                    String name = temp.get(0).getTreasure().getName();
+                    setGoalCard(name);
+                }
+
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
             }
@@ -476,6 +489,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 2){
                 //Get player 2's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
+                if(temp.get(0) != null){
+                    String name = temp.get(0).getTreasure().getName();
+                    setGoalCard(name);
+                }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
             }
@@ -483,6 +500,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 3){
                 //Get player 3's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
+                if(temp.get(0) != null){
+                    String name = temp.get(0).getTreasure().getName();
+                    setGoalCard(name);
+                }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
             }
@@ -554,6 +575,35 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
+    void setGoalCard(String name){
+        if(deckcard == null){return;}
+        Log.i("setGoalCard", name);
+        if(name.equals("dragon")){ deckcard.setImageResource(R.mipmap.dragondeck); }
+        if(name.equals( "ghost")){ deckcard.setImageResource(R.mipmap.ghostdeck); }
+        if(name.equals( "troll")){ deckcard.setImageResource(R.mipmap.goblindeck); }
+        if(name.equals( "candelabra")){ deckcard.setImageResource(R.mipmap.candledeck); }
+        if(name.equals( "flaming sword")){ deckcard.setImageResource(R.mipmap.sworddeck); }
+        if(name.equals( "jigglypuff")){ deckcard.setImageResource(R.mipmap.jigglydeck); }
+        if(name.equals( "benny")){ deckcard.setImageResource(R.mipmap.bennydeck); }
+        if(name.equals( "treble clef")){ deckcard.setImageResource(R.mipmap.trebledeck); }
+        if(name.equals( "bat")){ deckcard.setImageResource(R.mipmap.batdeck); }
+        if(name.equals( "coffee mug")){ deckcard.setImageResource(R.mipmap.cofeedeck); }
+        if(name.equals( "keys")){ deckcard.setImageResource(R.mipmap.keysdeck); }
+        if(name.equals( "crown")){ deckcard.setImageResource(R.mipmap.crowndeck); }
+        if(name.equals( "owl")){ deckcard.setImageResource(R.mipmap.owldeck); }
+        if(name.equals( "mouse")){ deckcard.setImageResource(R.mipmap.mousedeck); }
+        if(name.equals( "book")){ deckcard.setImageResource(R.mipmap.bookdeck); }
+        if(name.equals( "moth")){ deckcard.setImageResource(R.mipmap.mothdeck); }
+        if(name.equals( "gem")){ deckcard.setImageResource(R.mipmap.gemdeck); }
+        if(name.equals( "bag o' gold")){ deckcard.setImageResource(R.mipmap.goldbagdeck); }
+        if(name.equals( "the one ring")){ deckcard.setImageResource(R.mipmap.ringdeck); }
+        if(name.equals( "skull")){ deckcard.setImageResource(R.mipmap.skulldeck); }
+        if(name.equals( "map")){ deckcard.setImageResource(R.mipmap.mapdeck); }
+        if(name.equals( "scarab")){ deckcard.setImageResource(R.mipmap.scarabdeck); }
+        if(name.equals( "knight's helmet")){ deckcard.setImageResource(R.mipmap.helmetdeck); }
+        if(name.equals( "treasure chest")){ deckcard.setImageResource(R.mipmap.treasureboxdeck); }
+    }
+
     /**
      * setAsGui sets the listeners for the buttons and surface view
      *
@@ -564,6 +614,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Seting the activity
         myActivity = activity;
 
+        deckcard = (ImageView) activity.findViewById(R.id.deckCard);
         //Setting the GUI
         activity.setContentView(R.layout.ttt_human_player1);
 

@@ -2,6 +2,8 @@ package edu.up.cs301.Labyrinth;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;

@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import java.io.Serializable;
+
 /**
  * @author Chloe Kuhar
  * @author Liz Frick
@@ -8,7 +10,7 @@ package edu.up.cs301.Labyrinth;
  * @version Nov 2016, preAlpha
  */
 
-public enum LabTSymbol {
+public enum LabTSymbol implements Serializable{
     DRAGON( "dragon" ),
     GHOST( "ghost" ),
     TROLL( "troll" ),
@@ -55,6 +57,8 @@ public enum LabTSymbol {
     {
         return name;
     }
+
+    //to get the correct bitmap in the surface view
     public String getFileId(){
         switch (this) {
             case DRAGON:
@@ -109,6 +113,64 @@ public enum LabTSymbol {
         }
         return null;
     }
+
+
+    public String getCardName(){
+        switch (this) {
+            case DRAGON:
+                return "dragondeck";
+            case GHOST:
+                return "ghostdeck";
+            case TROLL:
+                return "goblindeck";
+            case CANDELABRA:
+                return "candledeck";
+            case FLAMING_SWORD:
+                return "sworddeck";
+            case JIGGLYPUFF:
+                return "jiggpufdeck";
+            case ASTRONAUT:
+                return "bennydeck";
+            case TREBLE_CLEF:
+                return "trebledeck";
+            case SPIDER:
+                return "batdeck";
+            case COFFEE_MUG:
+                return "coffeedeck";
+            case KEYS:
+                return "keysdeck";
+            case CROWN:
+                return "crowndeck";
+            case OWL:
+                return "owldeck";
+            case MOUSE:
+                return "mousedeck";
+            case BOOK:
+                return "bookdeck";
+            case MOTH:
+                return "mothdeck";
+            case GEM:
+                return "gemdeck";
+            case BAG_OF_GOLD:
+                return "goldbagdeck";
+            case RING:
+                return "ringdeck";
+            case SKULL:
+                return "skulldeck";
+            case MAP:
+                return "mapdeck";
+            case SCARAB:
+                return "scarabdeck";
+            case HELMET:
+                return "helmetdeck";
+            case CHEST:
+                return "treasureboxdeck";
+
+        }
+        return null;
+    }
+
+    //so all the tiles start in the same orrientation for the surface view class
     public int getRotationCorrection(){
         switch (this) {
             case DRAGON:

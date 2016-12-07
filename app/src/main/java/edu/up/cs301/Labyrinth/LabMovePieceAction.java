@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import java.io.Serializable;
+
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
@@ -14,7 +16,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @version Nov 2016, preAlpha
  */
 
-public class LabMovePieceAction extends GameAction {
+public class LabMovePieceAction extends GameAction implements Serializable {
 
     // instance variables: the selected row and column
     private int[] coords;

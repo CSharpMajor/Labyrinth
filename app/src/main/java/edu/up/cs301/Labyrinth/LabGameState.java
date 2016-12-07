@@ -2,6 +2,7 @@ package edu.up.cs301.Labyrinth;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,7 +21,7 @@ import edu.up.cs301.game.infoMsg.GameState;
  * @author Mikayla Whiteaker
  * @version Nov. 2016, preAlpha
  */
-public class LabGameState extends GameState
+public class LabGameState extends GameState implements Serializable
 {
     //this is the board with a buffer region on either side
     private MazeTile[][] maze = new MazeTile[9][9];
