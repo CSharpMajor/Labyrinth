@@ -118,7 +118,9 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                 }
 
 
+                if(state.getWinMessage() != null){
 
+                }
 
 //
 //                p.setStyle(Paint.Style.STROKE);

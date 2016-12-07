@@ -44,6 +44,8 @@ public class LabGameState extends GameState implements Serializable
 
     private boolean[][] booleanMazeMap = new boolean[9][9];
 
+    private String winMessage = null;
+
     /*
     Welcome to the constructor this is where we create the game
      */
@@ -769,6 +771,15 @@ public class LabGameState extends GameState implements Serializable
 
         }
         return booleanMazeMap[xDest][yDest];
+    }
+
+
+    public void setWinMessage(String s){
+        winMessage = s;
+    }
+
+    public String getWinMessage(){
+        return winMessage;
     }
 
 }

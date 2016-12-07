@@ -134,6 +134,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //.i("human Player", "called reciveInfo");
         //If the surface view is null then just return
         if(surfaceView == null) return;
+        if(info == null) return;
 
         //If the instance of the game we have received is illegal or not our turn, then we don't
         //want to do anything.

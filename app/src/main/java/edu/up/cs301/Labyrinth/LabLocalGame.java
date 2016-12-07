@@ -226,6 +226,7 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setHasMovedMaze(false);
 			if(masterGameState.getPlayerHand(masterGameState.getTurnID()).size() == 0)
 			{
+				masterGameState.setWinMessage(checkIfGameOver());
 				checkIfGameOver();
 			}
 			else{
