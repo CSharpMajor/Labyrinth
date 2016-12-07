@@ -34,6 +34,7 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 	public LabSmartComputerPlayer (String name) {
 		// invoke superclass constructor
 		super(name);
+		Log.i("smart computer", "created");
 	}
 
 	protected void receiveInfo(GameInfo info) {

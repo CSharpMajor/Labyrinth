@@ -131,6 +131,7 @@ public class LabGameState extends GameState implements Serializable
                 {
                     ind = rand.nextInt(allTiles.size());
                     maze[r][c] = allTiles.get(ind);
+                    maze[r][c].rotate(rand.nextInt(4));
                     allTiles.remove(ind);
                 }
             }
