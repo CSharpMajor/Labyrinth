@@ -2,6 +2,7 @@ package edu.up.cs301.Labyrinth;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,7 +21,7 @@ import edu.up.cs301.game.infoMsg.GameState;
  * @author Mikayla Whiteaker
  * @version Nov. 2016, preAlpha
  */
-public class LabGameState extends GameState
+public class LabGameState extends GameState implements Serializable
 {
     //this is the board with a buffer region on either side
     private MazeTile[][] maze = new MazeTile[9][9];
@@ -130,6 +131,7 @@ public class LabGameState extends GameState
                 {
                     ind = rand.nextInt(allTiles.size());
                     maze[r][c] = allTiles.get(ind);
+                    maze[r][c].rotate(rand.nextInt(4));
                     allTiles.remove(ind);
                 }
             }
@@ -557,8 +559,9 @@ public class LabGameState extends GameState
 	 */
     public boolean checkPath(int xDest, int yDest) throws ArrayIndexOutOfBoundsException
     {
+        return true;
         //MazeTile[][] maze = masterGameState.getMaze();
-        for (int i = 0; i < maze.length; i++)
+        /*for (int i = 0; i < maze.length; i++)
         {
             for (int j = 0; j < maze[i].length; j++)
             {
@@ -756,7 +759,7 @@ public class LabGameState extends GameState
             }
 
         }
-        return booleanMazeMap[xDest][yDest];
+        return booleanMazeMap[xDest][yDest];*/
     }
 
 }

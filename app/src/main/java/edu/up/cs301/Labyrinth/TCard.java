@@ -1,5 +1,7 @@
 package edu.up.cs301.Labyrinth;
 
+import java.io.Serializable;
+
 /**
  * @author Chloe Kuhar
  * @author Liz Frick
@@ -8,7 +10,7 @@ package edu.up.cs301.Labyrinth;
  * @version Nov 2016, preAlpha
  */
 
-public class TCard {
+public class TCard implements Serializable{
     //The symbol of this Treasure Card
     private LabTSymbol symbol;
 

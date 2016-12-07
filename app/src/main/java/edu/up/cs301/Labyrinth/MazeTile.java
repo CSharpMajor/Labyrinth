@@ -2,6 +2,7 @@ package edu.up.cs301.Labyrinth;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +17,7 @@ import java.util.Random;
  * @version Nov 2016, preAlpha
  */
 
-public class MazeTile {
+public class MazeTile implements Serializable{
     //this is for dummy data
     public int val;
 

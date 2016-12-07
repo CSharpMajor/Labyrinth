@@ -2,6 +2,8 @@ package edu.up.cs301.Labyrinth;
 
 import android.util.Log;
 
+import java.io.Serializable;
+
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
@@ -190,44 +192,19 @@ public class LabLocalGame extends LocalGame
 		if(!masterGameState.hasMovedMaze()){
 			return false;
 		}
-		Log.i("movelayePeice", "made it past first if");
 		MazeTile[][] newMaze = masterGameState.getMaze();
 
 		//the coordinates are off the board
-		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){
-			if(masterGameState.getTurnID() == players.length-1){
-				Log.i("movelayePeice", "incrimented max");
-				masterGameState.setTurnID(0);
-			}
-			else{
-				masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				Log.i("movelayePeice", "incrimented turn");
-			}
-			return false;
-		}
-		Log.i("movelayePeice", "made it past 2 if");
-		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){
-			if(masterGameState.getTurnID() == players.length-1){
-				Log.i("movelayePeice", "incrimented max");
-				masterGameState.setTurnID(0);
-			}
-			else{
-				masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				Log.i("movelayePeice", "incrimented turn");
-			}
-			return false;
-		}
-		Log.i("movelayePeice", "made it past 3 if");
-		//the player stayed on the same tile do nothing but incriment the turn
+		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){ return false; }
+		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){ return false; }
+
+		//the player stayed on the same tile do nothing but increment the turn
 		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
-			Log.i("movelayePeice", "made it in the 4 if");
-			if(masterGameState.getTurnID() == players.length-1){
-				Log.i("movelayePeice", "incrimented max");
+			if(masterGameState.getTurnID() == 3){
 				masterGameState.setTurnID(0);
 			}
 			else{
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				Log.i("movelayePeice", "incrimented turn");
 			}
 			return true;
 		}
@@ -238,19 +215,47 @@ public class LabLocalGame extends LocalGame
 			int[] curTil = masterGameState.getPlayerCurTile(masterGameState.getTurnID());
 			newMaze[curTil[0]][curTil[1]].removePlayer(masterGameState.getTurnID());
 
-			//add the player to its desired destitnation
+			//add the player to its desired destination
 			newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].addPlayer(((LabMovePieceAction) action).getPlayerNum());
 			masterGameState.setMaze(newMaze);
 			masterGameState.setHasMovedMaze(false);
-			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
-			if(masterGameState.getTurnID() == players.length-1){
-				Log.i("movelayePeice", "incrimented max");
-				masterGameState.setTurnID(0);
+			if(masterGameState.getPlayerHand(masterGameState.getTurnID()).size() == 0)
+			{
+				checkIfGameOver();
 			}
 			else{
-				masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				Log.i("movelayePeice", "incrimented turn");
+				checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			}
+
+
+			;
+			if(playerNames.length == 4){
+				if(masterGameState.getTurnID() == 3){
+					masterGameState.setTurnID(0);
+				}
+				else{
+					masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				}
+			}
+			else if(playerNames.length == 3)
+			{
+				if(masterGameState.getTurnID() == 2){
+					masterGameState.setTurnID(0);
+				}
+				else{
+					masterGameState.setTurnID(masterGameState.getTurnID()+1);
+				}
+			}
+			else if(playerNames.length == 2)
+			{
+				if(masterGameState.getTurnID() == 1){
+					masterGameState.setTurnID(0);
+				}
+				else{
+					masterGameState.setTurnID(1);
+				}
+			}
+
 			return true;
 		}
 		else{
@@ -258,12 +263,10 @@ public class LabLocalGame extends LocalGame
 			masterGameState.setHasMovedMaze(false);
 			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			if(masterGameState.getTurnID() == players.length-1){
-				Log.i("movelayePeice", "incrimented max");
 				masterGameState.setTurnID(0);
 			}
 			else{
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				Log.i("movelayePeice", "incrimented turn");
 			}
 		}
 
@@ -296,7 +299,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	protected void sendUpdatedStateTo(GamePlayer p)
 	{
-		//Log.i("LabLocalGame", p.toString());
+		Log.i("LabLocalGame", p.toString());
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
 
@@ -341,7 +344,7 @@ public class LabLocalGame extends LocalGame
 		MazeTile[][] newMaze = masterGameState.getMaze();
 		for(int i=0; i<playerNames.length; i++){
 			int[] coords = masterGameState.getPlayerCurTile(i);
-			//Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
+			Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
 			if(coords[0] == 0){
 
 				newMaze[coords[0]][coords[1]].removePlayer(i);

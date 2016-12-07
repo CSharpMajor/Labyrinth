@@ -1,5 +1,6 @@
 package edu.up.cs301.Labyrinth;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import android.util.Log;
@@ -20,7 +21,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Mikayla Whiteaker
  * @version Nov 2016, preAlpha
  */
-public class LabComputerPlayer extends GameComputerPlayer {
+public class LabComputerPlayer extends GameComputerPlayer implements Serializable{
     public LabComputerPlayer(String name) {
         super(name);
     }

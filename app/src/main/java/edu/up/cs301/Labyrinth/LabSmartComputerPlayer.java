@@ -8,6 +8,7 @@ import edu.up.cs301.game.infoMsg.GameState;
 import android.graphics.Point;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.StringTokenizer;
 
@@ -22,7 +23,7 @@ import java.util.StringTokenizer;
  * @author Mikayla Whiteaker
  * @version Nov 2016, Alpha
  */
-public class LabSmartComputerPlayer extends GameComputerPlayer
+public class LabSmartComputerPlayer extends GameComputerPlayer implements Serializable
 {
 	/**
 	 * constructor for a computer player
@@ -33,6 +34,7 @@ public class LabSmartComputerPlayer extends GameComputerPlayer
 	public LabSmartComputerPlayer (String name) {
 		// invoke superclass constructor
 		super(name);
+		Log.i("smart computer", "created");
 	}
 
 	protected void receiveInfo(GameInfo info) {

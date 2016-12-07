@@ -49,6 +49,8 @@ public class LabMainActivity extends GameMainActivity {
 			}
 		});
 
+
+
 		// smarter computer player
 		playerTypes.add(new GamePlayerType("Computer Player (smart)") {
 			public GamePlayer createPlayer(String name) {
