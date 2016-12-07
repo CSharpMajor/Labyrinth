@@ -364,7 +364,6 @@ public class LabLocalGame extends LocalGame
 			}
 		}
 
-
 		return true;
 	}
 }

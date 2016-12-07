@@ -224,6 +224,14 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             myState = (LabGameState) info;
             //Get the maze from the game state
             myMaze = myState.getMaze();
+
+            //testing to see that the extra tile got to us
+            if( myState.findExtraTile()[0] == -1 )
+            {
+                Log.i("Extra Tile", "Not Found");
+            } else {
+                Log.i("Extra Tile", "Found");
+            }
             //Set the state of the surface view
             surfaceView.setState(myState);
 

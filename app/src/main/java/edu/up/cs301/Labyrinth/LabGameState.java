@@ -201,9 +201,8 @@ public class LabGameState extends GameState implements Serializable
 
         //placing extra tile
         int[] coordinates = copy.findExtraTile();
+        Log.i("Extra Tile", coordinates[0]+","+coordinates[1]);
         maze[coordinates[0]][coordinates[1]] = new MazeTile(cp[coordinates[0]][coordinates[1]]);
-
-
 
     }
 
@@ -268,7 +267,7 @@ public class LabGameState extends GameState implements Serializable
 
         //get the extra maze tile
         int[] coordinates = findExtraTile();
-        MazeTile extra = maze[coordinates[0]][coordinates[1]];
+        MazeTile extra = new MazeTile(maze[coordinates[0]][coordinates[1]]);
 
         //make old spot null
         maze[coordinates[0]][coordinates[1]] = null;
@@ -506,7 +505,7 @@ public class LabGameState extends GameState implements Serializable
         int[] coordinates = { -1, -1 };
 
         //search top row
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[0][i] != null )
             {
@@ -517,7 +516,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //search left side
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[i][0] != null )
             {
@@ -528,7 +527,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //search bottom row
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[8][i] != null )
             {
@@ -539,7 +538,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //right side
-        for ( int i = 0; i < 8; i++ )
+        for ( int i = 0; i < 9; i++ )
         {
             if( maze[i][8] != null )
             {
