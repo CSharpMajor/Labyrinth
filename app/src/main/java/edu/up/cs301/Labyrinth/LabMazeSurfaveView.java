@@ -63,7 +63,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     icon = RotateBitmap(icon, 90*myMaze[i][j].getOrientation());
                     icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
                     //g.drawColor(Color.BLACK);
-                    g.drawBitmap(icon, 125*i, 125*j, p);
+                    g.drawBitmap(icon, 125*i-30, 125*j-10, p);
                 }
                 else{
                     //Log.i("SurfaceView", ""+myMaze[i][j].getType());
@@ -73,7 +73,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.mipmap.straightcard);
                         icon = RotateBitmap(icon, 90*rotation);
                         icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
-                        g.drawBitmap(icon, 125*i, 125*j, p);
+                        g.drawBitmap(icon, 125*i-30, 125*j-10, p);
                     }
                     if(myMaze[i][j].getType() == 'L'){
                         Bitmap icon;
@@ -88,7 +88,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                             icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
                         //}
 
-                        g.drawBitmap(icon, 125*i, 125*j, p);
+                        g.drawBitmap(icon, 125*i-30, 125*j-10, p);
                     }
                 }
 
@@ -97,22 +97,22 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     if(myMaze[i][j].getOccupiedBy().get(k) == 0){
                         icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconred","mipmap","edu.up.cs301.game"));
                         icon = Bitmap.createScaledBitmap(icon, 30, 30, true);
-                        g.drawBitmap(icon, 125*i+50, 125*j+50, p);
+                        g.drawBitmap(icon, 125*i+50, 125*j+(k*25)+25, p);
                     }
                     else if(myMaze[i][j].getOccupiedBy().get(k) == 1){
                         icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("icongreen","mipmap","edu.up.cs301.game"));
                         icon = Bitmap.createScaledBitmap(icon, 30, 30, true);
-                        g.drawBitmap(icon, 125*i+50, 125*j+50, p);
+                        g.drawBitmap(icon, 125*i+50, 125*j+(k*25)+25, p);
                     }
                     else if(myMaze[i][j].getOccupiedBy().get(k) == 2){
                         icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconblue","mipmap","edu.up.cs301.game"));
                         icon = Bitmap.createScaledBitmap(icon, 30, 30, true);
-                        g.drawBitmap(icon, 125*i+50, 125*j+50, p);
+                        g.drawBitmap(icon, 125*i+50, 125*j+(k*25)+25, p);
                     }
                     else if(myMaze[i][j].getOccupiedBy().get(k) == 3){
                         icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("iconyellow","mipmap","edu.up.cs301.game"));
                         icon = Bitmap.createScaledBitmap(icon, 30, 30, true);
-                        g.drawBitmap(icon, 125*i+50, 125*j+(k*25)+50, p);
+                        g.drawBitmap(icon, 125*i+50, 125*j+(k*25)+25, p);
                     }
 
                 }

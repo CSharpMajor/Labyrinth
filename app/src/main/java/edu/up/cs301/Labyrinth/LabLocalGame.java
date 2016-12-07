@@ -193,14 +193,19 @@ public class LabLocalGame extends LocalGame
 			return false;
 		}
 		MazeTile[][] newMaze = masterGameState.getMaze();
-
+		Log.i("makePlayerPeiceMove","starting the method");
 		//the coordinates are off the board
-		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){ return false; }
-		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){ return false; }
+		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){
+			//Log.i("makePlayerPeiceMove","first if returned false");
+			return false; }
+		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){
+			//Log.i("makePlayerPeiceMove","second if returned false");
+			return false; }
 
 		//the player stayed on the same tile do nothing but increment the turn
 		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
-			if(masterGameState.getTurnID() == 3){
+			Log.i("makePlayerPeiceMove", "choose to stay");
+			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
 			}
 			else{
@@ -227,8 +232,6 @@ public class LabLocalGame extends LocalGame
 				checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			}
 
-
-			;
 			if(playerNames.length == 4){
 				if(masterGameState.getTurnID() == 3){
 					masterGameState.setTurnID(0);
@@ -255,7 +258,7 @@ public class LabLocalGame extends LocalGame
 					masterGameState.setTurnID(1);
 				}
 			}
-
+			Log.i("makePlayerPeiceMove", "returning ture");
 			return true;
 		}
 		else{
@@ -269,7 +272,7 @@ public class LabLocalGame extends LocalGame
 				masterGameState.setTurnID(masterGameState.getTurnID()+1);
 			}
 		}
-
+		Log.i("makePlayerPeiceMove", "ending method");
 		sendAllUpdatedState();
 		return false;
 	}
