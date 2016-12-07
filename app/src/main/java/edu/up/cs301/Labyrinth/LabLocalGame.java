@@ -18,7 +18,7 @@ import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 
 public class LabLocalGame extends LocalGame

@@ -19,7 +19,7 @@ import edu.up.cs301.game.infoMsg.GameState;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov. 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 public class LabGameState extends GameState implements Serializable
 {

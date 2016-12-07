@@ -10,11 +10,13 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * The class that defines each maze tile for the game.
+ *
  * @author Chloe Kuhar
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 
 public class MazeTile implements Serializable{
