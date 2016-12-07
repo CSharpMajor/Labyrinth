@@ -507,8 +507,7 @@
                     android:src="@mipmap/icongreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/greenIconPlayerInfo"
-                    android:layout_weight="1" />
+                    android:id="@+id/greenIconPlayerInfo" />
 
                 <TextView
                     android:text="TextView"
@@ -536,7 +535,7 @@
                 <TextView
                     android:text="TextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/yellowInfo2"
                     android:layout_weight="1"
                     android:textColor="#FFFFFF" />
