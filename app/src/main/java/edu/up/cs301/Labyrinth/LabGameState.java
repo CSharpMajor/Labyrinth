@@ -580,13 +580,14 @@ public class LabGameState extends GameState implements Serializable
         boolean changeFlag = true;
         while (changeFlag)
         {
+            changeFlag = false;
             //Log.i("what", "while loop");
             for (int i = 1; i < maze.length-1; i++)
             {
                 for (int j = 1; j < maze[i].length-1; j++)
                 {
                     //Log.i("checkPath", maze[i][j].toString());
-                    changeFlag = false;
+
                     if (booleanMazeMap[i][j])
                     {
                         //////////////////
@@ -596,14 +597,16 @@ public class LabGameState extends GameState implements Serializable
                             //right
                             if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
                             {
+
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
+
                             }
                             //bottom
                             if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
                             {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j + 1]){ changeFlag = true; }
                             }
                         }
                         else if(i==1 && j==maze[i].length-2){
@@ -611,13 +614,13 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
                             {
                                 booleanMazeMap[i][j-1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //right
                             if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
                             {
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
                             }
                         }
                         else if(j==1 && i==maze[i].length-2){
@@ -625,13 +628,13 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
                             {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j+1]){ changeFlag = true; }
                             }
                             //left
                             if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
                             {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i - 1][j]){ changeFlag = true; }
                             }
                         }
                         else if(j==maze[i].length-2 && i==maze[i].length-2){
@@ -640,13 +643,13 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
                             {
                                 booleanMazeMap[i][j-1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //left
                             if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
                             {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i - 1][j]){ changeFlag = true; }
                             }
                         }
 
@@ -659,19 +662,19 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
                             {
                                 booleanMazeMap[i][j-1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //right
                             if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
                             {
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
                             }
                             //bottom
                             if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
                             {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j+1]){ changeFlag = true; }
                             }
                         }
                         else if(j==1){
@@ -679,19 +682,19 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
                             {
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
                             }
                             //bottom
                             if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
                             {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j+1]){ changeFlag = true; }
                             }
                             //left
                             if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
                             {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i-1][j]){ changeFlag = true; }
                             }
                         }
                         else if(i==maze[i].length-2){
@@ -699,19 +702,19 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
                             {
                                 booleanMazeMap[i][j-1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //bottom
                             else if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0])
                             {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j+1]){ changeFlag = true; }
                             }
                             //left
                             else if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
                             {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i - 1][j]){ changeFlag = true; }
                             }
                         }
                         else if(j==maze[i].length-2){
@@ -719,19 +722,19 @@ public class LabGameState extends GameState implements Serializable
                             if (maze[i][j].getPathMap()[0] && maze[i][j-1].getPathMap()[2])
                             {
                                 booleanMazeMap[i][j-1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //right
                             else if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3])
                             {
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
                             }
                             //left
                             else if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1])
                             {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i - 1][j]){ changeFlag = true; }
                             }
                         }
 
@@ -742,22 +745,22 @@ public class LabGameState extends GameState implements Serializable
                             //top
                             if (maze[i][j].getPathMap()[0] && maze[i][j - 1].getPathMap()[2]) {
                                 booleanMazeMap[i][j - 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j-1]){ changeFlag = true; }
                             }
                             //right
                             if (maze[i][j].getPathMap()[1] && maze[i + 1][j].getPathMap()[3]) {
                                 booleanMazeMap[i + 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i + 1][j]){ changeFlag = true; }
                             }
                             //bottom
                             if (maze[i][j].getPathMap()[2] && maze[i][j + 1].getPathMap()[0]) {
                                 booleanMazeMap[i][j + 1] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i][j + 1]){ changeFlag = true; }
                             }
                             //left
                             if (maze[i][j].getPathMap()[3] && maze[i - 1][j].getPathMap()[1]) {
                                 booleanMazeMap[i - 1][j] = true;
-                                changeFlag = true;
+                                if(!booleanMazeMap[i - 1][j]){ changeFlag = true; }
                             }
                         }
                     }
