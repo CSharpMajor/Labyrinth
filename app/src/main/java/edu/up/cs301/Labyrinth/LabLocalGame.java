@@ -189,7 +189,7 @@ public class LabLocalGame extends LocalGame
 	 */
 	private boolean makePlayerPieceMove(GameAction action)
 	{
-		if(!masterGameState.hasMovedMaze()){
+		if(!masterGameState.hasMovedMaze() || !masterGameState.hasMovedMaze()){
 			return false;
 		}
 		MazeTile[][] newMaze = masterGameState.getMaze();
