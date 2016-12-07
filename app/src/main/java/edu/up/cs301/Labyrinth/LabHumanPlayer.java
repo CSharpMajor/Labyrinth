@@ -159,7 +159,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     coords = ((LabGameState) info).findExtraTile();
                     coordsFlag = true;
                     flag = false;
-                    rotateButton.setEnabled(false);
                 }
                 //If the flag has been set the human player has moved the maze so we need to
                 //disable the maze move buttons
@@ -179,7 +178,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowM.setEnabled(false);
                     rotateButton.setEnabled(false);
                     moveButtonArea.setEnabled(false);
-                    flag = false;
                 }
                 //For the push!
                 //If the flag has not been set we want to have the buttons to move the maze enabled
@@ -600,6 +598,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 yellowIconRightGUI.setImageResource(R.mipmap.brownicon);
             }
 
+            if(((LabGameState) info).hasMovedMaze())
+            {
+                rotateButton.setEnabled(false);
+            }
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
@@ -646,8 +648,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         //Seting the activity
         myActivity = activity;
-
-        deckcard = (ImageView) activity.findViewById(R.id.deckCard);
         //Setting the GUI
         activity.setContentView(R.layout.ttt_human_player1);
 
@@ -870,8 +870,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
-            game.sendAction(new LabRotateExtraTileAction(this));
-            surfaceView.invalidate();
+                game.sendAction(new LabRotateExtraTileAction(this));
+                surfaceView.invalidate();
         }
     }
 
