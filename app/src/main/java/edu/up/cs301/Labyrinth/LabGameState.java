@@ -559,6 +559,8 @@ public class LabGameState extends GameState implements Serializable
 	 */
     public boolean checkPath(int xDest, int yDest) throws ArrayIndexOutOfBoundsException
     {
+
+
         //MazeTile[][] maze = masterGameState.getMaze();
         for (int i = 0; i < maze.length; i++)
         {
@@ -760,6 +762,5 @@ public class LabGameState extends GameState implements Serializable
         }
         return booleanMazeMap[xDest][yDest];
     }
-
 }
 

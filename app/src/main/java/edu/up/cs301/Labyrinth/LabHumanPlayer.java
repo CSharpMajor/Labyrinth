@@ -473,7 +473,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     setGoalCard(name);
                 }
                 else{
-                    deckcard.setImageResource(R.mipmap.thejiggdude);
+                    deckcard.setImageResource(R.mipmap.redhomedeck);
                 }
                 cardToGet.setText("Current Goal:\n");
                 //Set the GUI text to let the user know what their current goal is
@@ -488,7 +488,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     setGoalCard(name);
                 }
                 else{
-                    deckcard.setImageResource(R.mipmap.greenhomeicon);
+                    deckcard.setImageResource(R.mipmap.greenhomedeck);
                 }
 
                 //Set the GUI text to let the user know what their current goal is
@@ -510,7 +510,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     setGoalCard(name);
                 }
                 else{
-                    deckcard.setImageResource(R.mipmap.bluehomeicon);
+                    deckcard.setImageResource(R.mipmap.bluehomedeck);
                 }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
@@ -524,7 +524,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     setGoalCard(name);
                 }
                 else{
-                    deckcard.setImageResource(R.mipmap.yellowhomeicon);
+                    deckcard.setImageResource(R.mipmap.yellowhomedeck);
                 }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");

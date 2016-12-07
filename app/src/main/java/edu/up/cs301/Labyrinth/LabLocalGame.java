@@ -239,7 +239,7 @@ public class LabLocalGame extends LocalGame
 			}
 			else if(playerNames.length == 3)
 			{
-				if(masterGameState.getTurnID() == 2){
+				if(masterGameState.getTurnID() == 3){
 					masterGameState.setTurnID(0);
 				}
 				else{
