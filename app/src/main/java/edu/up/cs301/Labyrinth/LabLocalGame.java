@@ -242,7 +242,7 @@ public class LabLocalGame extends LocalGame
 			}
 			else if(playerNames.length == 3)
 			{
-				if(masterGameState.getTurnID() == 2){
+				if(masterGameState.getTurnID() == 3){
 					masterGameState.setTurnID(0);
 				}
 				else{
@@ -366,7 +366,6 @@ public class LabLocalGame extends LocalGame
 				newMaze[coords[0]][1].addPlayer(i);
 			}
 		}
-
 
 		return true;
 	}

@@ -201,6 +201,7 @@ public class LabGameState extends GameState implements Serializable
 
         //placing extra tile
         int[] coordinates = copy.findExtraTile();
+        Log.i("Extra Tile", coordinates[0]+","+coordinates[1]);
         maze[coordinates[0]][coordinates[1]] = new MazeTile(cp[coordinates[0]][coordinates[1]]);
 
 
@@ -506,7 +507,7 @@ public class LabGameState extends GameState implements Serializable
         int[] coordinates = { -1, -1 };
 
         //search top row
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[0][i] != null )
             {
@@ -517,7 +518,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //search left side
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[i][0] != null )
             {
@@ -528,7 +529,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //search bottom row
-        for( int i = 0; i < 8; i++ )
+        for( int i = 0; i < 9; i++ )
         {
             if( maze[8][i] != null )
             {
@@ -539,7 +540,7 @@ public class LabGameState extends GameState implements Serializable
         }
 
         //right side
-        for ( int i = 0; i < 8; i++ )
+        for ( int i = 0; i < 9; i++ )
         {
             if( maze[i][8] != null )
             {
@@ -559,6 +560,8 @@ public class LabGameState extends GameState implements Serializable
 	 */
     public boolean checkPath(int xDest, int yDest) throws ArrayIndexOutOfBoundsException
     {
+
+
         Log.i("checkPath", "starting: "+this.getTurnID());
 
         //MazeTile[][] maze = masterGameState.getMaze();
@@ -762,7 +765,6 @@ public class LabGameState extends GameState implements Serializable
             }
 
         }
-        Log.i("checkPath", "returning");
         return booleanMazeMap[xDest][yDest];
     }
 

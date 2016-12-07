@@ -54,24 +54,30 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 				if (myGameState.hasMovedMaze()) {
 					//moving the player piece
 
+					Log.i("Moving", "Piece1");
+
 					//check to see if treasure or player home( if all tcards have been collected )
 					// is reachable
 					int[] tCoords = findTreasure( myGameState );
 					if( tCoords[0] != -1 && myGameState.checkPath(tCoords[0], tCoords[1]) )
 					{
+						Log.i("Moving", "to treasure");
 						xCordPiece = tCoords[0];
 						yCordPiece = tCoords[1];
 					}
 					//if not reachable, move as close as possible
 					else
 					{
+						Log.i("Moving", "close");
 						int[] closestCoord = findClosest( myGameState, tCoords );
 						xCordPiece = closestCoord[0];
 						yCordPiece = closestCoord[1];
 					}
 
 					//Delay to make it look like the player is thinking
-					sleep(3000);
+					sleep(2000);
+
+					Log.i("Moving", "Piece2");
 					//Then send the move piece action to the local game
 					game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece, this.playerNum));
 				}
@@ -518,8 +524,7 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
      */
 	protected int[] findClosest( LabGameState state, int[] treasureCoord )
 	{
-		int[] coords = state.getPlayerCurTile(this.playerNum); 	//defaults to player's current
-																	//location if all else fails
+		int[] coords = state.getPlayerCurTile(this.playerNum); //player's current location
 
 		//check above treasureCoord
 		if( treasureCoord[0] != 1 && treasureCoord[0] != 0 && treasureCoord[1] != 0 && treasureCoord[1] != 8)
@@ -536,11 +541,12 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 			catch (ArrayIndexOutOfBoundsException aob )
 			{
 				//do nothing
+				Log.i("Array Out", "Of Bounds");
 			}
 		}
 
 		//check right
-		if( treasureCoord[1] != 1 && treasureCoord[1] != 0 && treasureCoord[0] != 0 && treasureCoord[0] != 8 )
+		if( treasureCoord[1] != 7 && treasureCoord[1] != 8 && treasureCoord[0] != 0 && treasureCoord[0] != 8 )
 		{
 			try
 			{
@@ -554,11 +560,12 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 			catch (ArrayIndexOutOfBoundsException aob )
 			{
 				//do nothing
+				Log.i("Array Out", "Of Bounds");
 			}
 		}
 
 		//check left
-		if( treasureCoord[1] != 7 && treasureCoord[1] != 8 && treasureCoord[0] != 0 && treasureCoord[0] != 8 )
+		if( treasureCoord[1] != 0 && treasureCoord[1] != 1 && treasureCoord[0] != 0 && treasureCoord[0] != 8 )
 		{
 			try
 			{
@@ -572,6 +579,7 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 			catch (ArrayIndexOutOfBoundsException aob )
 			{
 				//do nothing
+				Log.i("Array Out", "Of Bounds");
 			}
 		}
 
@@ -590,9 +598,39 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 			catch (ArrayIndexOutOfBoundsException aob )
 			{
 				//do nothing
+				Log.i("Array Out", "Of Bounds");
 			}
 		}
 
+		//move at least one space in any direction
+		if( coords[0] - 1 > 0 && coords[1] - 1 > 0 )
+		{
+			if( state.checkPath(coords[0] - 1, coords[1] ) )
+			{
+				coords[0] = coords[0] - 1;
+				return coords;
+			}
+			if( state.checkPath( coords[0], coords[1] - 1 ) )
+			{
+				coords[1] = coords[1] - 1;
+				return coords;
+			}
+		}
+		if( coords[0] + 1 < 8 && coords[1] + 1 < 8 )
+		{
+			if( state.checkPath(coords[0] + 1, coords[1]))
+			{
+				coords[0] = coords[0] + 1;
+				return coords;
+			}
+			if( state.checkPath(coords[0], coords[1] + 1))
+			{
+				coords[1] = coords[1] + 1;
+				return coords;
+			}
+		}
+
+		Log.i("Staying", "Put");
 		return coords;
 	}
 }
