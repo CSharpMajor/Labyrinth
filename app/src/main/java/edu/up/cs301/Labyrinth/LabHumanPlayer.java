@@ -468,9 +468,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if(playerNum == 0){
                 //Get player 0's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
-                if(temp.get(0) != null){
+                if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
                     setGoalCard(name);
+                }
+                else{
+                    deckcard.setImageResource(R.mipmap.thejiggdude);
                 }
                 cardToGet.setText("Current Goal:\n");
                 //Set the GUI text to let the user know what their current goal is
@@ -480,9 +483,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 1){
                 //Get player 1's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
-                if(temp.get(0) != null){
+                if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
                     setGoalCard(name);
+                }
+                else{
+                    deckcard.setImageResource(R.mipmap.greenhomeicon);
                 }
 
                 //Set the GUI text to let the user know what their current goal is
@@ -499,9 +505,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 2){
                 //Get player 2's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
-                if(temp.get(0) != null){
+                if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
                     setGoalCard(name);
+                }
+                else{
+                    deckcard.setImageResource(R.mipmap.bluehomeicon);
                 }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
@@ -510,9 +519,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else if(playerNum == 3){
                 //Get player 3's array list of cards left to collect
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
-                if(temp.get(0) != null){
+                if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
                     setGoalCard(name);
+                }
+                else{
+                    deckcard.setImageResource(R.mipmap.yellowhomeicon);
                 }
                 //Set the GUI text to let the user know what their current goal is
                 cardToGet.setText("Current Goal:\n");
@@ -699,6 +711,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         this.blueIconRightGUI = (ImageView)activity.findViewById(R.id.blueIconPlayerInfo);
         this.yellowIconRightGUI = (ImageView)activity.findViewById(R.id.yellowIconPlayerInfo);
+
+        this.deckcard = (ImageView)activity.findViewById(R.id.deckCard);
     }//end of set as GUI
 
     /**

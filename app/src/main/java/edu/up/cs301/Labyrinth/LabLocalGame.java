@@ -252,7 +252,7 @@ public class LabLocalGame extends LocalGame
 					masterGameState.setTurnID(0);
 				}
 				else{
-					masterGameState.setTurnID(masterGameState.getTurnID()+1);
+					masterGameState.setTurnID(1);
 				}
 			}
 
