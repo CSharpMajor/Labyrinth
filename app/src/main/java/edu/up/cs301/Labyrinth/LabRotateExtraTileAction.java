@@ -6,7 +6,13 @@ import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
 /**
- * Created by mikayla on 11/30/2016.
+ * this action is for when the player wishes to rotate the tile.
+ *
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Dec. 2016, Beta
  */
 
 public class LabRotateExtraTileAction extends GameAction implements Serializable{

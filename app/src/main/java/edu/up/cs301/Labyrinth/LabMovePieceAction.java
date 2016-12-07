@@ -13,7 +13,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 
 public class LabMovePieceAction extends GameAction implements Serializable {

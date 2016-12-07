@@ -16,7 +16,13 @@ import android.view.SurfaceView;
 import edu.up.cs301.game.R;
 
 /**
- * Created by mikayla on 11/20/2016.
+ * this is how we display the game board to the player.
+ *
+ * @author Chloe Kuhar
+ * @author Liz Frick
+ * @author Nicole Kister
+ * @author Mikayla Whiteaker
+ * @version Dec. 2016, Beta
  */
 
 public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Callback{

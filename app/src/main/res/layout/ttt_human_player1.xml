@@ -466,7 +466,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/BlueInfo"
                     android:layout_weight="1"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#FFFFFF"
+                    tools:text="AI Player" />
             </LinearLayout>
 
             <LinearLayout
@@ -510,7 +511,7 @@
                     android:id="@+id/greenIconPlayerInfo" />
 
                 <TextView
-                    android:text="TextView"
+                    android:text="AI Player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/greenInfo2"

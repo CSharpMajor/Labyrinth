@@ -3,11 +3,13 @@ package edu.up.cs301.Labyrinth;
 import java.io.Serializable;
 
 /**
+ * All the Treasure symbols to be used on tiles and cards.
+ *
  * @author Chloe Kuhar
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 
 public enum LabTSymbol implements Serializable{

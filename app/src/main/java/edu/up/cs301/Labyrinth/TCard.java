@@ -3,11 +3,13 @@ package edu.up.cs301.Labyrinth;
 import java.io.Serializable;
 
 /**
+ * The class that defines the treasure card.
+ *
  * @author Chloe Kuhar
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 
 public class TCard implements Serializable{

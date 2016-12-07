@@ -43,7 +43,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Dec. 2016, Beta
  */
 public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener, Serializable {
 

@@ -21,7 +21,7 @@ import java.util.StringTokenizer;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, Alpha
+ * @version Dec. 2016, Beta
  */
 public class LabSmartComputerPlayer extends GameComputerPlayer implements Serializable
 {
