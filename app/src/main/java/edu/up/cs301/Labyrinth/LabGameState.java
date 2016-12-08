@@ -246,12 +246,12 @@ public class LabGameState extends GameState implements Serializable
         allTiles.add(new MazeTile('T', LabTSymbol.RING ));
         allTiles.add(new MazeTile('T', LabTSymbol.SKULL ));
         allTiles.add(new MazeTile('T', LabTSymbol.MAP ));
+        allTiles.add(new MazeTile('T', LabTSymbol.SPIDER ));
 
         //L shaped treasure tiles
         allTiles.add(new MazeTile('L', LabTSymbol.OWL ));
         allTiles.add(new MazeTile('L', LabTSymbol.MOUSE ));
         allTiles.add(new MazeTile('L', LabTSymbol.SCARAB ));
-        allTiles.add(new MazeTile('L', LabTSymbol.SPIDER ));
         allTiles.add(new MazeTile('L', LabTSymbol.JIGGLYPUFF ));
         allTiles.add(new MazeTile('L', LabTSymbol.MOTH ));
 
