@@ -64,25 +64,33 @@ public class LabLocalGame extends LocalGame
 		//bottom left is blue = 2 player Index
 		//bottom right is yellow = 3 player Index
 		MazeTile[][] masterMaze = masterGameState.getMaze();
+		//red player
 		if (masterGameState.getTurnID() == 0)
 		{
+			//is on home and collected all Tcards
 			if (masterMaze[1][1].occupiedBy.contains(0) && masterGameState.getPlayerHand(0).size() == 0)
 			{
 				return "The Red Player Has Won";
 			}
-		} else if (masterGameState.getTurnID() == 1)
+		}
+		//green
+		else if (masterGameState.getTurnID() == 1)
 		{
 			if (masterMaze[7][1].occupiedBy.contains(1) && masterGameState.getPlayerHand(1).size() == 0)
 			{
 				return "The Green Player Has Won";
 			}
-		} else if (masterGameState.getTurnID() == 2)
+		}
+		//blue
+		else if (masterGameState.getTurnID() == 2)
 		{
 			if (masterMaze[1][7].occupiedBy.contains(2) && masterGameState.getPlayerHand(2).size() == 0)
 			{
 				return "The Blue Player Has Won";
 			}
-		} else if (masterGameState.getTurnID() == 3)
+		}
+		//yellow
+		else if (masterGameState.getTurnID() == 3)
 		{
 			if (masterMaze[7][7].occupiedBy.contains(3) && masterGameState.getPlayerHand(3).size() == 0)
 			{
@@ -100,28 +108,37 @@ public class LabLocalGame extends LocalGame
 	 */
 	protected boolean makeMove(GameAction action)
 	{
+		//check that it is their turn
 		if (canMove(this.getPlayerIdx(action.getPlayer())))
 		{
+			//we get a maze move
 			if (action instanceof LabMoveMazeAction)
 			{
 				return makeMazeMove(action);
 			}
+			//we get a move extra tile action
 			else if(action instanceof LabMoveExtraTile){
 				if(masterGameState.hasMovedMaze()){ return false; }
 				masterGameState.moveExtraTile(((LabMoveExtraTile) action).getCoords()[0], ((LabMoveExtraTile) action).getCoords()[1]);
 				return true;
 			}
+			//we got a move player peice action
 			else if (action instanceof LabMovePieceAction && masterGameState.hasMovedMaze())
 			{
 				return makePlayerPieceMove(action);
 			}
+			//we got a rotate the extra tile action
 			else if(action instanceof LabRotateExtraTileAction){
+				//get the extra tile
 				int[] extra = masterGameState.findExtraTile();
+				//get acopy of maze to manipulate
 				MazeTile[][] newMaze = masterGameState.getMaze();
+				//rotate
 				newMaze[extra[0]][extra[1]].rotate(1);
+				//set master to copy
 				masterGameState.setMaze(newMaze);
 				sendAllUpdatedState();
-
+				return true;
 			}
 		}
 		return false;
@@ -172,9 +189,11 @@ public class LabLocalGame extends LocalGame
 		{
 			masterGameState.moveRow(coordinates[0], false);
 			masterGameState.setHasMovedMaze(true);
+			//check to see if a player has moved off the board
 			checkPlayerWrap();
 			return true;
 		}
+		//check to see if a player has moved off the board
 		checkPlayerWrap();
 		sendAllUpdatedState();
 		return false;
@@ -205,6 +224,9 @@ public class LabLocalGame extends LocalGame
 		//the player stayed on the same tile do nothing but increment the turn
 		if(newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].getOccupiedBy().contains(((LabMovePieceAction) action).getPlayerNum())){
 			Log.i("makePlayerPeiceMove", "choose to stay");
+			//set the maze flag for the next turn
+			masterGameState.setHasMovedMaze(false);
+			//itterate the turn
 			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
 			}
@@ -213,6 +235,7 @@ public class LabLocalGame extends LocalGame
 			}
 			return true;
 		}
+		//check the path and it returns true
 		else if(masterGameState.checkPath(((LabMovePieceAction) action).getCoords()[0], ((LabMovePieceAction) action).getCoords()[1])){
 			Log.i("movelayePeice", "check path returned true");
 
@@ -222,7 +245,9 @@ public class LabLocalGame extends LocalGame
 
 			//add the player to its desired destination
 			newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]].addPlayer(((LabMovePieceAction) action).getPlayerNum());
+			//change the maze in the game state
 			masterGameState.setMaze(newMaze);
+			//set the maze flag back to false for the new turn
 			masterGameState.setHasMovedMaze(false);
 			if(masterGameState.getPlayerHand(masterGameState.getTurnID()).size() == 0)
 			{
@@ -232,40 +257,23 @@ public class LabLocalGame extends LocalGame
 			else{
 				checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			}
+			//itterate the turns
+			if(masterGameState.getTurnID() == players.length-1){
+				masterGameState.setTurnID(0);
+			}
+			else{
+				masterGameState.setTurnID(masterGameState.getTurnID()+1);
+			}
 
-			if(playerNames.length == 4){
-				if(masterGameState.getTurnID() == 3){
-					masterGameState.setTurnID(0);
-				}
-				else{
-					masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				}
-			}
-			else if(playerNames.length == 3)
-			{
-				if(masterGameState.getTurnID() == 2){
-					masterGameState.setTurnID(0);
-				}
-				else{
-					masterGameState.setTurnID(masterGameState.getTurnID()+1);
-				}
-			}
-			else if(playerNames.length == 2)
-			{
-				if(masterGameState.getTurnID() == 1){
-					masterGameState.setTurnID(0);
-				}
-				else{
-					masterGameState.setTurnID(1);
-				}
-			}
 			Log.i("makePlayerPeiceMove", "returning ture");
 			return true;
 		}
+		//the check path method has returned false
 		else{
 			Log.i("movelayePeice", "check path returned false");
 			masterGameState.setHasMovedMaze(false);
 			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
+			//itterate the turns
 			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
 			}
