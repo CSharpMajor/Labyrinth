@@ -326,7 +326,7 @@ public class LabLocalGame extends LocalGame
 	{
 		//find the extra tile
 		int[] extraTileCoor = masterGameState.findExtraTile();
-
+		//check that the coordinates are correct ie even
 		if (extraTileCoor[0] % 2 != 0 && extraTileCoor[1] % 2 != 0)
 		{
 			return false;
@@ -354,11 +354,12 @@ public class LabLocalGame extends LocalGame
 
 	private boolean checkPlayerWrap(){
 		MazeTile[][] newMaze = masterGameState.getMaze();
+		//check each player
 		for(int i=0; i<playerNames.length; i++){
 			int[] coords = masterGameState.getPlayerCurTile(i);
-			Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
+			//Log.i("checkPlayerWrap", ""+coords[0]+" , "+coords[1]);
+			//check each side of the buffer for a tile containing a player and move the player to other side of board
 			if(coords[0] == 0){
-
 				newMaze[coords[0]][coords[1]].removePlayer(i);
 				newMaze[newMaze.length-2][coords[1]].addPlayer(i);
 			}
