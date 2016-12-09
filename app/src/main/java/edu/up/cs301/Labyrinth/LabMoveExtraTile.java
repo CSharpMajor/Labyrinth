@@ -29,6 +29,7 @@ public class LabMoveExtraTile extends GameAction implements Serializable{
         this.coords[0] = row;
         this.coords[1] = col;
     }
+
     public int[] getCoords(){
         return coords;
     }
