@@ -272,7 +272,6 @@ public class LabLocalGame extends LocalGame
 		else{
 			Log.i("movelayePeice", "check path returned false");
 			masterGameState.setHasMovedMaze(false);
-			checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			//itterate the turns
 			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
