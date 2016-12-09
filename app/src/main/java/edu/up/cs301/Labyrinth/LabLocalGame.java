@@ -313,8 +313,6 @@ public class LabLocalGame extends LocalGame
 		Log.i("LabLocalGame", p.toString());
 		LabGameState copy = new LabGameState(masterGameState);
 		p.sendInfo(copy);
-
-
 	}
 
 	/**
