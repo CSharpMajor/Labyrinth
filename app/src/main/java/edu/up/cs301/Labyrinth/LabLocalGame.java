@@ -120,6 +120,7 @@ public class LabLocalGame extends LocalGame
 			else if(action instanceof LabMoveExtraTile){
 				if(masterGameState.hasMovedMaze()){ return false; }
 				masterGameState.moveExtraTile(((LabMoveExtraTile) action).getCoords()[0], ((LabMoveExtraTile) action).getCoords()[1]);
+				sendAllUpdatedState();
 				return true;
 			}
 			//we got a move player peice action
@@ -282,7 +283,6 @@ public class LabLocalGame extends LocalGame
 			}
 		}
 		Log.i("makePlayerPeiceMove", "ending method");
-		masterGameState.setHasMovedMaze(false);
 		sendAllUpdatedState();
 		return false;
 	}
