@@ -283,7 +283,6 @@ public class LabLocalGame extends LocalGame
 			}
 		}
 		Log.i("makePlayerPeiceMove", "ending method");
-		masterGameState.setHasMovedMaze(false);
 		sendAllUpdatedState();
 		return false;
 	}
