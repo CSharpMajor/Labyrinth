@@ -64,6 +64,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView deckcard = null;
     //Move button
     private Button moveButtonArea = null;
+    //For the push!
     //rotate button
     private Button rotateButton = null;
     //Text view for the treasure card
