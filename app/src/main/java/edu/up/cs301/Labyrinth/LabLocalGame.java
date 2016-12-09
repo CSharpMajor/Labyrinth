@@ -33,6 +33,8 @@ public class LabLocalGame extends LocalGame
 
 	private LabGameState masterGameState;
 
+	private int[] previousLOcation = {0,0};
+
 	/*
 	 * Welcome to the lovely local game constructor
 	 */
@@ -161,6 +163,11 @@ public class LabLocalGame extends LocalGame
 		//finding the coordinates for where the extra tile is
 		int[] coordinates = masterGameState.findExtraTile();
 
+		if(coordinates[0] == previousLOcation[0] && coordinates[1] == previousLOcation[1]){
+			//sendAction();
+			return false;
+		}
+
 		//extra tile is in the top row
 		if (coordinates[0] == 0)
 		{
@@ -174,6 +181,7 @@ public class LabLocalGame extends LocalGame
 		{
 			masterGameState.moveRow(coordinates[0], true);
 			masterGameState.setHasMovedMaze(true);
+			previousLOcation = masterGameState.findExtraTile();
 			checkPlayerWrap();
 			return true;
 		}
@@ -182,6 +190,7 @@ public class LabLocalGame extends LocalGame
 		{
 			masterGameState.moveCol(coordinates[1], false);
 			masterGameState.setHasMovedMaze(true);
+			previousLOcation = masterGameState.findExtraTile();
 			checkPlayerWrap();
 			return true;
 		}
@@ -190,6 +199,7 @@ public class LabLocalGame extends LocalGame
 		{
 			masterGameState.moveRow(coordinates[0], false);
 			masterGameState.setHasMovedMaze(true);
+			previousLOcation = masterGameState.findExtraTile();
 			//check to see if a player has moved off the board
 			checkPlayerWrap();
 			return true;

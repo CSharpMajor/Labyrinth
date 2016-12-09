@@ -61,10 +61,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColT = null;
     private ImageButton rightColM = null;
     private ImageButton rightColB = null;
+
+    //Image view for the card to collect on the GUI
     private ImageView deckcard = null;
     //Move button
     private Button moveButtonArea = null;
-    //For the push!
     //rotate button
     private Button rotateButton = null;
     //Text view for the treasure card
@@ -108,11 +109,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private int coords[] = null;
     //Flag that keeps track of whether the player is to move their piece or to move the maze
     private boolean flag = false;
-    //Flag is true if the player can rotate the button
-
+    //The icon for the blue player on the upper-right of the GUI
     private ImageView blueIconRightGUI = null;
+    //The icon for the yellow player on the upper-right of the GUI
     private ImageView yellowIconRightGUI = null;
-
+    //Flag that keeps track of whether the player is at the beginning of their turn or at the end
     private boolean coordsFlag = false;
 
     //Constructor for the human player
@@ -575,7 +576,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowPlayerInfo.setText(allPlayerNames[3]);
                 }
             }
-            //Log.i("i is:", "" + i);
             if(i == 2){
                 bluePlayerInfo.setText("");
                 yellowPlayerInfo.setText("");
@@ -600,12 +600,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
-            //Log for testing purposes
-            //Log.i("human player", "receiving");
         }
     }
 
-    //sets the image view with the corrrect treasure card we are try to collect
+    //sets the image view with the correct treasure card we are try to collect
     void setGoalCard(String name){
         if(deckcard == null){return;}
         Log.i("setGoalCard", name);
@@ -693,7 +691,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Setting the icon pictures for the blue and yellow players
         this.bluePlayerIcon = (ImageView)activity.findViewById(R.id.blueIcon);
         this.yellowPlayerIcon = (ImageView)activity.findViewById(R.id.imageView8);
-        //Setting the onclick listeners for the buttons
+
+        //Setting the onclick listeners for the buttons that surround the surface view
         leftColM.setOnClickListener(this);
         leftColB.setOnClickListener(this);
         leftColT.setOnClickListener(this);
@@ -714,18 +713,24 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Setting the listener for the surface view
         surfaceView.setOnTouchListener(this);
 
+        //Setting the image view for the blue icon on the right side of the GUI
         this.blueIconRightGUI = (ImageView)activity.findViewById(R.id.blueIconPlayerInfo);
+        //Setting the image view for the yellow icon on the right side of the GUI
         this.yellowIconRightGUI = (ImageView)activity.findViewById(R.id.yellowIconPlayerInfo);
-
+        //Setting the image view for the card to collect icon
         this.deckcard = (ImageView)activity.findViewById(R.id.deckCard);
     }//end of set as GUI
 
     /**
+     *  onClick takes in the button the user clicked. Based on the button pressed  it allows the
+     *  user to see where the tile will be inserted if they press the move button. It will also
+     *  use the position of where the extra tile was at the beginning of their turn to determine
+     *  whether the user can make this move or not.
      *
      * @param v
      */
     public void onClick(View v) {
-        //so all coordinates are y,x on the SurfaceView...oops
+        //If statements to determine which button was clicked
         if (v == leftColB) {
             if(coords[0] == 0 && coords[1] == 6)
             {
@@ -859,11 +864,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //Also need to reset the flag for the coordinates and the mazeMove flag
             flag = true;
             coordsFlag = false;
+            //Need to find where the extra tile is in order to send the correct move to the local game
             int[] coordinates = myState.findExtraTile();
             moveButtonArea.setEnabled(false);
             rotateButton.setEnabled(false);
+            //Sending the make maze move action to the local game
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
-            //Make the move button disabled to keep the user from pressing it when they shouldn't be
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
@@ -872,6 +878,15 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
+    /**
+     * onTouch is used for the surface view portion of the GUI. Based on where the user presses on
+     * the surface view we need to get those coordinates and send those to the local game as the
+     * user's make piece action.
+     *
+     * @param v
+     * @param event
+     * @return
+     */
     public boolean onTouch(View v, MotionEvent event) {
         //If the event is an "up" we need to ignore it
         if(event.getAction() != MotionEvent.ACTION_UP)
@@ -890,10 +905,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         return true;
     }
 
+    /**
+     * drawExtraTile colors the arrows on the GUI to red when the extra tile is in front of it.
+     */
     private void drawExtraTile(){
         if(myState != null) {
             int[] coords = myState.findExtraTile();
-            //Log.i("placeExtra", ""+coords[0]+coords[1]);
             topRowR.setBackgroundColor(Color.WHITE);
             topRowM.setBackgroundColor(Color.WHITE);
             topRowL.setBackgroundColor(Color.WHITE);
@@ -907,7 +924,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             botRowM.setBackgroundColor(Color.WHITE);
             botRowR.setBackgroundColor(Color.WHITE);
 
-
+            //The tile is on the left
             if (coords[0] == 0) {
                 switch (coords[1]) {
                     case 2:
@@ -920,7 +937,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         leftColB.setBackgroundColor(Color.RED);
                         break;
                 }
-            } else if (coords[0] == 8) {
+            }
+            //The tile is on the right
+            else if (coords[0] == 8) {
                 switch (coords[1]) {
                     case 2:
                         rightColT.setBackgroundColor(Color.RED);

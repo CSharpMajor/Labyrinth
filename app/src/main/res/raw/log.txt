@@ -5,7 +5,7 @@ Problem:
 Resource used:
     http://stackoverflow.com/questions/13129043/shifting-array-to-the-right-homework
 Solution:
-    Used the algroithm proposed in the answer
+    Used the algorithm proposed in the answer
 
 Date:
     2016
@@ -28,7 +28,7 @@ Solution:
 Date:
     2016
 Problem:
-    I didnt want a giant switch statement for getting the correct image name for each treasure symbol
+    I didn't want a giant switch statement for getting the correct image name for each treasure symbol
 Resource used:
     http://stackoverflow.com/questions/16862000/java-android-getresources-getidentifier
 Solution:
