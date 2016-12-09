@@ -226,16 +226,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             /**
              * The following code updates the GUI from the game state given to us
              */
-            //Set the state to be from the game state
-
-
-            //testing to see that the extra tile got to us
-            if( myState.findExtraTile()[0] == -1 )
-            {
-                Log.i("Extra Tile", "Not Found");
-            } else {
-                Log.i("Extra Tile", "Found");
-            }
             //Set the state of the surface view
             surfaceView.setState(myState);
 
