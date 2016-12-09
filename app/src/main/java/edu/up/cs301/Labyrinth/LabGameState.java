@@ -804,6 +804,5 @@ public class LabGameState extends GameState implements Serializable
     public String getWinMessage(){
         return winMessage;
     }
-
 }
 

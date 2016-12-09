@@ -123,7 +123,7 @@ public class LabLocalGame extends LocalGame
 				sendAllUpdatedState();
 				return true;
 			}
-			//we got a move player peice action
+			//we got a move player piece action
 			else if (action instanceof LabMovePieceAction && masterGameState.hasMovedMaze())
 			{
 				return makePlayerPieceMove(action);
@@ -132,7 +132,7 @@ public class LabLocalGame extends LocalGame
 			else if(action instanceof LabRotateExtraTileAction){
 				//get the extra tile
 				int[] extra = masterGameState.findExtraTile();
-				//get acopy of maze to manipulate
+				//get a copy of maze to manipulate
 				MazeTile[][] newMaze = masterGameState.getMaze();
 				//rotate
 				newMaze[extra[0]][extra[1]].rotate(1);
@@ -258,7 +258,7 @@ public class LabLocalGame extends LocalGame
 			else{
 				checkTCollect(masterGameState.getPlayerHand(masterGameState.getTurnID()).get(0), newMaze[((LabMovePieceAction) action).getCoords()[0]][((LabMovePieceAction) action).getCoords()[1]]);
 			}
-			//itterate the turns
+			//iterate the turns
 			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
 			}
@@ -274,7 +274,7 @@ public class LabLocalGame extends LocalGame
 		else{
 			Log.i("movelayePeice", "check path returned false");
 			masterGameState.setHasMovedMaze(false);
-			//itterate the turns
+			//iterate the turns
 			if(masterGameState.getTurnID() == players.length-1){
 				masterGameState.setTurnID(0);
 			}
@@ -346,7 +346,6 @@ public class LabLocalGame extends LocalGame
 		{
 			return false;
 		}
-
 		return true;
 	}
 
