@@ -1,0 +1,45 @@
+Date:
+    2016
+Problem:
+    I wanted a quick solution to rotating the path map 90 degrees by shift everything to the right 1
+Resource used:
+    http://stackoverflow.com/questions/13129043/shifting-array-to-the-right-homework
+Solution:
+    Used the algroithm proposed in the answer
+
+Date:
+    2016
+Problem:
+    I needed to rotate the tile images when displaying them on the surfaceview
+Resource used:
+    http://stackoverflow.com/questions/29982528/how-do-i-rotate-a-bitmap-in-android
+Solution:
+    Used them matrix and the postRotate method and used that on the bitMap
+
+Date:
+    2016
+Problem:
+    I needed to draw the tile images on the surface view
+Resource used:
+    http://stackoverflow.com/questions/12912102/how-to-draw-image-on-surfaceview-android
+Solution:
+    found the bitmap factory and the drawBipMap methods
+
+Date:
+    2016
+Problem:
+    I didnt want a giant switch statement for getting the correct image name for each treasure symbol
+Resource used:
+    http://stackoverflow.com/questions/16862000/java-android-getresources-getidentifier
+Solution:
+    I used this to get the symbols maze tile file name and added a method to the enum class to return the file name for each symbol
+
+Date:
+    2016
+Problem:
+    The surface view class I created was throwing an error from inflating an extend class...
+Resource used:
+    http://stackoverflow.com/questions/3739661/error-inflating-when-extending-a-class
+Solution:
+    I added all the surfaceCreated, surfaceChanged, surfaceDestroyed methods and this fixed the problem and it wasnt throwing errors any
+    more
