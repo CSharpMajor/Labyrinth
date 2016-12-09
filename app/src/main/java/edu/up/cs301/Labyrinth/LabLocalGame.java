@@ -266,6 +266,7 @@ public class LabLocalGame extends LocalGame
 			}
 
 			Log.i("makePlayerPeiceMove", "returning ture");
+			masterGameState.setHasMovedMaze(false);
 			return true;
 		}
 		//the check path method has returned false
@@ -281,6 +282,7 @@ public class LabLocalGame extends LocalGame
 			}
 		}
 		Log.i("makePlayerPeiceMove", "ending method");
+		masterGameState.setHasMovedMaze(false);
 		sendAllUpdatedState();
 		return false;
 	}
