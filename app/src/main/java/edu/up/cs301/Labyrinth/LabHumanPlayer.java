@@ -887,8 +887,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private void drawExtraTile(){
         if(myState != null) {
+            //get the location of the extra tile
             int[] coords = myState.findExtraTile();
             //Log.i("placeExtra", ""+coords[0]+coords[1]);
+
+            //make sure all the arrow buttons backgrounds white
             topRowR.setBackgroundColor(Color.WHITE);
             topRowM.setBackgroundColor(Color.WHITE);
             topRowL.setBackgroundColor(Color.WHITE);
@@ -902,9 +905,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             botRowM.setBackgroundColor(Color.WHITE);
             botRowR.setBackgroundColor(Color.WHITE);
 
-
+            //if its on left side of the board
             if (coords[0] == 0) {
                 switch (coords[1]) {
+                    //which spot
                     case 2:
                         leftColT.setBackgroundColor(Color.RED);
                         break;
@@ -916,6 +920,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         break;
                 }
             } else if (coords[0] == 8) {
+                //the tile is on the right
                 switch (coords[1]) {
                     case 2:
                         rightColT.setBackgroundColor(Color.RED);
@@ -928,6 +933,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         break;
                 }
             } else if (coords[1] == 0) {
+                //the tile is on the top
                 switch (coords[0]) {
                     case 2:
                         topRowL.setBackgroundColor(Color.RED);
@@ -940,6 +946,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         break;
                 }
             } else if (coords[1] == 8) {
+                //the tile is on the bottom
                 switch (coords[0]) {
                     case 2:
                         botRowL.setBackgroundColor(Color.RED);
