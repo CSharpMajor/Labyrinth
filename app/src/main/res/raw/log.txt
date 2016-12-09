@@ -43,3 +43,18 @@ Resource used:
 Solution:
     I added all the surfaceCreated, surfaceChanged, surfaceDestroyed methods and this fixed the problem and it wasnt throwing errors any
     more
+
+Date: November 2016
+Problem: I wanted to double check about surface views and if we could display multiple separate images on a single surface view
+Resource used:
+    https://developer.android.com/reference/android/view/SurfaceView.html
+Solution: My instinct was correct and we used a surface view for the main maze image
+
+Date: November 2016
+Problem: I wanted to used multiple surface views for different changing regions in the GUI
+Resource used:
+    http://stackoverflow.com/questions/5647824/android-multiple-surfaceviews
+Solution:
+    As a group we decided that it would be simplier to code if we only used one surface view, so I used imageviews for the other areas
+    (turn area, how many cards each player has)
+
