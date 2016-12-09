@@ -107,12 +107,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private int coords[] = null;
     //Flag that keeps track of whether the player is to move their piece or to move the maze
     private boolean flag = false;
-    //Flag that shows if the coordinates have been set or not
-    private boolean coordsFlag = false;
     //Flag is true if the player can rotate the button
 
     private ImageView blueIconRightGUI = null;
     private ImageView yellowIconRightGUI = null;
+
+    private boolean coordsFlag = false;
 
     //Constructor for the human player
     public LabHumanPlayer(String name) {
@@ -592,6 +592,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 yellowIconRightGUI.setImageResource(R.mipmap.brownicon);
             }
 
+            if(((LabGameState) info).hasMovedMaze())
+            {
+                rotateButton.setEnabled(false);
+            }
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
@@ -600,6 +604,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
+    //sets the image view with the corrrect treasure card we are try to collect
     void setGoalCard(String name){
         if(deckcard == null){return;}
         Log.i("setGoalCard", name);
@@ -635,11 +640,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param activity
      */
     public void setAsGui(GameMainActivity activity) {
-
-        //Seting the activity
+        //Setting the activity
         myActivity = activity;
 
-        deckcard = (ImageView) activity.findViewById(R.id.deckCard);
+
         //Setting the GUI
         activity.setContentView(R.layout.ttt_human_player1);
 
@@ -928,6 +932,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         break;
                 }
             } else if (coords[1] == 0) {
+                //the tile is on the top
                 switch (coords[0]) {
                     case 2:
                         topRowL.setBackgroundColor(Color.RED);
@@ -940,6 +945,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         break;
                 }
             } else if (coords[1] == 8) {
+                //the tile is on the bottom
                 switch (coords[0]) {
                     case 2:
                         botRowL.setBackgroundColor(Color.RED);

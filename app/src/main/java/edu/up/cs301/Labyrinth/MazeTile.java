@@ -66,8 +66,6 @@ public class MazeTile implements Serializable{
             pathMap[3]=true;
         }
         treasureSymbol = symbol;
-//        Random rand = new Random();
-//        this.rotate(rand.nextInt(4));
     }
 
     /**
@@ -78,16 +76,17 @@ public class MazeTile implements Serializable{
     {
         type = cp.getType();
 
+        //copy the maze map
         boolean[] cpMap = cp.getPathMap();
         for( int i = 0; i < cpMap.length; i++ )
         {
             pathMap[i] = cpMap[i];
         }
-
+        //copy the tSymbol
         treasureSymbol = cp.getTreasureSymbol();
-
+        //copy the orrientation
         orientation = cp.getOrientation();
-
+        //copy all the player on the tile
         occupiedBy.ensureCapacity(4);
 
         //Collections.copy( occupiedBy, cp.getOccupiedBy() );
@@ -101,14 +100,16 @@ public class MazeTile implements Serializable{
     //getters for all the attributes
 
     public char getType(){ return type; }
-//
-//    public int getOrientation(){ return orientation; }
 
     public boolean[] getPathMap(){ return pathMap; }
 
     public LabTSymbol getTreasureSymbol(){ return treasureSymbol; }
 
     public ArrayList<Integer> getOccupiedBy(){ return occupiedBy; }
+
+    public int getOrientation(){
+        return orientation;
+    }
 
     //setters for occupiedBy
 
@@ -120,8 +121,11 @@ public class MazeTile implements Serializable{
 
     public void removePlayer(int player){ occupiedBy.remove((Integer)player); }
 
+    //this changes the path map and the orrientation when a rotate action is called
     public void rotate(int nDegs){
+        //increiment the orrientation
         orientation += nDegs;
+        //shift the path map to the right for a 90 degree roation
         for(int i=1; i<=nDegs; i++) {
             boolean last = pathMap[pathMap.length - 1];          // save off first element
 
@@ -134,8 +138,5 @@ public class MazeTile implements Serializable{
         }
     }
 
-    public int getOrientation(){
-        return orientation;
-    }
 
 }

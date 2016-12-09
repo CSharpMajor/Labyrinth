@@ -36,7 +36,7 @@ public class LabMovePieceAction extends GameAction implements Serializable {
         this.coords[1] = col;
         this.playerNum = num;
     }
-     public int[] getCoords(){
+    public int[] getCoords(){
          return coords;
      }
     public int getPlayerNum(){
