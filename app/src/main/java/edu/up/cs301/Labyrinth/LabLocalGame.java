@@ -215,10 +215,10 @@ public class LabLocalGame extends LocalGame
 		MazeTile[][] newMaze = masterGameState.getMaze();
 		Log.i("makePlayerPeiceMove","starting the method");
 		//the coordinates are off the board
-		if(((LabMovePieceAction) action).getCoords()[0] == 0 || ((LabMovePieceAction) action).getCoords()[1] == 0){
+		if(((LabMovePieceAction) action).getCoords()[0] <= 0 || ((LabMovePieceAction) action).getCoords()[1] <= 0){
 			//Log.i("makePlayerPeiceMove","first if returned false");
 			return false; }
-		if(((LabMovePieceAction) action).getCoords()[0] == newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] == newMaze.length-1){
+		if(((LabMovePieceAction) action).getCoords()[0] >= newMaze.length-1 || ((LabMovePieceAction) action).getCoords()[1] >= newMaze.length-1){
 			//Log.i("makePlayerPeiceMove","second if returned false");
 			return false; }
 
