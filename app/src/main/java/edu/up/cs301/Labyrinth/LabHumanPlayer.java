@@ -606,6 +606,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
+    //sets the image view with the corrrect treasure card we are try to collect
     void setGoalCard(String name){
         if(deckcard == null){return;}
         Log.i("setGoalCard", name);
