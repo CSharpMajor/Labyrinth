@@ -68,16 +68,16 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 					//if not reachable, move as close as possible
 					else
 					{
-						Log.i("Moving", "close");
 						int[] closestCoord = findClosest( myGameState, tCoords );
 						xCordPiece = closestCoord[0];
 						yCordPiece = closestCoord[1];
 					}
 
+					Log.i("Moving to", xCordPiece+","+yCordPiece);
+
 					//Delay to make it look like the player is thinking
 					sleep(2000);
 
-					Log.i("Moving", "Piece2");
 					//Then send the move piece action to the local game
 					game.sendAction(new LabMovePieceAction(this, xCordPiece, yCordPiece, this.playerNum));
 				}
@@ -603,31 +603,33 @@ public class LabSmartComputerPlayer extends GameComputerPlayer implements Serial
 		}
 
 		//move at least one space in any direction
-		if( coords[0] - 1 > 0 && coords[1] - 1 > 0 )
+
+		//checking if I can move up
+		if( coords[0] - 1 > 0 && state.checkPath(coords[0] - 1, coords[1] ) )
 		{
-			if( state.checkPath(coords[0] - 1, coords[1] ) )
-			{
-				coords[0] = coords[0] - 1;
-				return coords;
-			}
-			if( state.checkPath( coords[0], coords[1] - 1 ) )
-			{
-				coords[1] = coords[1] - 1;
-				return coords;
-			}
+			coords[0] = coords[0] - 1;
+			return coords;
 		}
-		if( coords[0] + 1 < 8 && coords[1] + 1 < 8 )
+
+		//checking if I can move to the left
+		if( coords[1] - 1 > 0 && state.checkPath( coords[0], coords[1] - 1 ) )
 		{
-			if( state.checkPath(coords[0] + 1, coords[1]))
-			{
-				coords[0] = coords[0] + 1;
-				return coords;
-			}
-			if( state.checkPath(coords[0], coords[1] + 1))
-			{
-				coords[1] = coords[1] + 1;
-				return coords;
-			}
+			coords[1] = coords[1] - 1;
+			return coords;
+		}
+
+		//checking if I can move down
+		if( coords[0] + 1 < 8 && state.checkPath(coords[0] + 1, coords[1]) )
+		{
+			coords[0] = coords[0] + 1;
+			return coords;
+		}
+
+		//checking if I can move to the right
+		if ( coords[1] + 1 < 8 && state.checkPath(coords[0], coords[1] + 1))
+		{
+			coords[1] = coords[1] + 1;
+			return coords;
 		}
 
 		Log.i("Staying", "Put");
