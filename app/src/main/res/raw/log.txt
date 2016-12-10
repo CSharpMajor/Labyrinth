@@ -55,6 +55,15 @@ Problem: I wanted to used multiple surface views for different changing regions 
 Resource used:
     http://stackoverflow.com/questions/5647824/android-multiple-surfaceviews
 Solution:
-    As a group we decided that it would be simplier to code if we only used one surface view, so I used imageviews for the other areas
+    As a group we decided that it would be simpler to code if we only used one surface view, so I used imageviews for the other areas
     (turn area, how many cards each player has)
 
+Date: December 9, 2016
+Problem: Was having an issue with where the game state thought the extra tile was and where the human
+         player thought the extra tile was. Wasn't sure what was causing this issue.
+Resource Used: Dr. Vegdahl. Went to go see Dr. Vegdahl during his office hours to ask for his advice on
+               how to fix the problem. We ended up discovering that the local game didn't have a check
+               for a move where it needed to, and this was causing a problem.
+Solution: Added a check for the legal move in the local game and by doing this I was able to removed the
+          checking for legal moves in the human player, which eliminated the need to get the extra tile
+          in the human player.
