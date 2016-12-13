@@ -118,13 +118,13 @@ public class LabComputerPlayer extends GameComputerPlayer implements Serializabl
                     //Log.i("xCord", "" + xCordMaze);
                     //Log.i("yCord", "" + yCordMaze);
                     //Delay to make it look like the player is thinking
-                    sleep(3000);
+                    sleep(1000);
                     //Then send the move maze action to the local game
                     //game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
                     //int[] coordinates = myGameState.findExtraTile();
                     //Log.i("computer", "sending move maze action");
                     game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
-                    sleep(2000);
+                    sleep(1000);
                     game.sendAction( new LabMoveMazeAction(this, xCordMaze, yCordMaze));
                 }
             }
