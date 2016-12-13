@@ -201,13 +201,13 @@
 
     <Space
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="175px"
     android:layout_weight="1" />
 
             <ImageButton
             android:src="@mipmap/pointingrightarrow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25px"
             android:id="@+id/leftColT"
             android:layout_weight="1"
             android:contentDescription=""
@@ -223,7 +223,7 @@
             <ImageButton
             android:src="@mipmap/pointingrightarrow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25px"
             android:layout_weight="1.00"
             android:id="@+id/leftColM"
                 android:background="#FFFFFF" />
@@ -236,14 +236,14 @@
             <ImageButton
             android:src="@mipmap/pointingrightarrow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25px"
             android:id="@+id/leftColB"
             android:layout_weight="1"
                 android:background="#FFFFFF" />
 
             <Space
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="200px"
     android:layout_weight="1" />
 
     </LinearLayout>
@@ -260,17 +260,17 @@
     android:id="@+id/topbuttons">
 
     <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
+        android:layout_height="wrap_content"
+    android:layout_weight="1"
+        android:layout_width="75px" />
 
         <ImageButton
         android:src="@mipmap/correctdownarrow"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+            android:layout_height="match_parent"
         android:id="@+id/topRowL"
             android:background="#FFFFFF"
-            android:layout_weight="0.86" />
+            android:layout_weight="0.86"
+            android:layout_width="25px" />
 
         <Space
     android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
 
         <ImageButton
         android:src="@mipmap/correctdownarrow"
-        android:layout_width="wrap_content"
+        android:layout_width="25px"
         android:layout_height="match_parent"
         android:id="@+id/topRowM"
         android:layout_weight="0.68"
@@ -292,16 +292,16 @@
 
         <ImageButton
         android:src="@mipmap/correctdownarrow"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+            android:layout_height="match_parent"
         android:id="@+id/topRowR"
         android:layout_weight="0.71"
-            android:background="#FFFFFF" />
+            android:background="#FFFFFF"
+            android:layout_width="25px" />
 
         <Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1" />
+            android:layout_height="wrap_content"
+    android:layout_weight="1"
+            android:layout_width="75px" />
     </LinearLayout>
 
         <edu.up.cs301.Labyrinth.LabMazeSurfaveView
@@ -318,13 +318,13 @@
             android:layout_weight="0.05">
 
         <Space
-        android:layout_width="wrap_content"
+        android:layout_width="75px"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
             <ImageButton
             android:src="@mipmap/uparrow"
-            android:layout_width="wrap_content"
+            android:layout_width="25px"
             android:layout_height="match_parent"
             android:id="@+id/botRowL"
             android:layout_weight="1.00"
@@ -337,7 +337,7 @@
 
             <ImageButton
             android:src="@mipmap/uparrow"
-            android:layout_width="wrap_content"
+            android:layout_width="25px"
             android:layout_height="match_parent"
             android:id="@+id/botRowM"
             android:layout_weight="1.00"
@@ -350,14 +350,14 @@
 
             <ImageButton
             android:src="@mipmap/uparrow"
-            android:layout_width="wrap_content"
+            android:layout_width="25px"
             android:layout_height="match_parent"
             android:id="@+id/botRowR"
             android:layout_weight="1.00"
                 android:background="#FFFFFF" />
 
             <Space
-        android:layout_width="wrap_content"
+        android:layout_width="75px"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
         </LinearLayout>
@@ -372,13 +372,13 @@
 
     <Space
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="175px"
     android:layout_weight="1" />
 
         <ImageButton
         android:src="@mipmap/pointingleftarrow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="25px"
         android:id="@+id/rightColT"
         android:layout_weight="1"
             android:background="#FFFFFF" />
@@ -391,7 +391,7 @@
         <ImageButton
         android:src="@mipmap/pointingleftarrow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25px"
         android:id="@+id/rightColM"
         android:layout_weight="1"
             android:background="#FFFFFF" />
@@ -404,14 +404,14 @@
         <ImageButton
         android:src="@mipmap/pointingleftarrow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25px"
         android:layout_weight="1"
         android:id="@+id/rightColB"
             android:background="#FFFFFF" />
 
         <Space
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="200px"
     android:layout_weight="1" />
 
     </LinearLayout>
