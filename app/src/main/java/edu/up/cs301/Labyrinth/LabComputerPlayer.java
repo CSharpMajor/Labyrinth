@@ -125,6 +125,7 @@ public class LabComputerPlayer extends GameComputerPlayer implements Serializabl
                     //Log.i("computer", "sending move maze action");
                     game.sendAction(new LabMoveExtraTile(this, xCordMaze, yCordMaze));
                     sleep(1000);
+
                     game.sendAction( new LabMoveMazeAction(this, xCordMaze, yCordMaze));
                 }
             }
