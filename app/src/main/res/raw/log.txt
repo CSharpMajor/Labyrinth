@@ -5,7 +5,7 @@ Problem:
 Resource used:
     http://stackoverflow.com/questions/13129043/shifting-array-to-the-right-homework
 Solution:
-    Used the algroithm proposed in the answer
+    Used the algorithm proposed in the answer
 
 Date:
     2016
@@ -28,7 +28,7 @@ Solution:
 Date:
     2016
 Problem:
-    I didnt want a giant switch statement for getting the correct image name for each treasure symbol
+    I didn't want a giant switch statement for getting the correct image name for each treasure symbol
 Resource used:
     http://stackoverflow.com/questions/16862000/java-android-getresources-getidentifier
 Solution:
@@ -43,3 +43,27 @@ Resource used:
 Solution:
     I added all the surfaceCreated, surfaceChanged, surfaceDestroyed methods and this fixed the problem and it wasnt throwing errors any
     more
+
+Date: November 2016
+Problem: I wanted to double check about surface views and if we could display multiple separate images on a single surface view
+Resource used:
+    https://developer.android.com/reference/android/view/SurfaceView.html
+Solution: My instinct was correct and we used a surface view for the main maze image
+
+Date: November 2016
+Problem: I wanted to used multiple surface views for different changing regions in the GUI
+Resource used:
+    http://stackoverflow.com/questions/5647824/android-multiple-surfaceviews
+Solution:
+    As a group we decided that it would be simpler to code if we only used one surface view, so I used imageviews for the other areas
+    (turn area, how many cards each player has)
+
+Date: December 9, 2016
+Problem: Was having an issue with where the game state thought the extra tile was and where the human
+         player thought the extra tile was. Wasn't sure what was causing this issue.
+Resource Used: Dr. Vegdahl. Went to go see Dr. Vegdahl during his office hours to ask for his advice on
+               how to fix the problem. We ended up discovering that the local game didn't have a check
+               for a move where it needed to, and this was causing a problem.
+Solution: Added a check for the legal move in the local game and by doing this I was able to removed the
+          checking for legal moves in the human player, which eliminated the need to get the extra tile
+          in the human player.

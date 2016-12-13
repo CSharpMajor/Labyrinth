@@ -43,7 +43,7 @@ import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
  * @author Liz Frick
  * @author Nicole Kister
  * @author Mikayla Whiteaker
- * @version Nov 2016, preAlpha
+ * @version Nov 2016, Beta
  */
 public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListener, View.OnTouchListener, Serializable {
 
@@ -61,11 +61,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageButton rightColT = null;
     private ImageButton rightColM = null;
     private ImageButton rightColB = null;
+
+    //Image view for the card to collect on the GUI
     private ImageView deckcard = null;
     //Move button
     private Button moveButtonArea = null;
-    //For the push!
-    //rotate button
+    //Rotate button
     private Button rotateButton = null;
     //Text view for the treasure card
     private TextView cardToGet = null;
@@ -94,8 +95,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView bluePlayerIcon = null;
     //Icon for the yellow player
     private ImageView yellowPlayerIcon = null;
-
-    private TextView turnInfo = null;
     //Variable for the activity
     private Activity myActivity;
     //Variable for the surface view
@@ -104,16 +103,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private LabGameState myState;
     //The maze of the game
     private MazeTile[][] myMaze;
-    //Variable that holds the coordinates of the extra tile
-    private int coords[] = null;
-    //Flag that keeps track of whether the player is to move their piece or to move the maze
-    private boolean flag = false;
-    //Flag is true if the player can rotate the button
-
+    //The icon for the blue player on the upper-right of the GUI
     private ImageView blueIconRightGUI = null;
+    //The icon for the yellow player on the upper-right of the GUI
     private ImageView yellowIconRightGUI = null;
-
-    private boolean coordsFlag = false;
 
     //Constructor for the human player
     public LabHumanPlayer(String name) {
@@ -131,9 +124,6 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param info
      */
     public void receiveInfo(GameInfo info) {
-
-        //Test to see if the player has received any info
-        //.i("human Player", "called reciveInfo");
         //If the surface view is null then just return
         if(surfaceView == null) return;
 
@@ -152,19 +142,10 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //the most current information from the state
         else
         {
-            //If it is our turn we want to enable the move button
+            //If it is our turn we want to do the following:
             if(((LabGameState) info).getTurnID() == playerNum){
-                //If the coordinates have not been set (the beginning of our turn) we need
-                //to set the coordinates as well as set the move button to be enabled at the start
-                if(!coordsFlag)
-                {
-                    coords = ((LabGameState) info).findExtraTile();
-                    coordsFlag = true;
-                    flag = false;
-                }
-                //If the flag has been set the human player has moved the maze so we need to
-                //disable the maze move buttons
-                if(flag)
+                //If we have moved the maze then we want to disable all of the buttons on the screen
+                if(((LabGameState) info).hasMovedMaze())
                 {
                     leftColM.setEnabled(false);
                     leftColB.setEnabled(false);
@@ -181,11 +162,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     rotateButton.setEnabled(false);
                     moveButtonArea.setEnabled(false);
                 }
-                //For the push!
-                //If the flag has not been set we want to have the buttons to move the maze enabled
+                //If we have not moved the maze, make sure all of the buttons are enabled
                 else
                 {
-                    Log.i("Coords:", "" + coords[0] + " " + coords[1]);
                     leftColM.setEnabled(true);
                     leftColB.setEnabled(true);
                     leftColT.setEnabled(true);
@@ -199,6 +178,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     botRowL.setEnabled(true);
                     botRowM.setEnabled(true);
                     rotateButton.setEnabled(true);
+                    moveButtonArea.setEnabled(true);
                 }
             }
             //If it is not our turn we need to make sure the buttons on the GUI are not enabled
@@ -471,14 +451,14 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(0);
                 if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
+                    //Set the card's image to the screen
                     setGoalCard(name);
                 }
+                //If the player has no cards left to collect, display the home card so the user
+                //knows to return to the home square
                 else{
                     deckcard.setImageResource(R.mipmap.redhomedeck);
                 }
-                cardToGet.setText("Current Goal:\n");
-                //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n");
             }
             //If the human player's number is 1, display player 1's top card to collect
             else if(playerNum == 1){
@@ -486,20 +466,13 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(1);
                 if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
+                    //Set the card's image to the screen
                     setGoalCard(name);
                 }
+                //If the player has no cards left to collect, display the home card so the user
+                //knows to return to the home square
                 else{
                     deckcard.setImageResource(R.mipmap.greenhomedeck);
-                }
-
-                //Set the GUI text to let the user know what their current goal is
-                if(temp.size() == 0)
-                {
-                    Log.i("Card to get:", "Home Square");
-                }
-                else {
-                    String tCardname = temp.get(0).getTreasure().getName();
-                    Log.i("Card to get:", "" + tCardname);
                 }
             }
             //If the human player's number is 2, display player 2's top card to collect
@@ -508,13 +481,14 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(2);
                 if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
+                    //Set the card's image to the screen
                     setGoalCard(name);
                 }
+                //If the player has no cards left to collect, display the home card so the user
+                //knows to return to the home square
                 else{
                     deckcard.setImageResource(R.mipmap.bluehomedeck);
                 }
-                //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n");
             }
             //If the human player's number is 3, display player 3's top card to collect
             else if(playerNum == 3){
@@ -522,13 +496,14 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 ArrayList<TCard> temp = ((LabGameState) info).getPlayerHand(3);
                 if(temp.size() != 0){
                     String name = temp.get(0).getTreasure().getName();
+                    //Set the card's image to the screen
                     setGoalCard(name);
                 }
+                //If the player has no cards left to collect, display the home card so the user
+                //knows to return to the home square
                 else{
                     deckcard.setImageResource(R.mipmap.yellowhomedeck);
                 }
-                //Set the GUI text to let the user know what their current goal is
-                cardToGet.setText("Current Goal:\n");
             }
 
             /**
@@ -575,7 +550,11 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     yellowPlayerInfo.setText(allPlayerNames[3]);
                 }
             }
-            //Log.i("i is:", "" + i);
+            /*
+                The following if/else statement provides a more detailed GUI if there are only 2 or
+                3 players. If there are only 3 players the yellow player's information will not display
+                and if there are only 2 players the yellow and blue player's information will not display.
+             */
             if(i == 2){
                 bluePlayerInfo.setText("");
                 yellowPlayerInfo.setText("");
@@ -592,20 +571,17 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 yellowTreasures.setImageResource(R.mipmap.brownicon);
                 yellowIconRightGUI.setImageResource(R.mipmap.brownicon);
             }
-
-            if(((LabGameState) info).hasMovedMaze())
-            {
-                rotateButton.setEnabled(false);
-            }
             //Invalidate the surface view to draw all of the extra changes
             surfaceView.invalidate();
             drawExtraTile();
-            //Log for testing purposes
-            //Log.i("human player", "receiving");
         }
     }
 
-    //sets the image view with the corrrect treasure card we are try to collect
+    /**
+     * setGoalCard sets the image view with the correct treasure card we are trying to collect
+     * @param name
+     */
+
     void setGoalCard(String name){
         if(deckcard == null){return;}
         Log.i("setGoalCard", name);
@@ -693,7 +669,8 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Setting the icon pictures for the blue and yellow players
         this.bluePlayerIcon = (ImageView)activity.findViewById(R.id.blueIcon);
         this.yellowPlayerIcon = (ImageView)activity.findViewById(R.id.imageView8);
-        //Setting the onclick listeners for the buttons
+
+        //Setting the onclick listeners for the buttons that surround the surface view
         leftColM.setOnClickListener(this);
         leftColB.setOnClickListener(this);
         leftColT.setOnClickListener(this);
@@ -714,164 +691,74 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //Setting the listener for the surface view
         surfaceView.setOnTouchListener(this);
 
+        //Setting the image view for the blue icon on the right side of the GUI
         this.blueIconRightGUI = (ImageView)activity.findViewById(R.id.blueIconPlayerInfo);
+        //Setting the image view for the yellow icon on the right side of the GUI
         this.yellowIconRightGUI = (ImageView)activity.findViewById(R.id.yellowIconPlayerInfo);
-
+        //Setting the image view for the card to collect icon
         this.deckcard = (ImageView)activity.findViewById(R.id.deckCard);
     }//end of set as GUI
 
     /**
+     *  onClick takes in the button the user clicked. Based on the button pressed  it allows the
+     *  user to see where the tile will be inserted if they press the move button. If the user clicks
+     *  the move button a move action will be sent to the local game to check to make sure it is legal.
      *
      * @param v
      */
     public void onClick(View v) {
-        //so all coordinates are y,x on the SurfaceView...oops
+        //If statements to determine which button was clicked
+        //Based on the button clicked a move extra tile action will be sent with the appropriate
+        //coordinates.
         if (v == leftColB) {
-            if(coords[0] == 0 && coords[1] == 6)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 0, 6));
         } else if (v == leftColM) {
-            if(coords[0] == 0 && coords[1] == 4)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 0, 4));
         } else if (v == leftColT) {
-            if(coords[0] == 0 && coords[1] == 2)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 0, 2));
         } else if (v == topRowM) {
-            if(coords[0] == 4 && coords[1] == 0)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 4, 0));
         } else if (v == topRowL) {
-            if(coords[0] == 2 && coords[1] == 0)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 2, 0));
         } else if (v == topRowR) {
-            if(coords[0] == 6 && coords[1] == 0)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 6, 0));
         } else if (v == botRowL) {
-            if(coords[0] == 2 && coords[1] == 8)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
-            //For the push!
             game.sendAction(new LabMoveExtraTile(this, 2, 8));
         } else if (v == botRowM) {
-            if(coords[0] == 4 && coords[1] == 8)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 4, 8));
         } else if (v == botRowR) {
-            if(coords[0] == 6 && coords[1] == 8)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 6, 8));
         } else if (v == rightColB) {
-            if(coords[0] == 8 && coords[1] == 6)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 8, 6));
         } else if (v == rightColM) {
-            if(coords[0] == 8 && coords[1] == 4)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 8, 4));
         } else if (v == rightColT) {
-            if(coords[0] == 8 && coords[1] == 2)
-            {
-                moveButtonArea.setEnabled(false);
-            }
-            else
-            {
-                moveButtonArea.setEnabled(true);
-            }
             game.sendAction(new LabMoveExtraTile(this, 8, 2));
         }
         else if (v == moveButtonArea )
         {
-            /**
-             * Once the user presses the move button we need to keep track of which part of the turn
-             * it is. If the flag has not been set we know the player is ending their maze move turn
-             * so we need to set the flag. If the flag is true then the player is ending their
-             * move piece turn and so we need to reset the flag for the next turn
-             */
-            //Also need to reset the flag for the coordinates and the mazeMove flag
-            flag = true;
-            coordsFlag = false;
+            //Need to find where the extra tile is in order to send the correct move to the local game
             int[] coordinates = myState.findExtraTile();
-            moveButtonArea.setEnabled(false);
-            rotateButton.setEnabled(false);
+            //Sending the make maze move action to the local game
             game.sendAction( new LabMoveMazeAction(this, coordinates[0], coordinates[1]));
-            //Make the move button disabled to keep the user from pressing it when they shouldn't be
         }
         //If the user has clicked the rotate button then we need to rotate the tile
         else if(v == rotateButton) {
             game.sendAction(new LabRotateExtraTileAction(this));
+            //Invalidate to update the image position of the tile
             surfaceView.invalidate();
         }
     }
 
+    /**
+     * onTouch is used for the surface view portion of the GUI. Based on where the user presses on
+     * the surface view we need to get those coordinates and send those to the local game as the
+     * user's make piece action.
+     *
+     * @param v
+     * @param event
+     * @return
+     */
     public boolean onTouch(View v, MotionEvent event) {
         //If the event is an "up" we need to ignore it
         if(event.getAction() != MotionEvent.ACTION_UP)
@@ -890,10 +777,12 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         return true;
     }
 
+    /**
+     * drawExtraTile colors the arrows on the GUI to red when the extra tile is in front of it.
+     */
     private void drawExtraTile(){
         if(myState != null) {
             int[] coords = myState.findExtraTile();
-            //Log.i("placeExtra", ""+coords[0]+coords[1]);
             topRowR.setBackgroundColor(Color.WHITE);
             topRowM.setBackgroundColor(Color.WHITE);
             topRowL.setBackgroundColor(Color.WHITE);
@@ -907,7 +796,7 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             botRowM.setBackgroundColor(Color.WHITE);
             botRowR.setBackgroundColor(Color.WHITE);
 
-
+            //The tile is on the left
             if (coords[0] == 0) {
                 switch (coords[1]) {
                     case 2:
@@ -920,7 +809,9 @@ public class LabHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                         leftColB.setBackgroundColor(Color.RED);
                         break;
                 }
-            } else if (coords[0] == 8) {
+            }
+            //The tile is on the right
+            else if (coords[0] == 8) {
                 switch (coords[1]) {
                     case 2:
                         rightColT.setBackgroundColor(Color.RED);
