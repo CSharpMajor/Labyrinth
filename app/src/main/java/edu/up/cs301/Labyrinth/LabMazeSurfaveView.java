@@ -58,6 +58,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
             for(int j = 0; j<myMaze[i].length; j++){
                 p.setColor(Color.BLUE);
                 if(myMaze[i][j] == null) continue;
+
                 //draw all the tiles with symbols on them
                 if(myMaze[i][j].getTreasureSymbol().getFileId() != null){
                     //Log.i("SurfaceView", myMaze[i][j].getTreasureSymbol().getFileId());
@@ -72,6 +73,7 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                     //g.drawColor(Color.BLACK);
                     g.drawBitmap(icon, 125*i-30, 125*j-10, p);
                 }
+
                 else{
                     //Log.i("SurfaceView", ""+myMaze[i][j].getType());
                     if(myMaze[i][j].getType() == 'S'){
@@ -93,7 +95,29 @@ public class LabMazeSurfaveView extends SurfaceView implements SurfaceHolder.Cal
                         g.drawBitmap(icon, 125*i-30, 125*j-10, p);
                     }
                 }
-
+                if(i==1 && j==1){
+                    Bitmap icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("redhomeicon","mipmap","edu.up.cs301.game"));
+                    icon = RotateBitmap(icon, 90*3);
+                    icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
+                    //g.drawColor(Color.BLACK);
+                    g.drawBitmap(icon, 125*i-30, 125*j-10, p);
+                }
+                if(i==7 && j==1){
+                    Bitmap icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("greenhomeicon","mipmap","edu.up.cs301.game"));
+                    icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
+                    g.drawBitmap(icon, 125*i-30, 125*j-10, p);
+                }
+                if(i==1 && j==7){
+                    Bitmap icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("bluehomeicon","mipmap","edu.up.cs301.game"));
+                    icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
+                    g.drawBitmap(icon, 125*i-30, 125*j-10, p);
+                }
+                if(i==7 && j==7){
+                    Bitmap icon = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier("yellowhomeicon","mipmap","edu.up.cs301.game"));
+                    icon = Bitmap.createScaledBitmap(icon, 140, 140, true);
+                    icon = RotateBitmap(icon, 90);
+                    g.drawBitmap(icon, 125*i-30, 125*j-10, p);
+                }
                 //draw all the players on the board
                 for(int k=0; k<myMaze[i][j].getOccupiedBy().size(); k++){
                     Bitmap icon;
