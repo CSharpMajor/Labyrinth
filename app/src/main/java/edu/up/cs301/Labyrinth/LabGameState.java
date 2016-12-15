@@ -211,7 +211,7 @@ public class LabGameState extends GameState implements Serializable
     }
 
     /**
-     * fills the arraylist of tiles for purposes of filling the maze with tiles randomly
+     * fills the Arraylist of tiles for purposes of filling the maze with tiles randomly
      */
     private static void getTiles()
     {
@@ -233,11 +233,8 @@ public class LabGameState extends GameState implements Serializable
         allTiles.add(new MazeTile('T', LabTSymbol.TROLL ));
         allTiles.add(new MazeTile('T', LabTSymbol.CANDELABRA ));
         allTiles.add(new MazeTile('T', LabTSymbol.FLAMING_SWORD ));
-        allTiles.add(new MazeTile('T', LabTSymbol.ASTRONAUT ));
-        allTiles.add(new MazeTile('T', LabTSymbol.TREBLE_CLEF ));
         allTiles.add(new MazeTile('T', LabTSymbol.HELMET ));
         allTiles.add(new MazeTile('T', LabTSymbol.CHEST ));
-        allTiles.add(new MazeTile('T', LabTSymbol.COFFEE_MUG ));
         allTiles.add(new MazeTile('T', LabTSymbol.KEYS ));
         allTiles.add(new MazeTile('T', LabTSymbol.CROWN ));
         allTiles.add(new MazeTile('T', LabTSymbol.BOOK ));
@@ -247,13 +244,16 @@ public class LabGameState extends GameState implements Serializable
         allTiles.add(new MazeTile('T', LabTSymbol.SKULL ));
         allTiles.add(new MazeTile('T', LabTSymbol.MAP ));
         allTiles.add(new MazeTile('T', LabTSymbol.SPIDER ));
+        allTiles.add(new MazeTile('T', LabTSymbol.MOUSE ));
 
         //L shaped treasure tiles
         allTiles.add(new MazeTile('L', LabTSymbol.OWL ));
-        allTiles.add(new MazeTile('L', LabTSymbol.MOUSE ));
         allTiles.add(new MazeTile('L', LabTSymbol.SCARAB ));
         allTiles.add(new MazeTile('L', LabTSymbol.JIGGLYPUFF ));
         allTiles.add(new MazeTile('L', LabTSymbol.MOTH ));
+        allTiles.add(new MazeTile('L', LabTSymbol.ASTRONAUT ));
+        allTiles.add(new MazeTile('L', LabTSymbol.TREBLE_CLEF ));
+        allTiles.add(new MazeTile('L', LabTSymbol.COFFEE_MUG ));
 
     }
 
@@ -370,7 +370,6 @@ public class LabGameState extends GameState implements Serializable
     public void collectTCard( int playerIndex ){
         TCard move = cardsToCollect.get(playerIndex).get(0);
 
-        //ArrayList<TCard> hand = cardsCollected.get(playerIndex);
         cardsCollected.get(playerIndex).add(move);
         ArrayList<TCard> hand = cardsToCollect.get(playerIndex);
         hand.remove(0);
@@ -562,11 +561,8 @@ public class LabGameState extends GameState implements Serializable
 	 */
     public boolean checkPath(int xDest, int yDest) throws ArrayIndexOutOfBoundsException
     {
-
-
         Log.i("checkPath", "starting: "+this.getTurnID());
 
-        //MazeTile[][] maze = masterGameState.getMaze();
         for (int i = 0; i < maze.length; i++)
         {
             for (int j = 0; j < maze[i].length; j++)
